@@ -1,0 +1,271 @@
+[  {
+  "bookName" : "1 Samuel",
+  "bookNumber" : 9,
+  "chapters" : [  {
+    "chapters" : "1 - 4",
+    "data" : "9001001-9004999",
+    "isRead" : false
+  }, {
+    "chapters" : "5 - 8",
+    "data" : "9005001-9008999",
+    "isRead" : false
+  }, {
+    "chapters" : "9 - 12",
+    "data" : "9009001-9012999",
+    "isRead" : false
+  }, {
+    "chapters" : "13 - 17",
+    "data" : "9013001-9017999",
+    "isRead" : false
+  }, {
+    "chapters" : "18 - 22",
+    "data" : "9018001-9022999",
+    "isRead" : false
+  }, {
+    "chapters" : "23 - 27",
+    "data" : "9023001-9027999",
+    "isRead" : false
+  }, {
+    "chapters" : "28 - 31",
+    "data" : "9028001-9031999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "2 Samuel",
+  "bookNumber" : 10,
+  "chapters" : [  {
+    "chapters" : "1 - 2",
+    "data" : "10001001-10002999",
+    "isRead" : false
+  }, {
+    "chapters" : "3 - 5",
+    "data" : "10003001-10005999",
+    "isRead" : false
+  }, {
+    "chapters" : "6 - 8",
+    "data" : "10006001-10008999",
+    "isRead" : false
+  }, {
+    "chapters" : "9 - 12",
+    "data" : "10009001-10012999",
+    "isRead" : false
+  }, {
+    "chapters" : "13 - 14",
+    "data" : "10013001-10014999",
+    "isRead" : false
+  }, {
+    "chapters" : "15 - 16",
+    "data" : "10015001-10016999",
+    "isRead" : false
+  }, {
+    "chapters" : "17 - 18",
+    "data" : "10017001-10018999",
+    "isRead" : false
+  }, {
+    "chapters" : "19 - 20",
+    "data" : "10019001-10020999",
+    "isRead" : false
+  }, {
+    "chapters" : "21 - 22",
+    "data" : "10021001-10022999",
+    "isRead" : false
+  }, {
+    "chapters" : "23 - 24",
+    "data" : "10023001-10024999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "1 Kings",
+  "bookNumber" : 11,
+  "chapters" : [  {
+    "chapters" : "1 - 2",
+    "data" : "11001001-11002999",
+    "isRead" : false
+  }, {
+    "chapters" : "3 - 5",
+    "data" : "11003001-11005999",
+    "isRead" : false
+  }, {
+    "chapters" : "6 - 7",
+    "data" : "11006001-11007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8",
+    "data" : "11008001-11008999",
+    "isRead" : false
+  }, {
+    "chapters" : "9 - 10",
+    "data" : "11009001-11010999",
+    "isRead" : false
+  }, {
+    "chapters" : "11 - 12",
+    "data" : "11011001-11012999",
+    "isRead" : false
+  }, {
+    "chapters" : "13 - 14",
+    "data" : "11013001-11014999",
+    "isRead" : false
+  }, {
+    "chapters" : "15 - 17",
+    "data" : "11015001-11017999",
+    "isRead" : false
+  }, {
+    "chapters" : "18 - 19",
+    "data" : "11018001-11019999",
+    "isRead" : false
+  }, {
+    "chapters" : "20 - 21",
+    "data" : "11020001-11021999",
+    "isRead" : false
+  }, {
+    "chapters" : "22",
+    "data" : "11022001-11022999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "2 Kings",
+  "bookNumber" : 12,
+  "chapters" : [  {
+    "chapters" : "1 - 3",
+    "data" : "12001001-12003999",
+    "isRead" : false
+  }, {
+    "chapters" : "4 - 5",
+    "data" : "12004001-12005999",
+    "isRead" : false
+  }, {
+    "chapters" : "6 - 8",
+    "data" : "12006001-12008999",
+    "isRead" : false
+  }, {
+    "chapters" : "9 - 10",
+    "data" : "12009001-12010999",
+    "isRead" : false
+  }, {
+    "chapters" : "11 - 13",
+    "data" : "12011001-12013999",
+    "isRead" : false
+  }, {
+    "chapters" : "14 - 15",
+    "data" : "12014001-12015999",
+    "isRead" : false
+  }, {
+    "chapters" : "16 - 17",
+    "data" : "12016001-12017999",
+    "isRead" : false
+  }, {
+    "chapters" : "18 - 19",
+    "data" : "12018001-12019999",
+    "isRead" : false
+  }, {
+    "chapters" : "20 - 22",
+    "data" : "12020001-12022999",
+    "isRead" : false
+  }, {
+    "chapters" : "23 - 25",
+    "data" : "12023001-12025999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "1 Chronicles",
+  "bookNumber" : 13,
+  "chapters" : [  {
+    "chapters" : "1 - 2",
+    "data" : "13001001-13002999",
+    "isRead" : false
+  }, {
+    "chapters" : "3 - 5",
+    "data" : "13003001-13005999",
+    "isRead" : false
+  }, {
+    "chapters" : "6 - 7",
+    "data" : "13006001-13007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8 - 10",
+    "data" : "13008001-13010999",
+    "isRead" : false
+  }, {
+    "chapters" : "11 - 12",
+    "data" : "13011001-13012999",
+    "isRead" : false
+  }, {
+    "chapters" : "13 - 15",
+    "data" : "13013001-13015999",
+    "isRead" : false
+  }, {
+    "chapters" : "16 - 17",
+    "data" : "13016001-13017999",
+    "isRead" : false
+  }, {
+    "chapters" : "18 - 20",
+    "data" : "13018001-13020999",
+    "isRead" : false
+  }, {
+    "chapters" : "21 - 23",
+    "data" : "13021001-13023999",
+    "isRead" : false
+  }, {
+    "chapters" : "24 - 26",
+    "data" : "13024001-13026999",
+    "isRead" : false
+  }, {
+    "chapters" : "27 - 29",
+    "data" : "13027001-13029999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "2 Chronicles",
+  "bookNumber" : 14,
+  "chapters" : [  {
+    "chapters" : "1 - 3",
+    "data" : "14001001-14003999",
+    "isRead" : false
+  }, {
+    "chapters" : "4 - 6",
+    "data" : "14004001-14006999",
+    "isRead" : false
+  }, {
+    "chapters" : "7 - 9",
+    "data" : "14007001-14009999",
+    "isRead" : false
+  }, {
+    "chapters" : "10 - 14",
+    "data" : "14010001-14014999",
+    "isRead" : false
+  }, {
+    "chapters" : "15 - 18",
+    "data" : "14015001-14018999",
+    "isRead" : false
+  }, {
+    "chapters" : "19 - 22",
+    "data" : "14019001-14022999",
+    "isRead" : false
+  }, {
+    "chapters" : "23 - 25",
+    "data" : "14023001-14025999",
+    "isRead" : false
+  }, {
+    "chapters" : "26 - 28",
+    "data" : "14026001-14028999",
+    "isRead" : false
+  }, {
+    "chapters" : "29 - 30",
+    "data" : "14029001-14030999",
+    "isRead" : false
+  }, {
+    "chapters" : "31 - 33",
+    "data" : "14031001-14033999",
+    "isRead" : false
+  }, {
+    "chapters" : "34 - 36",
+    "data" : "14034001-14036999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+} ]

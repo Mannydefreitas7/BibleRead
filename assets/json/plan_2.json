@@ -1,0 +1,4224 @@
+[  {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "1 - 3",
+    "data" : "1001001-1003999",
+    "day" : 1,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "4 - 7",
+    "data" : "1004001-1007999",
+    "day" : 2,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "8 - 11",
+    "data" : "1008001-1011999",
+    "day" : 3,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "1 - 5",
+    "data" : "18001001-18005999",
+    "day" : 4,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "6 - 9",
+    "data" : "18006001-18009999",
+    "day" : 5,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "10 - 13",
+    "data" : "18010001-18013999",
+    "day" : 6,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "14 - 16",
+    "data" : "18014001-18016999",
+    "day" : 7,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "17 - 20",
+    "data" : "18017001-18020999",
+    "day" : 8,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "21 - 23",
+    "data" : "18021001-18023999",
+    "day" : 9,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "24 - 28",
+    "data" : "18024001-18028999",
+    "day" : 10,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "29 - 31",
+    "data" : "18029001-18031999",
+    "day" : 11,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "32 - 34",
+    "data" : "18032001-18034999",
+    "day" : 12,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "35 - 37",
+    "data" : "18035001-18037999",
+    "day" : 13,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "38 - 39",
+    "data" : "18038001-18039999",
+    "day" : 14,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Job",
+    "bookNumber" : 18,
+    "chapters" : "40 - 42",
+    "data" : "18040001-18042999",
+    "day" : 15,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "12 - 15",
+    "data" : "1012001-1015999",
+    "day" : 16,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "16 - 18",
+    "data" : "1016001-1018999",
+    "day" : 17,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "19 - 21",
+    "data" : "1019001-1021999",
+    "day" : 18,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "22 - 24",
+    "data" : "1022001-1024999",
+    "day" : 19,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "25 - 26",
+    "data" : "1025001-1026999",
+    "day" : 20,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "27 - 29",
+    "data" : "1027001-1029999",
+    "day" : 21,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "30 - 31",
+    "data" : "1030001-1031999",
+    "day" : 22,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "32 - 34",
+    "data" : "1032001-1034999",
+    "day" : 23,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "35 - 37",
+    "data" : "1035001-1037999",
+    "day" : 24,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "38 - 40",
+    "data" : "1038001-1040999",
+    "day" : 25,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "41 - 42",
+    "data" : "1041001-1042999",
+    "day" : 26,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "43 - 45",
+    "data" : "1043001-1045999",
+    "day" : 27,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "46 - 47",
+    "data" : "1046001-1047999",
+    "day" : 28,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Genesis",
+    "bookNumber" : 1,
+    "chapters" : "48 - 50",
+    "data" : "1048001-1050999",
+    "day" : 29,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "1 - 3",
+    "data" : "2001001-2003999",
+    "day" : 30,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "4 - 6",
+    "data" : "2004001-2006999",
+    "day" : 31,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "7 - 9",
+    "data" : "2007001-2009999",
+    "day" : 32,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "10 - 12",
+    "data" : "2010001-2012999",
+    "day" : 33,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "13 - 15",
+    "data" : "2013001-2015999",
+    "day" : 34,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "16 - 18",
+    "data" : "2016001-2018999",
+    "day" : 35,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "19 - 21",
+    "data" : "2019001-2021999",
+    "day" : 36,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "22 - 24",
+    "data" : "2022001-2024999",
+    "day" : 37,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "25 - 27",
+    "data" : "2025001-2027999",
+    "day" : 38,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "28 - 29",
+    "data" : "2028001-2029999",
+    "day" : 39,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "30 - 32",
+    "data" : "2030001-2032999",
+    "day" : 40,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "33 - 35",
+    "data" : "2033001-2035999",
+    "day" : 41,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "36 - 38",
+    "data" : "2036001-2038999",
+    "day" : 42,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Exodus",
+    "bookNumber" : 2,
+    "chapters" : "39 - 40",
+    "data" : "2039001-2040999",
+    "day" : 43,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "1 - 4",
+    "data" : "3001001-3004999",
+    "day" : 44,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "5 - 7",
+    "data" : "3005001-3007999",
+    "day" : 45,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "8 - 10",
+    "data" : "3008001-3010999",
+    "day" : 46,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "11 - 13",
+    "data" : "3011001-3013999",
+    "day" : 47,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "14 - 15",
+    "data" : "3014001-3015999",
+    "day" : 48,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "16 - 18",
+    "data" : "3016001-3018999",
+    "day" : 49,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "19 - 21",
+    "data" : "3019001-3021999",
+    "day" : 50,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "22 - 23",
+    "data" : "3022001-3023999",
+    "day" : 51,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "24 - 25",
+    "data" : "3024001-3025999",
+    "day" : 52,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Leviticus",
+    "bookNumber" : 3,
+    "chapters" : "26 - 27",
+    "data" : "3026001-3027999",
+    "day" : 53,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "1 - 2",
+    "data" : "4001001-4002999",
+    "day" : 54,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "3 - 4",
+    "data" : "4003001-4004999",
+    "day" : 55,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "5 - 6",
+    "data" : "4005001-4006999",
+    "day" : 56,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "7",
+    "data" : "4007001-4007999",
+    "day" : 57,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "8 - 10",
+    "data" : "4008001-4010999",
+    "day" : 58,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "11 - 13",
+    "data" : "4011001-4013999",
+    "day" : 59,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "14 - 15",
+    "data" : "4014001-4015999",
+    "day" : 60,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "90",
+    "data" : "19090001-19090999",
+    "day" : 60,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "16 - 17",
+    "data" : "4016001-4017999",
+    "day" : 61,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "18 - 20",
+    "data" : "4018001-4020999",
+    "day" : 62,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "21 - 22",
+    "data" : "4021001-4022999",
+    "day" : 63,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "23 - 25",
+    "data" : "4023001-4025999",
+    "day" : 64,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "26 - 27",
+    "data" : "4026001-4027999",
+    "day" : 65,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "28 - 30",
+    "data" : "4028001-4030999",
+    "day" : 66,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "31 - 32",
+    "data" : "4031001-4032999",
+    "day" : 67,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "33 - 34",
+    "data" : "4033001-4034999",
+    "day" : 68,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Numbers",
+    "bookNumber" : 4,
+    "chapters" : "35 - 36",
+    "data" : "4035001-4036999",
+    "day" : 69,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "1 - 2",
+    "data" : "5001001-5002999",
+    "day" : 70,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "3 - 4",
+    "data" : "5003001-5004999",
+    "day" : 71,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "5 - 7",
+    "data" : "5005001-5007999",
+    "day" : 72,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "8 - 10",
+    "data" : "5008001-5010999",
+    "day" : 73,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "11 - 13",
+    "data" : "5011001-5013999",
+    "day" : 74,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "14 - 16",
+    "data" : "5014001-5016999",
+    "day" : 75,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "17 - 20",
+    "data" : "5017001-5020999",
+    "day" : 76,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "21 - 23",
+    "data" : "5021001-5023999",
+    "day" : 77,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "24 - 27",
+    "data" : "5024001-5027999",
+    "day" : 78,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "28 - 29",
+    "data" : "5028001-5029999",
+    "day" : 79,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "30 - 31",
+    "data" : "5030001-5031999",
+    "day" : 80,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Deuteronomy",
+    "bookNumber" : 5,
+    "chapters" : "32 - 34",
+    "data" : "5032001-5034999",
+    "day" : 81,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "91",
+    "data" : "19091001-19091999",
+    "day" : 81,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Joshua",
+    "bookNumber" : 6,
+    "chapters" : "1 - 4",
+    "data" : "6001001-6004999",
+    "day" : 82,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Joshua",
+    "bookNumber" : 6,
+    "chapters" : "5 - 8",
+    "data" : "6005001-6008999",
+    "day" : 83,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Joshua",
+    "bookNumber" : 6,
+    "chapters" : "9 - 11",
+    "data" : "6009001-6011999",
+    "day" : 84,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Joshua",
+    "bookNumber" : 6,
+    "chapters" : "12 - 15",
+    "data" : "6012001-6015999",
+    "day" : 85,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Joshua",
+    "bookNumber" : 6,
+    "chapters" : "16 - 18",
+    "data" : "6016001-6018999",
+    "day" : 86,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Joshua",
+    "bookNumber" : 6,
+    "chapters" : "19 - 21",
+    "data" : "6019001-6021999",
+    "day" : 87,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Joshua",
+    "bookNumber" : 6,
+    "chapters" : "22 - 24",
+    "data" : "6022001-6024999",
+    "day" : 88,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Judges",
+    "bookNumber" : 7,
+    "chapters" : "1 - 2",
+    "data" : "7001001-7002999",
+    "day" : 89,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Judges",
+    "bookNumber" : 7,
+    "chapters" : "3 - 5",
+    "data" : "7003001-7005999",
+    "day" : 90,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Judges",
+    "bookNumber" : 7,
+    "chapters" : "6 - 7",
+    "data" : "7006001-7007999",
+    "day" : 91,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Judges",
+    "bookNumber" : 7,
+    "chapters" : "8 - 9",
+    "data" : "7008001-7009999",
+    "day" : 92,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Judges",
+    "bookNumber" : 7,
+    "chapters" : "10 - 12",
+    "data" : "7010001-7012999",
+    "day" : 93,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Judges",
+    "bookNumber" : 7,
+    "chapters" : "13 - 15",
+    "data" : "7013001-7015999",
+    "day" : 94,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Judges",
+    "bookNumber" : 7,
+    "chapters" : "16 - 18",
+    "data" : "7016001-7018999",
+    "day" : 95,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Judges",
+    "bookNumber" : 7,
+    "chapters" : "19 - 21",
+    "data" : "7019001-7021999",
+    "day" : 96,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ruth",
+    "bookNumber" : 8,
+    "chapters" : "1 - 4",
+    "data" : "8001001-8004999",
+    "day" : 97,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Samuel",
+    "bookNumber" : 9,
+    "chapters" : "1 - 3",
+    "data" : "9001001-9003999",
+    "day" : 98,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Samuel",
+    "bookNumber" : 9,
+    "chapters" : "4 - 8",
+    "data" : "9004001-9008999",
+    "day" : 99,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Samuel",
+    "bookNumber" : 9,
+    "chapters" : "9 - 12",
+    "data" : "9009001-9012999",
+    "day" : 100,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Samuel",
+    "bookNumber" : 9,
+    "chapters" : "13 - 14",
+    "data" : "9013001-9014999",
+    "day" : 101,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Samuel",
+    "bookNumber" : 9,
+    "chapters" : "15 - 17",
+    "data" : "9015001-9017999",
+    "day" : 102,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Samuel",
+    "bookNumber" : 9,
+    "chapters" : "18 - 20",
+    "data" : "9018001-9020999",
+    "day" : 103,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "11",
+    "data" : "19011001-19011999",
+    "day" : 103,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "59",
+    "data" : "19059001-19059999",
+    "day" : 103,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Samuel",
+    "bookNumber" : 9,
+    "chapters" : "21 - 24",
+    "data" : "9021001-9024999",
+    "day" : 104,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "7",
+    "data" : "19007001-19007999",
+    "day" : 105,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "27",
+    "data" : "19027001-19027999",
+    "day" : 105,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "31",
+    "data" : "19031001-19031999",
+    "day" : 105,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "34",
+    "data" : "19034001-19034999",
+    "day" : 105,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "52",
+    "data" : "19052001-19052999",
+    "day" : 105,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "56",
+    "data" : "19056001-19056999",
+    "day" : 106,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "120",
+    "data" : "19120001-19120999",
+    "day" : 106,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "140 - 142",
+    "data" : "19140001-19142999",
+    "day" : 106,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Samuel",
+    "bookNumber" : 9,
+    "chapters" : "25 - 27",
+    "data" : "9025001-9027999",
+    "day" : 107,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "17",
+    "data" : "19017001-19017999",
+    "day" : 108,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "35",
+    "data" : "19035001-19035999",
+    "day" : 108,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "54",
+    "data" : "19054001-19054999",
+    "day" : 108,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "63",
+    "data" : "19063001-19063999",
+    "day" : 108,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Samuel",
+    "bookNumber" : 9,
+    "chapters" : "28 - 31",
+    "data" : "9028001-9031999",
+    "day" : 109,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "18",
+    "data" : "19018001-19018999",
+    "day" : 109,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "121",
+    "data" : "19121001-19121999",
+    "day" : 110,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "123 - 125",
+    "data" : "19123001-19125999",
+    "day" : 110,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "128 - 130",
+    "data" : "19128001-19130999",
+    "day" : 110,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "1 - 4",
+    "data" : "10001001-10004999",
+    "day" : 111,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "6",
+    "data" : "19006001-19006999",
+    "day" : 112,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "8 - 10",
+    "data" : "19008001-19010999",
+    "day" : 112,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "14",
+    "data" : "19014001-19014999",
+    "day" : 112,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "16",
+    "data" : "19016001-19016999",
+    "day" : 112,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "19",
+    "data" : "19019001-19019999",
+    "day" : 112,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "21",
+    "data" : "19021001-19021999",
+    "day" : 112,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "1 - 2",
+    "data" : "13001001-13002999",
+    "day" : 113,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "43 - 45",
+    "data" : "19043001-19045999",
+    "day" : 114,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "49",
+    "data" : "19049001-19049999",
+    "day" : 114,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "84 - 85",
+    "data" : "19084001-19085999",
+    "day" : 114,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "87",
+    "data" : "19087001-19087999",
+    "day" : 114,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "3 - 5",
+    "data" : "13003001-13005999",
+    "day" : 115,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "73",
+    "data" : "19073001-19073999",
+    "day" : 116,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "77 - 78",
+    "data" : "19077001-19078999",
+    "day" : 116,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "6",
+    "data" : "13006001-13006999",
+    "day" : 117,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "81",
+    "data" : "19081001-19081999",
+    "day" : 118,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "88",
+    "data" : "19088001-19088999",
+    "day" : 118,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "92 - 93",
+    "data" : "19092001-19093999",
+    "day" : 118,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "7 - 10",
+    "data" : "13007001-13010999",
+    "day" : 119,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "102 - 104",
+    "data" : "19102001-19104999",
+    "day" : 120,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "5",
+    "data" : "10005001-10005999",
+    "day" : 121,
+    "isRead" : false
+  }, {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "11 - 12",
+    "data" : "13011001-13012999",
+    "day" : 121,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "133",
+    "data" : "19133001-19133999",
+    "day" : 122,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "106 - 107",
+    "data" : "19106001-19107999",
+    "day" : 123,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "6",
+    "data" : "10006001-10006999",
+    "day" : 124,
+    "isRead" : false
+  }, {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "13 - 16",
+    "data" : "13013001-13016999",
+    "day" : 124,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "1 - 2",
+    "data" : "19001001-19002999",
+    "day" : 125,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "15",
+    "data" : "19015001-19015999",
+    "day" : 125,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "22 - 24",
+    "data" : "19022001-19024999",
+    "day" : 125,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "47",
+    "data" : "19047001-19047999",
+    "day" : 125,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "68",
+    "data" : "19068001-19068999",
+    "day" : 125,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "89",
+    "data" : "19089001-19089999",
+    "day" : 126,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "96",
+    "data" : "19096001-19096999",
+    "day" : 126,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "100",
+    "data" : "19100001-19100999",
+    "day" : 126,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "101",
+    "data" : "19101001-19101999",
+    "day" : 126,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "105",
+    "data" : "19105001-19105999",
+    "day" : 126,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "132",
+    "data" : "19132001-19132999",
+    "day" : 126,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "7",
+    "data" : "10007001-10007999",
+    "day" : 127,
+    "isRead" : false
+  }, {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "17",
+    "data" : "13017001-13017999",
+    "day" : 127,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "25",
+    "data" : "19025001-19025999",
+    "day" : 128,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "29",
+    "data" : "19029001-19029999",
+    "day" : 128,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "33",
+    "data" : "19033001-19033999",
+    "day" : 128,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "36",
+    "data" : "19036001-19036999",
+    "day" : 128,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "39",
+    "data" : "19039001-19039999",
+    "day" : 128,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "8 - 9",
+    "data" : "10008001-10009999",
+    "day" : 129,
+    "isRead" : false
+  }, {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "18",
+    "data" : "13018001-13018999",
+    "day" : 129,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "50",
+    "data" : "19050001-19050999",
+    "day" : 130,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "53",
+    "data" : "19053001-19053999",
+    "day" : 130,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "60",
+    "data" : "19060001-19060999",
+    "day" : 130,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "75",
+    "data" : "19075001-19075999",
+    "day" : 130,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "10",
+    "data" : "10010001-10010999",
+    "day" : 131,
+    "isRead" : false
+  }, {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "19",
+    "data" : "13019001-13019999",
+    "day" : 131,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "20",
+    "data" : "19020001-19020999",
+    "day" : 131,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "65 - 67",
+    "data" : "19065001-19067999",
+    "day" : 132,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "69 - 70",
+    "data" : "19069001-19070999",
+    "day" : 132,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "11 - 12",
+    "data" : "10011001-10012999",
+    "day" : 133,
+    "isRead" : false
+  }, {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "20",
+    "data" : "13020001-13020999",
+    "day" : 133,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "32",
+    "data" : "19032001-19032999",
+    "day" : 134,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "51",
+    "data" : "19051001-19051999",
+    "day" : 134,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "86",
+    "data" : "19086001-19086999",
+    "day" : 134,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "122",
+    "data" : "19122001-19122999",
+    "day" : 134,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "13 - 15",
+    "data" : "10013001-10015999",
+    "day" : 135,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "3 - 4",
+    "data" : "19003001-19004999",
+    "day" : 136,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "12 - 13",
+    "data" : "19012001-19013999",
+    "day" : 136,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "28",
+    "data" : "19028001-19028999",
+    "day" : 136,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "55",
+    "data" : "19055001-19055999",
+    "day" : 136,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "16 - 18",
+    "data" : "10016001-10018999",
+    "day" : 137,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "26",
+    "data" : "19026001-19026999",
+    "day" : 138,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "40",
+    "data" : "19040001-19040999",
+    "day" : 138,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "58",
+    "data" : "19058001-19058999",
+    "day" : 138,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "61 - 62",
+    "data" : "19061001-19062999",
+    "day" : 138,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "64",
+    "data" : "19064001-19064999",
+    "day" : 138,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "19 - 21",
+    "data" : "10019001-10021999",
+    "day" : 139,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "5",
+    "data" : "19005001-19005999",
+    "day" : 140,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "38",
+    "data" : "19038001-19038999",
+    "day" : 140,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "41 - 42",
+    "data" : "19041001-19042999",
+    "day" : 140,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "22 - 23",
+    "data" : "10022001-10023999",
+    "day" : 141,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "57",
+    "data" : "19057001-19057999",
+    "day" : 141,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "95",
+    "data" : "19095001-19095999",
+    "day" : 142,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "97 - 99",
+    "data" : "19097001-19099999",
+    "day" : 142,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Samuel",
+    "bookNumber" : 10,
+    "chapters" : "24",
+    "data" : "10024001-10024999",
+    "day" : 143,
+    "isRead" : false
+  }, {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "21 - 22",
+    "data" : "13021001-13022999",
+    "day" : 143,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "30",
+    "data" : "19030001-19030999",
+    "day" : 143,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "108 - 110",
+    "data" : "19108001-19110999",
+    "day" : 144,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "23 - 25",
+    "data" : "13023001-13025999",
+    "day" : 145,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "131",
+    "data" : "19131001-19131999",
+    "day" : 146,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "138 - 139",
+    "data" : "19138001-19139999",
+    "day" : 146,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "143 - 145",
+    "data" : "19143001-19145999",
+    "day" : 146,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Chronicles",
+    "bookNumber" : 13,
+    "chapters" : "26 - 29",
+    "data" : "13026001-13029999",
+    "day" : 147,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "127",
+    "data" : "19127001-19127999",
+    "day" : 147,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "111 - 118",
+    "data" : "19111001-19118999",
+    "day" : 148,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "1 - 2",
+    "data" : "11001001-11002999",
+    "day" : 149,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "37",
+    "data" : "19037001-19037999",
+    "day" : 149,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "71",
+    "data" : "19071001-19071999",
+    "day" : 149,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "94",
+    "data" : "19094001-19094999",
+    "day" : 149,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "119",
+    "data" : "19119001-19119999",
+    "day" : 150,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "3 - 4",
+    "data" : "11003001-11004999",
+    "day" : 151,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "1",
+    "data" : "14001001-14001999",
+    "day" : 151,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "72",
+    "data" : "19072001-19072999",
+    "day" : 151,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "120 - 176",
+    "data" : "19120001-19176999",
+    "day" : 152,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Song Of Solomon",
+    "bookNumber" : 0,
+    "chapters" : "1 - 8",
+    "data" : "0001001-0008999",
+    "day" : 153,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "1 - 3",
+    "data" : "20001001-20003999",
+    "day" : 154,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "4 - 6",
+    "data" : "20004001-20006999",
+    "day" : 155,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "7 - 9",
+    "data" : "20007001-20009999",
+    "day" : 156,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "10 - 12",
+    "data" : "20010001-20012999",
+    "day" : 157,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "13 - 15",
+    "data" : "20013001-20015999",
+    "day" : 158,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "16 - 18",
+    "data" : "20016001-20018999",
+    "day" : 159,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "19 - 21",
+    "data" : "20019001-20021999",
+    "day" : 160,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "22 - 24",
+    "data" : "20022001-20024999",
+    "day" : 161,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "5 - 6",
+    "data" : "11005001-11006999",
+    "day" : 162,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "2 - 3",
+    "data" : "14002001-14003999",
+    "day" : 162,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "7",
+    "data" : "11007001-11007999",
+    "day" : 163,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "4",
+    "data" : "14004001-14004999",
+    "day" : 163,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "8",
+    "data" : "11008001-11008999",
+    "day" : 164,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "5",
+    "data" : "14005001-14005999",
+    "day" : 164,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "6 - 7",
+    "data" : "14006001-14007999",
+    "day" : 165,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "136",
+    "data" : "19136001-19136999",
+    "day" : 165,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "134",
+    "data" : "19134001-19134999",
+    "day" : 166,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "146 - 150",
+    "data" : "19146001-19150999",
+    "day" : 166,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "9",
+    "data" : "11009001-11009999",
+    "day" : 167,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "8",
+    "data" : "14008001-14008999",
+    "day" : 167,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "25 - 26",
+    "data" : "20025001-20026999",
+    "day" : 168,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "27 - 29",
+    "data" : "20027001-20029999",
+    "day" : 169,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ecclesiastes",
+    "bookNumber" : 21,
+    "chapters" : "1 - 6",
+    "data" : "21001001-21006999",
+    "day" : 170,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ecclesiastes",
+    "bookNumber" : 21,
+    "chapters" : "7 - 12",
+    "data" : "21007001-21012999",
+    "day" : 171,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "10 - 11",
+    "data" : "11010001-11011999",
+    "day" : 172,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "9",
+    "data" : "14009001-14009999",
+    "day" : 172,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Proverbs",
+    "bookNumber" : 20,
+    "chapters" : "30 - 31",
+    "data" : "20030001-20031999",
+    "day" : 173,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "12 - 14",
+    "data" : "11012001-11014999",
+    "day" : 174,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "10 - 12",
+    "data" : "14010001-14012999",
+    "day" : 175,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "15",
+    "data" : "11015001-11015999",
+    "day" : 176,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "13 - 16",
+    "data" : "14013001-14016999",
+    "day" : 176,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "16",
+    "data" : "11016001-11016999",
+    "day" : 177,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "17",
+    "data" : "14017001-14017999",
+    "day" : 177,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "17 - 19",
+    "data" : "11017001-11019999",
+    "day" : 178,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "20 - 21",
+    "data" : "11020001-11021999",
+    "day" : 179,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Kings",
+    "bookNumber" : 11,
+    "chapters" : "22",
+    "data" : "11022001-11022999",
+    "day" : 180,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "18",
+    "data" : "14018001-14018999",
+    "day" : 180,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "19 - 23",
+    "data" : "14019001-14023999",
+    "day" : 181,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Obadiah",
+    "bookNumber" : 31,
+    "chapters" : "1",
+    "data" : "31001001-31001999",
+    "day" : 182,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "82 - 83",
+    "data" : "19082001-19083999",
+    "day" : 182,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "1 - 4",
+    "data" : "12001001-12004999",
+    "day" : 183,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "5 - 8",
+    "data" : "12005001-12008999",
+    "day" : 184,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "9 - 11",
+    "data" : "12009001-12011999",
+    "day" : 185,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "12 - 13",
+    "data" : "12012001-12013999",
+    "day" : 186,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "24",
+    "data" : "14024001-14024999",
+    "day" : 186,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "14",
+    "data" : "12014001-12014999",
+    "day" : 187,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "25",
+    "data" : "14025001-14025999",
+    "day" : 187,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jonah",
+    "bookNumber" : 32,
+    "chapters" : "1 - 4",
+    "data" : "32001001-32004999",
+    "day" : 188,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "15",
+    "data" : "12015001-12015999",
+    "day" : 189,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "26",
+    "data" : "14026001-14026999",
+    "day" : 189,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "1 - 4",
+    "data" : "23001001-23004999",
+    "day" : 190,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "5 - 8",
+    "data" : "23005001-23008999",
+    "day" : 191,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Amos",
+    "bookNumber" : 30,
+    "chapters" : "1 - 5",
+    "data" : "30001001-30005999",
+    "day" : 192,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Amos",
+    "bookNumber" : 30,
+    "chapters" : "6 - 9",
+    "data" : "30006001-30009999",
+    "day" : 193,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "27",
+    "data" : "14027001-14027999",
+    "day" : 194,
+    "isRead" : false
+  }, {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "9 - 12",
+    "data" : "23009001-23012999",
+    "day" : 194,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Micah",
+    "bookNumber" : 33,
+    "chapters" : "1 - 7",
+    "data" : "33001001-33007999",
+    "day" : 195,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "28",
+    "data" : "14028001-14028999",
+    "day" : 196,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "16 - 17",
+    "data" : "12016001-12017999",
+    "day" : 196,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "13 - 17",
+    "data" : "23013001-23017999",
+    "day" : 197,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "18 - 22",
+    "data" : "23018001-23022999",
+    "day" : 198,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "23 - 27",
+    "data" : "23023001-23027999",
+    "day" : 199,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "18",
+    "data" : "12018001-12018999",
+    "day" : 200,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "29 - 31",
+    "data" : "14029001-14031999",
+    "day" : 200,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "48",
+    "data" : "19048001-19048999",
+    "day" : 200,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Hosea",
+    "bookNumber" : 28,
+    "chapters" : "1 - 7",
+    "data" : "28001001-28007999",
+    "day" : 201,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Hosea",
+    "bookNumber" : 28,
+    "chapters" : "8 - 14",
+    "data" : "28008001-28014999",
+    "day" : 202,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "28 - 30",
+    "data" : "23028001-23030999",
+    "day" : 203,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "31 - 34",
+    "data" : "23031001-23034999",
+    "day" : 204,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "35 - 36",
+    "data" : "23035001-23036999",
+    "day" : 205,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "37 - 39",
+    "data" : "23037001-23039999",
+    "day" : 206,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "76",
+    "data" : "19076001-19076999",
+    "day" : 206,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "40 - 43",
+    "data" : "23040001-23043999",
+    "day" : 207,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "44 - 48",
+    "data" : "23044001-23048999",
+    "day" : 208,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "19",
+    "data" : "12019001-12019999",
+    "day" : 209,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "46",
+    "data" : "19046001-19046999",
+    "day" : 209,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "80",
+    "data" : "19080001-19080999",
+    "day" : 209,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "135",
+    "data" : "19135001-19135999",
+    "day" : 209,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "49 - 53",
+    "data" : "23049001-23053999",
+    "day" : 210,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "54 - 58",
+    "data" : "23054001-23058999",
+    "day" : 211,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "59 - 63",
+    "data" : "23059001-23063999",
+    "day" : 212,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Isaiah",
+    "bookNumber" : 23,
+    "chapters" : "64 - 66",
+    "data" : "23064001-23066999",
+    "day" : 213,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "20 - 21",
+    "data" : "12020001-12021999",
+    "day" : 214,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "32 - 33",
+    "data" : "14032001-14033999",
+    "day" : 215,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Nahum",
+    "bookNumber" : 34,
+    "chapters" : "1 - 3",
+    "data" : "34001001-34003999",
+    "day" : 216,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "22 - 23",
+    "data" : "12022001-12023999",
+    "day" : 217,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "34 - 35",
+    "data" : "14034001-14035999",
+    "day" : 217,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Zephaniah",
+    "bookNumber" : 36,
+    "chapters" : "1 - 3",
+    "data" : "36001001-36003999",
+    "day" : 218,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "1 - 3",
+    "data" : "24001001-24003999",
+    "day" : 219,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "4 - 6",
+    "data" : "24004001-24006999",
+    "day" : 220,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "7 - 9",
+    "data" : "24007001-24009999",
+    "day" : 221,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "10 - 13",
+    "data" : "24010001-24013999",
+    "day" : 222,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "14 - 17",
+    "data" : "24014001-24017999",
+    "day" : 223,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "18 - 22",
+    "data" : "24018001-24022999",
+    "day" : 224,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "23 - 25",
+    "data" : "24023001-24025999",
+    "day" : 225,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "26 - 29",
+    "data" : "24026001-24029999",
+    "day" : 226,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "30 - 31",
+    "data" : "24030001-24031999",
+    "day" : 227,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "32 - 34",
+    "data" : "24032001-24034999",
+    "day" : 228,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "35 - 37",
+    "data" : "24035001-24037999",
+    "day" : 229,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "38 - 40",
+    "data" : "24038001-24040999",
+    "day" : 230,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "74",
+    "data" : "19074001-19074999",
+    "day" : 230,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "79",
+    "data" : "19079001-19079999",
+    "day" : 230,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Kings",
+    "bookNumber" : 12,
+    "chapters" : "24 - 25",
+    "data" : "12024001-12025999",
+    "day" : 231,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Chronicles",
+    "bookNumber" : 14,
+    "chapters" : "36",
+    "data" : "14036001-14036999",
+    "day" : 231,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Habakkuk",
+    "bookNumber" : 35,
+    "chapters" : "1 - 3",
+    "data" : "35001001-35003999",
+    "day" : 232,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "41 - 45",
+    "data" : "24041001-24045999",
+    "day" : 233,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "46 - 48",
+    "data" : "24046001-24048999",
+    "day" : 234,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "49 - 50",
+    "data" : "24049001-24050999",
+    "day" : 235,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Jeremiah",
+    "bookNumber" : 24,
+    "chapters" : "51 - 52",
+    "data" : "24051001-24052999",
+    "day" : 236,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Lamentations",
+    "bookNumber" : 25,
+    "chapters" : "1 - 3",
+    "data" : "25001001-25003999",
+    "day" : 237,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Lamentations",
+    "bookNumber" : 25,
+    "chapters" : "4 - 5",
+    "data" : "25004001-25005999",
+    "day" : 238,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "1 - 4",
+    "data" : "26001001-26004999",
+    "day" : 239,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "5 - 8",
+    "data" : "26005001-26008999",
+    "day" : 240,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "9 - 12",
+    "data" : "26009001-26012999",
+    "day" : 241,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "13 - 15",
+    "data" : "26013001-26015999",
+    "day" : 242,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "16 - 17",
+    "data" : "26016001-26017999",
+    "day" : 243,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "18 - 19",
+    "data" : "26018001-26019999",
+    "day" : 244,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "20 - 21",
+    "data" : "26020001-26021999",
+    "day" : 245,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "22 - 23",
+    "data" : "26022001-26023999",
+    "day" : 246,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "24 - 27",
+    "data" : "26024001-26027999",
+    "day" : 247,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "28 - 31",
+    "data" : "26028001-26031999",
+    "day" : 248,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "32 - 34",
+    "data" : "26032001-26034999",
+    "day" : 249,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "35 - 37",
+    "data" : "26035001-26037999",
+    "day" : 250,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "38 - 39",
+    "data" : "26038001-26039999",
+    "day" : 251,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "40 - 41",
+    "data" : "26040001-26041999",
+    "day" : 252,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "42 - 43",
+    "data" : "26042001-26043999",
+    "day" : 253,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "44 - 45",
+    "data" : "26044001-26045999",
+    "day" : 254,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezekiel",
+    "bookNumber" : 26,
+    "chapters" : "46 - 48",
+    "data" : "26046001-26048999",
+    "day" : 255,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Joel",
+    "bookNumber" : 29,
+    "chapters" : "1 - 3",
+    "data" : "29001001-29003999",
+    "day" : 256,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Daniel",
+    "bookNumber" : 27,
+    "chapters" : "1 - 3",
+    "data" : "27001001-27003999",
+    "day" : 257,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Daniel",
+    "bookNumber" : 27,
+    "chapters" : "4 - 6",
+    "data" : "27004001-27006999",
+    "day" : 258,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Daniel",
+    "bookNumber" : 27,
+    "chapters" : "7 - 9",
+    "data" : "27007001-27009999",
+    "day" : 259,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Daniel",
+    "bookNumber" : 27,
+    "chapters" : "10 - 12",
+    "data" : "27010001-27012999",
+    "day" : 260,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezra",
+    "bookNumber" : 15,
+    "chapters" : "1 - 3",
+    "data" : "15001001-15003999",
+    "day" : 261,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezra",
+    "bookNumber" : 15,
+    "chapters" : "4 - 6",
+    "data" : "15004001-15006999",
+    "day" : 262,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "137",
+    "data" : "19137001-19137999",
+    "day" : 262,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Haggai",
+    "bookNumber" : 37,
+    "chapters" : "1 - 2",
+    "data" : "37001001-37002999",
+    "day" : 263,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Zechariah",
+    "bookNumber" : 38,
+    "chapters" : "1 - 7",
+    "data" : "38001001-38007999",
+    "day" : 264,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Zechariah",
+    "bookNumber" : 38,
+    "chapters" : "8 - 14",
+    "data" : "38008001-38014999",
+    "day" : 265,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ester",
+    "bookNumber" : 0,
+    "chapters" : "1 - 5",
+    "data" : "0001001-0005999",
+    "day" : 266,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ester",
+    "bookNumber" : 0,
+    "chapters" : "6 - 10",
+    "data" : "0006001-0010999",
+    "day" : 267,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ezra",
+    "bookNumber" : 15,
+    "chapters" : "7 - 10",
+    "data" : "15007001-15010999",
+    "day" : 268,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Nehemiah",
+    "bookNumber" : 16,
+    "chapters" : "1 - 5",
+    "data" : "16001001-16005999",
+    "day" : 269,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Nehemiah",
+    "bookNumber" : 16,
+    "chapters" : "6 - 7",
+    "data" : "16006001-16007999",
+    "day" : 270,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Nehemiah",
+    "bookNumber" : 16,
+    "chapters" : "8 - 10",
+    "data" : "16008001-16010999",
+    "day" : 271,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Nehemiah",
+    "bookNumber" : 16,
+    "chapters" : "11 - 13",
+    "data" : "16011001-16013999",
+    "day" : 272,
+    "isRead" : false
+  }, {
+    "bookName" : "Psalms",
+    "bookNumber" : 19,
+    "chapters" : "126",
+    "data" : "19126001-19126999",
+    "day" : 272,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Malachi",
+    "bookNumber" : 39,
+    "chapters" : "1 - 4",
+    "data" : "39001001-39004999",
+    "day" : 273,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "1",
+    "data" : "42001001-42001999",
+    "day" : 274,
+    "isRead" : false
+  }, {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "1",
+    "data" : "43001001-43001999",
+    "day" : 274,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "1",
+    "data" : "40001001-40001999",
+    "day" : 275,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "2",
+    "data" : "42002001-42002999",
+    "day" : 275,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "2",
+    "data" : "40002001-40002999",
+    "day" : 276,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "3",
+    "data" : "42003001-42003999",
+    "day" : 276,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "3",
+    "data" : "40003001-40003999",
+    "day" : 277,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "1",
+    "data" : "41001001-41001999",
+    "day" : 277,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "3",
+    "data" : "42003001-42003999",
+    "day" : 277,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "4",
+    "data" : "40004001-40004999",
+    "day" : 278,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "4 - 5",
+    "data" : "42004001-42005999",
+    "day" : 278,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "2 - 4",
+    "data" : "43002001-43004999",
+    "day" : 279,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "2",
+    "data" : "41002001-41002999",
+    "day" : 280,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "5",
+    "data" : "43005001-43005999",
+    "day" : 281,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "12",
+    "data" : "40012001-40012999",
+    "day" : 282,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "3",
+    "data" : "41003001-41003999",
+    "day" : 282,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "6",
+    "data" : "42006001-42006999",
+    "day" : 282,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "5 - 7",
+    "data" : "40005001-40007999",
+    "day" : 283,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "8",
+    "data" : "40008001-40008999",
+    "day" : 284,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "7",
+    "data" : "42007001-42007999",
+    "day" : 284,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "11",
+    "data" : "40011001-40011999",
+    "day" : 285,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "11",
+    "data" : "42011001-42011999",
+    "day" : 286,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "13",
+    "data" : "40013001-40013999",
+    "day" : 287,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "8",
+    "data" : "42008001-42008999",
+    "day" : 287,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "4 - 5",
+    "data" : "41004001-41005999",
+    "day" : 288,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "9 - 10",
+    "data" : "40009001-40010999",
+    "day" : 289,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "14",
+    "data" : "40014001-40014999",
+    "day" : 290,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "6",
+    "data" : "41006001-41006999",
+    "day" : 290,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "9",
+    "data" : "42009001-42009999",
+    "day" : 290,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "6",
+    "data" : "43006001-43006999",
+    "day" : 291,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "15",
+    "data" : "40015001-40015999",
+    "day" : 292,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "7",
+    "data" : "41007001-41007999",
+    "day" : 292,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "16",
+    "data" : "40016001-40016999",
+    "day" : 293,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "8",
+    "data" : "41008001-41008999",
+    "day" : 293,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "9",
+    "data" : "42009001-42009999",
+    "day" : 293,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "17",
+    "data" : "40017001-40017999",
+    "day" : 294,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "9",
+    "data" : "41009001-41009999",
+    "day" : 294,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "18",
+    "data" : "40018001-40018999",
+    "day" : 295,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "7 - 8",
+    "data" : "43007001-43008999",
+    "day" : 296,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "9 - 10",
+    "data" : "43009001-43010999",
+    "day" : 297,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "10 - 11",
+    "data" : "42010001-42011999",
+    "day" : 298,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "12 - 13",
+    "data" : "42012001-42013999",
+    "day" : 299,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "14 - 15",
+    "data" : "42014001-42015999",
+    "day" : 300,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "16",
+    "data" : "42016001-42016999",
+    "day" : 301,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "11",
+    "data" : "43011001-43011999",
+    "day" : 302,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "17 - 18",
+    "data" : "42017001-42018999",
+    "day" : 303,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "19",
+    "data" : "40019001-40019999",
+    "day" : 304,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "10",
+    "data" : "41010001-41010999",
+    "day" : 304,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "20 - 21",
+    "data" : "40020001-40021999",
+    "day" : 305,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "19",
+    "data" : "42019001-42019999",
+    "day" : 306,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "11",
+    "data" : "41011001-41011999",
+    "day" : 307,
+    "isRead" : false
+  }, {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "12",
+    "data" : "43012001-43012999",
+    "day" : 307,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "22",
+    "data" : "40022001-40022999",
+    "day" : 308,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "12",
+    "data" : "41012001-41012999",
+    "day" : 308,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "23",
+    "data" : "40023001-40023999",
+    "day" : 309,
+    "isRead" : false
+  }, {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "20 - 21",
+    "data" : "42020001-42021999",
+    "day" : 309,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "13",
+    "data" : "41013001-41013999",
+    "day" : 310,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "24",
+    "data" : "40024001-40024999",
+    "day" : 311,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "25",
+    "data" : "40025001-40025999",
+    "day" : 312,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "26",
+    "data" : "40026001-40026999",
+    "day" : 313,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "14",
+    "data" : "41014001-41014999",
+    "day" : 313,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "22",
+    "data" : "42022001-42022999",
+    "day" : 314,
+    "isRead" : false
+  }, {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "13",
+    "data" : "43013001-43013999",
+    "day" : 314,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "14 - 17",
+    "data" : "43014001-43017999",
+    "day" : 315,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "27",
+    "data" : "40027001-40027999",
+    "day" : 316,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "15",
+    "data" : "41015001-41015999",
+    "day" : 316,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "23",
+    "data" : "42023001-42023999",
+    "day" : 317,
+    "isRead" : false
+  }, {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "18 - 19",
+    "data" : "43018001-43019999",
+    "day" : 317,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Matthew",
+    "bookNumber" : 40,
+    "chapters" : "28",
+    "data" : "40028001-40028999",
+    "day" : 318,
+    "isRead" : false
+  }, {
+    "bookName" : "Mark",
+    "bookNumber" : 41,
+    "chapters" : "16",
+    "data" : "41016001-41016999",
+    "day" : 318,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Luke",
+    "bookNumber" : 42,
+    "chapters" : "24",
+    "data" : "42024001-42024999",
+    "day" : 319,
+    "isRead" : false
+  }, {
+    "bookName" : "John",
+    "bookNumber" : 43,
+    "chapters" : "20 - 21",
+    "data" : "43020001-43021999",
+    "day" : 319,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "1 - 3",
+    "data" : "44001001-44003999",
+    "day" : 320,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "4 - 6",
+    "data" : "44004001-44006999",
+    "day" : 321,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "7 - 8",
+    "data" : "44007001-44008999",
+    "day" : 322,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "9 - 10",
+    "data" : "44009001-44010999",
+    "day" : 323,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "11 - 12",
+    "data" : "44011001-44012999",
+    "day" : 324,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "13 - 14",
+    "data" : "44013001-44014999",
+    "day" : 325,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "James",
+    "bookNumber" : 59,
+    "chapters" : "1 - 5",
+    "data" : "59001001-59005999",
+    "day" : 326,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "15 - 16",
+    "data" : "44015001-44016999",
+    "day" : 327,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Galatians",
+    "bookNumber" : 48,
+    "chapters" : "1 - 3",
+    "data" : "48001001-48003999",
+    "day" : 328,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Galatians",
+    "bookNumber" : 48,
+    "chapters" : "4 - 6",
+    "data" : "48004001-48006999",
+    "day" : 329,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "17 - 18",
+    "data" : "44017001-44018999",
+    "day" : 330,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Thessalonians",
+    "bookNumber" : 52,
+    "chapters" : "1 - 5",
+    "data" : "52001001-52005999",
+    "day" : 331,
+    "isRead" : false
+  }, {
+    "bookName" : "2 Thessalonians",
+    "bookNumber" : 53,
+    "chapters" : "1 - 3",
+    "data" : "53001001-53003999",
+    "day" : 331,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "19",
+    "data" : "44019001-44019999",
+    "day" : 332,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Corinthians",
+    "bookNumber" : 46,
+    "chapters" : "1 - 4",
+    "data" : "46001001-46004999",
+    "day" : 333,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Corinthians",
+    "bookNumber" : 46,
+    "chapters" : "5 - 8",
+    "data" : "46005001-46008999",
+    "day" : 334,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Corinthians",
+    "bookNumber" : 46,
+    "chapters" : "9 - 11",
+    "data" : "46009001-46011999",
+    "day" : 335,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Corinthians",
+    "bookNumber" : 46,
+    "chapters" : "12 - 14",
+    "data" : "46012001-46014999",
+    "day" : 336,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Corinthians",
+    "bookNumber" : 46,
+    "chapters" : "15 - 16",
+    "data" : "46015001-46016999",
+    "day" : 337,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Corinthians",
+    "bookNumber" : 47,
+    "chapters" : "1 - 4",
+    "data" : "47001001-47004999",
+    "day" : 338,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Corinthians",
+    "bookNumber" : 47,
+    "chapters" : "5 - 9",
+    "data" : "47005001-47009999",
+    "day" : 339,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Corinthians",
+    "bookNumber" : 47,
+    "chapters" : "10 - 13",
+    "data" : "47010001-47013999",
+    "day" : 340,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "20",
+    "data" : "44020001-44020999",
+    "day" : 341,
+    "isRead" : false
+  }, {
+    "bookName" : "Romans",
+    "bookNumber" : 45,
+    "chapters" : "1 - 3",
+    "data" : "45001001-45003999",
+    "day" : 341,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Romans",
+    "bookNumber" : 45,
+    "chapters" : "4 - 7",
+    "data" : "45004001-45007999",
+    "day" : 342,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Romans",
+    "bookNumber" : 45,
+    "chapters" : "8 - 10",
+    "data" : "45008001-45010999",
+    "day" : 343,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Romans",
+    "bookNumber" : 45,
+    "chapters" : "11 - 13",
+    "data" : "45011001-45013999",
+    "day" : 344,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Romans",
+    "bookNumber" : 45,
+    "chapters" : "14 - 16",
+    "data" : "45014001-45016999",
+    "day" : 345,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "21 - 23",
+    "data" : "44021001-44023999",
+    "day" : 346,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "24 - 26",
+    "data" : "44024001-44026999",
+    "day" : 347,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Acts",
+    "bookNumber" : 44,
+    "chapters" : "27 - 28",
+    "data" : "44027001-44028999",
+    "day" : 348,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Colossians",
+    "bookNumber" : 51,
+    "chapters" : "1 - 4",
+    "data" : "51001001-51004999",
+    "day" : 349,
+    "isRead" : false
+  }, {
+    "bookName" : "Philemon",
+    "bookNumber" : 57,
+    "chapters" : "1",
+    "data" : "57001001-57001999",
+    "day" : 349,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Ephesians",
+    "bookNumber" : 49,
+    "chapters" : "1 - 6",
+    "data" : "49001001-49006999",
+    "day" : 350,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Philippians",
+    "bookNumber" : 50,
+    "chapters" : "1 - 4",
+    "data" : "50001001-50004999",
+    "day" : 351,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Timothy",
+    "bookNumber" : 54,
+    "chapters" : "1 - 6",
+    "data" : "54001001-54006999",
+    "day" : 352,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Titus",
+    "bookNumber" : 56,
+    "chapters" : "1 - 3",
+    "data" : "56001001-56003999",
+    "day" : 353,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 Peter",
+    "bookNumber" : 60,
+    "chapters" : "1 - 5",
+    "data" : "60001001-60005999",
+    "day" : 354,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Hebrews",
+    "bookNumber" : 58,
+    "chapters" : "1 - 6",
+    "data" : "58001001-58006999",
+    "day" : 355,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Hebrews",
+    "bookNumber" : 58,
+    "chapters" : "7 - 10",
+    "data" : "58007001-58010999",
+    "day" : 356,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Hebrews",
+    "bookNumber" : 58,
+    "chapters" : "11 - 13",
+    "data" : "58011001-58013999",
+    "day" : 357,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Timothy",
+    "bookNumber" : 55,
+    "chapters" : "1 - 4",
+    "data" : "55001001-55004999",
+    "day" : 358,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 Peter",
+    "bookNumber" : 61,
+    "chapters" : "1 - 3",
+    "data" : "61001001-61003999",
+    "day" : 359,
+    "isRead" : false
+  }, {
+    "bookName" : "Jude",
+    "bookNumber" : 65,
+    "chapters" : "1",
+    "data" : "65001001-65001999",
+    "day" : 359,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "1 John",
+    "bookNumber" : 62,
+    "chapters" : "1 - 5",
+    "data" : "62001001-62005999",
+    "day" : 360,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "2 John",
+    "bookNumber" : 63,
+    "chapters" : "1",
+    "data" : "63001001-63001999",
+    "day" : 361,
+    "isRead" : false
+  }, {
+    "bookName" : "3 John",
+    "bookNumber" : 64,
+    "chapters" : "1",
+    "data" : "64001001-64001999",
+    "day" : 361,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Revelation",
+    "bookNumber" : 66,
+    "chapters" : "1 - 5",
+    "data" : "66001001-66005999",
+    "day" : 362,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Revelation",
+    "bookNumber" : 66,
+    "chapters" : "6 - 11",
+    "data" : "66006001-66011999",
+    "day" : 363,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Revelation",
+    "bookNumber" : 66,
+    "chapters" : "12 - 18",
+    "data" : "66012001-66018999",
+    "day" : 364,
+    "isRead" : false
+  } ]
+}, {
+  "chapters" : [  {
+    "bookName" : "Revelation",
+    "bookNumber" : 66,
+    "chapters" : "19 - 22",
+    "data" : "66019001-66022999",
+    "day" : 365,
+    "isRead" : false
+  } ]
+} ]
