@@ -15,13 +15,13 @@ class ProgressCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircularPercentIndicator(
               animation: true,
-              animateFromLastPercent: true,
-              fillColor: Theme.of(context).backgroundColor,
+              backgroundColor: Theme.of(context).backgroundColor,
+              animateFromLastPercent: true,      
               radius: radiusWidth == null ? 60.0 : radiusWidth,
               circularStrokeCap: CircularStrokeCap.round,
               lineWidth: lineWidth == null ? 6.0 : lineWidth,
               percent: progressNumber,
-              backgroundColor: Theme.of(context).backgroundColor,
+
               center: Text(progressText, style: TextStyle(
                 fontSize: fontSize == null ? 14.0 : fontSize,
                 color: Colors.black,

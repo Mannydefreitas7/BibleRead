@@ -10,9 +10,9 @@ class BRBottomNavBar extends StatelessWidget {
 
     List tabs = [
     PageItem(route: '/'),
-    PageItem(route: 'progress'),
-    PageItem(route: 'readingplans'),
-    PageItem(route: 'settings'),
+    PageItem(route: '/progress'),
+    PageItem(route: '/readingplans'),
+    PageItem(route: '/settings'),
   ];
 
   @override
@@ -27,7 +27,7 @@ class BRBottomNavBar extends StatelessWidget {
                 blurRadius: 7.0)
           ],
         ),
-        height: 100.0,
+        height: MediaQuery.of(context).size.height * 0.1,
         child: ClipRRect(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30.0),

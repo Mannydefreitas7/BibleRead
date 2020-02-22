@@ -13,8 +13,8 @@ class JwOrgApiHelper {
   JwOrgApiHelper();
 
 
- Future<List<JwBibleBook>> getBibleBooks() async {
-  List<JwBibleBook> list;
+ Future<Map<dynamic, dynamic>> getBibleBooks() async {
+  Map<dynamic, dynamic> list;
     String link =
           "https://www.jw.org/en/library/bible/nwt/books/json/html/";
     var res = await http
@@ -22,8 +22,7 @@ class JwOrgApiHelper {
 
       if (res.statusCode == 200) {
 
-        dynamic data = json.decode(res.body);
-        
+        var data = json.decode(res.body);
         list = data['editionData']['books'];
       }
 

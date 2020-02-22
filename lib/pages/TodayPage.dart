@@ -1,5 +1,7 @@
 
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
+import 'package:BibleRead/helpers/LocalDataBase.dart';
+import 'package:BibleRead/models/Plan.dart';
 import 'package:provider/provider.dart';
 import 'package:BibleRead/models/JwBibleBook.dart';
 import '../components/listenCard.dart';
@@ -18,11 +20,23 @@ class TodayPage extends StatefulWidget  {
   _TodayPageState createState() => _TodayPageState();
 }
 
+
+
 class _TodayPageState extends State<TodayPage> {
+
+  Future _unReadChapters;
+
+  @override
+void initState() { 
+  super.initState();
+
+  _unReadChapters = DatabaseHelper().unReadChapters();
+  
+}
+
   @override
   Widget build(BuildContext context) {
 
-    var bibleBooks = Provider.of<List<JwBibleBook>>(context);
 
     return BibleReadScaffold(
       title: 'Today',
@@ -39,11 +53,33 @@ class _TodayPageState extends State<TodayPage> {
                 scrollDirection: Axis.vertical,
                 children: <Widget>[
 
-                  ReadTodayCard(),
+                  FutureBuilder(
+                   future: _unReadChapters,
+                   // initialData: _unReadChapters,
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
 
+                      if (snapshot.hasData) {
+                         List<Plan> unReadPlan = snapshot.data;
+                          return ReadTodayCard(
+                             bookName: unReadPlan[0].bookName,
+                             chapters: unReadPlan[0].chapters,
+                             chaptersData: unReadPlan[0].chaptersData,
+                           ); 
+                      } else {
+                        return Container(
+                          height: 120,
+                          child: Center(
+                            child: CircularProgressIndicator()),
+                        );    
+                      }    
+                    }
+                  ),
+                  
                   SizedBox(height: 20),
 
-                  ListenCard()
+                  ListenCard(),
+
+                  SizedBox(height: 100),
 
                 ]),
           ),

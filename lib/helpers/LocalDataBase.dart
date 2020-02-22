@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/models/JwBibleBook.dart';
+import 'package:BibleRead/models/Plan.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -104,6 +106,20 @@ Future<void> markChapterUnRead(int id, int planId) async {
   return queryBookChapters(planId, id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 0 WHERE Id = $id')
    });
+}
+
+Future<List<Plan>> unReadChapters() async {
+  int planId = await SharedPrefs().getSelectedPlan();
+  List allChapters = await queryBooks(planId);
+  List _allUnReadChapters = allChapters.where((i) => i['IsRead'] == 0).toList();
+  List<Plan> unReadChapters = [];
+  Map<dynamic, dynamic> bibleBooks = await JwOrgApiHelper().getBibleBooks();
+  for (var chapters in _allUnReadChapters) {
+    int bookId = chapters["BookNumber"];
+    JwBibleBook book = JwBibleBook.fromMap(bibleBooks['$bookId']);
+    unReadChapters.add(Plan.fromJson(chapters, book));
+  }
+  return unReadChapters;
 }
 
 

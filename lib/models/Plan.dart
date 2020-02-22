@@ -14,10 +14,12 @@ class Plan {
     int bookNumber;
     String chapters;
     int isRead;
+    String chaptersData;
     int id;
 
     Plan({
         this.bookName,
+        this.chaptersData,
         this.bookNumber,
         this.chapters,
         this.isRead,
@@ -25,9 +27,10 @@ class Plan {
     });
 
     factory Plan.fromJson(Map<String, dynamic> json, JwBibleBook bible) => Plan(
-        bookName: bible.standardName,
+        bookName: bible.standardName != null ? bible.standardName : json['BookName'],
         bookNumber: json["BookNumber"],
         chapters: json['Chapters'],
+        chaptersData: json['Chapters_data'],
         isRead: json["IsRead"],
         id: json['Id']
     );
@@ -35,6 +38,7 @@ class Plan {
     Map<String, dynamic> toJson() => {
         "bookName": bookName,
         "bookNumber": bookNumber,
+        "chaptersData": chaptersData,
         "chapters": chapters,
         "isRead": isRead,
         "id": id

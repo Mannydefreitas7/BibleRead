@@ -1,13 +1,5 @@
-// To parse this JSON data, do
-//
-//     final jwBibleBook = jwBibleBookFromJson(jsonString);
 
-import 'dart:convert';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-// JwBibleBook jwBibleBookFromJson(String str) => JwBibleBook.fromJson(json.decode(str));
-
-// String jwBibleBookToJson(JwBibleBook data) => json.encode(data.toJson());
 
 class JwBibleBook {
     String chapterCount;

@@ -25,9 +25,11 @@ class HtmlView extends StatelessWidget {
         customRender: (node, children) {
           if (node is dom.Element) {
             if (node.attributes['class'] != null) {
+
               if (node.attributes['class'].contains('jsBibleLink') ||
                   node.attributes['class'].contains('footnoteLink')) {
-                return SizedBox.shrink();
+
+                return SizedBox(width: 0, height: 0,);
               } else if (node.attributes['class'].contains('verseNum')) {
               //  print(node.firstChild.attributes['href'].split('#')[1]);
                 return Center(
@@ -38,7 +40,7 @@ class HtmlView extends StatelessWidget {
                         context: context,
                         builder: (_) {
                           
-                        //  print(node.firstChild.attributes['href'].split('#')[1].split('v')[1]);
+      
 
                           return Container(
                               height: 150,

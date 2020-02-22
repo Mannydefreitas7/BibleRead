@@ -1,4 +1,6 @@
 import 'package:BibleRead/helpers/FirstLaunch.dart';
+import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
+import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/MultiProviderHelper.dart';
 
 import 'package:provider/provider.dart';
@@ -72,10 +74,18 @@ class _MainAppState extends State<MainApp> {
    
     super.initState();
     FirstLaunch().checkFirstUse();
-
   }
+
   @override
   Widget build(BuildContext context) {
-    return TodayPage();
-  }
+    // JwOrgApiHelper().getBibleBooks()
+    // .then((value) => // print(value)
+    // );
+
+    DatabaseHelper().unReadChapters().then((value) => print(value.first.bookNumber));
+
+
+return TodayPage();
+
+}
 }

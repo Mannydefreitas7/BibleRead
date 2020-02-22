@@ -25,30 +25,30 @@ class BibleReadingView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Column(children: [
-        SizedBox(height: 50, width: double.infinity),
+        SizedBox(height: 20, width: double.infinity),
         Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(
                 BibleIcons.read,
-                size: 40,
+                size: 30,
               ),
               SizedBox(width: 5),
               Text(
                 bookName,
                 style: TextStyle(
                     fontSize: 22,
-                    fontWeight: Theme.of(context).textTheme.title.fontWeight),
+                    fontWeight: FontWeight.w700),
               ),
               SizedBox(width: 5),
               Text(chapters,
                   style: TextStyle(
                       fontSize: 22,
                       fontWeight:
-                          Theme.of(context).textTheme.title.fontWeight)),
+                          FontWeight.w700)),
               Spacer(),
               IconButton(
                   icon: Icon(
@@ -63,7 +63,11 @@ class BibleReadingView extends StatelessWidget {
         Expanded(
           child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(30)),
+                  color: Colors.white, borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(30)
+                  )
+                  ),
               width: double.infinity,
               padding: EdgeInsets.zero,
               child: FutureBuilder(
