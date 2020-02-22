@@ -8,11 +8,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
-
 import '../models/ReadingPlan.dart';
-import '../models/ReadingPlan.dart';
-import '../models/ReadingPlan.dart';
-
 
 
 class DatabaseHelper {
@@ -114,6 +110,7 @@ Future<List<Plan>> unReadChapters() async {
   List _allUnReadChapters = allChapters.where((i) => i['IsRead'] == 0).toList();
   List<Plan> unReadChapters = [];
   Map<dynamic, dynamic> bibleBooks = await JwOrgApiHelper().getBibleBooks();
+
   for (var chapters in _allUnReadChapters) {
     int bookId = chapters["BookNumber"];
     JwBibleBook book = JwBibleBook.fromMap(bibleBooks['$bookId']);

@@ -40,6 +40,7 @@ dependencies:
     intl: ^0.16.0
     sqflite: ^1.2.0
     shimmer: ^1.0.1
+    connectivity: ^0.4.8+1
 
 dev_dependencies:
     flutter_test:

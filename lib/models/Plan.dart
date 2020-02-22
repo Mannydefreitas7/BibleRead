@@ -12,6 +12,7 @@ String planToJson(List<Plan> data) => json.encode(List<dynamic>.from(data.map((x
 class Plan {
     String bookName;
     int bookNumber;
+    String localBookName;
     String chapters;
     int isRead;
     String chaptersData;
@@ -20,6 +21,7 @@ class Plan {
     Plan({
         this.bookName,
         this.chaptersData,
+        this.localBookName,
         this.bookNumber,
         this.chapters,
         this.isRead,

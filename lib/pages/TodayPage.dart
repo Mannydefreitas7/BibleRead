@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/models/Plan.dart';
@@ -10,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../components/progressCard.dart';
 import '../classes/BibleReadScaffold.dart';
-
+import 'package:connectivity/connectivity.dart';
 
 
 class TodayPage extends StatefulWidget  {
@@ -25,14 +27,26 @@ class TodayPage extends StatefulWidget  {
 class _TodayPageState extends State<TodayPage> {
 
   Future _unReadChapters;
+  StreamSubscription subscription;
 
   @override
 void initState() { 
   super.initState();
 
   _unReadChapters = DatabaseHelper().unReadChapters();
+    subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+        print(result);
+  });
   
 }
+
+@override
+  void dispose() {
+
+    super.dispose();
+    subscription.cancel();
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +75,7 @@ void initState() {
                       if (snapshot.hasData) {
                          List<Plan> unReadPlan = snapshot.data;
                           return ReadTodayCard(
+                             isDisabled: snapshot.connectionState == ConnectionState.none ? true : false,
                              bookName: unReadPlan[0].bookName,
                              chapters: unReadPlan[0].chapters,
                              chaptersData: unReadPlan[0].chaptersData,

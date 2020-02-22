@@ -5,11 +5,12 @@ import '../pages/bibleReadingView.dart';
 
 class ReadTodayCard extends StatelessWidget {
 
-  ReadTodayCard({this.bookName, this.chapters, this.chaptersData});
+  ReadTodayCard({this.bookName, this.chapters, this.chaptersData, this.isDisabled});
 
   final String bookName;
   final String chapters;
   final String chaptersData;
+  final bool isDisabled;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +53,7 @@ class ReadTodayCard extends StatelessWidget {
                         color: Theme.of(context).textTheme.title.color),
                   ),
                   FlatButton(
+
                       padding: EdgeInsets.only(
                           top: 5, left: 15, bottom: 5, right: 15),
                       child: Text(
@@ -62,7 +64,7 @@ class ReadTodayCard extends StatelessWidget {
                             fontSize: 48.0,
                             color: Theme.of(context).accentColor),
                       ),
-                      onPressed: () => Navigator.push(
+                      onPressed: isDisabled ? null : () => Navigator.push(
                             context,
                             CupertinoPageRoute(
                                 fullscreenDialog: true,
