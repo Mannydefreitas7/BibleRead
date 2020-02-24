@@ -9,20 +9,17 @@ import 'package:sqflite/sqflite.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import '../models/ReadingPlan.dart';
+import 'SharedPrefs.dart';
+import 'SharedPrefs.dart';
 
 
 class DatabaseHelper {
   DatabaseHelper();
 
-  Future<void> databasesPath = getDatabasesPath();
-
-  
-
-
-  _copyDatabase() async {
+  Future _copyDatabase() async {
+  String databasesPath = await getDatabasesPath();
   final _databaseName = "BibleRead.db";
   final _databaseVersion = 1;
-  String databasesPath = await getDatabasesPath();
   String dbPath = join(databasesPath, _databaseName);
   await deleteDatabase(dbPath);
   ByteData data = await rootBundle.load("assets/BibleRead.db");
@@ -32,18 +29,31 @@ class DatabaseHelper {
   return database;
 }
 
-  Future<Database> get database async {
+Future setupDatabase() async {
+//  Database _database;
+  String databasesPath = await getDatabasesPath();
   final _databaseName = "BibleRead.db";
-  final _databaseVersion = 1;
-  Database _database;
-    String databasesPath = await getDatabasesPath();
-      String dbPath = join(databasesPath, _databaseName);
-      print(dbPath);
-    if (dbPath != null) { 
+ // final _databaseVersion = 1;
+  String dbPath = join(databasesPath, _databaseName);
+  ByteData data = await rootBundle.load("assets/BibleRead.db");
+  List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+  await File(dbPath).writeAsBytes(bytes);
+}
 
-      _database = await openDatabase(dbPath, version: _databaseVersion); 
+  Future<Database> get database async {
+    Database _database;
+    final _databaseName = "BibleRead.db";
+    final _databaseVersion = 1;
+    String databasesPath = await getDatabasesPath();
+    String dbPath = join(databasesPath, _databaseName);
+      
+    if (dbPath != null) { 
    
-  } else { _database = await _copyDatabase(); }
+      _database = await openDatabase(dbPath, version: _databaseVersion); 
+  } else { 
+    
+     _database = await _copyDatabase(); 
+  }
     return _database;
   }
 
@@ -96,6 +106,14 @@ Future<void> markChapterRead(int id, int planId) async {
   return queryBookChapters(planId, id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 1 WHERE Id = $id')
    });
+}
+
+Future<void> markTodayRead() async {
+   Database db = await database;
+   int _selectedPlan = await SharedPrefs().getSelectedPlan();
+   List<Plan> _allUnReadChapters = await unReadChapters();
+   int _chapterID = _allUnReadChapters[0].id;
+  return db.rawUpdate('UPDATE plan_$_selectedPlan SET IsRead = 1 WHERE Id = $_chapterID');
 }
 
 Future<void> markChapterUnRead(int id, int planId) async {
@@ -200,20 +218,19 @@ Future<int> updateReadingPlanDate(int id, date) async {
   return await db.query('plan_$id');
 }
 
-  Future<double> countProgressValue(AsyncSnapshot progressData) async {
-       List _allDays;
-  
-          _allDays = await progressData.data;  
-          List _isReadDays = _allDays.where((i) => i['IsRead'] == 1).toList();
-          final expo = 100 / _allDays.toList().length;
-          final double endValue = (_isReadDays.length * expo) / 100;
-          return endValue;
+  Future<double> countProgressValue() async {
+      List _allDays;
+      int selectedPlan = await SharedPrefs().getSelectedPlan();
+      _allDays = await queryPlan(selectedPlan);  
+      List _isReadDays = _allDays.where((i) => i['IsRead'] == 1).toList();
+      final expo = 100 / _allDays.toList().length;
+      final double endValue = (_isReadDays.length * expo) / 100;
+      return endValue;
   }
 
   Future<List> getUnReadDays(AsyncSnapshot progressData) async {
       List _allDays = await progressData.data;   
       List _isReadDays = _allDays.where((i) => i['IsRead'] == 0).toList();
-
       return _isReadDays;
   }
 

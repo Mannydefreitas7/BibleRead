@@ -1,11 +1,8 @@
 
 import 'dart:async';
-
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/models/Plan.dart';
-import 'package:provider/provider.dart';
-import 'package:BibleRead/models/JwBibleBook.dart';
 import '../components/listenCard.dart';
 import '../components/readTodayCard.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +10,8 @@ import 'package:flutter/cupertino.dart';
 import '../components/progressCard.dart';
 import '../classes/BibleReadScaffold.dart';
 import 'package:connectivity/connectivity.dart';
+import '../helpers/LocalDataBase.dart';
+
 
 
 class TodayPage extends StatefulWidget  {
@@ -28,12 +27,14 @@ class _TodayPageState extends State<TodayPage> {
 
   Future _unReadChapters;
   StreamSubscription subscription;
+  Future _progressValue;
 
   @override
 void initState() { 
   super.initState();
 
   _unReadChapters = DatabaseHelper().unReadChapters();
+  _progressValue = DatabaseHelper().countProgressValue();
     subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
         print(result);
   });
@@ -51,10 +52,26 @@ void initState() {
   @override
   Widget build(BuildContext context) {
 
+    _markTodayRead() async => {
+       await DatabaseHelper().markTodayRead(),
+       setState(() => {
+          _unReadChapters = DatabaseHelper().unReadChapters(),
+          _progressValue = DatabaseHelper().countProgressValue(),
+        }),
+        Navigator.of(context).pop()
+    };
+
 
     return BibleReadScaffold(
       title: 'Today',
       hasFloatingButton: true,
+      floatingActionOnPress: () async => {
+        await DatabaseHelper().markTodayRead(),
+        setState(() => {
+          _unReadChapters = DatabaseHelper().unReadChapters(),
+          _progressValue = DatabaseHelper().countProgressValue(),
+        }),
+      },
       selectedIndex: 0,
       bodyWidget: Container(
         padding: EdgeInsets.only(left: 15, right: 15),
@@ -69,12 +86,12 @@ void initState() {
 
                   FutureBuilder(
                    future: _unReadChapters,
-                   // initialData: _unReadChapters,
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
 
                       if (snapshot.hasData) {
                          List<Plan> unReadPlan = snapshot.data;
                           return ReadTodayCard(
+                              markRead: _markTodayRead,
                              isDisabled: snapshot.connectionState == ConnectionState.none ? true : false,
                              bookName: unReadPlan[0].bookName,
                              chapters: unReadPlan[0].chapters,
@@ -98,16 +115,25 @@ void initState() {
 
                 ]),
           ),
-          Container(
+
+          FutureBuilder(
+            future: _progressValue,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+
+            return Container(
             height: 110,
             child: ProgressCard(
                 subtitle: 'Welcome!',
-                progressNumber: 0.2,
+                progressNumber: snapshot.hasData ? snapshot.data : 0,
                 textOne: DateTimeHelpers().todayWeekDay(),
                 textTwo: DateTimeHelpers().todayMonth(),
                 textThree: DateTimeHelpers().todayDate(),
             )
-          )
+          );
+        },
+      ),
+
+          
         ]
         )
     ),

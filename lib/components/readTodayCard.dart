@@ -5,12 +5,19 @@ import '../pages/bibleReadingView.dart';
 
 class ReadTodayCard extends StatelessWidget {
 
-  ReadTodayCard({this.bookName, this.chapters, this.chaptersData, this.isDisabled});
+  ReadTodayCard({
+    this.bookName, 
+    this.chapters, 
+    this.markRead,
+    this.chaptersData, 
+    this.isDisabled
+    });
 
   final String bookName;
   final String chapters;
   final String chaptersData;
   final bool isDisabled;
+  final Function markRead;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +79,9 @@ class ReadTodayCard extends StatelessWidget {
                                 builder: (context) => BibleReadingView(
                                     chapters: chapters,
                                     bookName: bookName,
-                                    chaptersData: chaptersData)),
+                                    chaptersData: chaptersData,
+                                    actionOnPress: markRead,
+                                  )),
                           )),
                   BookMarkChip()
                 ],

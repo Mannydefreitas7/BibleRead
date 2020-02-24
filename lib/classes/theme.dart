@@ -10,7 +10,7 @@ final ThemeData brThemeData = new ThemeData(
         accentColor: Colors.orangeAccent,
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
-        splashColor: Colors.orangeAccent.withOpacity(0.5),
+        splashColor: Colors.transparent,
         scaffoldBackgroundColor: Colors.grey[100],
         bottomAppBarTheme: 
 
