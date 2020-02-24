@@ -17,11 +17,11 @@ class DatabaseHelper {
   Future<void> databasesPath = getDatabasesPath();
 
   
-  static final _databaseName = "BibleRead.db";
-  static final _databaseVersion = 1;
-  static Database _database;
+
 
   _copyDatabase() async {
+  final _databaseName = "BibleRead.db";
+  final _databaseVersion = 1;
   String databasesPath = await getDatabasesPath();
   String dbPath = join(databasesPath, _databaseName);
   await deleteDatabase(dbPath);
@@ -33,17 +33,18 @@ class DatabaseHelper {
 }
 
   Future<Database> get database async {
+  final _databaseName = "BibleRead.db";
+  final _databaseVersion = 1;
+  Database _database;
     String databasesPath = await getDatabasesPath();
       String dbPath = join(databasesPath, _databaseName);
+      print(dbPath);
     if (dbPath != null) { 
 
       _database = await openDatabase(dbPath, version: _databaseVersion); 
    
   } else { _database = await _copyDatabase(); }
     return _database;
-  
-// _database = await _copyDatabase();
-// return _database;
   }
 
   Future<List<ReadingPlans>> queryAllReadingPlans() async {
@@ -109,12 +110,11 @@ Future<List<Plan>> unReadChapters() async {
   List allChapters = await queryBooks(planId);
   List _allUnReadChapters = allChapters.where((i) => i['IsRead'] == 0).toList();
   List<Plan> unReadChapters = [];
-  Map<dynamic, dynamic> bibleBooks = await JwOrgApiHelper().getBibleBooks();
+  
 
   for (var chapters in _allUnReadChapters) {
     int bookId = chapters["BookNumber"];
-    JwBibleBook book = JwBibleBook.fromMap(bibleBooks['$bookId']);
-    unReadChapters.add(Plan.fromJson(chapters, book));
+    unReadChapters.add(Plan.fromJson(chapters));
   }
   return unReadChapters;
 }
@@ -125,6 +125,22 @@ Future<void> markBookUnRead(int id, int planId) async {
   return queryBookChapters(planId, id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 0 WHERE BookNumber = $id')
    });
+}
+
+Future<void> setBookNames(String locale) async {
+
+  Map languages = await JwOrgApiHelper().getLanguages();
+  String tableName = languages['$locale']['lang']['symbol'];
+
+  Database db = await database;
+  String sql = '''CREATE TABLE '$tableName' (
+    shortName TEXT NOT NULL,
+    longName TEXT NOT NULL,
+    chapterCount TEXT NOT NULL
+)''';
+
+  db.execute(sql);
+
 }
 
 Future<bool> bookIsRead(int planId, int id) async {

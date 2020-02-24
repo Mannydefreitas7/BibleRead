@@ -78,12 +78,6 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    // JwOrgApiHelper().getBibleBooks()
-    // .then((value) => // print(value)
-    // );
-
-    DatabaseHelper().unReadChapters().then((value) => print(value.first.bookNumber));
-
 
 return TodayPage();
 

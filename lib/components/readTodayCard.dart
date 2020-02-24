@@ -53,7 +53,7 @@ class ReadTodayCard extends StatelessWidget {
                         color: Theme.of(context).textTheme.title.color),
                   ),
                   FlatButton(
-
+  
                       padding: EdgeInsets.only(
                           top: 5, left: 15, bottom: 5, right: 15),
                       child: Text(
@@ -62,9 +62,10 @@ class ReadTodayCard extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                             fontFamily: 'Avenir Next',
                             fontSize: 48.0,
-                            color: Theme.of(context).accentColor),
+                            color: isDisabled ? Theme.of(context).accentColor : Colors.grey
+                            ),
                       ),
-                      onPressed: isDisabled ? null : () => Navigator.push(
+                      onPressed: !isDisabled ? null : () => Navigator.push(
                             context,
                             CupertinoPageRoute(
                                 fullscreenDialog: true,

@@ -29,6 +29,24 @@ class JwOrgApiHelper {
     return list;
   }
 
+  Future<Map<dynamic, dynamic>> getLanguages() async {
+
+    Map<dynamic, dynamic> list;
+     String link =
+          "https://www.jw.org/en/library/bible/json/";
+    var response = await http.get(Uri.encodeFull(link), headers: {"Accept": "application/json"});
+
+    if (response.statusCode == 200) {
+
+        var data = json.decode(response.body);
+        list = data['langs'];
+
+      }
+
+  return list;
+
+  }
+
    Future<List<JwBibleBook>> getBibleHtmlList(List chapters) async {
     List list = [];
 

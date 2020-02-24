@@ -28,8 +28,8 @@ class Plan {
         this.id
     });
 
-    factory Plan.fromJson(Map<String, dynamic> json, JwBibleBook bible) => Plan(
-        bookName: bible.standardName != null ? bible.standardName : json['BookName'],
+    factory Plan.fromJson(Map<String, dynamic> json) => Plan(
+        bookName: json['BookName'],
         bookNumber: json["BookNumber"],
         chapters: json['Chapters'],
         chaptersData: json['Chapters_data'],
