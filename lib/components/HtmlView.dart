@@ -18,7 +18,7 @@ class HtmlView extends StatelessWidget {
         padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 100),
         useRichText: false,
         defaultTextStyle: TextStyle(
-          fontSize: 24,
+          fontSize: 22,
           fontWeight: FontWeight.w400,
           fontFamily: 'Lao MN',
         ),

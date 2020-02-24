@@ -5,6 +5,8 @@ import 'package:flutter_device_locale/flutter_device_locale.dart';
 
 import 'package:better_uuid/uuid.dart';
 
+import 'LocalDataBase.dart';
+
 
 class FirstLaunch {
   FirstLaunch();
@@ -71,6 +73,7 @@ class FirstLaunch {
       } else {
         print('first use, setting default prefs'),
         setDefaults(),
+        DatabaseHelper().setupDatabase()
       }
     });
   }

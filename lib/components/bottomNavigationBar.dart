@@ -27,7 +27,7 @@ class BRBottomNavBar extends StatelessWidget {
                 blurRadius: 7.0)
           ],
         ),
-        height: MediaQuery.of(context).size.height * 0.1,
+        height: MediaQuery.of(context).size.height * 0.11,
         child: ClipRRect(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30.0),

@@ -14,7 +14,7 @@ String dateFormatted(String date) {
 String todayWeekDay() {
   final date = DateTime.now();
   final weekday = DateFormat('EEEE').format(date);
-  print(weekday);
+
   return weekday;
 }
 

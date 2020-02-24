@@ -4,6 +4,7 @@ import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import '../helpers/LocalDataBase.dart';
 import '../helpers/SharedPrefs.dart';
 
 class BibleReadingView extends StatelessWidget {
@@ -20,12 +21,17 @@ class BibleReadingView extends StatelessWidget {
       this.isChapterRead,
       this.actionOnPress});
 
+       
+
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Column(children: [
-        SizedBox(height: 20, width: double.infinity),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.05, width: double.infinity),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
           child: Row(
