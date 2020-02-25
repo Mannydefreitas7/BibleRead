@@ -19,7 +19,7 @@ class FirstLaunch {
     return locale.toString();
   }
 
- Future<bool> isFirstLaunch() async {
+ Future<bool> isNotFirstLaunch() async {
   final prefs = await SharedPreferences.getInstance();
   final bool _isFirstUse = prefs.getBool('notFirstUse');
   return _isFirstUse;
@@ -36,11 +36,10 @@ class FirstLaunch {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     final Uuid id = Uuid.v4();
-    
 
     prefs.setBool('notFirstUse', true);
 
-    prefs.setString('bibleLocale', getDeviceLocale().asStream().toString());
+    prefs.setString('bibleLocale', 'en');
 
     prefs.setInt('selectedPlan', 0);
 
@@ -62,22 +61,9 @@ class FirstLaunch {
 
   }
 
-  void checkFirstUse() {
-     isFirstLaunch().then((use) => {
-
-      if (use != null || use == true) {
-
-        print('not first use'),
-        userCurrentID().then((id) => {
-          print(id)
-        })
-
-      } else {
-        print('first use, setting default prefs'),
-        setDefaults(),
-        DatabaseHelper().setupDatabase()
-      }
-    });
+    firstUse() {
+      print('first use, setting default prefs');
+      DatabaseHelper().setupDatabase();
+      setDefaults();
   }
-  
 }
