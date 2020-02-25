@@ -29,6 +29,24 @@ class JwOrgApiHelper {
     return list;
   }
 
+  Future<Map<dynamic, dynamic>> bibleBooks(String url) async {
+  Map<dynamic, dynamic> list;
+    String link = url;
+    
+    var res = await http
+        .get(url, headers: {"Accept": "application/json"});
+
+      if (res.statusCode == 200) {
+
+        var data = json.decode(res.body);
+        list = data['editionData']['books'];
+      }
+
+    
+
+    return list;
+  }
+
   Future<Map<dynamic, dynamic>> getLanguages() async {
 
     Map<dynamic, dynamic> list;
