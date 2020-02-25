@@ -74,12 +74,16 @@ class _MainAppState extends State<MainApp> {
    
     super.initState();
     FirstLaunch().checkFirstUse();
+   // DatabaseHelper().setBookNames('fi');
+
+  
   }
 
   @override
   Widget build(BuildContext context) {
-
+DatabaseHelper().getLocaleBooks('fr');
 return TodayPage();
+
 
 }
 }

@@ -1,5 +1,6 @@
 
 import 'dart:async';
+import 'package:BibleRead/classes/connectivityCheck.dart';
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/models/Plan.dart';
@@ -26,8 +27,10 @@ class TodayPage extends StatefulWidget  {
 class _TodayPageState extends State<TodayPage> {
 
   Future _unReadChapters;
-  StreamSubscription subscription;
   Future _progressValue;
+
+  Map _source = {ConnectivityResult.none: false};
+  ConnectivityCheck _connectivity = ConnectivityCheck.instance;
 
   @override
 void initState() { 
@@ -35,17 +38,17 @@ void initState() {
 
   _unReadChapters = DatabaseHelper().unReadChapters();
   _progressValue = DatabaseHelper().countProgressValue();
-    subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
-        print(result);
-  });
-  
+
+  _connectivity.initialise();
+    _connectivity.myStream.listen((source) {
+      setState(() => _source = source);
+    });
 }
 
 @override
   void dispose() {
-
+  _connectivity.disposeStream();
     super.dispose();
-    subscription.cancel();
     
   }
 
@@ -60,6 +63,18 @@ void initState() {
         }),
         Navigator.of(context).pop()
     };
+
+     bool isConnected;
+    switch (_source.keys.toList()[0]) {
+      case ConnectivityResult.none:
+        isConnected = false;
+        break;
+      case ConnectivityResult.mobile:
+        isConnected = true;
+        break;
+      case ConnectivityResult.wifi:
+       isConnected = true;
+    }
 
 
     return BibleReadScaffold(
@@ -92,8 +107,8 @@ void initState() {
                          List<Plan> unReadPlan = snapshot.data;
                           return ReadTodayCard(
                               markRead: _markTodayRead,
-                             isDisabled: snapshot.connectionState == ConnectionState.none ? true : false,
-                             bookName: unReadPlan[0].bookName,
+                             isDisabled: isConnected,
+                             bookName: unReadPlan[0].longName,
                              chapters: unReadPlan[0].chapters,
                              chaptersData: unReadPlan[0].chaptersData,
                            ); 

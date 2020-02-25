@@ -4,6 +4,8 @@ import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../helpers/LocalDataBase.dart';
 import '../helpers/SharedPrefs.dart';
 
@@ -39,10 +41,10 @@ class BibleReadingView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(
-                BibleIcons.read,
-                size: 30,
+                LineAwesomeIcons.newspaper_1,
+                size: 25,
               ),
-              SizedBox(width: 5),
+              SizedBox(width: 10),
               Text(
                 bookName,
                 style: TextStyle(

@@ -24,6 +24,11 @@ class SharedPrefs {
     return prefs.getBool('hasBookmark');
   } 
 
+   Future<String> getSelectedLocale() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('bibleLocale');
+  }
+
 
       Future<String> getBookMarkData() async {
     final prefs = await SharedPreferences.getInstance();

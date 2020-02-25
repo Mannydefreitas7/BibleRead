@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/models/Plan.dart';
 import 'package:BibleRead/pages/progressview/BibleBookCard.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -17,12 +18,8 @@ class BibleBookList extends StatefulWidget {
   _BibleBookListState createState() => _BibleBookListState();
 }
 
-class _BibleBookListState extends State<BibleBookList>
-    with SingleTickerProviderStateMixin {
+class _BibleBookListState extends State<BibleBookList> {
 //AnimationController _controller;
-
-
-
 
 @override
 void initState() {
@@ -45,19 +42,12 @@ void dispose() {
 
   @override
   Widget build(BuildContext context) {
+    
     return FutureBuilder(
-    future: JwOrgApiHelper().getBibleBooks(),
-    builder: (context, bible) {
-    return FutureBuilder(
-    future: SharedPrefs().getSelectedPlan(),
-    builder: (context, selectedPlan) {
-    return FutureBuilder(
-    future: DatabaseHelper().filterBooks(selectedPlan.data)
-                        ,
+    future: DatabaseHelper().filterBooks(),
     builder: (context, planData) {
-      if (bible.hasData && selectedPlan.hasData &&
-        planData.hasData) {
-         final List plan = planData.data;
+      if (planData.hasData) {
+         final List<Plan> plan = planData.data;
 
          return ListView.builder(
           
@@ -70,10 +60,10 @@ void dispose() {
          margin: EdgeInsets.only(bottom: 10),
          child: BibleBookCard(
            notifyProgress: widget.notifyProgress,
-          bookLongName: bible.data['${plan[index]['BookNumber']}']['standardName'],
-          bookShortName: bible.data['${plan[index]['BookNumber']}']['officialAbbreviation'],
-          selectedPlan: selectedPlan.data,
-          bookId: plan[index]['BookNumber'],
+          bookLongName: plan[index].longName,
+          bookShortName: plan[index].shortName,
+          selectedPlan: plan[index].planId,
+          bookId: plan[index].bookNumber,
          )
        );
     });
@@ -81,7 +71,5 @@ void dispose() {
     return Center(child: CircularProgressIndicator());
   }
        });
-     });
-  });
   }
 }

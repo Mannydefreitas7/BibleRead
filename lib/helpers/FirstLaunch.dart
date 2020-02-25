@@ -30,6 +30,8 @@ class FirstLaunch {
     return prefs.getString('UUID');
   }
 
+ 
+
   Future<void> setDefaults() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
