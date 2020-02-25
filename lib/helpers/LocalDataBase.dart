@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
-import 'package:BibleRead/models/JwBibleBook.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -9,7 +8,6 @@ import 'package:sqflite/sqflite.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import '../models/ReadingPlan.dart';
-import 'SharedPrefs.dart';
 import 'SharedPrefs.dart';
 
 
