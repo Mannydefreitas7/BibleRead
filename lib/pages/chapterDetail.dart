@@ -24,21 +24,21 @@ class ChapterDetail extends StatefulWidget {
 
 class _ChapterDetailState extends State<ChapterDetail> {
 
-_markChapterUnRead(int chaptersId, int planId) {
-  DatabaseHelper().markChapterUnRead(chaptersId, widget.planId);
-}
+// _markChapterUnRead(int chaptersId, int planId) {
+//   DatabaseHelper().markChapterUnRead(chaptersId, widget.planId);
+// }
 
-_markChapterRead(int chaptersId, int planId) {
-  DatabaseHelper().markChapterRead(chaptersId, widget.planId);
-}
+// _markChapterRead(int chaptersId, int planId) {
+//   DatabaseHelper().markChapterRead(chaptersId, widget.planId);
+// }
 
-  _markRead(int id, int planId) {
-    return DatabaseHelper().markBookRead(id, planId);
-  }
+  // _markRead(int id, int planId) {
+  //   return DatabaseHelper().markBookRead(id, planId);
+  // }
 
-  _markUnRead(int id, int planId) {
-    return DatabaseHelper().markBookUnRead(id, planId);
-  }
+  // _markUnRead(int id, int planId) {
+  //   return DatabaseHelper().markBookUnRead(id, planId);
+  // }
 
 bool _checkBoolean(int isRead, int chaptersId, int planId) {
    if (isRead == 1) {
@@ -50,15 +50,15 @@ bool _checkBoolean(int isRead, int chaptersId, int planId) {
     }
 }
 
- Function _chapterIsRead(int isRead, int chaptersId, int planId) {
-    if (isRead == 1) {
-       return _markChapterUnRead(chaptersId, planId);
-    } else if (isRead == 0) {
-      return _markChapterRead(chaptersId, planId);
-    } else {
-      return null;
-    }
- }
+//  Function _chapterIsRead(int isRead, int chaptersId, int planId) {
+//     if (isRead == 1) {
+//        return _markChapterUnRead(chaptersId, planId);
+//     } else if (isRead == 0) {
+//       return _markChapterRead(chaptersId, planId);
+//     } else {
+//       return null;
+//     }
+//  }
 
    final List<PageItem> tabs = [
     PageItem(pageWidget: Today(), title: 'Today'),
@@ -124,10 +124,10 @@ bool _checkBoolean(int isRead, int chaptersId, int planId) {
                 enabled: true,
                 onTap: () => {
 
-                  _chapterIsRead(chapters[index]['IsRead'], chapters[index]['Id'], widget.planId),
-                  setState(() {
-                    chapterIsRead = _checkBoolean(chapters[index]['IsRead'], chapters[index]['Id'], widget.planId);
-                  })
+                  // _chapterIsRead(chapters[index]['IsRead'], chapters[index]['Id'], widget.planId),
+                  // setState(() {
+                  //   chapterIsRead = _checkBoolean(chapters[index]['IsRead'], chapters[index]['Id'], widget.planId);
+                  // })
                 },
                 trailing: chapterIsRead ? Icon(Icons.check, size:25, color: Theme.of(context).accentColor) : null,
                 contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -162,7 +162,7 @@ bool _checkBoolean(int isRead, int chaptersId, int planId) {
                 backgroundColor: bookIsRead.data ? Colors.grey : Theme.of(context).accentColor,
                 onPressed: () => {
 
-                     bookIsRead.data ? _markUnRead(widget.id, widget.planId)  : _markRead(widget.id, widget.planId),
+                    //  bookIsRead.data ? _markUnRead(widget.id, widget.planId)  : _markRead(widget.id, widget.planId),
 
                      setState(() {})
 

@@ -30,14 +30,14 @@ class DatabaseHelper {
 }
 
 Future setupDatabase() async {
-//  Database _database;
   String databasesPath = await getDatabasesPath();
   final _databaseName = "BibleRead.db";
- // final _databaseVersion = 1;
+  final _databaseVersion = 1;
   String dbPath = join(databasesPath, _databaseName);
   ByteData data = await rootBundle.load("assets/BibleRead.db");
   List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
   await File(dbPath).writeAsBytes(bytes);
+  await openDatabase(dbPath, version: _databaseVersion);
 }
 
   Future<Database> get database async {
@@ -46,7 +46,8 @@ Future setupDatabase() async {
     final _databaseVersion = 1;
     String databasesPath = await getDatabasesPath();
     String dbPath = join(databasesPath, _databaseName);
-    print(dbPath);
+  //  print(dbPath);
+
     if (dbPath != null) { 
    
       _database = await openDatabase(dbPath, version: _databaseVersion); 
@@ -54,6 +55,8 @@ Future setupDatabase() async {
     
      _database = await _copyDatabase(); 
   }
+   // _database = await _copyDatabase(); 
+
     return _database;
   }
 
@@ -93,24 +96,27 @@ Future<List<Plan>> filterBooks() async {
   int planId = await SharedPrefs().getSelectedPlan();
   String selectedLocale = await SharedPrefs().getSelectedLocale();
   List localeBooks = await getLocaleBooks(selectedLocale);
-  List _books = await db.rawQuery('SELECT DISTINCT BookNumber FROM plan_$planId');
-  List<Plan> books;
+  List _books = await db.rawQuery("SELECT DISTINCT BookNumber FROM plan_$planId");
+  List<Plan> books = [];
   for (var _book in _books) {
+  //  print(localeBooks[_book["BookNumber"] - 1]);
     int bookId = _book["BookNumber"];
-    books.add(Plan.fromJson(_book, localeBooks[bookId]));
+    books.add(Plan.fromJson(_book, localeBooks[bookId - 1]));
   }
   return books;
 }
 
-Future<void> markBookRead(int id, int planId) async {
+Future<void> markBookRead(int id) async {
    Database db = await database;
+   int planId = await SharedPrefs().getSelectedPlan();
   return queryBookChapters(planId, id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 1 WHERE BookNumber = $id')
    });
 }
 
-Future<void> markChapterRead(int id, int planId) async {
+Future<void> markChapterRead(int id) async {
    Database db = await database;
+   int planId = await SharedPrefs().getSelectedPlan();
   return queryBookChapters(planId, id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 1 WHERE Id = $id')
    });
@@ -124,8 +130,9 @@ Future<void> markTodayRead() async {
   return db.rawUpdate('UPDATE plan_$_selectedPlan SET IsRead = 1 WHERE Id = $_chapterID');
 }
 
-Future<void> markChapterUnRead(int id, int planId) async {
+Future<void> markChapterUnRead(int id) async {
    Database db = await database;
+   int planId = await SharedPrefs().getSelectedPlan();
   return queryBookChapters(planId, id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 0 WHERE Id = $id')
    });
@@ -147,14 +154,15 @@ Future<List<Plan>> unReadChapters() async {
 
    for (var chapters in _allUnReadChapters) {
     int bookId = chapters["BookNumber"];
-    unReadChapters.add(Plan.fromJson(chapters, localeBooks[bookId]));
+    unReadChapters.add(Plan.fromJson(chapters, localeBooks[bookId - 1]));
   } 
   return unReadChapters;
 }
 
 
-Future<void> markBookUnRead(int id, int planId) async {
+Future<void> markBookUnRead(int id) async {
    Database db = await database;
+   int planId = await SharedPrefs().getSelectedPlan();
   return queryBookChapters(planId, id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 0 WHERE BookNumber = $id')
    });
@@ -170,11 +178,11 @@ Future<void> setBookNames(String locale) async {
    Database db = await database;
   Map bookNames = await JwOrgApiHelper().bibleBooks(bookNamesApiUrl);
   
-  String sql = '''CREATE TABLE '$tableName' (
-    shortName TEXT NOT NULL,
-    longName TEXT NOT NULL,
-    chapterCount TEXT NOT NULL,
-    bookID INTEGER NOT NULL,
+  String sql = '''CREATE TABLE "$tableName" (
+    shortName TEXT,
+    longName TEXT,
+    chapterCount TEXT,
+    bookID INTEGER,
     hasAudio INTEGER
 )''';
   db.execute(sql);
@@ -185,7 +193,7 @@ Future<void> setBookNames(String locale) async {
 
   for (var i = 0; i < books.length; i++) {
     insertSql = '''
-    INSERT INTO '$tableName' ('shortName', 'longName', 'chapterCount', 'bookID', 'hasAudio')  
+    INSERT INTO "$tableName" ('shortName', 'longName', 'chapterCount', 'bookID', 'hasAudio')  
     VALUES ('${books[i].shortName}', '${books[i].longName}', '${books[i].chapterCount}', '${i + 1}', ${books[i].hasAudio})''';
 
     db.execute(insertSql);
@@ -247,15 +255,15 @@ Future<bool> bookIsRead(int planId, int id) async {
   }
 
 
-    void  _markChapterRead() {
-      SharedPrefs().getSelectedPlan().then((selectedplan) {
-        DatabaseHelper().queryBooks(selectedplan).then((plan) {
-            final int chapterId = _getUnReadDays(plan)[0]['Id'];
-          DatabaseHelper().markChapterRead(chapterId, selectedplan);
-        });
-      });
+    // void  _markChapterRead() {
+    //   SharedPrefs().getSelectedPlan().then((selectedplan) {
+    //     DatabaseHelper().queryBooks(selectedplan).then((plan) {
+    //         final int chapterId = _getUnReadDays(plan)[0]['Id'];
+    //       DatabaseHelper().markChapterRead(chapterId, selectedplan);
+    //     });
+    //   });
       
-    }
+    // }
 
 Future<int> updateReadingPlanDate(int id, date) async {
   Database db = await database;

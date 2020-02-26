@@ -38,7 +38,7 @@ class _ProgressState extends State<Progress> {
           
             Container(
               margin: EdgeInsets.only(top:50),
-              child: BibleBookList(notifyProgress: _refresh,)
+              child: BibleBookList()
             ),
 
             Container(

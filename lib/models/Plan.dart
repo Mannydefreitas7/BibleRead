@@ -1,13 +1,3 @@
-// To parse this JSON data, do
-//
-//     final plan = planFromJson(jsonString);
-
-import 'dart:convert';
-import 'JwBibleBook.dart';
-
-// List<Plan> planFromJson(String str) => List<Plan>.from(json.decode(str).map((x) => Plan.fromJson(x)));
-
-String planToJson(List<Plan> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Plan {
     int bookNumber;

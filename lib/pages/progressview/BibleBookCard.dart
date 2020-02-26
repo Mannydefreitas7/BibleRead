@@ -25,13 +25,13 @@ class _BibleBookCardState extends State<BibleBookCard> {
   bool _bookIsRead;
 
 
-  _markRead(int id, int planId) {
-    return DatabaseHelper().markBookRead(id, planId);
-  }
+  // _markRead(int id, int planId) {
+  //   return DatabaseHelper().markBookRead(id, planId);
+  // }
 
-  _markUnRead(int id, int planId) {
-    return DatabaseHelper().markBookUnRead(id, planId);
-  }
+  // _markUnRead(int id, int planId) {
+  //   return DatabaseHelper().markBookUnRead(id, planId);
+  // }
 
   @override
   void initState() {
@@ -60,7 +60,7 @@ class _BibleBookCardState extends State<BibleBookCard> {
 
 
 
-              _bookData ? _markUnRead(widget.bookId, widget.selectedPlan)  : _markRead(widget.bookId, widget.selectedPlan),
+              // _bookData ? _markUnRead(widget.bookId, widget.selectedPlan)  : _markRead(widget.bookId, widget.selectedPlan),
                
               setState(() => {
                  _bookData = bookData.data
@@ -116,7 +116,7 @@ class _BibleBookCardState extends State<BibleBookCard> {
           foregroundColor: !_bookData ? Theme.of(context).accentColor : Theme.of(context).textTheme.caption.color,
             onTap: () => {
 
-              _bookData ? _markUnRead(widget.bookId, widget.selectedPlan)  : _markRead(widget.bookId, widget.selectedPlan),
+              // _bookData ? _markUnRead(widget.bookId, widget.selectedPlan)  : _markRead(widget.bookId, widget.selectedPlan),
               
               setState(() => {
                   widget.notifyProgress,

@@ -61,9 +61,9 @@ class FirstLaunch {
 
   }
 
-    firstUse() {
+  Future<void> firstUse() async {
       print('first use, setting default prefs');
-      DatabaseHelper().setupDatabase();
-      setDefaults();
+       await DatabaseHelper().setupDatabase();
+      await setDefaults();
   }
 }

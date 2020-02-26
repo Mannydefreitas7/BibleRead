@@ -71,19 +71,26 @@ class _MainAppState extends State<MainApp> {
 
   @override
   void initState() {
-   
-    super.initState();
-    FirstLaunch().checkFirstUse();
-   // DatabaseHelper().setBookNames('fi');
 
+    super.initState();
+   // DatabaseHelper().setBookNames('fi');
+   FirstLaunch().isNotFirstLaunch().then((value) => {
+     if (value == null) {
+           FirstLaunch().setDefaults(),
+           DatabaseHelper().setupDatabase()
+     }
+   });
+ 
   
   }
 
   @override
   Widget build(BuildContext context) {
-DatabaseHelper().getLocaleBooks('fr');
+   // DatabaseHelper().filterBooks().then((value) => print(value));
+  //  print('ta soeur');
+// DatabaseHelper().queryPlan(1).then((value) => print(value));
+//DatabaseHelper().getLocaleBooks('es').then((value) => print(value));
 return TodayPage();
-
 
 }
 }

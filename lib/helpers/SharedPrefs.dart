@@ -43,7 +43,8 @@ class SharedPrefs {
 
   Future<int> getSelectedPlan() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getInt('selectedPlan');
+    int selectedPlan = prefs.getInt('selectedPlan');
+    return selectedPlan;
   } 
 
     bool showFloatingButton(int pageIndex) {

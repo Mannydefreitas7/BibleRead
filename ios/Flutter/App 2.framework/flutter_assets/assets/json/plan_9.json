@@ -1,0 +1,161 @@
+[  {
+  "bookName" : "Matthew",
+  "bookNumber" : 40,
+  "chapters" : [  {
+    "chapters" : "1 - 4",
+    "data" : "40001001-40004999",
+    "isRead" : false
+  }, {
+    "chapters" : "5 - 7",
+    "data" : "40005001-40007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8 - 10",
+    "data" : "40008001-40010999",
+    "isRead" : false
+  }, {
+    "chapters" : "11 - 13",
+    "data" : "40011001-40013999",
+    "isRead" : false
+  }, {
+    "chapters" : "14 - 17",
+    "data" : "40014001-40017999",
+    "isRead" : false
+  }, {
+    "chapters" : "18 - 20",
+    "data" : "40018001-40020999",
+    "isRead" : false
+  }, {
+    "chapters" : "21 - 23",
+    "data" : "40021001-40023999",
+    "isRead" : false
+  }, {
+    "chapters" : "24 - 25",
+    "data" : "40024001-40025999",
+    "isRead" : false
+  }, {
+    "chapters" : "26",
+    "data" : "40026001-40026999",
+    "isRead" : false
+  }, {
+    "chapters" : "27 - 28",
+    "data" : "40027001-40028999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Mark",
+  "bookNumber" : 41,
+  "chapters" : [  {
+    "chapters" : "1 - 4",
+    "data" : "41001001-41004999",
+    "isRead" : false
+  }, {
+    "chapters" : "5 - 8",
+    "data" : "41005001-41008999",
+    "isRead" : false
+  }, {
+    "chapters" : "9 - 10",
+    "data" : "41009001-41010999",
+    "isRead" : false
+  }, {
+    "chapters" : "11 - 13",
+    "data" : "41011001-41013999",
+    "isRead" : false
+  }, {
+    "chapters" : "14 - 16",
+    "data" : "41014001-41016999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Luke",
+  "bookNumber" : 42,
+  "chapters" : [  {
+    "chapters" : "1 - 2",
+    "data" : "42001001-42002999",
+    "isRead" : false
+  }, {
+    "chapters" : "3 - 5",
+    "data" : "42003001-42005999",
+    "isRead" : false
+  }, {
+    "chapters" : "6 - 7",
+    "data" : "42006001-42007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8 - 9",
+    "data" : "42008001-42009999",
+    "isRead" : false
+  }, {
+    "chapters" : "10 - 11",
+    "data" : "42010001-42011999",
+    "isRead" : false
+  }, {
+    "chapters" : "12 - 13",
+    "data" : "42012001-42013999",
+    "isRead" : false
+  }, {
+    "chapters" : "14 - 17",
+    "data" : "42014001-42017999",
+    "isRead" : false
+  }, {
+    "chapters" : "18 - 19",
+    "data" : "42018001-42019999",
+    "isRead" : false
+  }, {
+    "chapters" : "20 - 22",
+    "data" : "42020001-42022999",
+    "isRead" : false
+  }, {
+    "chapters" : "23 - 24",
+    "data" : "42023001-42024999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "John",
+  "bookNumber" : 43,
+  "chapters" : [  {
+    "chapters" : "1 - 3",
+    "data" : "43001001-43003999",
+    "isRead" : false
+  }, {
+    "chapters" : "4 - 5",
+    "data" : "43004001-43005999",
+    "isRead" : false
+  }, {
+    "chapters" : "6 - 7",
+    "data" : "43006001-43007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8 - 9",
+    "data" : "43008001-43009999",
+    "isRead" : false
+  }, {
+    "chapters" : "10 - 12",
+    "data" : "43010001-43012999",
+    "isRead" : false
+  }, {
+    "chapters" : "13 - 15",
+    "data" : "43013001-43015999",
+    "isRead" : false
+  }, {
+    "chapters" : "16 - 18",
+    "data" : "43016001-43018999",
+    "isRead" : false
+  }, {
+    "chapters" : "19 - 21",
+    "data" : "43019001-43021999",
+    "isRead" : false
+  }, {
+    "chapters" : "20 - 22",
+    "data" : "43020001-43022999",
+    "isRead" : false
+  }, {
+    "chapters" : "23 - 24",
+    "data" : "43023001-43024999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+} ]

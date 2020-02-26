@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../components/bookMarkChip.dart';
@@ -63,14 +64,17 @@ class ReadTodayCard extends StatelessWidget {
   
                       padding: EdgeInsets.only(
                           top: 5, left: 15, bottom: 5, right: 15),
-                      child: Text(
-                        chapters,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Avenir Next',
-                            fontSize: 48.0,
-                            color: isDisabled ? Theme.of(context).accentColor : Colors.grey
-                            ),
+                      child: FadeIn(
+                            delay: 0.5,
+                          child: Text(
+                          chapters,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Avenir Next',
+                              fontSize: 48.0,
+                              color: isDisabled ? Theme.of(context).accentColor : Colors.grey
+                              ),
+                        ),
                       ),
                       onPressed: !isDisabled ? null : () => Navigator.push(
                             context,
