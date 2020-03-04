@@ -10,8 +10,8 @@ class ProgressPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: BibleBookListData(),
+    return ChangeNotifierProvider<BibleBookListData>(
+      create: (context) => BibleBookListData(),
       child: BibleReadScaffold(
       title: 'Progress',
       hasFloatingButton: false,

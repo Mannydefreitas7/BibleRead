@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../classes/card.dart';
@@ -26,7 +27,8 @@ class ReadingPlansList extends StatelessWidget {
                       planTitle: readingPlans[index]['name'],
                       onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(
+                          CupertinoPageRoute(
+                              maintainState: false,
                               fullscreenDialog: true,
                               builder: (context) {
                                 return ReadingPlanView(

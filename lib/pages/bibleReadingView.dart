@@ -31,6 +31,7 @@ class BibleReadingView extends StatelessWidget {
 
 
     return Scaffold(
+     // appBar: ,
       backgroundColor: Theme.of(context).backgroundColor,
       body: Column(children: [
         SizedBox(height: MediaQuery.of(context).size.height * 0.05, width: double.infinity),

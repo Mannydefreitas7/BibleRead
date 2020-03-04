@@ -79,6 +79,7 @@ class ReadTodayCard extends StatelessWidget {
                       onPressed: !isDisabled ? null : () => Navigator.push(
                             context,
                             CupertinoPageRoute(
+                              title: bookName,
                                 fullscreenDialog: true,
                                 builder: (context) => BibleReadingView(
                                     chapters: chapters,

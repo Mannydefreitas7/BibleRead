@@ -2,6 +2,7 @@ import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/MultiProviderHelper.dart';
+import 'package:BibleRead/models/BibleBookListData.dart';
 
 import 'package:provider/provider.dart';
 import 'pages/ProgressPage.dart';
@@ -23,7 +24,9 @@ class BibleReadApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: MultiProviderHelper().multiprovider,
+      providers: [
+            ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData())
+      ],
       child: MaterialApp(
       initialRoute: '/',
       builder: (context, child) {
@@ -86,10 +89,7 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-   // DatabaseHelper().filterBooks().then((value) => print(value));
-  //  print('ta soeur');
-// DatabaseHelper().queryPlan(1).then((value) => print(value));
-//DatabaseHelper().getLocaleBooks('es').then((value) => print(value));
+
 return TodayPage();
 
 }

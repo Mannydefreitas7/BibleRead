@@ -24,7 +24,8 @@ return Column(
     SizedBox(height: 20),
 
     Container(
-height: 100,
+ height: 100,
+ alignment: Alignment.center,
 width: MediaQuery.of(context).size.width,
 child: FutureBuilder(
 future: JwOrgApiHelper().getBibleBooks(),

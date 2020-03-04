@@ -3,7 +3,7 @@ class Plan {
     int bookNumber;
     String longName;
     String chapters;
-    int isRead;
+    bool isRead;
     bool hasAudio;
     String shortName;
     String chaptersData;
@@ -22,7 +22,8 @@ class Plan {
         this.id
     });
 
-    factory Plan.fromJson(Map<String, dynamic> json, Map<String, dynamic> data) => Plan(
+    factory Plan.fromJson(Map<String, dynamic> json, Map<String, dynamic> data) {
+    return Plan(
         longName: data['longName'],
         shortName: data['shortName'],
         planId: json['PlanNumber'],
@@ -30,9 +31,10 @@ class Plan {
         bookNumber: json["BookNumber"],
         chapters: json['Chapters'],
         chaptersData: json['Chapters_data'],
-        isRead: json["IsRead"],
+        isRead: json["IsRead"] == 1 ? true : false,
         id: json['Id']
     );
+  }
 
     Map<String, dynamic> toJson() => {
         "longName": longName,

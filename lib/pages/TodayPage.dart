@@ -47,7 +47,7 @@ void initState() {
 
 @override
   void dispose() {
-  _connectivity.disposeStream();
+  //_connectivity.disposeStream();
     super.dispose();
     
   }

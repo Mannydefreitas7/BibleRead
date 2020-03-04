@@ -11,9 +11,13 @@ List<Plan> bibleBooks;
 BibleBookListData() {
   DatabaseHelper().filterBooks().then((value) => {
    // print(value),
-      bibleBooks = value
+      bibleBooks = value,
+      //print(bibleBooks)
   });
 }
+
+Future<List<Plan>> get books => DatabaseHelper().filterBooks();
+Future<List<Plan>> getChapters(int id) => DatabaseHelper().queryBookChapters(id);
 
 Future<double> getProgressValue() async {
   progressValue = await DatabaseHelper().countProgressValue();
@@ -26,8 +30,8 @@ Future<Plan> getUnReadBooks() async {
   return unReadFirst;
 }
 
-markBookRead(int id) {
-  DatabaseHelper().markBookRead(id);
+Future markBookRead(int id) async {
+ await DatabaseHelper().markBookRead(id);
   notifyListeners();
 }
 

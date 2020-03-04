@@ -79,10 +79,18 @@ Future<ReadingPlans> queryReadingPlan(int id) async {
  
 }
 
-Future<List<Map<String, dynamic>>> queryBookChapters(int planId,int id) async {
-  Database db = await database;
-
-   return await db.query('plan_$planId', where: "BookNumber = ?", whereArgs: [id]);
+Future<List<Plan>> queryBookChapters(int id) async {
+    Database db = await database;
+    int planId = await SharedPrefs().getSelectedPlan();
+    String selectedLocale = await SharedPrefs().getSelectedLocale();
+  List localeBooks = await getLocaleBooks(selectedLocale);
+  List _chapters = await db.query('plan_$planId', where: "BookNumber = ?", whereArgs: [id]);
+ 
+  List<Plan> chapters = [];
+  for (var _chapter in _chapters) {
+    chapters.add(Plan.fromJson(_chapter, localeBooks[id - 1]));
+  }
+   return chapters;
 }
 
 Future<List<Map<String, dynamic>>> queryBooks(int planId) async {
@@ -96,10 +104,11 @@ Future<List<Plan>> filterBooks() async {
   int planId = await SharedPrefs().getSelectedPlan();
   String selectedLocale = await SharedPrefs().getSelectedLocale();
   List localeBooks = await getLocaleBooks(selectedLocale);
-  List _books = await db.rawQuery("SELECT DISTINCT BookNumber FROM plan_$planId");
+  List _books = await db.rawQuery("SELECT DISTINCT BookNumber, PlanNumber FROM plan_$planId");
+ 
   List<Plan> books = [];
   for (var _book in _books) {
-  //  print(localeBooks[_book["BookNumber"] - 1]);
+
     int bookId = _book["BookNumber"];
     books.add(Plan.fromJson(_book, localeBooks[bookId - 1]));
   }
@@ -109,7 +118,7 @@ Future<List<Plan>> filterBooks() async {
 Future<void> markBookRead(int id) async {
    Database db = await database;
    int planId = await SharedPrefs().getSelectedPlan();
-  return queryBookChapters(planId, id).then((data) => {
+  return queryBookChapters(id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 1 WHERE BookNumber = $id')
    });
 }
@@ -117,7 +126,7 @@ Future<void> markBookRead(int id) async {
 Future<void> markChapterRead(int id) async {
    Database db = await database;
    int planId = await SharedPrefs().getSelectedPlan();
-  return queryBookChapters(planId, id).then((data) => {
+  return queryBookChapters(id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 1 WHERE Id = $id')
    });
 }
@@ -133,7 +142,7 @@ Future<void> markTodayRead() async {
 Future<void> markChapterUnRead(int id) async {
    Database db = await database;
    int planId = await SharedPrefs().getSelectedPlan();
-  return queryBookChapters(planId, id).then((data) => {
+  return queryBookChapters(id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 0 WHERE Id = $id')
    });
 }
@@ -150,7 +159,7 @@ Future<List<Plan>> unReadChapters() async {
   List localeBooks = await getLocaleBooks(selectedLocale);
   List _allUnReadChapters = allChapters.where((i) => i['IsRead'] == 0).toList();
   List<Plan> unReadChapters = [];
-  
+  print(_allUnReadChapters);
 
    for (var chapters in _allUnReadChapters) {
     int bookId = chapters["BookNumber"];
@@ -163,7 +172,7 @@ Future<List<Plan>> unReadChapters() async {
 Future<void> markBookUnRead(int id) async {
    Database db = await database;
    int planId = await SharedPrefs().getSelectedPlan();
-  return queryBookChapters(planId, id).then((data) => {
+  return queryBookChapters(id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 0 WHERE BookNumber = $id')
    });
 }
@@ -224,28 +233,28 @@ Future<void> setLanguages(String locale) async {
 
 
 
-Future<bool> bookIsRead(int planId, int id) async {
-  final List read = [];
-  final List unread = [];
-  bool bookIsRead;
-  return await queryBookChapters(planId, id).then((data) {
+// Future<bool> bookIsRead(int planId, int id) async {
+//   final List read = [];
+//   final List unread = [];
+//   bool bookIsRead;
+//   return await queryBookChapters(id).then((data) {
 
-    for (var book in data) {
-        if (book['IsRead'] == 1) {
-          read.add(book['IsRead']);
-        } else if (book['IsRead'] == 0) {
-          unread.add(book['IsRead']);
-        }
-    }
-    if (data.length == read.length) {
-      bookIsRead = true;
-    } else if (data.length == unread.length) {
-      bookIsRead = false;
-    }
-      return bookIsRead;
-  });
+//     for (var book in data) {
+//         if (book['IsRead'] == 1) {
+//           read.add(book['IsRead']);
+//         } else if (book['IsRead'] == 0) {
+//           unread.add(book['IsRead']);
+//         }
+//     }
+//     if (data.length == read.length) {
+//       bookIsRead = true;
+//     } else if (data.length == unread.length) {
+//       bookIsRead = false;
+//     }
+//       return bookIsRead;
+//   });
 
-}
+// }
 
     List _getUnReadDays(progressData) {
       List _allDays = progressData;   
