@@ -10,9 +10,7 @@ List<Plan> bibleBooks;
 
 BibleBookListData() {
   DatabaseHelper().filterBooks().then((value) => {
-   // print(value),
       bibleBooks = value,
-      //print(bibleBooks)
   });
 }
 
