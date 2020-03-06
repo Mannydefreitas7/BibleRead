@@ -67,23 +67,70 @@ class SharedPrefs {
     String chapter;
     String verses;
 
-    chapter = verse.substring(2, 5);
-    verses = verse.substring(5, 8);
+  if (verse.length == 7) {
+        chapter = verse.substring(1, 4);
+        verses = verse.substring(4, 7);
+  } else if (verse.length == 8) {
+        chapter = verse.substring(2, 5);
+        verses = verse.substring(5, 8);
+  }
+
+  print(chapter.split('0'));
+  print(' ');
+  print(verses.split('0'));
 
     if (chapter.split('0').length == 3) {
-      chapter = chapter.split('0')[2];
+
+      if (chapter.split('0')[0].isEmpty) {
+        chapter = '${chapter.split('0')[1]} ${chapter.split('0')[2]}';
+      } else if  (chapter.split('0')[1].isEmpty) {
+         chapter = '${chapter.split('0')[0]} ${chapter.split('0')[2]}';
+      } else if  (chapter.split('0')[2].isEmpty) {
+          chapter = '${chapter.split('0')[0]} ${chapter.split('0')[1]}';
+      }
+
     } else if (chapter.split('0').length == 2) {
-      chapter = chapter.split('0')[1];
+
+
+      if (chapter.split('0')[0].isEmpty) {
+        chapter = '${chapter.split('0')[1]}';
+      } else if  (chapter.split('0')[1].isEmpty) {
+         chapter = '${chapter.split('0')[0]}${chapter.split('0')[1]}0';
+      } 
+
     } else if (chapter.split('0').length == 1) {
       chapter = chapter.split('0')[0];
     }
 
     if (verses.split('0').length == 3) {
-      verses = verses.split('0')[2];
+
+        if (verses.split('0')[0].isEmpty && verses.split('0')[2].isNotEmpty) {
+            verses = '${verses.split('0')[1]} ${verses.split('0')[2]}';
+          } else if  (verses.split('0')[1].isEmpty) {
+            verses = '${verses.split('0')[0]} ${verses.split('0')[2]}';
+          } else if  (verses.split('0')[0].isEmpty && verses.split('0')[2].isEmpty) {
+          verses = '${verses.split('0')[1]}0';
+          } else if  (verses.split('0')[2].isEmpty) {
+              verses = '${verses.split('0')[0]} ${verses.split('0')[1]}';
+          }
+
+
     } else if (verses.split('0').length == 2) {
-      verses = verses.split('0')[1];
-    } else if (chapter.split('0').length == 1) {
+
+    
+    if (verses.split('0')[0].isEmpty) {
+        verses = '${verses.split('0')[1]}';
+       } else if  (verses.split('0')[0].isEmpty && verses.split('0')[2].isEmpty) {
+          verses = '${verses.split('0')[1]}0';
+      } else if  (verses.split('0')[1].isEmpty) {
+         verses = '${verses.split('0')[0]}${verses.split('0')[1]}0';
+      } 
+
+
+    } else if (verses.split('0').length == 1) {
+
       verses = verses.split('0')[0];
+     
     }
 
     return '$chapter:$verses';

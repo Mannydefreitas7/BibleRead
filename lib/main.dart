@@ -1,8 +1,10 @@
+import 'package:BibleRead/classes/NetworkProvider.dart';
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/MultiProviderHelper.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
+import 'package:connectivity/connectivity.dart';
 
 import 'package:provider/provider.dart';
 import 'pages/ProgressPage.dart';
@@ -25,7 +27,8 @@ class BibleReadApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-            ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData())
+            ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
+      
       ],
       child: MaterialApp(
       initialRoute: '/',
@@ -39,8 +42,11 @@ class BibleReadApp extends StatelessWidget {
       theme: Theme.brThemeData,
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
-          case '/':
+          case '/': 
             return CustomNavigation(builder: (context)=> MainApp());
+            break;
+          case '/today':
+            return CustomNavigation(builder: (context)=> TodayPage());
             break;
           case '/progress':
             return CustomNavigation(builder: (context)=> ProgressPage());
@@ -71,26 +77,45 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-
+  Future<bool> _firstLaunch;
+  bool isfirstLaunch;
   @override
   void initState() {
-
     super.initState();
-   // DatabaseHelper().setBookNames('fi');
-   FirstLaunch().isNotFirstLaunch().then((value) => {
-     if (value == null) {
-           FirstLaunch().setDefaults(),
-           DatabaseHelper().setupDatabase()
-     }
-   });
- 
-  
+      _initialSetup();
+   _firstLaunch = firstLaunch;
+   FirstLaunch().isNotFirstLaunch().then((value) => isfirstLaunch =  value);
+
+}
+
+Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
+
+ Future<void> _initialSetup() async {
+   bool isFirstLaunch = await FirstLaunch().isNotFirstLaunch();
+    if (isFirstLaunch == null) {
+          await DatabaseHelper().setupDatabase();
+          await FirstLaunch().setDefaults();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+   
+  return FutureBuilder(
+    initialData: isfirstLaunch,
+    future: _firstLaunch, 
+    builder: (BuildContext context, AsyncSnapshot snapshot) {
 
-return TodayPage();
+      if (snapshot.hasData) {
+        return TodayPage();
+      
+      } else {
+       
+        return Container(
+          child: Center(child: Text('Setup...'),)
+        );
+      }
 
+    });
 }
 }

@@ -39,9 +39,6 @@ class HtmlView extends StatelessWidget {
                         backgroundColor: Colors.black,
                         context: context,
                         builder: (_) {
-                          
-      
-
                           return Container(
                               height: 150,
                               child: Container(
@@ -76,15 +73,35 @@ class HtmlView extends StatelessWidget {
                     // height: 50,
                     margin: EdgeInsets.only(bottom: 20),
                     child: Center(
-                        child: Text(
+                        child: GestureDetector(
+                          onTap: () => showModalBottomSheet(
+                            enableDrag: true,
+                        backgroundColor: Colors.black,
+                        context: context,
+                        builder: (_) {
+                          return Container(
+                              height: 150,
+                              child: Container(
+                                child: BookMarkDialog(
+                                  data: node.firstChild.attributes['href'].split('#')[1].split('v')[1],
+                                ),
+                                decoration: BoxDecoration(
+                                    // color: Theme.of(context).cardColor,
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        topLeft: Radius.circular(20))),
+                              ));
+                        }),
+                       child: Text(
                       node.text,
                       style: TextStyle(
-                        fontSize: 52,
-                        fontFamily: 'Avenir Next',
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w600,
+                          fontSize: 52,
+                          fontFamily: 'Avenir Next',
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
                       ),
-                    )),
+                    ),
+                        )),
                   ),
                 );
               } else {
@@ -102,32 +119,6 @@ class BookMarkDialog extends StatelessWidget {
   const BookMarkDialog({Key key, this.data}) : super(key: key);
 
 
-
-  String parseBookMarkedVerse(String verse) {
-    String chapter;
-    String verses;
-
-    chapter = verse.substring(2, 5);
-    verses = verse.substring(5, 8);
-
-    if (chapter.split('0').length == 3) {
-      chapter = chapter.split('0')[2];
-    } else if (chapter.split('0').length == 2) {
-      chapter = chapter.split('0')[1];
-    } else if (chapter.split('0').length == 1) {
-      chapter = chapter.split('0')[0];
-    }
-
-    if (verses.split('0').length == 3) {
-      verses = verses.split('0')[2];
-    } else if (verses.split('0').length == 2) {
-      verses = verses.split('0')[1];
-    } else if (chapter.split('0').length == 1) {
-      verses = verses.split('0')[0];
-    }
-
-    return '$chapter:$verses';
-  }
 
   final String data;
   @override
@@ -151,7 +142,7 @@ class BookMarkDialog extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
               
-                trailing: Text(parseBookMarkedVerse(data),
+                trailing: Text(SharedPrefs().parseBookMarkedVerse(data),
                     style: TextStyle(
                         fontSize: 22,
                         color: Colors.black,

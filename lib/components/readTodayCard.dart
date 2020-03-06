@@ -11,7 +11,8 @@ class ReadTodayCard extends StatelessWidget {
     this.chapters, 
     this.markRead,
     this.chaptersData, 
-    this.isDisabled
+    this.isDisabled,
+    this.removeBookMark
     });
 
   final String bookName;
@@ -19,6 +20,7 @@ class ReadTodayCard extends StatelessWidget {
   final String chaptersData;
   final bool isDisabled;
   final Function markRead;
+  final Function removeBookMark;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +90,7 @@ class ReadTodayCard extends StatelessWidget {
                                     actionOnPress: markRead,
                                   )),
                           )),
-                  BookMarkChip()
+                  BookMarkChip(onChipPress: removeBookMark,)
                 ],
               )),
         ),

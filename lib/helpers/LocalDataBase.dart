@@ -37,7 +37,7 @@ Future setupDatabase() async {
   ByteData data = await rootBundle.load("assets/BibleRead.db");
   List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
   await File(dbPath).writeAsBytes(bytes);
-  await openDatabase(dbPath, version: _databaseVersion);
+ // await openDatabase(dbPath, version: _databaseVersion);
 }
 
   Future<Database> get database async {
@@ -48,15 +48,11 @@ Future setupDatabase() async {
     String dbPath = join(databasesPath, _databaseName);
   //  print(dbPath);
 
-    if (dbPath != null) { 
-   
+  // if (dbPath != null) { 
       _database = await openDatabase(dbPath, version: _databaseVersion); 
-  } else { 
-    
-     _database = await _copyDatabase(); 
-  }
-   // _database = await _copyDatabase(); 
-
+ // } else {  
+//_database = await _copyDatabase(); 
+ //}
     return _database;
   }
 
