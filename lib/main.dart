@@ -76,8 +76,8 @@ class _MainAppState extends State<MainApp> {
    // DatabaseHelper().setBookNames('fi');
    FirstLaunch().isNotFirstLaunch().then((value) => {
      if (value == null) {
-           FirstLaunch().setDefaults(),
-           DatabaseHelper().setupDatabase()
+          FirstLaunch().setDefaults(),
+          DatabaseHelper().setupDatabase()
      }
    });
  
@@ -86,11 +86,6 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-   // DatabaseHelper().filterBooks().then((value) => print(value));
-  //  print('ta soeur');
-// DatabaseHelper().queryPlan(1).then((value) => print(value));
-//DatabaseHelper().getLocaleBooks('es').then((value) => print(value));
 return TodayPage();
-
 }
 }
