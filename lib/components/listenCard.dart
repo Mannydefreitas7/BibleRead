@@ -115,9 +115,9 @@ class _ListenCardState extends State<ListenCard> {
                 fit: StackFit.loose,
                 children: <Widget>[
 
-                  isAudioPlaying ? Container(child: FadeIn(delay: 0.5, child: AudioWave()),
-                 height: 50, width: double.infinity,
-                ) : FadeIn(delay: 0.5, child:AudioWaveNotPlaying()),
+                //   isAudioPlaying ? Container(child: FadeIn(delay: 0.5, child: AudioWave()),
+                //  height: 50, width: double.infinity,
+                // ) : FadeIn(delay: 0.5, child:AudioWaveNotPlaying()),
 
                 LinearPercentIndicator(
                    progressColor: Theme.of(context).accentColor,

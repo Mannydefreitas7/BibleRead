@@ -83,38 +83,66 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
         child: Container(
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(30)),
-            padding: EdgeInsets.symmetric(vertical: 20),
+                color: Colors.white, 
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30), 
+                  topRight: Radius.circular(30))),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height - 200,
-            child: Center(
-              child: Column(
-                children: <Widget>[
+            child: SingleChildScrollView(
+                padding: EdgeInsets.only(top: 30, bottom: 150),
+                child: Center(
+                child: Column(
+                  children: <Widget>[
 
-                 ProgressPlanCircle(planId: widget.planId),
-                  SizedBox(height: 20),
-                 NumberOfDays(planId: widget.planId),
+                   ProgressPlanCircle(planId: widget.planId),
+                    SizedBox(height: 20),
+                   NumberOfDays(planId: widget.planId),
 
-                  SizedBox(height: 30),
-                  ReadingStartDate(planId: widget.planId,),
-                  SizedBox(height: 50),
+                    SizedBox(height: 30),
+                    ReadingStartDate(planId: widget.planId,),
+                    SizedBox(height: 50),
 
-                  PlanBibleBooks(planId: widget.planId,),
-                 
-                  SizedBox(height: 10),
-                ],
+                    PlanBibleBooks(planId: widget.planId,),
+                   
+                    SizedBox(height: 10),
+                  ],
+                ),
               ),
             )),
       ),
       Positioned(
+        bottom: 0,
+        left: 0,
+        height: 180,
+        width: MediaQuery.of(context).size.width,
+        child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            tileMode: TileMode.clamp,
+            colors: [
+                Colors.white,
+                Colors.white,
+                Colors.white.withOpacity(0.7),
+                Colors.white.withOpacity(0.0),
+            ],
+          ),
+        ),
+        )
+      ),
+      Positioned(
           width: MediaQuery.of(context).size.width,
-          bottom: 50,
+          bottom: 20,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: FlatButton(
+
                 shape: RoundedRectangleBorder(
+                  
                     borderRadius: BorderRadius.circular(20)),
-                color: Theme.of(context).backgroundColor,
+            //    color: Theme.of(context).backgroundColor,
                 onPressed: () => {
                   SharedPrefs().setSelectedPlan(widget.planId),
                   Navigator.pop(context)

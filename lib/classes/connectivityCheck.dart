@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 
-class ConnectivityCheck {
+class ConnectivityCheck extends ChangeNotifier {
   ConnectivityCheck._internal();
 
   static final ConnectivityCheck _instance = ConnectivityCheck._internal();
@@ -23,6 +23,24 @@ class ConnectivityCheck {
       _checkStatus(result);
     });
   }
+
+
+
+    bool isConnected(Map _source) {
+      bool isConnected;
+      switch (_source.keys.toList()[0]) {
+        case ConnectivityResult.none:
+          isConnected = false;
+          break;
+        case ConnectivityResult.mobile:
+          isConnected = true;
+          break;
+        case ConnectivityResult.wifi:
+        isConnected = true;
+      }
+      return isConnected;
+    }
+    
 
   void _checkStatus(ConnectivityResult result) async {
     bool isOnline = false;

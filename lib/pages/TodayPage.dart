@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:BibleRead/classes/connectivityCheck.dart';
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
+import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/Plan.dart';
 import '../components/listenCard.dart';
 import '../components/readTodayCard.dart';
@@ -41,30 +42,34 @@ void initState() {
 
   _connectivity.initialise();
     _connectivity.myStream.listen((source) {
+      print(source);
       setState(() => _source = source);
     });
 }
 
 @override
   void dispose() {
-  _connectivity.disposeStream();
     super.dispose();
     
   }
 
+
   @override
   Widget build(BuildContext context) {
 
-   // _unReadChapters.then((value) => print(value));
-
     _markTodayRead() async => {
        await DatabaseHelper().markTodayRead(),
+       await SharedPrefs().setBookMarkFalse(),
        setState(() => {
           _unReadChapters = DatabaseHelper().unReadChapters(),
           _progressValue = DatabaseHelper().countProgressValue(),
         }),
         Navigator.of(context).pop()
     };
+    _setBookMarkFalse() async {
+     await SharedPrefs().setBookMarkFalse();
+      setState(() => {  });
+    }
 
      bool isConnected;
     switch (_source.keys.toList()[0]) {
@@ -84,6 +89,7 @@ void initState() {
       hasFloatingButton: true,
       floatingActionOnPress: () async => {
         await DatabaseHelper().markTodayRead(),
+        await SharedPrefs().setBookMarkFalse(),
         setState(() => {
           _unReadChapters = DatabaseHelper().unReadChapters(),
           _progressValue = DatabaseHelper().countProgressValue(),
@@ -106,13 +112,16 @@ void initState() {
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
 
                       if (snapshot.hasData) {
+
                          List<Plan> unReadPlan = snapshot.data;
+                       
                           return ReadTodayCard(
                               markRead: _markTodayRead,
+                              removeBookMark: _setBookMarkFalse,
                              isDisabled: isConnected,
-                             bookName: unReadPlan[0].longName,
-                             chapters: unReadPlan[0].chapters,
-                             chaptersData: unReadPlan[0].chaptersData,
+                             bookName: unReadPlan.length != 0 ? unReadPlan[0].longName : 'Congrats!',
+                             chapters: unReadPlan.length != 0 ? unReadPlan[0].chapters : 'View Plans',
+                             chaptersData: unReadPlan.length != 0 ? unReadPlan[0].chaptersData : '',
                            ); 
                       } else {
                         return Container(
@@ -149,11 +158,8 @@ void initState() {
           );
         },
       ),
-
-          
-        ]
-        )
-    ),
+        ])
+      ),
     );
   }
 }

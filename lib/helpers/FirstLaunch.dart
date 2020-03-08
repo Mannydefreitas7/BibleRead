@@ -21,7 +21,7 @@ class FirstLaunch {
 
  Future<bool> isNotFirstLaunch() async {
   final prefs = await SharedPreferences.getInstance();
-  final bool _isFirstUse = prefs.getBool('notFirstUse');
+  final bool _isFirstUse = prefs.getBool('firstUse');
   return _isFirstUse;
   }
 
@@ -37,7 +37,7 @@ class FirstLaunch {
 
     final Uuid id = Uuid.v4();
 
-    prefs.setBool('notFirstUse', true);
+    prefs.setBool('firstUse', true);
 
     prefs.setString('bibleLocale', 'en');
 

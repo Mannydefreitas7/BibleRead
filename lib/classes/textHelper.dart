@@ -12,8 +12,8 @@ class PageTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      maxLines: 3,
-      
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
       textAlign: TextAlign.left,
       style: TextStyle(
         color: textColor,

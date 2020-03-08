@@ -112,6 +112,7 @@ class PlanCard extends StatelessWidget {
                       child: Text(
                       textPlan,
                       maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.left,
                       style: TextStyle(
 

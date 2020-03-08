@@ -13,10 +13,11 @@ class PlanBibleBookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       margin: EdgeInsets.symmetric(
         horizontal: 10),
-          width: 120,
-          height: 100,
+          width: 100,
+        //  height: 100,
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
           color: Theme.of(context).backgroundColor,
