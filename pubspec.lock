@@ -336,6 +336,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.4"
+  on_boarding_ui:
+    dependency: "direct main"
+    description:
+      name: on_boarding_ui
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   open_iconic_flutter:
     dependency: transitive
     description:

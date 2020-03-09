@@ -4,6 +4,7 @@ import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/MultiProviderHelper.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
+import 'package:BibleRead/pages/OnBoardingPage.dart';
 import 'package:connectivity/connectivity.dart';
 
 import 'package:provider/provider.dart';
@@ -109,12 +110,10 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
 
       if (snapshot.hasData) {
         return TodayPage();
-      
+       //return OnBoardingPage();
       } else {
        
-        return Container(
-          child: Center(child: Text('Setup...'),)
-        );
+        return OnBoardingPage();
       }
 
     });

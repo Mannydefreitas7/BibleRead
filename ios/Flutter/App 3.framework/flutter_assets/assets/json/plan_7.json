@@ -1,0 +1,185 @@
+[  {
+  "bookName" : "Psalms",
+  "bookNumber" : 19,
+  "chapters" : [  {
+    "chapters" : "1 - 8",
+    "data" : "19001001-19008999",
+    "isRead" : false
+  }, {
+    "chapters" : "9 - 16",
+    "data" : "19009001-19016999",
+    "isRead" : false
+  }, {
+    "chapters" : "17 - 19",
+    "data" : "19017001-19019999",
+    "isRead" : false
+  }, {
+    "chapters" : "20 - 25",
+    "data" : "19020001-19025999",
+    "isRead" : false
+  }, {
+    "chapters" : "26 - 31",
+    "data" : "19026001-19031999",
+    "isRead" : false
+  }, {
+    "chapters" : "32 - 35",
+    "data" : "19032001-19035999",
+    "isRead" : false
+  }, {
+    "chapters" : "36 - 38",
+    "data" : "19036001-19038999",
+    "isRead" : false
+  }, {
+    "chapters" : "39 - 42",
+    "data" : "19039001-19042999",
+    "isRead" : false
+  }, {
+    "chapters" : "43 - 47",
+    "data" : "19043001-19047999",
+    "isRead" : false
+  }, {
+    "chapters" : "48 - 52",
+    "data" : "19048001-19052999",
+    "isRead" : false
+  }, {
+    "chapters" : "53 - 58",
+    "data" : "19053001-19058999",
+    "isRead" : false
+  }, {
+    "chapters" : "59 - 64",
+    "data" : "19059001-19064999",
+    "isRead" : false
+  }, {
+    "chapters" : "65 - 68",
+    "data" : "19065001-19068999",
+    "isRead" : false
+  }, {
+    "chapters" : "69 - 72",
+    "data" : "19069001-19072999",
+    "isRead" : false
+  }, {
+    "chapters" : "73 - 77",
+    "data" : "19073001-19077999",
+    "isRead" : false
+  }, {
+    "chapters" : "78 - 79",
+    "data" : "19078001-19079999",
+    "isRead" : false
+  }, {
+    "chapters" : "80 - 86",
+    "data" : "19080001-19086999",
+    "isRead" : false
+  }, {
+    "chapters" : "87 - 90",
+    "data" : "19087001-19090999",
+    "isRead" : false
+  }, {
+    "chapters" : "91 - 96",
+    "data" : "19091001-19096999",
+    "isRead" : false
+  }, {
+    "chapters" : "97 - 103",
+    "data" : "19097001-19103999",
+    "isRead" : false
+  }, {
+    "chapters" : "104 - 105",
+    "data" : "19104001-19105999",
+    "isRead" : false
+  }, {
+    "chapters" : "106 - 108",
+    "data" : "19106001-19108999",
+    "isRead" : false
+  }, {
+    "chapters" : "109 - 115",
+    "data" : "19109001-19115999",
+    "isRead" : false
+  }, {
+    "chapters" : "116 - 118",
+    "data" : "19116001-19118999",
+    "isRead" : false
+  }, {
+    "chapters" : "119",
+    "data" : "19119001-19119999",
+    "isRead" : false
+  }, {
+    "chapters" : "120 - 129",
+    "data" : "19120001-19129999",
+    "isRead" : false
+  }, {
+    "chapters" : "130 - 138",
+    "data" : "19130001-19138999",
+    "isRead" : false
+  }, {
+    "chapters" : "139 - 144",
+    "data" : "19139001-19144999",
+    "isRead" : false
+  }, {
+    "chapters" : "145 - 150",
+    "data" : "19145001-19150999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Proverbs",
+  "bookNumber" : 20,
+  "chapters" : [  {
+    "chapters" : "1 - 4",
+    "data" : "20001001-20004999",
+    "isRead" : false
+  }, {
+    "chapters" : "5 - 8",
+    "data" : "20005001-20008999",
+    "isRead" : false
+  }, {
+    "chapters" : "9 - 12",
+    "data" : "20009001-20012999",
+    "isRead" : false
+  }, {
+    "chapters" : "13 - 16",
+    "data" : "20013001-20016999",
+    "isRead" : false
+  }, {
+    "chapters" : "17 - 19",
+    "data" : "20017001-20019999",
+    "isRead" : false
+  }, {
+    "chapters" : "20 - 22",
+    "data" : "20020001-20022999",
+    "isRead" : false
+  }, {
+    "chapters" : "23 - 27",
+    "data" : "20023001-20027999",
+    "isRead" : false
+  }, {
+    "chapters" : "28 - 31",
+    "data" : "20028001-20031999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Ecclesiastes",
+  "bookNumber" : 21,
+  "chapters" : [  {
+    "chapters" : "1 - 4",
+    "data" : "21001001-21004999",
+    "isRead" : false
+  }, {
+    "chapters" : "5 - 8",
+    "data" : "21005001-21008999",
+    "isRead" : false
+  }, {
+    "chapters" : "9 - 12",
+    "data" : "21009001-21012999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Song of Solomon",
+  "bookNumber" : 22,
+  "chapters" : [  {
+    "chapters" : "1 - 8",
+    "data" : "22001001-22008999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+} ]

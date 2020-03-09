@@ -52,8 +52,8 @@ class BibleReadScaffold extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).accentColor.withOpacity(0.7),
-              blurRadius: 15.0,
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 10.0,
               spreadRadius: 2.0
           ),
           ],

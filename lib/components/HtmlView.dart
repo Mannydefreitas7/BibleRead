@@ -126,6 +126,7 @@ class BookMarkDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     print(data);
     return BottomSheet(
+      backgroundColor: Theme.of(context).cardColor,
         onClosing: () => print(''),
         builder: (context) {
           return Column(children: <Widget>[

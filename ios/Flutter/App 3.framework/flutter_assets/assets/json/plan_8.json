@@ -1,0 +1,398 @@
+[  {
+  "bookName" : "Isaiah",
+  "bookNumber" : 23,
+  "chapters" : [  {
+    "chapters" : "1 - 4",
+    "data" : "23001001-23004999",
+    "isRead" : false
+  }, {
+    "chapters" : "5 - 7",
+    "data" : "23005001-23007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8 - 10",
+    "data" : "23008001-23010999",
+    "isRead" : false
+  }, {
+    "chapters" : "11 - 14",
+    "data" : "23011001-23014999",
+    "isRead" : false
+  }, {
+    "chapters" : "15 - 19",
+    "data" : "23015001-23019999",
+    "isRead" : false
+  }, {
+    "chapters" : "20 - 24",
+    "data" : "23020001-23024999",
+    "isRead" : false
+  }, {
+    "chapters" : "25 - 28",
+    "data" : "23025001-23028999",
+    "isRead" : false
+  }, {
+    "chapters" : "29 - 31",
+    "data" : "23029001-23031999",
+    "isRead" : false
+  }, {
+    "chapters" : "32 - 35",
+    "data" : "23032001-23035999",
+    "isRead" : false
+  }, {
+    "chapters" : "36 - 37",
+    "data" : "23036001-23037999",
+    "isRead" : false
+  }, {
+    "chapters" : "38 - 40",
+    "data" : "23038001-23040999",
+    "isRead" : false
+  }, {
+    "chapters" : "41 - 43",
+    "data" : "23041001-23043999",
+    "isRead" : false
+  }, {
+    "chapters" : "44 - 47",
+    "data" : "23044001-23047999",
+    "isRead" : false
+  }, {
+    "chapters" : "48 - 50",
+    "data" : "23048001-23050999",
+    "isRead" : false
+  }, {
+    "chapters" : "51 - 55",
+    "data" : "23051001-23055999",
+    "isRead" : false
+  }, {
+    "chapters" : "56 - 58",
+    "data" : "23056001-23058999",
+    "isRead" : false
+  }, {
+    "chapters" : "59 - 62",
+    "data" : "23059001-23062999",
+    "isRead" : false
+  }, {
+    "chapters" : "63 - 66",
+    "data" : "23063001-23066999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Jeremiah",
+  "bookNumber" : 24,
+  "chapters" : [  {
+    "chapters" : "1 - 4",
+    "data" : "24001001-24004999",
+    "isRead" : false
+  }, {
+    "chapters" : "5 - 7",
+    "data" : "24005001-24007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8 - 10",
+    "data" : "24008001-24010999",
+    "isRead" : false
+  }, {
+    "chapters" : "11 - 13",
+    "data" : "24011001-24013999",
+    "isRead" : false
+  }, {
+    "chapters" : "14 - 16",
+    "data" : "24014001-24016999",
+    "isRead" : false
+  }, {
+    "chapters" : "17 - 20",
+    "data" : "24017001-24020999",
+    "isRead" : false
+  }, {
+    "chapters" : "21 - 23",
+    "data" : "24021001-24023999",
+    "isRead" : false
+  }, {
+    "chapters" : "24 - 26",
+    "data" : "24024001-24026999",
+    "isRead" : false
+  }, {
+    "chapters" : "27 - 29",
+    "data" : "24027001-24029999",
+    "isRead" : false
+  }, {
+    "chapters" : "30 - 31",
+    "data" : "24030001-24031999",
+    "isRead" : false
+  }, {
+    "chapters" : "32 - 33",
+    "data" : "24032001-24033999",
+    "isRead" : false
+  }, {
+    "chapters" : "34 - 36",
+    "data" : "24034001-24036999",
+    "isRead" : false
+  }, {
+    "chapters" : "37 - 39",
+    "data" : "24037001-24039999",
+    "isRead" : false
+  }, {
+    "chapters" : "40 - 42",
+    "data" : "24040001-24042999",
+    "isRead" : false
+  }, {
+    "chapters" : "43 - 44",
+    "data" : "24043001-24044999",
+    "isRead" : false
+  }, {
+    "chapters" : "45 - 48",
+    "data" : "24045001-24048999",
+    "isRead" : false
+  }, {
+    "chapters" : "49 - 50",
+    "data" : "24049001-24050999",
+    "isRead" : false
+  }, {
+    "chapters" : "51 - 52",
+    "data" : "24051001-24052999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Lamentations",
+  "bookNumber" : 25,
+  "chapters" : [  {
+    "chapters" : "1 - 2",
+    "data" : "25001001-25002999",
+    "isRead" : false
+  }, {
+    "chapters" : "3 - 5",
+    "data" : "25003001-25005999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Ezekiel",
+  "bookNumber" : 26,
+  "chapters" : [  {
+    "chapters" : "1 - 3",
+    "data" : "26001001-26003999",
+    "isRead" : false
+  }, {
+    "chapters" : "4 - 6",
+    "data" : "26004001-26006999",
+    "isRead" : false
+  }, {
+    "chapters" : "7 - 9",
+    "data" : "26007001-26009999",
+    "isRead" : false
+  }, {
+    "chapters" : "10 - 12",
+    "data" : "26010001-26012999",
+    "isRead" : false
+  }, {
+    "chapters" : "13 - 15",
+    "data" : "26013001-26015999",
+    "isRead" : false
+  }, {
+    "chapters" : "16",
+    "data" : "26016001-26016999",
+    "isRead" : false
+  }, {
+    "chapters" : "17 - 18",
+    "data" : "26017001-26018999",
+    "isRead" : false
+  }, {
+    "chapters" : "19 - 21",
+    "data" : "26019001-26021999",
+    "isRead" : false
+  }, {
+    "chapters" : "22 - 23",
+    "data" : "26022001-26023999",
+    "isRead" : false
+  }, {
+    "chapters" : "24 - 26",
+    "data" : "26024001-26026999",
+    "isRead" : false
+  }, {
+    "chapters" : "27 - 28",
+    "data" : "26027001-26028999",
+    "isRead" : false
+  }, {
+    "chapters" : "29 - 31",
+    "data" : "26029001-26031999",
+    "isRead" : false
+  }, {
+    "chapters" : "32 - 33",
+    "data" : "26032001-26033999",
+    "isRead" : false
+  }, {
+    "chapters" : "34 - 36",
+    "data" : "26034001-26036999",
+    "isRead" : false
+  }, {
+    "chapters" : "37 - 38",
+    "data" : "26037001-26038999",
+    "isRead" : false
+  }, {
+    "chapters" : "39 - 40",
+    "data" : "26039001-26040999",
+    "isRead" : false
+  }, {
+    "chapters" : "41 - 43",
+    "data" : "26041001-26043999",
+    "isRead" : false
+  }, {
+    "chapters" : "44 - 45",
+    "data" : "26044001-26045999",
+    "isRead" : false
+  }, {
+    "chapters" : "46 - 48",
+    "data" : "26046001-26048999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Daniel",
+  "bookNumber" : 27,
+  "chapters" : [  {
+    "chapters" : "1 - 2",
+    "data" : "27001001-27002999",
+    "isRead" : false
+  }, {
+    "chapters" : "3 - 4",
+    "data" : "27003001-27004999",
+    "isRead" : false
+  }, {
+    "chapters" : "5 - 7",
+    "data" : "27005001-27007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8 - 10",
+    "data" : "27008001-27010999",
+    "isRead" : false
+  }, {
+    "chapters" : "11 - 12",
+    "data" : "27011001-27012999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Hosea",
+  "bookNumber" : 28,
+  "chapters" : [  {
+    "chapters" : "1 - 7",
+    "data" : "28001001-28007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8 - 14",
+    "data" : "28008001-28014999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Joel",
+  "bookNumber" : 29,
+  "chapters" : [  {
+    "chapters" : "1 - 3",
+    "data" : "29001001-29003999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Amos",
+  "bookNumber" : 30,
+  "chapters" : [  {
+    "chapters" : "1 - 5",
+    "data" : "30001001-30005999",
+    "isRead" : false
+  }, {
+    "chapters" : "6 - 9",
+    "data" : "30006001-30009999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Obadiah",
+  "bookNumber" : 31,
+  "chapters" : [  {
+    "chapters" : "1",
+    "data" : "31001001-31001999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Jonah",
+  "bookNumber" : 32,
+  "chapters" : [  {
+    "chapters" : "1 - 4",
+    "data" : "32001001-32004999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Micah",
+  "bookNumber" : 33,
+  "chapters" : [  {
+    "chapters" : "1 - 7",
+    "data" : "33001001-33007999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Nahum",
+  "bookNumber" : 34,
+  "chapters" : [  {
+    "chapters" : "1 - 3",
+    "data" : "34001001-34003999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Habakkuk",
+  "bookNumber" : 35,
+  "chapters" : [  {
+    "chapters" : "1 - 3",
+    "data" : "35001001-35003999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Zephaniah",
+  "bookNumber" : 36,
+  "chapters" : [  {
+    "chapters" : "1 - 3",
+    "data" : "36001001-36003999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Haggai",
+  "bookNumber" : 37,
+  "chapters" : [  {
+    "chapters" : "1 - 2",
+    "data" : "37001001-37002999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Zechariah",
+  "bookNumber" : 38,
+  "chapters" : [  {
+    "chapters" : "1 - 7",
+    "data" : "38001001-38007999",
+    "isRead" : false
+  }, {
+    "chapters" : "8 - 11",
+    "data" : "38008001-38011999",
+    "isRead" : false
+  }, {
+    "chapters" : "12 - 14",
+    "data" : "38012001-38014999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+}, {
+  "bookName" : "Malachi",
+  "bookNumber" : 39,
+  "chapters" : [  {
+    "chapters" : "1 - 4",
+    "data" : "39001001-39004999",
+    "isRead" : false
+  } ],
+  "isRead" : false
+} ]

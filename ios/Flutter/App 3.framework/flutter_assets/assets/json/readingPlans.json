@@ -1,0 +1,80 @@
+[
+    {
+        "index": 0,
+        "isRead": false,
+        "name": "Regular",
+        "numberDaysTotal": 0
+    },
+    {
+        "index": 1,
+        "isRead": false,
+        "name": "One Year",
+        "numberDaysTotal": 365
+    },
+    {
+        "index": 2,
+        "isRead": false,
+        "name": "Chronological",
+        "numberDaysTotal": 365
+    },
+    {
+        "index": 3,
+        "isRead": false,
+        "name": "The Writings of Moses",
+        "numberDaysTotal": 76
+    },
+    {
+        "index": 4,
+        "isRead": false,
+        "name": "Israel Enters The Promised Land",
+        "numberDaysTotal": 18
+    },
+    {
+        "index": 5,
+        "isRead": false,
+        "name": "When The Kings Ruled Isreal",
+        "numberDaysTotal": 60
+    },
+    {
+        "index": 6,
+        "isRead": false,
+        "name": "The Jews Return From Exile",
+        "numberDaysTotal": 10
+    },
+    {
+        "index": 7,
+        "isRead": false,
+        "name": "Books of Songs And Practical Wisdom",
+        "numberDaysTotal": 41
+    },
+    {
+        "index": 8,
+        "isRead": false,
+        "name": "The Prophets",
+        "numberDaysTotal": 78
+    },
+    {
+        "index": 9,
+        "isRead": false,
+        "name": "Accounts of Jesus' Life and Ministry",
+        "numberDaysTotal": 35
+    },
+    {
+        "index": 10,
+        "isRead": false,
+        "name": "Growth of The Christian Congregation",
+        "numberDaysTotal": 11
+    },
+    {
+        "index": 11,
+        "isRead": false,
+        "name": "The Letters of Paul",
+        "numberDaysTotal": 24
+    },
+    {
+        "index": 12,
+        "isRead": false,
+        "name": "The Writings of Other Apostles And Disciples",
+        "numberDaysTotal": 12
+    }
+]
