@@ -42,24 +42,28 @@ class BibleReadingView extends StatelessWidget {
               Icon(
                 LineAwesomeIcons.newspaper_1,
                 size: 25,
+                color: Theme.of(context).textTheme.title.color,
               ),
               SizedBox(width: 10),
               Text(
                 bookName,
                 style: TextStyle(
                     fontSize: 22,
+                    color: Theme.of(context).textTheme.title.color,
                     fontWeight: FontWeight.w700),
               ),
               SizedBox(width: 5),
               Text(chapters,
                   style: TextStyle(
                       fontSize: 22,
+                       color: Theme.of(context).textTheme.title.color,
                       fontWeight:
                           FontWeight.w700)),
               Spacer(),
               IconButton(
                   icon: Icon(
                     Icons.close,
+                    
                     color: Theme.of(context).accentColor,
                     size: 30,
                   ),
@@ -70,7 +74,8 @@ class BibleReadingView extends StatelessWidget {
         Expanded(
           child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.only(
+                  color: Theme.of(context).cardColor, 
+                  borderRadius: BorderRadius.only(
                     topRight: Radius.circular(30),
                     topLeft: Radius.circular(30)
                   )

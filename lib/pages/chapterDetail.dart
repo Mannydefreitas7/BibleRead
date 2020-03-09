@@ -18,6 +18,7 @@ class ChapterDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: PreferredSize(
 
       preferredSize: Size.fromHeight(100),
@@ -25,8 +26,10 @@ class ChapterDetail extends StatelessWidget {
         children: <Widget>[
           SizedBox(height: 40),
           AppBar(
+
             primary: true,
             leading: IconButton(
+              color: Theme.of(context).textTheme.title.color,
               icon: BackButtonIcon(), 
               onPressed: () {
                 Navigator.pop(context);
@@ -40,7 +43,10 @@ class ChapterDetail extends StatelessWidget {
               
               child: Material(
                   type: MaterialType.transparency, // likely needed
-                  child: PageTitleText(title: bookName)
+                  child: PageTitleText(
+                    title: bookName,
+                    textColor: Theme.of(context).textTheme.title.color,
+                    )
             )),
             centerTitle: false,
           ),
@@ -50,7 +56,7 @@ class ChapterDetail extends StatelessWidget {
       body: Container(
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))
         ),
         padding: EdgeInsets.symmetric(horizontal: 15),
@@ -65,6 +71,7 @@ class ChapterDetail extends StatelessWidget {
               itemCount: chapters.toList().length,
               separatorBuilder: (context, index) => Divider(
               height: 3,
+              color: Colors.grey[700],
           ),
           itemBuilder: (context, index) {
             bool chapterIsRead = chapters[index].isRead;
@@ -79,7 +86,7 @@ class ChapterDetail extends StatelessWidget {
                 title: Text(chapters[index].chapters, 
                 style: TextStyle(
                   fontSize: 20,
-                  color: chapterIsRead ? Colors.grey : Colors.black,
+                  color: chapterIsRead ? Colors.grey : Theme.of(context).textTheme.title.color,
                   fontWeight: FontWeight.w600
                 ),)
               ),

@@ -1,7 +1,10 @@
+import 'package:BibleRead/classes/bibleicons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 import '../components/bottomNavigationBar.dart';
-import 'theme.dart' as Theme;
+
 import 'textHelper.dart';
 
 class BibleReadScaffold extends StatelessWidget {
@@ -17,6 +20,7 @@ class BibleReadScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(  
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: PreferredSize(
       preferredSize: Size.fromHeight(100),
       child: Column(
@@ -41,13 +45,47 @@ class BibleReadScaffold extends StatelessWidget {
       ),
       ),
       body: bodyWidget,
-      floatingActionButton: hasFloatingButton ? FloatingActionButton(
-        backgroundColor: Theme.brThemeData.accentColor,
-        onPressed: floatingActionOnPress,
-        focusElevation: 5.0,
-        child: Icon(Icons.check, color: Colors.white, size: 30.0),
-        elevation: 2.0,
-      ) : null,
+      floatingActionButton: hasFloatingButton ? 
+      Container(
+        margin: EdgeInsets.only(bottom: 20.0),
+    //   clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).accentColor.withOpacity(0.7),
+              blurRadius: 15.0,
+              spreadRadius: 2.0
+          ),
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(25))
+        ),
+        child:  FlatButton.icon(
+        padding: EdgeInsets.symmetric(horizontal: 22.0, vertical: 10.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(25))
+        ),
+        color: Theme.of(context).accentColor,
+        onPressed: floatingActionOnPress, 
+        icon: Icon(Icons.check,
+        size: 24, 
+        color: Colors.white,
+        ), 
+        label: Text('Mark Read', style: TextStyle(
+          fontSize: 20.0,
+          color: Colors.white
+        ),)
+      ),
+    )
+     
+      
+      // FloatingActionButton(
+      //   backgroundColor: Theme.of(context).accentColor,
+      //   onPressed: floatingActionOnPress,
+      //   focusElevation: 5.0,
+      //   child: Icon(Icons.check, color: Colors.white, size: 30.0),
+      //   elevation: 2.0,
+      // )
+       : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       bottomNavigationBar: BRBottomNavBar(
         selectedIndex: selectedIndex

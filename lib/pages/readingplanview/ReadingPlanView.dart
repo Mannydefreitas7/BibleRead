@@ -83,7 +83,7 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
         child: Container(
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
-                color: Colors.white, 
+                color: Theme.of(context).cardColor, 
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30), 
                   topRight: Radius.circular(30))),
@@ -123,10 +123,10 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
             end: Alignment.topCenter,
             tileMode: TileMode.clamp,
             colors: [
-                Colors.white,
-                Colors.white,
-                Colors.white.withOpacity(0.7),
-                Colors.white.withOpacity(0.0),
+                Theme.of(context).cardColor,
+                Theme.of(context).cardColor,
+                Theme.of(context).cardColor.withOpacity(0.7),
+                Theme.of(context).cardColor.withOpacity(0.0),
             ],
           ),
         ),

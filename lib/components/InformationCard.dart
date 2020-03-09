@@ -9,19 +9,19 @@ class InformationCard extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(36.00),
       ),
       child: Column(
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.info_outline, color: Colors.black, size: 35,),
+            leading: Icon(Icons.info_outline, color: Theme.of(context).textTheme.title.color, size: 35,),
             title: new Text(
               "Information",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
           ),
@@ -30,7 +30,7 @@ class InformationCard extends StatelessWidget {
               "App Name",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
             trailing: new Text(
@@ -46,7 +46,7 @@ class InformationCard extends StatelessWidget {
               "Version",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
             trailing: new Text(
