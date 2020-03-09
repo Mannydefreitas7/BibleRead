@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
-
+import 'package:xlive_switch/xlive_switch.dart';
 
 class ReminderCard extends StatefulWidget {
   @override
@@ -18,19 +18,21 @@ class _ReminderCardState extends State<ReminderCard> {
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(36.00),
       ),
       child: Column(
         children: <Widget>[
           ListTile(
-            leading: Icon(LineAwesomeIcons.bell, color: Colors.black, size: 35,),
+            leading: Icon(LineAwesomeIcons.bell, 
+            color: Theme.of(context).textTheme.title.color, 
+            size: 35,),
             title: new Text(
               "Reminder",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
           ),
@@ -39,25 +41,26 @@ class _ReminderCardState extends State<ReminderCard> {
               "Daily Reminder",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
-            trailing: CupertinoSwitch(
-              value: reminderOn, 
-
-              trackColor: Theme.of(context).backgroundColor,
-              activeColor: Theme.of(context).accentColor,
+            trailing: XlivSwitch(
               onChanged: (reminder) => setState(() {
                 reminderOn = !reminderOn;
-              })
+              }),
+              value: reminderOn,
+              activeColor: Theme.of(context).accentColor,
+              unActiveColor: Theme.of(context).backgroundColor,
+              thumbColor: Theme.of(context).cardColor,
             )
+            
           ),
          reminderOn ? ListTile(
             leading: new Text(
               "Time",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
             trailing: 
@@ -75,7 +78,7 @@ class _ReminderCardState extends State<ReminderCard> {
                 "7h00",
                 style: TextStyle(
                   fontSize: 18,
-                  color: Colors.black,
+                  color: Theme.of(context).textTheme.title.color,
                 ),
               ),
             ),

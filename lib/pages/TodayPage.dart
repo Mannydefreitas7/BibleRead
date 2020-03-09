@@ -86,6 +86,7 @@ void initState() {
 
     return BibleReadScaffold(
       title: 'Today',
+      
       hasFloatingButton: true,
       floatingActionOnPress: () async => {
         await DatabaseHelper().markTodayRead(),

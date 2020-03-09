@@ -10,19 +10,19 @@ class SupportCard extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(36.00),
       ),
       child: Column(
         children: <Widget>[
           ListTile(
-            leading: Icon(LineAwesomeIcons.headset, color: Colors.black, size: 35,),
+            leading: Icon(LineAwesomeIcons.headset, color: Theme.of(context).textTheme.title.color, size: 35,),
             title: new Text(
               "Support",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
           ),
@@ -31,7 +31,7 @@ class SupportCard extends StatelessWidget {
               "Author",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
             trailing: new Text(
@@ -47,7 +47,7 @@ class SupportCard extends StatelessWidget {
               "Email",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
             trailing: new Text(
@@ -63,7 +63,7 @@ class SupportCard extends StatelessWidget {
               "Donate",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
             trailing: new Text(

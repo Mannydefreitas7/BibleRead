@@ -143,7 +143,7 @@ class PlanCard extends StatelessWidget {
         boxShadow: <BoxShadow>[
           BoxShadow(
             
-            color: Colors.grey[300].withOpacity(0.2),
+            color: Colors.black.withOpacity(0.05),
             spreadRadius: 2.0,
             blurRadius: 7.0
         )
@@ -182,7 +182,7 @@ class ReadingPlanTile extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: selectedIndex == index ? Theme.of(context).accentColor : Colors.white,
+            color: selectedIndex == index ? Theme.of(context).accentColor : Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(20)
           ),
           height: 100,
@@ -197,7 +197,7 @@ class ReadingPlanTile extends StatelessWidget {
                 left: 80,
                   child: Container(
                 decoration: BoxDecoration(
-                  color: selectedIndex == index ? Theme.of(context).accentColor : Colors.white,
+                  color: selectedIndex == index ? Theme.of(context).accentColor : Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(20)
                 ),
                 height: 100,
@@ -213,7 +213,7 @@ class ReadingPlanTile extends StatelessWidget {
                       maxLines: 4,
                       textAlign: TextAlign.start,
                         style: TextStyle(
-                      color: selectedIndex == index ? Colors.white : Colors.black,
+                      color: selectedIndex == index ? Colors.white : Theme.of(context).textTheme.title.color,
                       fontWeight: FontWeight.w600,
                       fontSize: 20
                       ),

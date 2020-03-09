@@ -19,6 +19,7 @@ class HtmlView extends StatelessWidget {
         useRichText: false,
         defaultTextStyle: TextStyle(
           fontSize: 22,
+          color: Theme.of(context).textTheme.subhead.color,
           fontWeight: FontWeight.w400,
           fontFamily: 'Lao MN',
         ),
@@ -132,20 +133,20 @@ class BookMarkDialog extends StatelessWidget {
                 leading: Icon(
                   Icons.bookmark_border,
                   size: 30,
-                  color: Colors.black,
+                  color: Theme.of(context).textTheme.title.color,
                 ),
                 title: Text(
                   'Save Bookmark',
                   style: TextStyle(
                       fontSize: 22,
-                      color: Colors.black,
+                      color: Theme.of(context).textTheme.title.color,
                       fontWeight: FontWeight.w600),
                 ),
               
                 trailing: Text(SharedPrefs().parseBookMarkedVerse(data),
                     style: TextStyle(
                         fontSize: 22,
-                        color: Colors.black,
+                        color: Theme.of(context).textTheme.title.color,
                         fontWeight: FontWeight.w600)),
                 onTap: () => {
                     SharedPrefs().setBookMarkData(data),

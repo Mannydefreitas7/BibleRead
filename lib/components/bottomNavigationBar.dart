@@ -22,7 +22,7 @@ class BRBottomNavBar extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(30)),
           boxShadow: <BoxShadow>[
             BoxShadow(
-                color: Colors.grey[300].withOpacity(0.3),
+                color: Colors.black.withOpacity(0.03),
                 spreadRadius: 3.0,
                 blurRadius: 7.0)
           ],
@@ -38,12 +38,13 @@ class BRBottomNavBar extends StatelessWidget {
               onTap: (index) => {
                 Navigator.of(context).pushNamed(tabs[index].route)
               },
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).bottomAppBarColor,
               elevation: 0.0,
               selectedFontSize: 12.0,
               type: BottomNavigationBarType.fixed,
               selectedLabelStyle: TextStyle(),
               showUnselectedLabels: true,
+
               showSelectedLabels: true,
               items: [
                 BottomNavigationBarItem(

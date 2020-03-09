@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:xlive_switch/xlive_switch.dart';
 import '../classes/DataPicker.dart';
 
 
@@ -42,19 +43,19 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(36.00),
       ),
       child: Column(
         children: <Widget>[
           ListTile(
-            leading: Icon(LineAwesomeIcons.book, color: Colors.black, size: 35,),
+            leading: Icon(LineAwesomeIcons.book, color: Theme.of(context).textTheme.title.color, size: 35,),
             title: new Text(
               "Bible Reading",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
           ),
@@ -63,22 +64,24 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
               "Expected Progress",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
-            trailing: CupertinoSwitch(
+            trailing: 
+            XlivSwitch(
               value: false, 
-
-              trackColor: Theme.of(context).backgroundColor,
+              unActiveColor: Theme.of(context).backgroundColor,
+              thumbColor: Theme.of(context).cardColor,
               activeColor: Theme.of(context).accentColor,
+
               onChanged: (reminder) => print('$reminder changed'))
-          ),
+            ),
           ListTile(
             leading: new Text(
               "Language",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
             trailing: 
@@ -96,7 +99,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
                 "English",
                 style: TextStyle(
                   fontSize: 18,
-                  color: Colors.black,
+                  color: Theme.of(context).textTheme.title.color,
                 ),
               ),
             ),
@@ -108,7 +111,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
               "Bible",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
             trailing: 
@@ -126,7 +129,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
                 "NWT",
                 style: TextStyle(
                   fontSize: 18,
-                  color: Colors.black,
+                  color: Theme.of(context).textTheme.title.color,
                 ),
               ),
             ),
@@ -138,7 +141,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
               "Plan",
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
               ),
             ),
             trailing: 
@@ -156,7 +159,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
                 "Regular",
                 style: TextStyle(
                   fontSize: 18,
-                  color: Colors.black,
+                  color: Theme.of(context).textTheme.title.color,
                 ),
               ),
             ),

@@ -50,7 +50,10 @@ class _ListenCardState extends State<ListenCard> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   
                   children: <Widget>[
-                    Icon(LineAwesomeIcons.headphones),
+                    Icon(
+                      LineAwesomeIcons.headphones,
+                      color: Theme.of(context).textTheme.title.color,
+                      ),
                     SizedBox(
                       width: 5,
                     ),
@@ -131,7 +134,8 @@ class _ListenCardState extends State<ListenCard> {
 
                     Text('00:00', style: TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 18.0
+                      fontSize: 18.0,
+                      color: Theme.of(context).textTheme.title.color
                       ),
                     ),
 
@@ -139,7 +143,8 @@ class _ListenCardState extends State<ListenCard> {
 
                     Text('03:20', style: TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 18.0
+                      fontSize: 18.0,
+                       color: Theme.of(context).textTheme.title.color
                       ),
                     ),
 
