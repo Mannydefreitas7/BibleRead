@@ -1,3 +1,4 @@
+
 import 'package:BibleRead/components/bookMarkChip.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:flutter/material.dart';
@@ -24,15 +25,17 @@ class HtmlView extends StatelessWidget {
           fontFamily: 'Lao MN',
         ),
         customRender: (node, children) {
+         
+
           if (node is dom.Element) {
             if (node.attributes['class'] != null) {
 
               if (node.attributes['class'].contains('jsBibleLink') ||
                   node.attributes['class'].contains('footnoteLink')) {
-
-                return SizedBox(width: 0, height: 0,);
-              } else if (node.attributes['class'].contains('verseNum')) {
-              //  print(node.firstChild.attributes['href'].split('#')[1]);
+                return SizedBox.shrink();
+              }  
+              
+              else if (node.attributes['class'].contains('verseNum')) {
                 return Center(
                   child: FlatButton(
                     splashColor: Colors.transparent,
@@ -77,17 +80,19 @@ class HtmlView extends StatelessWidget {
                         child: GestureDetector(
                           onTap: () => showModalBottomSheet(
                             enableDrag: true,
-                        backgroundColor: Colors.black,
+                       // backgroundColor: Colors.black,
                         context: context,
                         builder: (_) {
                           return Container(
                               height: 150,
                               child: Container(
+                                clipBehavior: Clip.hardEdge,
                                 child: BookMarkDialog(
                                   data: node.firstChild.attributes['href'].split('#')[1].split('v')[1],
                                 ),
                                 decoration: BoxDecoration(
-                                    // color: Theme.of(context).cardColor,
+
+                                     color: Theme.of(context).cardColor,
                                     borderRadius: BorderRadius.only(
                                         topRight: Radius.circular(20),
                                         topLeft: Radius.circular(20))),
