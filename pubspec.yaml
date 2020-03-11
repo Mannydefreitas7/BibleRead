@@ -42,6 +42,7 @@ dependencies:
     shimmer: ^1.0.1
     connectivity: ^0.4.8+1
     xlive_switch: ^1.0.5
+    extended_text: ^0.7.1
     on_boarding_ui: ^0.0.4
 
 dev_dependencies:

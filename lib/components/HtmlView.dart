@@ -1,23 +1,27 @@
 
-import 'package:BibleRead/components/bookMarkChip.dart';
+import 'package:BibleRead/classes/CustomToolbar.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:extended_text/extended_text.dart';
+
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:flutter_html/flutter_html.dart';
 
 class HtmlView extends StatelessWidget {
-  const HtmlView({Key key, this.html}) : super(key: key);
+  HtmlView({Key key, this.html}) : super(key: key);
 
   final String html;
-
-  @override
+  CustomToolbar customToolbar = CustomToolbar();
+    @override
   Widget build(BuildContext context) {
     return Html(
         blockSpacing: 10.0,
+        backgroundColor: Colors.transparent,
+        data: html,
         padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 100),
         useRichText: false,
+        renderNewlines: true,
         defaultTextStyle: TextStyle(
           fontSize: 22,
           color: Theme.of(context).textTheme.subhead.color,
@@ -25,102 +29,114 @@ class HtmlView extends StatelessWidget {
           fontFamily: 'Lao MN',
         ),
         customRender: (node, children) {
-         
-
+          
           if (node is dom.Element) {
-            if (node.attributes['class'] != null) {
+          if (node.attributes['class'] != null) {
 
-              if (node.attributes['class'].contains('jsBibleLink') ||
-                  node.attributes['class'].contains('footnoteLink')) {
-                return SizedBox.shrink();
-              }  
-              
-              else if (node.attributes['class'].contains('verseNum')) {
-                return Center(
-                  child: FlatButton(
-                    splashColor: Colors.transparent,
-                    onPressed: () => showModalBottomSheet(
-                        backgroundColor: Colors.black,
-                        context: context,
-                        builder: (_) {
-                          return Container(
-                              height: 150,
-                              child: Container(
-                                child: BookMarkDialog(
-                                  data: node.firstChild.attributes['href'].split('#')[1].split('v')[1],
-                                ),
-                                decoration: BoxDecoration(
-                                    // color: Theme.of(context).cardColor,
-                                    borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                        topLeft: Radius.circular(20))),
-                              ));
-                        }),
-                    child: Text(
-                      node.text,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontFamily: 'Avenir Next',
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context).accentColor),
-                    ),
-                  ),
-                );
-              } else if (node.attributes['class'].contains('chapterNum')) {
-                return Center(
-                  child: Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(),
-                    clipBehavior: Clip.none,
-                    width: MediaQuery.of(context).size.width / 1.5,
-                    // height: 50,
-                    margin: EdgeInsets.only(bottom: 20),
-                    child: Center(
-                        child: GestureDetector(
-                          onTap: () => showModalBottomSheet(
-                            enableDrag: true,
-                       // backgroundColor: Colors.black,
-                        context: context,
-                        builder: (_) {
-                          return Container(
-                              height: 150,
-                              child: Container(
-                                clipBehavior: Clip.hardEdge,
-                                child: BookMarkDialog(
-                                  data: node.firstChild.attributes['href'].split('#')[1].split('v')[1],
-                                ),
-                                decoration: BoxDecoration(
+                
+          if (node.attributes['class'] == 'verse') {
+         
+          bool isChapter = node.children[0].children[0].attributes['class'] == 'chapterNum';
 
-                                     color: Theme.of(context).cardColor,
-                                    borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                        topLeft: Radius.circular(20))),
-                              ));
-                        }),
-                       child: Text(
-                      node.text,
-                      style: TextStyle(
-                          fontSize: 52,
-                          fontFamily: 'Avenir Next',
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w600,
+          String verseLink = node.children[0].nodes[0].children.first.attributes['data-anchor'].split('#')[1].split('v')[1];
+          print(node.children.last.text);
+          var test = node.children[0].nodes.toList().where((element) => element.text.contains(' ', 0));
+
+         String text = test.join().replaceAll('<html span>', '');
+ 
+             return Column(
+          children: [
+            isChapter ? Center(
+              child: Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(),
+              clipBehavior: Clip.none,
+              width: MediaQuery.of(context).size.width / 1.5,
+              margin: EdgeInsets.only(bottom: 20),
+              child: Center(
+              child: GestureDetector(
+                onTap: () => showModalBottomSheet(
+                  enableDrag: true,
+                  context: context,
+                  builder: (_) {
+                  return Container(
+                    height: 150,
+                    child: Container(
+                      clipBehavior: Clip.hardEdge,
+                      child: BookMarkDialog(
+                        data: verseLink,
                       ),
+                      decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(20),
+                        topLeft: Radius.circular(20))),
+                      )
+                    );
+                  }),
+                  child: Text(
+                  node.children[0].nodes[0].text.trim(),
+                  style: TextStyle(
+                  fontSize: 52,
+                  fontFamily: 'Avenir Next',
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w600,
                     ),
-                        )),
                   ),
-                );
-              } else {
-                return null;
-              }
-            }
-          }
-        },
-        backgroundColor: Colors.transparent,
-        data: html);
-  }
-}
+                )
+              ),
+            ),
+          ) : Center(
+              child: FlatButton(
+              splashColor: Colors.transparent,
+              onPressed: () => showModalBottomSheet(
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (_) {
+                return Container(
+                  height: 150,
+                  child: Container(
+                    clipBehavior: Clip.hardEdge,
+                    child: BookMarkDialog(
+                      data: verseLink,
+                    ),
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(20)
+                  )
+                ),
+              )
+            );
+          }),
+            child: Text(
+            node.children[0].nodes[0].text.trim(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 22,
+              fontFamily: 'Avenir Next',
+              fontWeight: FontWeight.w600,
+              color: Theme.of(context).accentColor),
+              ),
+            ),
+          ),
 
+          ExtendedText(text.replaceAll('\"', '').trim(),
+            selectionEnabled: true,
+            selectionColor: Theme.of(context).accentColor.withOpacity(0.3),
+            textSelectionControls: customToolbar,
+            onTap: () => customToolbar,
+            )
+            ]
+          );
+          } else {
+            return SizedBox.shrink();
+          }
+         
+        }}
+    });
+    }}
+ 
 class BookMarkDialog extends StatelessWidget {
   const BookMarkDialog({Key key, this.data}) : super(key: key);
 
@@ -129,7 +145,7 @@ class BookMarkDialog extends StatelessWidget {
   final String data;
   @override
   Widget build(BuildContext context) {
-    print(data);
+   // print(data);
     return BottomSheet(
       backgroundColor: Theme.of(context).cardColor,
         onClosing: () => print(''),
