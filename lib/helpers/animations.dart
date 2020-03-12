@@ -23,7 +23,8 @@ class FadeInRight extends StatelessWidget {
       duration: tween.duration,
       tween: tween,
       child: child,
-      builderWithChild: (context, child, animation) => Opacity(
+      builderWithChild: (context, child, animation) => 
+      Opacity(
             opacity: animation["opacity"],
             child: Transform.translate(
                 offset: Offset(animation["translateX"], 0), child: child),
