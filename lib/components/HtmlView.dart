@@ -1,19 +1,17 @@
-
 import 'package:BibleRead/classes/CustomToolbar.dart';
+import 'package:BibleRead/classes/Verses.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
-import 'package:extended_text/extended_text.dart';
-
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:html/dom.dart' as dom;
-import 'package:flutter_html/flutter_html.dart';
+import "package:html/dom.dart" as dom;
 
 class HtmlView extends StatelessWidget {
   HtmlView({Key key, this.html}) : super(key: key);
 
   final String html;
-  CustomToolbar customToolbar = CustomToolbar();
-    @override
+  final CustomToolbar customToolbar = CustomToolbar();
+  @override
   Widget build(BuildContext context) {
     return Html(
         blockSpacing: 10.0,
@@ -21,136 +19,65 @@ class HtmlView extends StatelessWidget {
         data: html,
         padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 100),
         useRichText: false,
-        renderNewlines: true,
+       // renderNewlines: true,
         defaultTextStyle: TextStyle(
           fontSize: 22,
           color: Theme.of(context).textTheme.subhead.color,
-          fontWeight: FontWeight.w400,
-          fontFamily: 'Lao MN',
+          fontWeight: FontWeight.normal,
+          fontFamily: 'PT Serif',
         ),
         customRender: (node, children) {
-          
-          if (node is dom.Element) {
-          if (node.attributes['class'] != null) {
-
-                
-          if (node.attributes['class'] == 'verse') {
-         
-          bool isChapter = node.children[0].children[0].attributes['class'] == 'chapterNum';
-
-          String verseLink = node.children[0].nodes[0].children.first.attributes['data-anchor'].split('#')[1].split('v')[1];
-          print(node.children.last.text);
-          var test = node.children[0].nodes.toList().where((element) => element.text.contains(' ', 0));
-
-         String text = test.join().replaceAll('<html span>', '');
- 
-             return Column(
-          children: [
-            isChapter ? Center(
-              child: Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(),
-              clipBehavior: Clip.none,
-              width: MediaQuery.of(context).size.width / 1.5,
-              margin: EdgeInsets.only(bottom: 20),
-              child: Center(
-              child: GestureDetector(
-                onTap: () => showModalBottomSheet(
-                  enableDrag: true,
-                  context: context,
-                  builder: (_) {
-                  return Container(
-                    height: 150,
-                    child: Container(
-                      clipBehavior: Clip.hardEdge,
-                      child: BookMarkDialog(
-                        data: verseLink,
-                      ),
-                      decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20),
-                        topLeft: Radius.circular(20))),
-                      )
-                    );
-                  }),
-                  child: Text(
-                  node.children[0].nodes[0].text.trim(),
-                  style: TextStyle(
-                  fontSize: 52,
-                  fontFamily: 'Avenir Next',
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                )
-              ),
-            ),
-          ) : Center(
-              child: FlatButton(
-              splashColor: Colors.transparent,
-              onPressed: () => showModalBottomSheet(
-                backgroundColor: Colors.transparent,
-                context: context,
-                builder: (_) {
-                return Container(
-                  height: 150,
-                  child: Container(
-                    clipBehavior: Clip.hardEdge,
-                    child: BookMarkDialog(
-                      data: verseLink,
-                    ),
-                  decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  topLeft: Radius.circular(20)
-                  )
-                ),
-              )
-            );
-          }),
-            child: Text(
-            node.children[0].nodes[0].text.trim(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 22,
-              fontFamily: 'Avenir Next',
-              fontWeight: FontWeight.w600,
-              color: Theme.of(context).accentColor),
-              ),
-            ),
-          ),
-
-          ExtendedText(text.replaceAll('\"', '').trim(),
-            selectionEnabled: true,
-            selectionColor: Theme.of(context).accentColor.withOpacity(0.3),
-            textSelectionControls: customToolbar,
-            onTap: () => customToolbar,
-            )
-            ]
-          );
-          } else {
-            return SizedBox.shrink();
+          List<Verses> nodes = [];
+          List<dom.Node> _nodes = [...node.children.where((element) => element.text.contains(' '))];
+       
+          for (var n in _nodes) {
+            if (n.attributes['class'] == 'verse') {
+              if (n.children[0].children.toList().isNotEmpty) {
+                String text = n.text
+                    .substring(3)
+                    .trimLeft()
+                    .replaceAll('+', ' ')
+                    .replaceAll('*', ' ')
+                    .replaceAll('\"', '')
+                    .replaceAll(',', ', ');
+                bool isChapter =
+                    n.children[0].children[0].attributes['class'] ==
+                        'chapterNum';
+                String number = n.children[0].children[0].text.trim();
+                String verseLink = n.children[0].children[0].children[0]
+                    .attributes['data-anchor']
+                    .split('#')[1]
+                    .split('v')[1];
+                nodes.add(Verses(
+                  verseText: text,
+                  verseLink: verseLink,
+                  isChapter: isChapter,
+                  verseNumber: number,
+                ));
+              } 
+            } 
           }
-         
-        }}
-    });
-    }}
- 
+          return Column(children: nodes);
+        });
+  }
+}
+
 class BookMarkDialog extends StatelessWidget {
   const BookMarkDialog({Key key, this.data}) : super(key: key);
-
-
 
   final String data;
   @override
   Widget build(BuildContext context) {
-   // print(data);
     return BottomSheet(
-      backgroundColor: Theme.of(context).cardColor,
+        enableDrag: true,
+        elevation: 2.0,
+        backgroundColor: Theme.of(context).cardColor,
+        clipBehavior: Clip.hardEdge,
         onClosing: () => print(''),
         builder: (context) {
-          return Column(children: <Widget>[
+          return Column(
+            
+            children: <Widget>[
             ListTile(
                 leading: Icon(
                   Icons.bookmark_border,
@@ -164,21 +91,20 @@ class BookMarkDialog extends StatelessWidget {
                       color: Theme.of(context).textTheme.title.color,
                       fontWeight: FontWeight.w600),
                 ),
-              
                 trailing: Text(SharedPrefs().parseBookMarkedVerse(data),
                     style: TextStyle(
                         fontSize: 22,
                         color: Theme.of(context).textTheme.title.color,
                         fontWeight: FontWeight.w600)),
                 onTap: () => {
-                    SharedPrefs().setBookMarkData(data),
-                    SharedPrefs().setBookMarkTrue(),
-                  //  print(data),
-                    
-                    Navigator.of(context).popAndPushNamed('/')
-                   
-                }
-                ),
+                      SharedPrefs().setBookMarkData(data),
+                      SharedPrefs().setBookMarkTrue(),
+                      Navigator.of(context).popAndPushNamed('/')
+                    }),
+                    Divider(
+                      height: 3,
+                      color: Theme.of(context).textTheme.caption.color.withOpacity(0.5),
+                    ),
             ListTile(
                 title: Text(
                   'Cancel',

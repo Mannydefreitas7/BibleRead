@@ -78,4 +78,12 @@ flutter:
           style: normal
         - asset: assets/fonts/LaoMN-Bold.ttf
           weight: 700
+    - family: PT Serif
+      fonts:
+        - asset: assets/fonts/PTSerif-Regular.ttf
+          style: normal
+        - asset: assets/fonts/PTSerif-Bold.ttf
+          weight: 600
+        - asset: assets/fonts/PTSerif-Italic.ttf
+          style: italic
 

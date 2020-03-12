@@ -35,7 +35,7 @@ class ProgressCard extends StatelessWidget {
                     subtitle,
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w400,
                         fontSize: 16.0,
                         fontFamily: 'Avenir Next',
                         color: Theme.of(context).textTheme.subtitle.color),
@@ -46,7 +46,7 @@ class ProgressCard extends StatelessWidget {
                     textOne,
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w400,
                         fontFamily: 'Avenir Next',
                         fontSize: 20.0,
                         color:

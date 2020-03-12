@@ -42,7 +42,6 @@ void initState() {
 
   _connectivity.initialise();
     _connectivity.myStream.listen((source) {
-      print(source);
       setState(() => _source = source);
     });
 }
@@ -86,7 +85,6 @@ void initState() {
 
     return BibleReadScaffold(
       title: 'Today',
-      
       hasFloatingButton: true,
       floatingActionOnPress: () async => {
         await DatabaseHelper().markTodayRead(),

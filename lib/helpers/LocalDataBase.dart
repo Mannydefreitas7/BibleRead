@@ -49,9 +49,9 @@ Future setupDatabase() async {
   //  print(dbPath);
 
   // if (dbPath != null) { 
-      _database = await openDatabase(dbPath, version: _databaseVersion); 
+     _database = await openDatabase(dbPath, version: _databaseVersion); 
  // } else {  
-//_database = await _copyDatabase(); 
+// _database = await _copyDatabase(); 
  //}
     return _database;
   }
@@ -155,7 +155,6 @@ Future<List<Plan>> unReadChapters() async {
   List localeBooks = await getLocaleBooks(selectedLocale);
   List _allUnReadChapters = allChapters.where((i) => i['IsRead'] == 0).toList();
   List<Plan> unReadChapters = [];
-  print(_allUnReadChapters);
 
    for (var chapters in _allUnReadChapters) {
     int bookId = chapters["BookNumber"];
