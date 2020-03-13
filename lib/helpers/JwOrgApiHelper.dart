@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:BibleRead/classes/ChapterAudio.dart';
+import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/models/JwBibleBook.dart';
+import 'package:BibleRead/models/Plan.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:typed_data';
@@ -27,6 +30,53 @@ class JwOrgApiHelper {
       }
 
     return list;
+  }
+
+
+  Future<List<ChapterAudio>> getAudioFile() async  {
+      List<Plan> _unreadChapters = await DatabaseHelper().unReadChapters();
+      int bookNumber = _unreadChapters[0].bookNumber;
+     
+      String uri = 'https://pubmedia.jw-api.org/GETPUBMEDIALINKS?booknum=$bookNumber&output=json&pub=nwt&fileformat=MP3&alllangs=0&langwritten=E&txtCMSLang=E';
+      List<dynamic> audioLinks;
+      List<ChapterAudio> _chaptersAudio = [];
+      
+
+      var res = await http
+        .get(Uri.encodeFull(uri), headers: {"Accept": "application/json"});
+
+      if (res.statusCode == 200) {
+
+        var data = json.decode(res.body);
+        audioLinks = data['files']['E']['MP3'];
+
+        for (var audioLink in audioLinks) {
+          
+          _chaptersAudio.add(ChapterAudio.fromJson(audioLink));
+        }
+      }
+
+        if (_chaptersAudio.isEmpty) {
+          
+           String uri = 'https://pubmedia.jw-api.org/GETPUBMEDIALINKS?booknum=$bookNumber&output=json&pub=bi12&fileformat=MP3&alllangs=0&langwritten=E&txtCMSLang=E';
+
+           var res = await http
+        .get(Uri.encodeFull(uri), headers: {"Accept": "application/json"});
+
+         if (res.statusCode == 200) {
+
+        var data = json.decode(res.body);
+        audioLinks = data['files']['E']['MP3'];
+
+        for (var audioLink in audioLinks) {
+          
+          _chaptersAudio.add(ChapterAudio.fromJson(audioLink));
+        }
+      }
+          
+      }
+
+      return _chaptersAudio;
   }
 
   Future<Map<dynamic, dynamic>> bibleBooks(String url) async {

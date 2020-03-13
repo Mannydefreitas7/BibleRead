@@ -113,6 +113,7 @@ class BibleReadingView extends StatelessWidget {
                                     return SingleChildScrollView(
                                       child: HtmlView(
                                         html: _html,
+                                        book: bookName,
                                       ),
                                     );
                                   }).toList());

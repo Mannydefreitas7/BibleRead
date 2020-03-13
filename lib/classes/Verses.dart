@@ -1,4 +1,5 @@
 import 'package:BibleRead/components/HtmlView.dart';
+import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/helpers/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,14 @@ class Verses extends StatefulWidget {
     this.verseNumber,
     this.verseLink,
     this.verseText,
+    this.book
   });
   final bool isChapter;
+  final String book;
   final String verseNumber;
   final String verseLink;
   final String verseText;
+
 
   @override
   _VersesState createState() => _VersesState();
@@ -80,7 +84,9 @@ class _VersesState extends State<Verses> {
                 child: FadeIn(
                 
                     child: GestureDetector(
-                      child: Container(
+                      child: 
+                      
+                      Container(
                         decoration: BoxDecoration(
                           color: showBookmarkIcon ? Theme.of(context).accentColor.withOpacity(0.1) : Colors.transparent,
                           borderRadius: BorderRadius.circular(20)
@@ -115,6 +121,18 @@ class _VersesState extends State<Verses> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+
+                        CircleAvatar(
+                            backgroundColor: Theme.of(context).backgroundColor,
+                            child: IconButton(
+                                alignment: Alignment.center,
+                                icon: Icon(
+                                  Icons.clear,
+                                  color: Theme.of(context).accentColor,
+                                ),
+                                onPressed: () => setState(() => showBookmarkIcon = !showBookmarkIcon))),
+                        
+                        SizedBox(height: 10, width: 10,),
                        
                         CircleAvatar(
                             backgroundColor: Theme.of(context).backgroundColor,
@@ -134,7 +152,10 @@ class _VersesState extends State<Verses> {
                                   LineAwesomeIcons.share,
                                   color: Theme.of(context).accentColor,
                                 ),
-                                onPressed: () => _showBottomSheet(context)))
+                                onPressed: () => {
+                                  
+                                  Share.share('${widget.book} ${SharedPrefs().parseBookMarkedVerse(widget.verseLink)} \n ${widget.verseText}', subject: 'Thought from:  ${widget.book} ${SharedPrefs().parseBookMarkedVerse(widget.verseLink)}')
+                                  }))
                           
                       ]
                    )

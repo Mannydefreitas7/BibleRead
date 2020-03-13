@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -6,18 +8,32 @@ import 'audioWave.dart';
 import 'audioWaveNotPlaying.dart';
 import '../helpers/animations.dart';
 
-class ListenCard extends StatefulWidget {
-  @override
-  _ListenCardState createState() => _ListenCardState();
-}
+class ListenCard extends StatelessWidget  {
 
-class _ListenCardState extends State<ListenCard> {
+  ListenCard({
+    this.isAudioPlaying,
+    this.startTime,
+    this.durationText,
+    this.duration,
+    this.position,
+    this.bookName,
+    this.chapter,
+    this.next,
+    this.playPause,
+    this.previous
+    });
 
-   bool isAudioPlaying = false;
+    final bool isAudioPlaying;
+    final String startTime;
+    final String durationText;
+    final double duration;
+    final double position;
+    final String bookName;
+    final String chapter;
+    final Function playPause;
+    final Function next;
+    final Function previous;
 
- bool startPlaying() {
-   return isAudioPlaying = !isAudioPlaying;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +74,7 @@ class _ListenCardState extends State<ListenCard> {
                       width: 5,
                     ),
                     Text(
-                      'Matthew',
+                      bookName,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -67,7 +83,7 @@ class _ListenCardState extends State<ListenCard> {
                     ),
                     SizedBox(width: 5.0),
                     Text(
-                      '6',
+                      chapter,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -96,9 +112,7 @@ class _ListenCardState extends State<ListenCard> {
                             size: 35,
                           ),
                           onPressed: () {
-                            setState(() {
-                              startPlaying();
-                            });
+                            
                           }),
                       IconButton(
                           icon: Icon(
@@ -118,10 +132,6 @@ class _ListenCardState extends State<ListenCard> {
                 fit: StackFit.loose,
                 children: <Widget>[
 
-                //   isAudioPlaying ? Container(child: FadeIn(delay: 0.5, child: AudioWave()),
-                //  height: 50, width: double.infinity,
-                // ) : FadeIn(delay: 0.5, child:AudioWaveNotPlaying()),
-
                 LinearPercentIndicator(
                    progressColor: Theme.of(context).accentColor,
                    percent: 0.4,
@@ -132,7 +142,7 @@ class _ListenCardState extends State<ListenCard> {
                   padding: EdgeInsets.all(15.0),
                   child: Row(children: <Widget>[
 
-                    Text('00:00', style: TextStyle(
+                    Text(startTime, style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 18.0,
                       color: Theme.of(context).textTheme.title.color
@@ -141,7 +151,7 @@ class _ListenCardState extends State<ListenCard> {
 
                     Spacer(),
 
-                    Text('03:20', style: TextStyle(
+                    Text(durationText, style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 18.0,
                        color: Theme.of(context).textTheme.title.color
