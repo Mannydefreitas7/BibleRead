@@ -1,9 +1,12 @@
 import 'package:BibleRead/components/HtmlView.dart';
 import 'package:BibleRead/helpers/animations.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:BibleRead/classes/CustomToolbar.dart';
+import 'package:share/share.dart';
 
 import 'package:extended_text/extended_text.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 class Verses extends StatefulWidget {
@@ -48,10 +51,7 @@ class _VersesState extends State<Verses> {
       Center(
         child: Container(
           alignment: Alignment.center,
-          // decoration: BoxDecoration(),
           clipBehavior: Clip.none,
-
-          //  width: MediaQuery.of(context).size.width / 1.5,
           margin: widget.isChapter ? EdgeInsets.all(15) : EdgeInsets.all(10),
           child: Center(
               child: GestureDetector(
@@ -101,10 +101,13 @@ class _VersesState extends State<Verses> {
                         showBookmarkIcon = !showBookmarkIcon;
                       }),
                     ),
-                    delay: 0.2)),
+                    delay: 0.2)
+                    ),
+
+                    SizedBox(width: showBookmarkIcon ? 10 : 0),
+
                   showBookmarkIcon ? 
-                   
-                      Flexible(
+                    Flexible(
                     flex: 0,
                     child: FadeInRight(
                         0.2,
@@ -122,13 +125,13 @@ class _VersesState extends State<Verses> {
                                   color: Theme.of(context).accentColor,
                                 ),
                                 onPressed: () => _showBottomSheet(context))),
-                          SizedBox(height: 10,),
+                          SizedBox(height: 10, width: 10,),
                           CircleAvatar(
                             backgroundColor: Theme.of(context).backgroundColor,
                             child: IconButton(
                                 alignment: Alignment.center,
                                 icon: Icon(
-                                  LineAwesomeIcons.share_square_o,
+                                  LineAwesomeIcons.share,
                                   color: Theme.of(context).accentColor,
                                 ),
                                 onPressed: () => _showBottomSheet(context)))

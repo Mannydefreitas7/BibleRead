@@ -44,6 +44,7 @@ dependencies:
     xlive_switch: ^1.0.5
     extended_text: ^0.7.1
     on_boarding_ui: ^0.0.4
+    share: ^0.6.3+6 
 
 dev_dependencies:
     flutter_test:
