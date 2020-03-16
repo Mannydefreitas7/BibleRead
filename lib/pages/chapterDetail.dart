@@ -54,7 +54,7 @@ class ChapterDetail extends StatelessWidget {
       ),
       ),
       body: Container(
-        clipBehavior: Clip.hardEdge,
+      //  clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30))

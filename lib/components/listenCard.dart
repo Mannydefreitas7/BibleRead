@@ -111,9 +111,7 @@ class ListenCard extends StatelessWidget  {
                             color: Theme.of(context).accentColor,
                             size: 35,
                           ),
-                          onPressed: () {
-                            
-                          }),
+                          onPressed: playPause),
                       IconButton(
                           icon: Icon(
                             SimpleLineIcons.arrow_right,
@@ -134,7 +132,7 @@ class ListenCard extends StatelessWidget  {
 
                 LinearPercentIndicator(
                    progressColor: Theme.of(context).accentColor,
-                   percent: 0.4,
+                   percent: duration,
                    backgroundColor: Colors.transparent,
                 ),
 

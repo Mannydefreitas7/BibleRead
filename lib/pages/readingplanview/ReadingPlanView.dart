@@ -81,7 +81,7 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
       Positioned(
         bottom: 0,
         child: Container(
-            clipBehavior: Clip.hardEdge,
+         //   clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
                 color: Theme.of(context).cardColor, 
                 borderRadius: BorderRadius.only(

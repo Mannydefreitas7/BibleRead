@@ -46,7 +46,7 @@ class ReadTodayCard extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           child: Container(
-              clipBehavior: Clip.none,
+            //  clipBehavior: Clip.none,
               width: MediaQuery.of(context).size.width - 36.0,
               padding: EdgeInsets.all(15),
               child: Column(

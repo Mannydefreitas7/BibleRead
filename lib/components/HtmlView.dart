@@ -85,9 +85,9 @@ class BookMarkDialog extends StatelessWidget {
                 leading: Icon(
                   Icons.bookmark_border,
                   size: 30,
-                  color: Theme.of(context).textTheme.headline6.color,
+                  color: Theme.of(context).textTheme.title.color,
                 ),
-                title: Text(
+                title: Text( 
                   'Save Bookmark',
                   style: TextStyle(
                       fontSize: 22,
