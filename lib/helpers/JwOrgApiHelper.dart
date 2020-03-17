@@ -33,11 +33,11 @@ class JwOrgApiHelper {
   }
 
 
-  Future<List<ChapterAudio>> getAudioFile() async  {
-      List<Plan> _unreadChapters = await DatabaseHelper().unReadChapters();
-      int bookNumber = _unreadChapters[0].bookNumber;
+  Future<List<ChapterAudio>> getAudioFile(int booknumber) async  {
+     // List<Plan> _unreadChapters = await DatabaseHelper().unReadChapters();
+     // int bookNumber = _unreadChapters[0].bookNumber;
      
-      String uri = 'https://pubmedia.jw-api.org/GETPUBMEDIALINKS?booknum=$bookNumber&output=json&pub=nwt&fileformat=MP3&alllangs=0&langwritten=E&txtCMSLang=E';
+      String uri = 'https://pubmedia.jw-api.org/GETPUBMEDIALINKS?booknum=$booknumber&output=json&pub=nwt&fileformat=MP3&alllangs=0&langwritten=E&txtCMSLang=E';
       List<dynamic> audioLinks;
       List<ChapterAudio> _chaptersAudio = [];
       
@@ -58,7 +58,7 @@ class JwOrgApiHelper {
 
         if (_chaptersAudio.isEmpty) {
           
-           String uri = 'https://pubmedia.jw-api.org/GETPUBMEDIALINKS?booknum=$bookNumber&output=json&pub=bi12&fileformat=MP3&alllangs=0&langwritten=E&txtCMSLang=E';
+           String uri = 'https://pubmedia.jw-api.org/GETPUBMEDIALINKS?booknum=$booknumber&output=json&pub=bi12&fileformat=MP3&alllangs=0&langwritten=E&txtCMSLang=E';
 
            var res = await http
         .get(Uri.encodeFull(uri), headers: {"Accept": "application/json"});

@@ -9,6 +9,7 @@
          <application
             android:name="io.flutter.app.FlutterApplication"
             android:label="BibleRead"
+            android:usesCleartextTraffic="true"
             android:icon="@mipmap/ic_launcher">
             <service android:name="com.google.flutter.plugins.audiofileplayer.AudiofileplayerService">
                <intent-filter>

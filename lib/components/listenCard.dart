@@ -7,6 +7,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'audioWave.dart';
 import 'audioWaveNotPlaying.dart';
 import '../helpers/animations.dart';
+import 'package:audio_manager/audio_manager.dart';
 
 class ListenCard extends StatelessWidget  {
 
@@ -15,25 +16,70 @@ class ListenCard extends StatelessWidget  {
     this.startTime,
     this.durationText,
     this.duration,
-    this.position,
+    this.slider,
     this.bookName,
     this.chapter,
     this.next,
     this.playPause,
-    this.previous
+    this.previous,
+    this.isReady,
+    this.sliderChange
     });
 
-    final bool isAudioPlaying;
+    bool isAudioPlaying;
+    final bool isReady;
     final String startTime;
     final String durationText;
-    final double duration;
-    final double position;
+    final Duration duration;
+    final double slider;
     final String bookName;
     final String chapter;
     final Function playPause;
     final Function next;
     final Function previous;
+    final Function sliderChange;
 
+    List<String> getchapters(String chapters) {
+  List<String> _chapters = [];
+  List<String> tempChapters = chapters.split(' ');
+  for (var i = int.parse(tempChapters.first); i <= int.parse(tempChapters.last) ; i++) {
+    _chapters.add(i.toString());
+  }
+  return _chapters;
+}
+
+  Widget songProgress(BuildContext context) {
+      return Padding(
+            padding: EdgeInsets.all(15),
+            child: SliderTheme(
+                data: SliderTheme.of(context).copyWith(
+                  trackHeight: 3,
+                  thumbColor: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
+                  overlayColor: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
+                  thumbShape: RoundSliderThumbShape(
+                    disabledThumbRadius: 5,
+                    enabledThumbRadius: 7,
+                  ),
+                  overlayShape: RoundSliderOverlayShape(
+                    overlayRadius: 10,
+                  ),
+                  activeTrackColor: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
+                  inactiveTrackColor: Theme.of(context).backgroundColor,
+                ),
+                child: Slider(
+                  value: slider ?? 0,
+                  onChanged: sliderChange,
+                  onChangeEnd: (value) {
+                    if (duration != null) {
+                      Duration msec = Duration(
+                          milliseconds:
+                              (duration.inMilliseconds * value).round());
+                      AudioManager.instance.seekTo(msec);
+                    }
+                  },
+                )),
+          );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,24 +147,26 @@ class ListenCard extends StatelessWidget  {
                       IconButton(
                           icon: Icon(
                             SimpleLineIcons.arrow_left,
-                            color: Theme.of(context).accentColor,
+                            color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 35,
                           ),
-                          onPressed: () => print('')),
+                          onPressed: () => isReady ? AudioManager.instance.previous() : null),
                       IconButton(
                           icon: Icon(
                             isAudioPlaying ? SimpleLineIcons.control_pause : SimpleLineIcons.control_play,
-                            color: Theme.of(context).accentColor,
+                            color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 35,
                           ),
-                          onPressed: playPause),
+                          onPressed: () {
+                            return isReady ? AudioManager.instance.playOrPause() : null;
+                          }),
                       IconButton(
                           icon: Icon(
                             SimpleLineIcons.arrow_right,
-                            color: Theme.of(context).accentColor,
+                            color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 35,
                           ),
-                          onPressed: () => print(''))
+                          onPressed: () => AudioManager.instance.next())
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,14 +178,10 @@ class ListenCard extends StatelessWidget  {
                 fit: StackFit.loose,
                 children: <Widget>[
 
-                LinearPercentIndicator(
-                   progressColor: Theme.of(context).accentColor,
-                   percent: duration,
-                   backgroundColor: Colors.transparent,
-                ),
+                  songProgress(context),
 
                 Container(
-                  padding: EdgeInsets.all(15.0),
+                  padding: EdgeInsets.only(bottom: 40, left: 20, right: 20),
                   child: Row(children: <Widget>[
 
                     Text(startTime, style: TextStyle(
