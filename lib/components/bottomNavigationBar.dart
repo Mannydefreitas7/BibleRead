@@ -36,7 +36,8 @@ class BRBottomNavBar extends StatelessWidget {
             child: BottomNavigationBar(
               currentIndex: selectedIndex,
               onTap: (index) => {
-                Navigator.of(context).pushNamed(tabs[index].route)
+                 Navigator.of(context).popAndPushNamed(tabs[index].route),
+      
               },
               backgroundColor: Theme.of(context).bottomAppBarColor,
               elevation: 0.0,

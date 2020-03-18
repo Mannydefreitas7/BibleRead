@@ -1,13 +1,9 @@
-import 'dart:ffi';
 
+import 'package:BibleRead/classes/AudioController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'audioWave.dart';
-import 'audioWaveNotPlaying.dart';
-import '../helpers/animations.dart';
-import 'package:audio_manager/audio_manager.dart';
+
 
 class ListenCard extends StatelessWidget  {
 
@@ -39,14 +35,7 @@ class ListenCard extends StatelessWidget  {
     final Function previous;
     final Function sliderChange;
 
-    List<String> getchapters(String chapters) {
-  List<String> _chapters = [];
-  List<String> tempChapters = chapters.split(' ');
-  for (var i = int.parse(tempChapters.first); i <= int.parse(tempChapters.last) ; i++) {
-    _chapters.add(i.toString());
-  }
-  return _chapters;
-}
+
 
   Widget songProgress(BuildContext context) {
       return Padding(
@@ -74,7 +63,7 @@ class ListenCard extends StatelessWidget  {
                       Duration msec = Duration(
                           milliseconds:
                               (duration.inMilliseconds * value).round());
-                      AudioManager.instance.seekTo(msec);
+
                     }
                   },
                 )),
@@ -150,28 +139,26 @@ class ListenCard extends StatelessWidget  {
                             color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 35,
                           ),
-                          onPressed: () => isReady ? AudioManager.instance.previous() : null),
+                          onPressed: () {}),
                       IconButton(
                           icon: Icon(
                             isAudioPlaying ? SimpleLineIcons.control_pause : SimpleLineIcons.control_play,
                             color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 35,
                           ),
-                          onPressed: () {
-                            return isReady ? AudioManager.instance.playOrPause() : null;
-                          }),
+                          onPressed: playPause),
                       IconButton(
                           icon: Icon(
                             SimpleLineIcons.arrow_right,
                             color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 35,
                           ),
-                          onPressed: () => AudioManager.instance.next())
+                          onPressed: () => {})
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                   )
-                  ),
+                ),
 
               Stack(
                 alignment: AlignmentDirectional.bottomCenter,
@@ -184,7 +171,7 @@ class ListenCard extends StatelessWidget  {
                   padding: EdgeInsets.only(bottom: 40, left: 20, right: 20),
                   child: Row(children: <Widget>[
 
-                    Text(startTime, style: TextStyle(
+                    Text(isReady ? startTime : '00:00', style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 18.0,
                       color: Theme.of(context).textTheme.title.color
@@ -193,7 +180,7 @@ class ListenCard extends StatelessWidget  {
 
                     Spacer(),
 
-                    Text(durationText, style: TextStyle(
+                    Text(isReady ? durationText : '00:00', style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 18.0,
                        color: Theme.of(context).textTheme.title.color
