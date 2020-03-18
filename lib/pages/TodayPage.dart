@@ -48,6 +48,7 @@ class _TodayPageState extends State<TodayPage> {
 
   bool isPlaying = false;
   bool isReady = false;
+  bool isSingle = true;
   double slider = 0.0;
   String _platformVersion = 'Unknown';
   double _sliderVolume;
@@ -74,38 +75,22 @@ class _TodayPageState extends State<TodayPage> {
   }
 
   _markTodayRead() async {
-  //  AudioManager.instance.stop(); 
+  player.stop();
   await DatabaseHelper().markTodayRead();
   await SharedPrefs().setBookMarkFalse();
   unReadChapters = await DatabaseHelper().unReadChapters();
-  
   setState(() => { 
       _unReadChapters = DatabaseHelper().unReadChapters(),
       _progressValue = DatabaseHelper().countProgressValue(),
-  //  setAudio()
+
     });
+    await initialize();
 }
 
   _setBookMarkFalse() async {
 await SharedPrefs().setBookMarkFalse();
 setState(() => {  });
 }  
-
-// void playPause() async {
-//   await AudioManager.instance.playOrPause();
-// } 
-
-// void setAudio() async {
-
-//      _list = await audioController.setupAudioList();
-//    AudioManager.instance.audioList = _list;
-//     AudioManager.instance.intercepter = true;
-//     AudioManager.instance.start(_list[0].url, _list[0].title);
-//     setState(() => { 
-//       _unReadChapters = DatabaseHelper().unReadChapters(),
-//       _progressValue = DatabaseHelper().countProgressValue(),
-//     });
-// }
 
 void playAudio() async {
  await player.play();
@@ -121,14 +106,18 @@ void stopAudio() async {
 
 void releaseAudio() async {
   await player.pause();
-  await player.dispose();
+  await player.stop();
 }
 
-  void sliderChange(double value) {
-    setState(() {
-        audioPayerController.slider = value;
-    });
-}
+//   void onChanged(Duration value) {
+//     setState(() {
+//         slider = value;
+//     });
+// }
+
+void onChangeEnd(Duration newPosition) async {
+      await player.seek(newPosition);
+      }
 
   @override
 void initState() { 
@@ -148,8 +137,14 @@ void initState() {
       }
     });
     player = AudioPlayer();
+
     initialize();
 
+    if (list.length == 1) {
+      isSingle = true;
+    } else {
+      isSingle = false;
+    }
 }
 
 
@@ -160,9 +155,48 @@ void initState() {
 
 @override
   void dispose() {
+    releaseAudio();
     super.dispose();
+    
   }
 
+
+
+void next() async {
+   await player.stop();
+     currentAudio = currentAudio + 1;
+     String url;
+     if (currentAudio < list.length) {
+          url = list[currentAudio].url;
+            await player.setUrl(url);
+               setState(() {});
+          } else {
+            currentAudio = 0;
+            url = list[currentAudio].url;
+            await player.setUrl(url);
+              setState(() {});
+     }
+    await player.play();
+ 
+}
+
+void previous() async {
+   await player.stop();
+     String url;
+     if (currentAudio > 0) {
+          currentAudio = currentAudio - 1;
+          url = list[currentAudio].url;
+            await player.setUrl(url);
+               setState(() {});
+          } else {
+            currentAudio = 0;
+            url = list[currentAudio].url;
+            await player.setUrl(url);
+              setState(() {});
+     }
+    await player.play();
+ 
+}
 
   @override
   Widget build(BuildContext context) {
@@ -176,74 +210,12 @@ void initState() {
       case ConnectivityResult.mobile:
         isConnected = true;
         setState(() {
-           
         });
         break;
       case ConnectivityResult.wifi:
        isConnected = true;
-         setState(() {
-    
-          });
+         setState(() { });
     }
-
-    // AudioManager.instance.onEvents((events, args) {
-        
-    //   switch (events) {
-        
-    //     case AudioManagerEvents.start:
-    //       AudioManager.instance.play();
-    //       position = AudioManager.instance.position;
-    //       duration = AudioManager.instance.duration;
-    //       slider = 0;
-    //       isPlaying = false;
-    //       isReady = true;
-    //       setState(() {});
-
-    //       break;
-    //     case AudioManagerEvents.ready:
-    //     AudioManager.instance.play();
-    //       _sliderVolume = AudioManager.instance.volume;
-    //       position = AudioManager.instance.position;
-    //       duration = AudioManager.instance.duration;
-  
-    //        AudioManager.instance.seekTo(Duration(seconds: 0));
-    //      setState(() {});
-    //       break;
-    //     case AudioManagerEvents.seekComplete:
-    //       position = AudioManager.instance.position;
-    //       slider = position.inMilliseconds / duration.inMilliseconds;
-    //   setState(() {});
-    //       break;
-    //     case AudioManagerEvents.buffering:
-
-    //       break;
-    //     case AudioManagerEvents.playstatus:
-    //       isPlaying = AudioManager.instance.isPlaying;
-    //   setState(() {});
-    //       break;
-    //     case AudioManagerEvents.timeupdate:
-    //       position = AudioManager.instance.position;
-    //       slider = position.inMilliseconds / duration.inMilliseconds;
-    //   setState(() {});
-    //       break;
-    //     case AudioManagerEvents.error:
-    //       _error = args;
-    //   setState(() {});
-    //       break;
-    //     case AudioManagerEvents.ended:
-    //       AudioManager.instance.next();
-    //   setState(() {});
-    //       break;
-    //     case AudioManagerEvents.volumeChange:
-    //       _sliderVolume = AudioManager.instance.volume;
-    //   setState(() {});
-    //       break;
-    //     default:
-    //     return;
-    //       break;
-    //   }
-     
-    // });
 
  
 
@@ -255,7 +227,6 @@ void initState() {
       bodyWidget: Container(
         padding: EdgeInsets.only(left: 15, right: 15),
         child: Stack(children: <Widget>[
-
           FutureBuilder(
                    future: _unReadChapters,
                     builder: (BuildContext context, AsyncSnapshot snapshot) { 
@@ -308,21 +279,30 @@ void initState() {
                                       } else if (state == AudioPlaybackState.playing) {
                                           //  isReady = true;
                                             isPlaying = true;
+                                       } else if (state == AudioPlaybackState.completed) {
+
+                                           isPlaying = false;
+                                           next();
+                                        
                                       } else {
                                           isPlaying = false;
                                       }
               
                                    return ListenCard(
-                                        bookName: unReadPlan[0].longName,
+                                        bookName: '',
                                         isAudioPlaying: isPlaying,
                                         slider: slider,
+                                        isSingle: isSingle,
+                                        next: () => isSingle ? null : next(),
+                                        previous: () => isSingle ? null : previous(),
                                         playPause: () => isPlaying ? pauseAudio() : playAudio(),
                                         isReady: isConnected,
-                                        sliderChange: (value) => sliderChange(value),
+                                        sliderChange: (value) => onChangeEnd(value),
                                         duration: duration,
+                                        position: position,
                                         durationText: _formatDuration(duration),
                                         startTime: _formatDuration(position),
-                                        chapter: unReadPlan[0].chapters,
+                                        chapter: list[currentAudio].title,
                                       );
                                   } else {
                                       return Container(

@@ -1,5 +1,6 @@
 
 import 'package:BibleRead/classes/AudioController.dart';
+import 'package:BibleRead/classes/SliderAudio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -16,17 +17,21 @@ class ListenCard extends StatelessWidget  {
     this.bookName,
     this.chapter,
     this.next,
+    this.position,
     this.playPause,
     this.previous,
+    this.isSingle,
     this.isReady,
     this.sliderChange
     });
 
     bool isAudioPlaying;
     final bool isReady;
+    final bool isSingle;
     final String startTime;
     final String durationText;
     final Duration duration;
+    final Duration position;
     final double slider;
     final String bookName;
     final String chapter;
@@ -37,38 +42,6 @@ class ListenCard extends StatelessWidget  {
 
 
 
-  Widget songProgress(BuildContext context) {
-      return Padding(
-            padding: EdgeInsets.all(15),
-            child: SliderTheme(
-                data: SliderTheme.of(context).copyWith(
-                  trackHeight: 3,
-                  thumbColor: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
-                  overlayColor: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
-                  thumbShape: RoundSliderThumbShape(
-                    disabledThumbRadius: 5,
-                    enabledThumbRadius: 7,
-                  ),
-                  overlayShape: RoundSliderOverlayShape(
-                    overlayRadius: 10,
-                  ),
-                  activeTrackColor: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
-                  inactiveTrackColor: Theme.of(context).backgroundColor,
-                ),
-                child: Slider(
-                  value: slider ?? 0,
-                  onChanged: sliderChange,
-                  onChangeEnd: (value) {
-                    if (duration != null) {
-                      Duration msec = Duration(
-                          milliseconds:
-                              (duration.inMilliseconds * value).round());
-
-                    }
-                  },
-                )),
-          );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +112,7 @@ class ListenCard extends StatelessWidget  {
                             color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 35,
                           ),
-                          onPressed: () {}),
+                          onPressed: previous),
                       IconButton(
                           icon: Icon(
                             isAudioPlaying ? SimpleLineIcons.control_pause : SimpleLineIcons.control_play,
@@ -150,10 +123,10 @@ class ListenCard extends StatelessWidget  {
                       IconButton(
                           icon: Icon(
                             SimpleLineIcons.arrow_right,
-                            color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
+                            color: isReady || isSingle ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 35,
                           ),
-                          onPressed: () => {})
+                          onPressed: next)
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -165,7 +138,12 @@ class ListenCard extends StatelessWidget  {
                 fit: StackFit.loose,
                 children: <Widget>[
 
-                  songProgress(context),
+                  SliderAudio(
+                    isReady: isReady,
+                    duration: duration, 
+                    onChanged: sliderChange,
+                    position: position
+                    ),
 
                 Container(
                   padding: EdgeInsets.only(bottom: 40, left: 20, right: 20),

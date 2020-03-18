@@ -1,6 +1,4 @@
 PODS:
-  - audio_manager (0.0.1):
-    - Flutter
   - connectivity (0.0.1):
     - Flutter
     - Reachability
@@ -12,6 +10,8 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - just_audio (0.0.1):
+    - Flutter
   - path_provider (0.0.1):
     - Flutter
   - path_provider_macos (0.0.1):
@@ -44,11 +44,11 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - audio_manager (from `.symlinks/plugins/audio_manager/ios`)
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - connectivity_macos (from `.symlinks/plugins/connectivity_macos/ios`)
   - Flutter (from `Flutter`)
   - flutter_device_locale (from `.symlinks/plugins/flutter_device_locale/ios`)
+  - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
   - share (from `.symlinks/plugins/share/ios`)
@@ -70,8 +70,6 @@ SPEC REPOS:
     - Reachability
 
 EXTERNAL SOURCES:
-  audio_manager:
-    :path: ".symlinks/plugins/audio_manager/ios"
   connectivity:
     :path: ".symlinks/plugins/connectivity/ios"
   connectivity_macos:
@@ -80,6 +78,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_device_locale:
     :path: ".symlinks/plugins/flutter_device_locale/ios"
+  just_audio:
+    :path: ".symlinks/plugins/just_audio/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   path_provider_macos:
@@ -110,12 +110,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
-  audio_manager: 59466b2ea5552ebdcba8106796f09b9357ef12e0
   connectivity: 6e94255659cc86dcbef1d452ad3e0491bb1b3e75
   connectivity_macos: e2e9731b6b22dda39eb1b128f6969d574460e191
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_device_locale: bd88cfdfdcae58b2a9d5ec05389fd99631c9dca7
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  just_audio: c695d6e7e37f9e96672dd84039d7530e7fd5c205
   path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
   path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
