@@ -60,7 +60,7 @@ final ThemeData brThemeData = new ThemeData(
 final ThemeData brThemeDataDark = new ThemeData(
         fontFamily: 'Avenir Next',
         backgroundColor: Colors.black,
-        cardColor: Colors.grey[850],
+        cardColor: Colors.grey[900],
         textSelectionColor: Colors.orangeAccent.withOpacity(0.5),
         textSelectionHandleColor: Colors.orangeAccent,
         buttonTheme: ButtonThemeData(
@@ -72,10 +72,10 @@ final ThemeData brThemeDataDark = new ThemeData(
         hoverColor: Colors.transparent,
         splashColor: Colors.transparent,
         scaffoldBackgroundColor: Colors.grey[100],
-        bottomAppBarColor: Colors.grey[850],
+        bottomAppBarColor: Colors.grey[900],
         bottomAppBarTheme: 
           BottomAppBarTheme(
-            color: Colors.grey[850],
+            color: Colors.grey[900],
             elevation: 0.0,
           ),
 

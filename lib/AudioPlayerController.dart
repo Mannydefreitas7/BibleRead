@@ -1,28 +1,223 @@
+import 'dart:async';
+
 import 'package:BibleRead/classes/ChapterAudio.dart';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/models/Plan.dart';
+import 'package:audio_service/audio_service.dart';
 
 import 'package:just_audio/just_audio.dart';
 
+MediaControl playControl = MediaControl(
+  androidIcon: 'drawable/ic_action_play_arrow',
+  label: 'Play',
+  action: MediaAction.play,
+);
+MediaControl pauseControl = MediaControl(
+  androidIcon: 'drawable/ic_action_pause',
+  label: 'Pause',
+  action: MediaAction.pause,
+);
+MediaControl skipToNextControl = MediaControl(
+  androidIcon: 'drawable/ic_action_skip_next',
+  label: 'Next',
+  action: MediaAction.skipToNext,
+);
+MediaControl skipToPreviousControl = MediaControl(
+  androidIcon: 'drawable/ic_action_skip_previous',
+  label: 'Previous',
+  action: MediaAction.skipToPrevious,
+);
+MediaControl stopControl = MediaControl(
+  androidIcon: 'drawable/ic_action_stop',
+  label: 'Stop',
+  action: MediaAction.stop,
+);
 
-class AudioPlayerController {
+void backgroundTaskEntrypoint() {
+  AudioServiceBackground.run(() => AudioPlayerController());
+}
+
+
+class AudioPlayerController extends BackgroundAudioTask {
 
   AudioPlayerController();
-  AudioPlayer player;
   double slider = 0.0;
   Duration position;
   Duration duration;
-  List<AudioPlayerItem> list;
   int currentAudio = 0;
+  List<AudioPlayerItem> list = [];
+  AudioPlayer player = new AudioPlayer();
+  bool isPlaying = false;
+  bool isReady = false;
+  bool isSingle = true;
+  StreamSubscription eventSubscription;
 
+  // get player => new AudioPlayer();
 
 
   initialize() async {
+  
     list = await setupAudioList();
-    player = AudioPlayer();
-    print(list[0].url);
+   // print(list);
     await player.setUrl(list[currentAudio].url);
+
+    eventSubscription = player.playbackEventStream.listen((event) {
+      final state = _stateToBasicState(event.state);
+      print(state);
+      if (state != BasicPlaybackState.stopped) {
+        _setState(
+          state: state,
+          position: event.position.inMilliseconds,
+        );
+      }
+    });
+    
+  }
+  void _setState({BasicPlaybackState state, int position}) {
+    if (position == null) {
+      position = 0;
+    }
+    AudioServiceBackground.setState(
+      controls: getControls(state),
+      systemActions: [MediaAction.seekTo],
+      basicState: state,
+      position: position,
+    );
+  }
+
+    BasicPlaybackState _stateToBasicState(AudioPlaybackState state) {
+    switch (state) {
+      case AudioPlaybackState.none:
+        return BasicPlaybackState.none;
+      case AudioPlaybackState.stopped:
+        return BasicPlaybackState.stopped;
+      case AudioPlaybackState.paused:
+        return BasicPlaybackState.paused;
+      case AudioPlaybackState.playing:
+          isPlaying = true;
+        return BasicPlaybackState.playing;
+      case AudioPlaybackState.connecting:
+        return BasicPlaybackState.connecting;
+      case AudioPlaybackState.completed:
+        return BasicPlaybackState.stopped;
+      default:
+        throw Exception("Illegal state");
+    }
+  }
+
+  List<MediaControl> getControls(BasicPlaybackState state) {
+    if (isPlaying) {
+      return [
+        skipToPreviousControl,
+        pauseControl,
+        stopControl,
+        skipToNextControl
+      ];
+    } else {
+      return [
+        skipToPreviousControl,
+        playControl,
+        stopControl,
+        skipToNextControl
+      ];
+    }
+  }
+
+
+
+  void releaseAudio() {
+ /// await player.pause();
+
+if (isPlaying) {
+   AudioService.stop();
+}
+  eventSubscription.cancel();
+}
+
+void next() async {
+  if (isPlaying) {
+   // onStop();
+   AudioService.stop();
+  }
+     currentAudio = currentAudio + 1;
+     String url;
+     if (currentAudio < list.length) {
+          url = list[currentAudio].url;
+            await player.setUrl(url);
+
+          } else {
+            currentAudio = 0;
+            url = list[currentAudio].url;
+            await player.setUrl(url);
+     }
+}
+
+  bool get hasNext => currentAudio < list.length;
+
+  bool get hasPrevious => currentAudio > 0;
+
+   @override
+  Future<void> onStart() async {
+    await initialize();
+  }
+  @override
+  void onStop() {
+    stopAudio();
+    _setState(state: BasicPlaybackState.stopped);
+  }
+  @override
+  void onPlay() {
+    playAudio();
+  }
+  @override
+  void onPause() {
+    pauseAudio();
+  }
+  @override
+  void onClick(MediaButton button) {
+  playPause();
+  }
+  @override
+  onSkipToPrevious() {
+    previous();
+  }
+
+   @override
+  onSkipToNext() {
+    next();
+  }
+
+
+
+  void previous() async {
+    if(isPlaying) {
+         AudioService.stop();
+    }
+     String url;
+     if (currentAudio > 0) {
+          currentAudio = currentAudio - 1;
+          url = list[currentAudio].url;
+            await player.setUrl(url);
+          } else {
+            currentAudio = 0;
+            url = list[currentAudio].url;
+            await player.setUrl(url);
+     }
+
+}
+
+
+    void playPause() {
+    if (AudioServiceBackground.state.basicState == BasicPlaybackState.playing)
+      AudioService.pause();
+    else
+      AudioService.play();
+  }
+
+    @override
+  void onSeekTo(int position) {
+    onChangeEnd(Duration(milliseconds: position));
   }
 
 
@@ -62,21 +257,33 @@ class AudioPlayerController {
   return _chapters;
 }
 
-void playAudio() async {
+void playAudio() async  {
+
+ AudioService.start( 
+  backgroundTaskEntrypoint: backgroundTaskEntrypoint,
+  androidNotificationChannelName: 'Music Player',
+  androidNotificationIcon: "mipmap/ic_launcher",
+);
  await player.play();
+// AudioService.play();
 }
 
 void pauseAudio() async {
  await player.pause();
+ isPlaying = true;
+ // AudioService.pause();
 }
+
 
 void stopAudio() async {
   await player.stop();
+  isPlaying = false;
+ // AudioService.stop();
 }
 
-void releaseAudio() async {
-  await player.pause();
-  await player.dispose();
+void onChangeEnd(Duration newPosition) async {
+   await player.seek(newPosition);
+   AudioService.seekTo(newPosition.inMilliseconds.toInt());
 }
 
 
@@ -92,23 +299,6 @@ void releaseAudio() async {
   }
 }
 
-class AudioPositionStreamModel {
-
-  Duration position;
-
-}
-
-class AudioStateStreamModel {
-
-  AudioPlayer player = AudioPlayerController().player;
-
-}
-
-class AudioDurationStreamModel {
-
-  AudioPlayer player = AudioPlayerController().player;
-
-}
 
 class AudioPlayerItem {
 
