@@ -28,7 +28,7 @@ class _MainViewState extends State<MainView> {
   bool isNavItem = false;
 
   final List<PageItem> tabs = [
-    PageItem(pageWidget: Today()),
+   // PageItem(pageWidget: Today()),
     PageItem(pageWidget: Progress()),
     PageItem(pageWidget: ReadingPlan()),
     PageItem(pageWidget: Settings()),
