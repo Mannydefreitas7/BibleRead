@@ -100,7 +100,7 @@ class PlanCard extends StatelessWidget {
                     maxLines: 1,
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w400,
                         fontSize: 16.0,
                         fontFamily: 'Avenir Next',
                         color: Theme.of(context).textTheme.subtitle.color),

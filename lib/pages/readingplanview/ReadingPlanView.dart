@@ -81,8 +81,9 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
       Positioned(
         bottom: 0,
         child: Container(
-         //   clipBehavior: Clip.hardEdge,
+        //  clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
+                //shape: ,
                 color: Theme.of(context).cardColor, 
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30), 
@@ -114,7 +115,7 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
       Positioned(
         bottom: 0,
         left: 0,
-        height: 180,
+        height: 200,
         width: MediaQuery.of(context).size.width,
         child: Container(
         decoration: BoxDecoration(
@@ -145,12 +146,13 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
             //    color: Theme.of(context).backgroundColor,
                 onPressed: () => {
                   SharedPrefs().setSelectedPlan(widget.planId),
+                  SharedPrefs().setBookMarkFalse(),
                   Navigator.pop(context)
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  margin: EdgeInsets.symmetric(horizontal: 30),
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: EdgeInsets.symmetric(vertical: 30),
                   child: Text(
                     'Start Plan',
                     textAlign: TextAlign.center,

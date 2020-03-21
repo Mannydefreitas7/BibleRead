@@ -53,6 +53,9 @@ class _TodayPageState extends State<TodayPage> {
   String _platformVersion = 'Unknown';
   double _sliderVolume;
   String _error;
+  String bookmarkdata = '';
+ bool hasBookmark = false;
+
  int currentAudio = 0;
 
   Future<List<ChapterAudio>> _chaptersAudio;
@@ -82,7 +85,7 @@ class _TodayPageState extends State<TodayPage> {
   setState(() => { 
       _unReadChapters = DatabaseHelper().unReadChapters(),
       _progressValue = DatabaseHelper().countProgressValue(),
-
+      hasBookmark = false
     });
     await initialize();
 }
@@ -109,11 +112,11 @@ void releaseAudio() async {
   await player.stop();
 }
 
-//   void onChanged(Duration value) {
-//     setState(() {
-//         slider = value;
-//     });
-// }
+  void onChanged(double value) {
+    setState(() {
+        slider = value;
+    });
+}
 
 void onChangeEnd(Duration newPosition) async {
       await player.seek(newPosition);
@@ -145,6 +148,14 @@ void initState() {
     } else {
       isSingle = false;
     }
+
+        SharedPrefs().getBookMarkData().then((value) => {
+                        bookmarkdata = SharedPrefs().parseBookMarkedVerse(value)
+                      });
+
+                      SharedPrefs().getHasBookMark().then((value) => {
+                        hasBookmark = value
+                      });
 }
 
 
@@ -177,7 +188,6 @@ void next() async {
               setState(() {});
      }
     await player.play();
- 
 }
 
 void previous() async {
@@ -230,9 +240,18 @@ void previous() async {
           FutureBuilder(
                    future: _unReadChapters,
                     builder: (BuildContext context, AsyncSnapshot snapshot) { 
+                    
 
                   if (snapshot.hasData) {
                          unReadPlan = snapshot.data;
+                          
+                            String lastChapter() {
+                              if (unReadPlan[0].chapters.contains('-')) {
+                                return unReadPlan[0].chapters.split('-')[1];
+                              } else {
+                              return '';
+                              }
+                            }
              
                           return ListView(
                             padding: const EdgeInsets.only(top: 70),
@@ -246,7 +265,7 @@ void previous() async {
                                   removeBookMark: _setBookMarkFalse,
                                   isDisabled: isConnected,
                                   bookName: unReadPlan[0].longName,
-                                  chapters: unReadPlan[0].chapters,
+                                  chapters: hasBookmark ? '$bookmarkdata - ${lastChapter()}' : unReadPlan[0].chapters,
                                   chaptersData: unReadPlan[0].chaptersData,
                            )),
 
