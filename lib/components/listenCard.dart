@@ -139,6 +139,7 @@ class ListenCard extends StatelessWidget  {
                 children: <Widget>[
 
                   SliderAudio(
+                    
                     isReady: isReady,
                     duration: duration, 
                     onChanged: sliderChange,

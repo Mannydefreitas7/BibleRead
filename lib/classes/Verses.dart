@@ -33,12 +33,12 @@ class _VersesState extends State<Verses> {
   final CustomToolbar customToolbar = CustomToolbar();
   bool showBookmarkIcon = false;
   void _showBottomSheet(BuildContext context) => showModalBottomSheet(
-      enableDrag: true,
+   //   enableDrag: true,
       context: context,
       builder: (_) {
         return Container(
           height: 150,
-          clipBehavior: Clip.hardEdge,
+        //  clipBehavior: Clip.hardEdge,
           child: BookMarkDialog(
             data: widget.verseLink,
           ),
@@ -55,7 +55,7 @@ class _VersesState extends State<Verses> {
       Center(
         child: Container(
           alignment: Alignment.center,
-          clipBehavior: Clip.none,
+         // clipBehavior: Clip.none,
           margin: widget.isChapter ? EdgeInsets.all(15) : EdgeInsets.all(10),
           child: Center(
               child: GestureDetector(

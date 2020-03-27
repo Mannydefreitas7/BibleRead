@@ -13,6 +13,7 @@ class PlanBibleBookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+     // clipBehavior: Clip.hardEdge,
       alignment: Alignment.center,
       margin: EdgeInsets.symmetric(
         horizontal: 10),

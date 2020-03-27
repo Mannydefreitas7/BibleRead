@@ -20,7 +20,7 @@ class SliderAudio extends StatefulWidget {
 }
 
 class _SliderAudioState extends State<SliderAudio> {
-  double _dragValue;
+  double _dragValue = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _SliderAudioState extends State<SliderAudio> {
                 ),
                 child: Slider(
       min: 0.0,
-      max: widget.duration.inMilliseconds.toDouble(),
+      max: widget.duration.inMilliseconds.toDouble() ?? 1.0,
       value: _dragValue ?? widget.position.inMilliseconds.toDouble(),
       onChanged: (value) {
         setState(() {
