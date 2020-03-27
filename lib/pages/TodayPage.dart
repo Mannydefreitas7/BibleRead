@@ -81,6 +81,7 @@ class _TodayPageState extends State<TodayPage> {
   player.stop();
   await DatabaseHelper().markTodayRead();
   await SharedPrefs().setBookMarkFalse();
+
   unReadChapters = await DatabaseHelper().unReadChapters();
   setState(() => { 
       _unReadChapters = DatabaseHelper().unReadChapters(),
@@ -149,13 +150,20 @@ void initState() {
       isSingle = false;
     }
 
-        SharedPrefs().getBookMarkData().then((value) => {
-                        bookmarkdata = SharedPrefs().parseBookMarkedVerse(value)
-                      });
+       SharedPrefs().getHasBookMark().then((value) => {
+            hasBookmark = value
+          });
 
-                      SharedPrefs().getHasBookMark().then((value) => {
-                        hasBookmark = value
-                      });
+        SharedPrefs().getBookMarkData().then((value) => {
+            if (value != '' || value != null) {
+              print(value),
+              bookmarkdata = SharedPrefs().parseBookMarkedVerse(value)
+            } else {
+              bookmarkdata = ''
+            }
+          });
+
+       
 }
 
 
@@ -227,8 +235,6 @@ void previous() async {
          setState(() { });
     }
 
- 
-
     return BibleReadScaffold(
       title: 'Today',      
       hasFloatingButton: true,
@@ -236,17 +242,17 @@ void previous() async {
       selectedIndex: 0,
       bodyWidget: Container(
         padding: EdgeInsets.only(left: 15, right: 15),
-        child: Stack(children: <Widget>[
+        child: Stack(
+          overflow: Overflow.clip,
+          children: <Widget>[
           FutureBuilder(
                    future: _unReadChapters,
                     builder: (BuildContext context, AsyncSnapshot snapshot) { 
-                    
-
                   if (snapshot.hasData) {
                          unReadPlan = snapshot.data;
                           
                             String lastChapter() {
-                              if (unReadPlan[0].chapters.contains('-')) {
+                              if (unReadPlan[0].chapters.contains('-') == true) {
                                 return unReadPlan[0].chapters.split('-')[1];
                               } else {
                               return '';
@@ -254,7 +260,9 @@ void previous() async {
                             }
              
                           return ListView(
+                            addAutomaticKeepAlives: true,
                             padding: const EdgeInsets.only(top: 70),
+                            
                             scrollDirection: Axis.vertical,
                             children: <Widget>[
 
@@ -293,16 +301,12 @@ void previous() async {
 
                                       if (state == AudioPlaybackState.connecting ||
                                           buffering == true) {
-                                           // isReady = false;
                                             isPlaying = false;
                                       } else if (state == AudioPlaybackState.playing) {
-                                          //  isReady = true;
                                             isPlaying = true;
                                        } else if (state == AudioPlaybackState.completed) {
-
                                            isPlaying = false;
                                            next();
-                                        
                                       } else {
                                           isPlaying = false;
                                       }

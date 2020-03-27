@@ -104,10 +104,7 @@ class BookMarkDialog extends StatelessWidget {
                       SharedPrefs().setBookMarkTrue(),
                       Navigator.of(context).popAndPushNamed('/')
                     }),
-                    Divider(
-                      height: 3,
-                      color: Theme.of(context).textTheme.caption.color.withOpacity(0.5),
-                    ),
+                    
             ListTile(
                 title: Text(
                   'Cancel',

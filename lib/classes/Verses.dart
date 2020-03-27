@@ -88,7 +88,7 @@ class _VersesState extends State<Verses> {
                       
                       Container(
                         decoration: BoxDecoration(
-                          color: showBookmarkIcon ? Theme.of(context).accentColor.withOpacity(0.1) : Colors.transparent,
+                          color: showBookmarkIcon ? Theme.of(context).accentColor.withOpacity(0.05) : Colors.transparent,
                           borderRadius: BorderRadius.circular(20)
                         ),
                         padding: showBookmarkIcon ? EdgeInsets.all(15) : EdgeInsets.all(0),
@@ -100,7 +100,7 @@ class _VersesState extends State<Verses> {
                           fontWeight: FontWeight.normal,
                           fontFamily: 'PT Serif',
                         ),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.justify,
                         ),
                       ),
                       onTap: () => setState(() {
@@ -128,7 +128,7 @@ class _VersesState extends State<Verses> {
                                 alignment: Alignment.center,
                                 icon: Icon(
                                   Icons.clear,
-                                  color: Theme.of(context).accentColor,
+                                  color: Theme.of(context).textTheme.title.color,
                                 ),
                                 onPressed: () => setState(() => showBookmarkIcon = !showBookmarkIcon))),
                         
@@ -140,7 +140,7 @@ class _VersesState extends State<Verses> {
                                 alignment: Alignment.center,
                                 icon: Icon(
                                   Icons.bookmark_border,
-                                  color: Theme.of(context).accentColor,
+                                  color: Theme.of(context).textTheme.title.color,
                                 ),
                                 onPressed: () => _showBottomSheet(context))),
                           SizedBox(height: 10, width: 10,),
@@ -150,7 +150,7 @@ class _VersesState extends State<Verses> {
                                 alignment: Alignment.center,
                                 icon: Icon(
                                   LineAwesomeIcons.share,
-                                  color: Theme.of(context).accentColor,
+                                  color: Theme.of(context).textTheme.title.color,
                                 ),
                                 onPressed: () => {
                                   

@@ -1,14 +1,7 @@
-import 'package:BibleRead/AudioPlayerController.dart';
-import 'package:BibleRead/classes/AudioController.dart';
-import 'package:BibleRead/classes/NetworkProvider.dart';
 import 'package:BibleRead/helpers/FirstLaunch.dart';
-import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
-import 'package:BibleRead/helpers/MultiProviderHelper.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/pages/OnBoardingPage.dart';
-import 'package:connectivity/connectivity.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'pages/ProgressPage.dart';
 import 'pages/ReadingPlanPage.dart';
