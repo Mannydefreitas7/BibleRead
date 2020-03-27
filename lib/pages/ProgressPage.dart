@@ -3,16 +3,13 @@ import 'package:BibleRead/pages/progressview/ProgressCard.dart';
 import 'package:provider/provider.dart';
 import '../components/bibleBooksList.dart';
 import 'package:flutter/material.dart';
-
 import '../classes/BibleReadScaffold.dart';
 
 class ProgressPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<BibleBookListData>(
-      create: (context) => BibleBookListData(),
-      child: BibleReadScaffold(
+    return BibleReadScaffold(
       title: 'Progress',
       hasFloatingButton: false,
       selectedIndex: 1,
@@ -29,7 +26,6 @@ class ProgressPage extends StatelessWidget {
             )
         ],
       ),
-    ),
     ),
     );
   }

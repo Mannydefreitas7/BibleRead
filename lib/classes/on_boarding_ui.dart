@@ -32,7 +32,7 @@ class OnBoardingUi extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    Configs.getInstance(slides: slides,onFinish: onFinish);
+    Configs.getInstance(slides: slides, onFinish: onFinish);
 
     return LandingPage();
   }

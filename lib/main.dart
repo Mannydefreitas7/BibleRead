@@ -24,7 +24,7 @@ class BibleReadApp extends StatelessWidget {
     return MultiProvider(
       providers: [
             ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
-         //   StreamProvider<Duration>.value(value: AudioPlayerController().player.getPositionStream())
+     
       ],
       child: MaterialApp(
       initialRoute: '/',
@@ -106,9 +106,15 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
       if (snapshot.hasData) {
         return TodayPage();
 
-      } else {
-       
+      } else if (!snapshot.hasData) {
+
         return OnBoardingPage();
+        
+      } else {
+
+        return Scaffold(
+          body: Center(child: CircularProgressIndicator(),),
+        );
       }
 
     });
