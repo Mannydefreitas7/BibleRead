@@ -1,14 +1,8 @@
-import 'package:BibleRead/AudioPlayerController.dart';
-import 'package:BibleRead/classes/AudioController.dart';
-import 'package:BibleRead/classes/NetworkProvider.dart';
+
 import 'package:BibleRead/helpers/FirstLaunch.dart';
-import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
-import 'package:BibleRead/helpers/MultiProviderHelper.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/pages/OnBoardingPage.dart';
-import 'package:connectivity/connectivity.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'pages/ProgressPage.dart';
 import 'pages/ReadingPlanPage.dart';
@@ -31,7 +25,7 @@ class BibleReadApp extends StatelessWidget {
     return MultiProvider(
       providers: [
             ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
-         //   StreamProvider<Duration>.value(value: AudioPlayerController().player.getPositionStream())
+     
       ],
       child: MaterialApp(
       initialRoute: '/',
@@ -113,9 +107,15 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
       if (snapshot.hasData) {
         return TodayPage();
 
-      } else {
-       
+      } else if (!snapshot.hasData) {
+
         return OnBoardingPage();
+        
+      } else {
+
+        return Scaffold(
+          body: Center(child: CircularProgressIndicator(),),
+        );
       }
 
     });
