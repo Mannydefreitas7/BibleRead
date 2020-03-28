@@ -174,7 +174,7 @@ void initState() {
 
 @override
   void dispose() {
-    releaseAudio();
+   // releaseAudio();
     super.dispose();
     
   }
