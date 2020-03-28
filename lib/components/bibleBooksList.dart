@@ -11,11 +11,20 @@ class BibleBookList extends StatelessWidget {
   BibleBookList({Key key, this.duration}) : super(key: key);
   final Duration duration;
  Future<List<Plan>> _list;
+    List<Plan> tempList = [];
 
- bool _checkBookIsRead(List<Plan> list) {
-   bool _isRead;
-   list.where((item) => item.isRead == true);
-   print(list.where((item) => item.isRead == true).length);
+
+
+ bool _checkBookIsRead(int index) {
+
+  BibleBookListData().getChapters(index).then((value) => tempList = value);
+  var filteredList = tempList.where((item) => item.isRead == false);
+  print(tempList);
+  if (filteredList.length == 0) {
+    return true;
+  } else {
+    return false;
+  }
  } 
 
   @override
@@ -30,14 +39,14 @@ class BibleBookList extends StatelessWidget {
             if (snapshot.hasData) {
 
               List<Plan> list = snapshot.data;
-              _checkBookIsRead(list);
-  
+            
               return  ListView.builder(
               padding: const EdgeInsets.only(
               top: 70, left: 20, right: 20),
               scrollDirection: Axis.vertical,
               itemCount: list.length,
               itemBuilder: (context, index) {
+                print(list[index].isRead);
               return Container(
               margin: EdgeInsets.only(bottom: 10),
               child: BibleBookCard(
@@ -45,7 +54,7 @@ class BibleBookList extends StatelessWidget {
                 bookShortName: list[index].shortName,
                 selectedPlan: list[index].planId,
                 bookId: list[index].bookNumber,
-                isRead: list[index].isRead,
+                isRead: _checkBookIsRead(list[index].bookNumber),
          )
        );
     });

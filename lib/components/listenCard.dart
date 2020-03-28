@@ -41,6 +41,17 @@ class ListenCard extends StatelessWidget  {
     final Function sliderChange;
 
 
+bool checkReadyandSingle() {
+  
+  if (isSingle == true && isReady == true) {
+       return false;
+  } else if (isReady == false) {
+      return false;
+  } else {
+    return true;
+  }
+}
+
 
 
   @override
@@ -109,7 +120,7 @@ class ListenCard extends StatelessWidget  {
                       IconButton(
                           icon: Icon(
                             SimpleLineIcons.arrow_left,
-                            color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
+                            color: isReady || !isSingle ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 35,
                           ),
                           onPressed: previous),
@@ -123,7 +134,7 @@ class ListenCard extends StatelessWidget  {
                       IconButton(
                           icon: Icon(
                             SimpleLineIcons.arrow_right,
-                            color: isReady || isSingle ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
+                            color: checkReadyandSingle() ? Theme.of(context).accentColor : Theme.of(context).accentColor,
                             size: 35,
                           ),
                           onPressed: next)

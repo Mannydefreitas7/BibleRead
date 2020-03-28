@@ -1,4 +1,3 @@
-
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
