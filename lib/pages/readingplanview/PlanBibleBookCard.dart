@@ -25,7 +25,9 @@ class PlanBibleBookCard extends StatelessWidget {
           borderRadius:BorderRadius.circular(20)),
           child: Column(children: [
             Text(shortName,
+            overflow: TextOverflow.fade,
               style: TextStyle(
+                
               fontSize: 22,
               fontWeight:FontWeight.w600,
               color: Theme.of(context).textTheme.title.color),

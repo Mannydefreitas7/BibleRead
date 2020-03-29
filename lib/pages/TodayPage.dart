@@ -20,6 +20,7 @@ import '../components/progressCard.dart';
 import '../classes/BibleReadScaffold.dart';
 import 'package:connectivity/connectivity.dart';
 import '../helpers/LocalDataBase.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
 
@@ -329,7 +330,10 @@ void previous() async {
                                       return Container(
                                     height: 120,
                                     child: Center(
-                                    child: CircularProgressIndicator()),
+                                    child: SpinKitDoubleBounce(
+                                      color: Theme.of(context).accentColor,
+                                    )
+                                    ),
                                );
                                 }
                                 });

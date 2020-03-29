@@ -18,14 +18,10 @@ int selectedPlan;
 BibleBookListData() {
   DatabaseHelper().filterBooks().then((value) => {
       bibleBooks = value,
-      
   });
-  DatabaseHelper().getAllChapters().then((value) => list = value);
+  DatabaseHelper().getAllChapters().then((value) => list = value);  
   SharedPrefs().getSelectedPlan().then((value) => selectedPlan = value);
-  
 }
-
-
 
 // To read only
 Future<List<Plan>> get books => DatabaseHelper().filterBooks();
@@ -35,6 +31,10 @@ Future<List<Plan>> getChapters(int id) async {
   return bookChapters;
 }
 
+List<Plan> getBookChapters(int id) {
+List<Plan> chapters = list.where((chapter) => chapter.bookNumber == id).toList();
+return chapters;
+}
 
 Future<double> getProgressValue() async {
   progressValue = await DatabaseHelper().countProgressValue();
@@ -50,15 +50,14 @@ Future<Plan> getUnReadBooks() async {
 
 
 
-bool checkBookIsRead(int index) {
-  bookchapters = list.where((chapter) => chapter.bookNumber == index).toList();
+Future<bool> checkBookIsRead(int index) async {
+  bookchapters = await getChapters(index);
   List<Plan> unreadChapters = bookchapters.where((item) => item.isRead == false).toList();
   if (unreadChapters.length == 0) {
     return true;
   } else {
     return false;
   }
-
  } 
 
 markBookRead(int id) {
@@ -71,6 +70,13 @@ markBookRead(int id) {
   DatabaseHelper().markBookRead(id);
 
 }
+
+  selectReadingPlan(int id) async {
+    selectedPlan = id; 
+    list = await DatabaseHelper().getAllChapters(); 
+    await SharedPrefs().setSelectedPlan(id);
+    notifyListeners();
+  }
 
 markBookUnRead(int id) {
   

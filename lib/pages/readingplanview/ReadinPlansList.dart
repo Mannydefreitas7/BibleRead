@@ -1,5 +1,7 @@
+import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../classes/card.dart';
 import '../../helpers/SharedPrefs.dart';
@@ -12,6 +14,7 @@ class ReadingPlansList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bibleBookListData = Provider.of<BibleBookListData>(context);
     return Container(
       margin: EdgeInsets.only(top: 50),
       child: ListView.builder(
@@ -21,8 +24,9 @@ class ReadingPlansList extends StatelessWidget {
             return FutureBuilder(
                 future: SharedPrefs().getSelectedPlan(),
                 builder: (context, selectedPlan) {
+                  int selectedPlan = bibleBookListData.selectedPlan;
                   return ReadingPlanTile(
-                      selectedIndex: selectedPlan.data,
+                      selectedIndex: selectedPlan,
                       index: index,
                       planTitle: readingPlans[index]['name'],
                       onTap: () => Navigator.push(

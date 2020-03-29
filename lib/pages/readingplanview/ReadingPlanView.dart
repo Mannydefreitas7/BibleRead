@@ -4,12 +4,14 @@ import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/LocalJsonHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/JwBibleBook.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:BibleRead/pages/readingplanview/NumberOfDays.dart';
 import 'package:BibleRead/pages/readingplanview/PlanBibleBooks.dart';
 import 'package:BibleRead/pages/readingplanview/ProgressPlanCircle.dart';
 import 'package:BibleRead/pages/readingplanview/ReadingStartDate.dart';
+import 'package:provider/provider.dart';
 
 import '../../classes/datepicker/date_picker.dart';
 
@@ -38,6 +40,7 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
 
   @override
   Widget build(BuildContext context) {
+    final bibleBookListData = Provider.of<BibleBookListData>(context);
     return Scaffold(
         body: Stack(fit: StackFit.loose, overflow: Overflow.visible, children: <
             Widget>[
@@ -144,10 +147,10 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
                   
                     borderRadius: BorderRadius.circular(20)),
             //    color: Theme.of(context).backgroundColor,
-                onPressed: () => {
-                  SharedPrefs().setSelectedPlan(widget.planId),
-                  SharedPrefs().setBookMarkFalse(),
-                  Navigator.pop(context)
+                onPressed: () {
+                  bibleBookListData.selectReadingPlan(widget.planId);
+                  SharedPrefs().setBookMarkFalse();
+                  Navigator.pop(context);
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 30),

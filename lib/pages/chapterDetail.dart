@@ -23,7 +23,7 @@ class ChapterDetail extends StatelessWidget {
     builder: (context, bibleBookListData, child) {
        markBookRead() => bibleBookListData.markBookRead(id);
       markBookUnRead() => bibleBookListData.markBookUnRead(id);
-      
+     
         return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: PreferredSize(
@@ -69,12 +69,12 @@ class ChapterDetail extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 15),
           width: double.infinity,
           height: double.infinity,
-          child: FutureBuilder(
-            future: bibleBookListData.getChapters(id),
+          child: StreamBuilder(
+            stream: bibleBookListData.getChapters(id).asStream(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-               // print(bibleBookListData.list);
-                final List<Plan> chapters = bibleBookListData.list.where((chapter) => chapter.bookNumber == id).toList();
+  
+                final List<Plan> chapters = snapshot.data;
                 return ListView.separated(
                 itemCount: chapters.toList().length,
                 separatorBuilder: (context, index) => Divider(
@@ -106,34 +106,37 @@ class ChapterDetail extends StatelessWidget {
               }
             })
         ),
-        floatingActionButton: Container(
-                margin: EdgeInsets.only(bottom: 20),
-                child: FloatingActionButton(
-                      backgroundColor: bibleBookListData.checkBookIsRead(id) ? Colors.grey : Theme.of(context).accentColor,
-                      onPressed: bibleBookListData.checkBookIsRead(id) ? markBookUnRead : markBookRead,
-                      focusElevation: 5.0,
-                      child: Icon(bibleBookListData.checkBookIsRead(id) ? Icons.clear : Icons.check, color: Colors.white, size: 30.0),
-                      elevation: 2.0,
-                )
+         floatingActionButton: 
+        Container(
+               margin: EdgeInsets.only(bottom: 20),
+        
+               child: 
+               // FloatingActionButton(
+        //               backgroundColor: bibleBookListData.checkBookIsRead(id) ? Colors.grey : Theme.of(context).accentColor,
+        //               onPressed: bibleBookListData.checkBookIsRead(id) ? markBookUnRead : markBookRead,
+        //               focusElevation: 5.0,
+        //               child: Icon(bibleBookListData.checkBookIsRead(id) ? Icons.clear : Icons.check, color: Colors.white, size: 30.0),
+        //               elevation: 2.0,
+        //         )
                 
-                // FutureBuilder(
-                //   future: bibleBookListData.checkBookIsRead(id),
-                //   builder: (BuildContext context, AsyncSnapshot snapshot) {
-                //     if (snapshot.hasData) {
-                //       bool isBookRead = snapshot.data;
-                //       return FloatingActionButton(
-                //       backgroundColor: isBookRead ? Colors.grey : Theme.of(context).accentColor,
-                //       onPressed: isBookRead ? markBookUnRead : markBookRead,
-                //       focusElevation: 5.0,
-                //       child: Icon(isBookRead ? Icons.clear : Icons.check, color: Colors.white, size: 30.0),
-                //       elevation: 2.0,
-                // );
-                //     } else {
-                //       return Container();
-                //     }
+                FutureBuilder(
+                  future: bibleBookListData.checkBookIsRead(id),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      bool isBookRead = snapshot.data;
+                      return FloatingActionButton(
+                      backgroundColor: isBookRead ? Colors.grey : Theme.of(context).accentColor,
+                      onPressed: isBookRead ? markBookUnRead : markBookRead,
+                      focusElevation: 5.0,
+                      child: Icon(isBookRead ? Icons.clear : Icons.check, color: Colors.white, size: 30.0),
+                      elevation: 2.0,
+                );
+                    } else {
+                      return Container();
+                    }
                    
-                //   },
-                // ),
+                  },
+                ),
 
               ), 
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

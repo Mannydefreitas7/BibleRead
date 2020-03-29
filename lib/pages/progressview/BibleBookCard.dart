@@ -28,10 +28,16 @@ class BibleBookCard extends StatelessWidget {
     final bibleBookListData = Provider.of<BibleBookListData>(context);
     markBookRead() => bibleBookListData.markBookRead(bookId);
     markBookUnRead() => bibleBookListData.markBookUnRead(bookId);
-    bool isRead = bibleBookListData.checkBookIsRead(bookId);
-   return Slidable(
+
+   return StreamBuilder(
+     initialData: false,
+     stream: bibleBookListData.checkBookIsRead(bookId).asStream(),
+     builder: (BuildContext context, AsyncSnapshot snapshot) {
+       bool isRead = snapshot.data;
+      return Slidable(
           actionPane: SlidableBehindActionPane(),
           secondaryActions: <Widget>[
+
             IconSlideAction(           
               caption: isRead ? 'Unread' : 'Read',
               color: Colors.transparent,
@@ -85,5 +91,7 @@ class BibleBookCard extends StatelessWidget {
               )
         ),
       );
+     });
+   
   }
 }

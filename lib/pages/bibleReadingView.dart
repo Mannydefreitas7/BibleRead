@@ -5,6 +5,7 @@ import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../helpers/LocalDataBase.dart';
 import '../helpers/SharedPrefs.dart';
@@ -119,7 +120,9 @@ class BibleReadingView extends StatelessWidget {
                                   }).toList());
                                 } else {
                                   return Center(
-                                      child: CircularProgressIndicator());
+                                      child: SpinKitDoubleBounce(
+                                      color: Theme.of(context).accentColor,
+                                    ));
                                 }
                               });
                         });
