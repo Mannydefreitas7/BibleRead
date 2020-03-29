@@ -12,10 +12,10 @@ class BibleBookCard extends StatelessWidget {
   final String bookLongName;
   final int bookId;
   final int selectedPlan;
-  final bool isRead;
+ // final bool isRead;
 
   BibleBookCard({
-    this.isRead, 
+   // this.isRead, 
     this.bookLongName, 
     this.bookShortName, 
     this.bookId, 
@@ -26,16 +26,18 @@ class BibleBookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bibleBookListData = Provider.of<BibleBookListData>(context);
-    _markBookRead() => bibleBookListData.markBookRead(bookId);
+    markBookRead() => bibleBookListData.markBookRead(bookId);
+    markBookUnRead() => bibleBookListData.markBookUnRead(bookId);
+    bool isRead = bibleBookListData.checkBookIsRead(bookId);
    return Slidable(
           actionPane: SlidableBehindActionPane(),
           secondaryActions: <Widget>[
             IconSlideAction(           
-              caption: !isRead ? 'Read' : 'Unread',
+              caption: isRead ? 'Unread' : 'Read',
               color: Colors.transparent,
-              icon: !isRead ? Icons.check : Icons.close,
-              foregroundColor: !isRead ? Theme.of(context).accentColor : Theme.of(context).textTheme.caption.color,
-              onTap: _markBookRead
+              icon: isRead ? Icons.close : Icons.check,
+              foregroundColor: isRead ? Theme.of(context).textTheme.caption.color : Theme.of(context).accentColor,
+              onTap: isRead ? markBookUnRead : markBookRead
           ),
 
           ],
@@ -53,14 +55,13 @@ class BibleBookCard extends StatelessWidget {
               builder: (context) =>
               ChapterDetail(
               bookName: bookLongName,
-              isBookRead: isRead,
               id: bookId,
               planId: selectedPlan,
              ))),
                 leading: CircleAvatar(
                   backgroundColor: Theme.of(context).backgroundColor,
                   child: Text(bookShortName, style: 
-                   TextStyle(color: !isRead ? Theme.of(context).textTheme.title.color : Colors.grey, fontSize: 16)
+                   TextStyle(color: isRead ? Colors.grey : Theme.of(context).textTheme.title.color, fontSize: 16)
                   ,),
                 ),
                 contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -73,7 +74,7 @@ class BibleBookCard extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style:  TextStyle(
-                        color: !isRead ? Theme.of(context).textTheme.title.color : Colors.grey, 
+                        color: isRead ? Colors.grey : Theme.of(context).textTheme.title.color, 
                         fontSize: 20, 
                         fontFamily: 'Avenir Next',
                         fontWeight: FontWeight.w600

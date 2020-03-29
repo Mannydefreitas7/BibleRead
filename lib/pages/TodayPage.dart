@@ -48,6 +48,7 @@ class _TodayPageState extends State<TodayPage> {
 
   bool isPlaying = false;
   bool isReady = false;
+  String verses = '';
   bool isSingle = true;
   double slider = 0.0;
   String _platformVersion = 'Unknown';
@@ -154,22 +155,21 @@ void initState() {
             hasBookmark = value
           });
 
-        SharedPrefs().getBookMarkData().then((value) => {
-            if (value != '' || value != null) {
-              print(value),
+       SharedPrefs().getBookMarkData().then((value) => {
+            if (value.length > 0) {
               bookmarkdata = SharedPrefs().parseBookMarkedVerse(value)
             } else {
               bookmarkdata = ''
             }
           });
 
-       
 }
 
 
   initialize() async {
     list = await audioPayerController.setupAudioList();
     await player.setUrl(list[currentAudio].url);
+   
   }
 
 @override
@@ -178,8 +178,6 @@ void initState() {
     super.dispose();
     
   }
-
-
 
 void next() async {
    await player.stop();
@@ -253,7 +251,7 @@ void previous() async {
                           
                             String lastChapter() {
                               if (unReadPlan[0].chapters.contains('-') == true) {
-                                return unReadPlan[0].chapters.split('-')[1];
+                                return ' - ${unReadPlan[0].chapters.split('-')[1]}';
                               } else {
                               return '';
                               }
@@ -273,7 +271,7 @@ void previous() async {
                                   removeBookMark: _setBookMarkFalse,
                                   isDisabled: isConnected,
                                   bookName: unReadPlan[0].longName,
-                                  chapters: hasBookmark ? '$bookmarkdata - ${lastChapter()}' : unReadPlan[0].chapters,
+                                  chapters: hasBookmark ? '$bookmarkdata${lastChapter()}' : unReadPlan[0].chapters,
                                   chaptersData: unReadPlan[0].chaptersData,
                            )),
 

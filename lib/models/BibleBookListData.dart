@@ -1,21 +1,40 @@
 import 'package:BibleRead/helpers/LocalDataBase.dart';
+import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/Plan.dart';
+import 'package:BibleRead/models/ReadingPlan.dart';
 import 'package:flutter/material.dart';
 
 class BibleBookListData extends ChangeNotifier {
 double progressValue;
 Plan unReadFirst;
-List<Plan> bibleBooks;
-
+List<Plan> bibleBooks = [];
+//bool isBookRead = false;
+List<Plan> list = [];
+List<Plan> bookchapters = [];
+List<Plan> chapters = [];
+List<ReadingPlans> readingPlans = [];
+int selectedPlan;
 
 BibleBookListData() {
   DatabaseHelper().filterBooks().then((value) => {
       bibleBooks = value,
+      
   });
+  DatabaseHelper().getAllChapters().then((value) => list = value);
+  SharedPrefs().getSelectedPlan().then((value) => selectedPlan = value);
+  
 }
 
+
+
+// To read only
 Future<List<Plan>> get books => DatabaseHelper().filterBooks();
-Future<List<Plan>> getChapters(int id) => DatabaseHelper().queryBookChapters(id);
+
+Future<List<Plan>> getChapters(int id) async {
+  List<Plan> bookChapters = await DatabaseHelper().queryBookChapters(id);
+  return bookChapters;
+}
+
 
 Future<double> getProgressValue() async {
   progressValue = await DatabaseHelper().countProgressValue();
@@ -28,26 +47,54 @@ Future<Plan> getUnReadBooks() async {
   return unReadFirst;
 }
 
-Future markBookRead(int id) async {
- await DatabaseHelper().markBookRead(id);
+
+
+
+bool checkBookIsRead(int index) {
+  bookchapters = list.where((chapter) => chapter.bookNumber == index).toList();
+  List<Plan> unreadChapters = bookchapters.where((item) => item.isRead == false).toList();
+  if (unreadChapters.length == 0) {
+    return true;
+  } else {
+    return false;
+  }
+
+ } 
+
+markBookRead(int id) {
+  bookchapters = list.where((chapter) => chapter.bookNumber == id).toList();
+  bookchapters.forEach((chapter) { 
+    chapter.isRead = true;
+  });
+//  isBookRead = true;
   notifyListeners();
+  DatabaseHelper().markBookRead(id);
+
 }
 
 markBookUnRead(int id) {
+  
+  bookchapters = list.where((chapter) => chapter.bookNumber == id).toList();
+  bookchapters.forEach((chapter) { 
+    chapter.isRead = false;
+  });
+ // isBookRead = true;
+   notifyListeners();
   DatabaseHelper().markBookUnRead(id);
-  notifyListeners();
+ 
 }
 
-markChapterRead(int id) {
+markChapterRead(int id, List<Plan> chapters, int index) {
+  chapters[index].isRead = true;
    DatabaseHelper().markChapterRead(id);
    notifyListeners();
 }
 
-markChapterUnRead(int id) {
+markChapterUnRead(int id, List<Plan> chapters, int index) {
+
+  chapters[index].isRead = false;
    DatabaseHelper().markChapterUnRead(id);
    notifyListeners();
 }
-  
-
   
 }

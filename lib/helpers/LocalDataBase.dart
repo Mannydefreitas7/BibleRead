@@ -80,7 +80,7 @@ Future<List<Plan>> queryBookChapters(int id) async {
     int planId = await SharedPrefs().getSelectedPlan();
     String selectedLocale = await SharedPrefs().getSelectedLocale();
   List localeBooks = await getLocaleBooks(selectedLocale);
-  List _chapters = await db.query('plan_$planId', where: "BookNumber = ?", whereArgs: [id]);
+  List _chapters = await db.rawQuery("SELECT * FROM plan_$planId WHERE BookNumber = ?", [id]);
  
   List<Plan> chapters = [];
   for (var _chapter in _chapters) {
@@ -89,10 +89,24 @@ Future<List<Plan>> queryBookChapters(int id) async {
    return chapters;
 }
 
-Future<List<Map<String, dynamic>>> queryBooks(int planId) async {
+Future<List<Map<String, dynamic>>> queryChapters(int planId) async {
   Database db = await database;
 
    return await db.query('plan_$planId');
+}
+Future<List<Plan>> getAllChapters() async {
+  Database db = await database;
+  int planId = await SharedPrefs().getSelectedPlan();
+  String selectedLocale = await SharedPrefs().getSelectedLocale();
+  List localeBooks = await getLocaleBooks(selectedLocale);
+  List _chapters = await db.query('plan_$planId');
+  List<Plan> chapters = [];
+  for (var _book in _chapters) {
+    int bookId = _book["BookNumber"];
+    chapters.add(Plan.fromJson(_book, localeBooks[bookId - 1]));
+  }
+  return chapters;
+
 }
 
 Future<List<Plan>> filterBooks() async {
@@ -114,17 +128,13 @@ Future<List<Plan>> filterBooks() async {
 Future<void> markBookRead(int id) async {
    Database db = await database;
    int planId = await SharedPrefs().getSelectedPlan();
-  return queryBookChapters(id).then((data) => {
-  db.rawUpdate('UPDATE plan_$planId SET IsRead = 1 WHERE BookNumber = $id')
-   });
+  await db.rawUpdate('UPDATE plan_$planId SET IsRead = 1 WHERE BookNumber = $id');
 }
 
 Future<void> markChapterRead(int id) async {
    Database db = await database;
    int planId = await SharedPrefs().getSelectedPlan();
-  return queryBookChapters(id).then((data) => {
-  db.rawUpdate('UPDATE plan_$planId SET IsRead = 1 WHERE Id = $id')
-   });
+  await db.rawUpdate('UPDATE plan_$planId SET IsRead = 1 WHERE Id = $id');
 }
 
 Future<void> markTodayRead() async {
@@ -151,7 +161,7 @@ return db.query('$locale');
 Future<List<Plan>> unReadChapters() async {
   int planId = await SharedPrefs().getSelectedPlan();
   String selectedLocale = await SharedPrefs().getSelectedLocale();
-  List allChapters = await queryBooks(planId);
+  List allChapters = await queryChapters(planId);
   List localeBooks = await getLocaleBooks(selectedLocale);
   List _allUnReadChapters = allChapters.where((i) => i['IsRead'] == 0).toList();
   List<Plan> unReadChapters = [];
@@ -261,7 +271,7 @@ Future<void> setLanguages(String locale) async {
 
     // void  _markChapterRead() {
     //   SharedPrefs().getSelectedPlan().then((selectedplan) {
-    //     DatabaseHelper().queryBooks(selectedplan).then((plan) {
+    //     DatabaseHelper().queryChapters(selectedplan).then((plan) {
     //         final int chapterId = _getUnReadDays(plan)[0]['Id'];
     //       DatabaseHelper().markChapterRead(chapterId, selectedplan);
     //     });

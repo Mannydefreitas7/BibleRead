@@ -75,9 +75,6 @@ class SharedPrefs {
         verses = verse.substring(5, 8);
   }
 
-  print(chapter.split('0'));
-  print(' ');
-  print(verses.split('0'));
 
     if (chapter.split('0').length == 3) {
 

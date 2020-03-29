@@ -100,7 +100,7 @@ class _VersesState extends State<Verses> {
                           fontWeight: FontWeight.normal,
                           fontFamily: 'PT Serif',
                         ),
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.left,
                         ),
                       ),
                       onTap: () => setState(() {
