@@ -92,8 +92,6 @@ class JwOrgApiHelper {
         list = data['editionData']['books'];
       }
 
-    
-
     return list;
   }
 

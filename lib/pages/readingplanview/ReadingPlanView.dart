@@ -50,7 +50,6 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
               width: MediaQuery.of(context).size.width,
               height: 240,
               fit: BoxFit.cover,
-              //  image: widget.image,
               image:
                   AssetImage('assets/images/plan_${widget.planId}_pnr.jpg'))),
       Positioned.fill(
@@ -86,11 +85,10 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
         child: Container(
         //  clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
-                //shape: ,
-                color: Theme.of(context).cardColor, 
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30), 
-                  topRight: Radius.circular(30))),
+          color: Theme.of(context).cardColor, 
+          borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30), 
+          topRight: Radius.circular(30))),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height - 200,
             child: SingleChildScrollView(
@@ -144,7 +142,6 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
             child: FlatButton(
 
                 shape: RoundedRectangleBorder(
-                  
                     borderRadius: BorderRadius.circular(20)),
             //    color: Theme.of(context).backgroundColor,
                 onPressed: () {

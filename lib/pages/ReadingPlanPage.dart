@@ -11,7 +11,7 @@ import '../classes/BibleReadScaffold.dart';
 class ReadingPlanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bibleBookListData = Provider.of<BibleBookListData>(context);
+    
     return BibleReadScaffold(
         title: 'Reading Plans',
         hasFloatingButton: false,

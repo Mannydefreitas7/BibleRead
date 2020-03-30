@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/JwBibleBook.dart';
+import 'package:BibleRead/models/Language.dart';
 import 'package:BibleRead/models/LocalBooks.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:flutter/material.dart';
@@ -180,6 +181,16 @@ Future<void> markBookUnRead(int id) async {
   return queryBookChapters(id).then((data) => {
   db.rawUpdate('UPDATE plan_$planId SET IsRead = 0 WHERE BookNumber = $id')
    });
+}
+
+Future<List<Language>> getLanguages() async {
+  Database db = await database;
+  List<Language> languages = [];
+  List<Map<String, dynamic>> data = await db.rawQuery("SELECT * FROM languages");
+  data.forEach((item) { 
+    languages.add(Language.fromJson(item));
+  });
+  return languages;
 }
 
 Future<void> setBookNames(String locale) async {

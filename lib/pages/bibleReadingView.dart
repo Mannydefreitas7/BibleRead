@@ -24,8 +24,6 @@ class BibleReadingView extends StatelessWidget {
       this.isChapterRead,
       this.actionOnPress});
 
-       
-
   @override
   Widget build(BuildContext context) {
 

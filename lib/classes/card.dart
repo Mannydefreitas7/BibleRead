@@ -210,7 +210,8 @@ class ReadingPlanTile extends StatelessWidget {
                     Container(
                        width: MediaQuery.of(context).size.width * 0.6,
                       child: Text(planTitle,
-                      maxLines: 4,
+                      maxLines: 3,
+                      overflow: TextOverflow.fade,
                       textAlign: TextAlign.start,
                         style: TextStyle(
                       color: selectedIndex == index ? Colors.white : Theme.of(context).textTheme.title.color,

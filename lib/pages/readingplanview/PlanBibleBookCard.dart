@@ -17,7 +17,7 @@ class PlanBibleBookCard extends StatelessWidget {
       alignment: Alignment.center,
       margin: EdgeInsets.symmetric(
         horizontal: 10),
-          width: 100,
+          width: 150,
         //  height: 100,
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(

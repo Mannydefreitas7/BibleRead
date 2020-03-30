@@ -91,6 +91,12 @@ class _TodayPageState extends State<TodayPage> {
       hasBookmark = false
     });
     await initialize();
+    
+}
+
+bibleViewMarkRead() {
+  _markTodayRead();
+  Navigator.pop(context);
 }
 
   _setBookMarkFalse() async {
@@ -164,6 +170,8 @@ void initState() {
             }
           });
 
+         DatabaseHelper().getLanguages().then((value) => print(value[0].name));
+
 }
 
 
@@ -194,7 +202,7 @@ void next() async {
             await player.setUrl(url);
               setState(() {});
      }
-    await player.play();
+  //  await player.play();
 }
 
 void previous() async {
@@ -211,7 +219,7 @@ void previous() async {
             await player.setUrl(url);
               setState(() {});
      }
-    await player.play();
+  //  await player.play();
  
 }
 
@@ -237,7 +245,7 @@ void previous() async {
     return BibleReadScaffold(
       title: 'Today',      
       hasFloatingButton: true,
-      floatingActionOnPress: () => _markTodayRead(),
+      floatingActionOnPress: _markTodayRead,
       selectedIndex: 0,
       bodyWidget: Container(
         padding: EdgeInsets.only(left: 15, right: 15),
@@ -271,6 +279,7 @@ void previous() async {
                                   markRead: _markTodayRead,
                                   removeBookMark: _setBookMarkFalse,
                                   isDisabled: isConnected,
+                                  bibleViewMarkRead: bibleViewMarkRead,
                                   bookName: unReadPlan[0].longName,
                                   chapters: hasBookmark ? '$bookmarkdata${lastChapter()}' : unReadPlan[0].chapters,
                                   chaptersData: unReadPlan[0].chaptersData,

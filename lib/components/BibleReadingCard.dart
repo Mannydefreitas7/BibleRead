@@ -21,7 +21,6 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
        final bool showTitleActions = true;
        DataPicker.showDatePicker(
          context,
-
          showTitleActions: showTitleActions,
          locale: 'en',
          datas: data,
@@ -34,7 +33,6 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
          },
        );
      }
-
 
 
   @override
@@ -73,7 +71,6 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
               unActiveColor: Theme.of(context).backgroundColor,
               thumbColor: Theme.of(context).cardColor,
               activeColor: Theme.of(context).accentColor,
-
               onChanged: (reminder) => print('$reminder changed'))
             ),
           ListTile(
@@ -104,7 +101,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
               ),
             ),
     )
-          ),
+  ),
 
            ListTile(
             leading: new Text(
@@ -122,41 +119,9 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
                 borderRadius: BorderRadius.circular(20.00), 
             ), 
             child: InkWell(
-                  onTap: () {
-                    
-                  },  
+                  onTap: () {},  
                   child: Text(
                 "NWT",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Theme.of(context).textTheme.title.color,
-                ),
-              ),
-            ),
-    )
-          ),
-
-           ListTile(
-            leading: new Text(
-              "Plan",
-              style: TextStyle(
-                fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
-              ),
-            ),
-            trailing: 
-            new Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
-                borderRadius: BorderRadius.circular(20.00), 
-            ), 
-            child: InkWell(
-                  onTap: () {
-                    
-                  },  
-                  child: Text(
-                "Regular",
                 style: TextStyle(
                   fontSize: 18,
                   color: Theme.of(context).textTheme.title.color,
@@ -178,7 +143,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
                   ),
                 )),
           )
-          ),
+        ),
           
         ],
       ),

@@ -22,7 +22,7 @@ class PlanBibleBooks extends StatelessWidget {
               color: Theme.of(context).textTheme.title.color)),
       SizedBox(height: 20),
       Container(
-          height: 100,
+         height: 100,
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width,
           child: StreamBuilder(

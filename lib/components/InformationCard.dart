@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:launch_review/launch_review.dart';
+
 
 class InformationCard extends StatelessWidget {
   @override
@@ -60,7 +62,7 @@ class InformationCard extends StatelessWidget {
           ListTile(
               title: new Center(
             child: FlatButton(
-                onPressed: () => print('review us'),
+                onPressed: () => LaunchReview.launch(writeReview: true),
                 child: new Text(
                   "Review us on App Store",
                   style: TextStyle(

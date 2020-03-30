@@ -24,7 +24,7 @@ class SettingsPage extends StatelessWidget {
            SizedBox(height: 20),
            BibleReadingCard(),
            SizedBox(height: 20),
-           SupportCard(),
+          // SupportCard(),
            SizedBox(height: 20),
          ]
        )
