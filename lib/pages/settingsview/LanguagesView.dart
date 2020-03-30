@@ -102,7 +102,8 @@ class _LanguagesViewState extends State<LanguagesView> {
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                    child: TextField(
                   controller: searchController,
-                  
+             
+                 keyboardAppearance: Theme.of(context).brightness,
                   style: TextStyle(
                     color: Theme.of(context).textTheme.title.color,
                       fontFamily: 'Avenir Next',

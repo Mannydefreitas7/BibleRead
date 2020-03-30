@@ -23,7 +23,7 @@ class JwOrgApiHelper {
     String link =
           "$jworgLocale";
     var res = await http
-        .get(Uri.encodeFull(link), headers: {"Accept": "application/json"});
+        .get(link, headers: {"Accept": "application/json"});
 
       if (res.statusCode == 200) {
 
@@ -123,7 +123,7 @@ class JwOrgApiHelper {
     Map<dynamic, dynamic> list;
      String link =
           "https://www.jw.org/en/library/bible/json/";
-    var response = await http.get(Uri.encodeFull(link), headers: {"Accept": "application/json"});
+    var response = await http.get(link, headers: {"Accept": "application/json"});
 
     if (response.statusCode == 200) {
 
@@ -143,7 +143,7 @@ class JwOrgApiHelper {
      for (var chapter in chapters) {
         String link =
           "$jworgLocale$chapter";
-      var res = await http.get(Uri.encodeFull(link), headers: {"Accept": "application/json"});
+      var res = await http.get(link, headers: {"Accept": "application/json"});
 
       if (res.statusCode == 200) {
         dynamic data = json.decode(res.body);
