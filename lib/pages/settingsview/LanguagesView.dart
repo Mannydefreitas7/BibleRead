@@ -80,6 +80,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                     isSelected: languagesData.languages[index].locale == languagesData.bibleLocale ? true : false,
                     ) : languagesData.languages[index].name.toLowerCase().contains(filter.toLowerCase()) ? 
                   LanguageTitle(
+                    setLocale: () => setBibleLocale(languagesData.languages[index].locale),
                     subtitle: languagesData.languages[index].vernacularName,
                     title: languagesData.languages[index].name,
                     isSelected: languagesData.languages[index].locale == languagesData.bibleLocale ? true : false
