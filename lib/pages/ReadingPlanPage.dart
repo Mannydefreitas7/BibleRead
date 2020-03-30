@@ -14,6 +14,8 @@ class ReadingPlanPage extends StatelessWidget {
     
     return BibleReadScaffold(
         title: 'Reading Plans',
+        hasBottombar: true,
+        hasLeadingIcon: false,
         hasFloatingButton: false,
         selectedIndex: 2,
         bodyWidget: Container(

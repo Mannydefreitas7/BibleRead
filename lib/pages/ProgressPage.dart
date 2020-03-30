@@ -10,6 +10,8 @@ class ProgressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BibleReadScaffold(
+      hasBottombar: true,
+      hasLeadingIcon: false,
       title: 'Progress',
       hasFloatingButton: false,
       selectedIndex: 1,

@@ -8,7 +8,7 @@ import '../components/bottomNavigationBar.dart';
 import 'textHelper.dart';
 
 class BibleReadScaffold extends StatelessWidget {
-  BibleReadScaffold({Key key, this.selectedIndex, this.bodyWidget, this.title, this.hasFloatingButton, this.floatingActionOnPress}) : super(key: key);
+  BibleReadScaffold({Key key, this.selectedIndex, this.bodyWidget, this.title, this.hasFloatingButton, this.floatingActionOnPress, this.hasBottombar, this.hasLeadingIcon}) : super(key: key);
 
 
   final int selectedIndex;
@@ -16,6 +16,8 @@ class BibleReadScaffold extends StatelessWidget {
   final String title;
   final Function floatingActionOnPress;
   final Widget bodyWidget;
+  final bool hasBottombar;
+  final bool hasLeadingIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,8 @@ class BibleReadScaffold extends StatelessWidget {
           SizedBox(height: 40),
           AppBar(
             automaticallyImplyLeading: false,
+            leading: hasLeadingIcon ? BackButton(color: Theme.of(context).textTheme.title.color, onPressed: () => Navigator.pop(context),) : null
+            ,
             bottomOpacity: 0.0,
             title: PageTitleText(title: title),
             centerTitle: false,
@@ -76,20 +80,11 @@ class BibleReadScaffold extends StatelessWidget {
         ),)
       ),
     )
-     
-      
-      // FloatingActionButton(
-      //   backgroundColor: Theme.of(context).accentColor,
-      //   onPressed: floatingActionOnPress,
-      //   focusElevation: 5.0,
-      //   child: Icon(Icons.check, color: Colors.white, size: 30.0),
-      //   elevation: 2.0,
-      // )
        : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      bottomNavigationBar: BRBottomNavBar(
+      bottomNavigationBar: hasBottombar ? BRBottomNavBar(
         selectedIndex: selectedIndex
-      )
+      ) : null
     );
   }
 }

@@ -63,7 +63,7 @@ class PlanBibleBooks extends StatelessWidget {
                             child:
                                 PlanBibleBookCard(shortName: '', longName: ''),
                             baseColor: Theme.of(context).backgroundColor,
-                            highlightColor: Colors.white);
+                            highlightColor: Theme.of(context).cardColor);
                       });
                 }
               }))

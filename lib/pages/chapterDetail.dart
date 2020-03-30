@@ -79,7 +79,7 @@ class ChapterDetail extends StatelessWidget {
                 itemCount: chapters.toList().length,
                 separatorBuilder: (context, index) => Divider(
                 height: 3,
-                color: Colors.grey[200],
+                color: Theme.of(context).textTheme.caption.color,
             ),
             itemBuilder: (context, index) {
               bool chapterIsRead = chapters[index].isRead;

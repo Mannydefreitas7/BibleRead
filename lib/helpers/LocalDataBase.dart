@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/JwBibleBook.dart';
@@ -74,6 +75,13 @@ Future<ReadingPlans> queryReadingPlan(int id) async {
   ReadingPlans readingPlan = ReadingPlans.fromJson(readingPlans[0]);
    return readingPlan;
  
+}
+
+Future<List<Map<String, dynamic>>> getCurrentBibleLocale() async {
+  Database db = await database;
+  String currentLocale = await FirstLaunch().getBibleLocale();
+  List<Map<String, dynamic>> currentBibleLocaleData = await db.query('languages', where: "locale = ?", whereArgs: [currentLocale]);
+  return currentBibleLocaleData;
 }
 
 Future<List<Plan>> queryBookChapters(int id) async {

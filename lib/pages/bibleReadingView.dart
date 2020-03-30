@@ -38,12 +38,6 @@ class BibleReadingView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Icon(
-              //   LineAwesomeIcons.newspaper_1,
-              //   size: 25,
-              //   color: Theme.of(context).textTheme.title.color,
-              // ),
-              // SizedBox(width: 10),
               Text(
                 bookName,
                 style: TextStyle(

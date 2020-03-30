@@ -11,6 +11,8 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BibleReadScaffold(
       title: 'Settings',
+      hasBottombar: true,
+      hasLeadingIcon: false,
       hasFloatingButton: false,
       selectedIndex: 3,
       bodyWidget: Container(

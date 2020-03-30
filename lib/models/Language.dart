@@ -8,6 +8,7 @@ class Language {
   String audioCode;
   String api;
   String contentApi;
+  bool isSelected;
 
   Language({
     this.id,
@@ -16,6 +17,7 @@ class Language {
     this.contentApi,
     this.locale,
     this.name,
+    this.isSelected,
     this.vernacularName
     });
 

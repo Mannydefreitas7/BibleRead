@@ -29,7 +29,7 @@ class HtmlView extends StatelessWidget {
         ),
         customRender: (node, children) {
           List<Verses> nodes = [];
-          List<dom.Node> _nodes = [...node.children.where((element) => element.text.contains(' '))];
+          List<dom.Node> _nodes = [...node.children];
        
           for (var n in _nodes) {
             if (n.attributes['class'] == 'verse') {

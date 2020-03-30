@@ -243,7 +243,9 @@ void previous() async {
     }
 
     return BibleReadScaffold(
-      title: 'Today',      
+      title: 'Today', 
+      hasLeadingIcon: false,
+      hasBottombar: true,     
       hasFloatingButton: true,
       floatingActionOnPress: _markTodayRead,
       selectedIndex: 0,

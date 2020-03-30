@@ -1,3 +1,4 @@
+import 'package:BibleRead/pages/settingsview/LanguagesView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -89,9 +90,12 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
                 borderRadius: BorderRadius.circular(20.00), 
             ), 
             child: InkWell(
-                  onTap: () {
-                     _showDataPicker(plans, 'Plans');
-                  },  
+                  onTap: () => Navigator.push(context, 
+                    CupertinoPageRoute(
+                      fullscreenDialog: true,
+                      builder: (context) => LanguagesView()
+                    )
+                  ),  
                   child: Text(
                 "English",
                 style: TextStyle(

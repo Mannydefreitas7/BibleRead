@@ -16,7 +16,7 @@ class FirstLaunch {
 
   Future<String> getDeviceLocale() async {
     Locale locale = await DeviceLocale.getCurrentLocale();
-    return locale.toString();
+    return locale.languageCode;
   }
 
  Future<bool> isNotFirstLaunch() async {
@@ -30,16 +30,25 @@ class FirstLaunch {
     return prefs.getString('UUID');
   }
 
- 
+ Future<String> getBibleLocale() async {
+   SharedPreferences prefs = await SharedPreferences.getInstance();
+   String bibleLocale = prefs.getString('bibleLocale');
+   return bibleLocale;
+ }
+
+ Future<void> setBibleLocale(String locale) async {
+   SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setString('bibleLocale', locale);
+ }
 
   Future<void> setDefaults() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
+    String deviceLocale = await getDeviceLocale();
     final Uuid id = Uuid.v4();
 
     prefs.setBool('firstUse', true);
 
-    prefs.setString('bibleLocale', 'en');
+    prefs.setString('bibleLocale', deviceLocale);
 
     prefs.setInt('selectedPlan', 0);
 
