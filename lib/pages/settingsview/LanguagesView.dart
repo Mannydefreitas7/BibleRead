@@ -45,7 +45,8 @@ class _LanguagesViewState extends State<LanguagesView> {
   setBibleLocale(String locale) {
     FirstLaunch().setBibleLocale(locale);
     setState(() {});
-    Navigator.pop(context);
+    Navigator.popAndPushNamed(context, '/settings');
+
   }
 
   @override
@@ -68,22 +69,25 @@ class _LanguagesViewState extends State<LanguagesView> {
 
                   if (snapshot.hasData) {
                     LanguagesData languagesData = snapshot.data;
+
+                    List<Language> languages = languagesData.languages;
+                    languages.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
                     return  ListView.builder(
                       padding: EdgeInsets.symmetric(horizontal: 17, vertical: 20),
                 itemCount: languagesData.languages.length,
                 itemBuilder: (BuildContext context, int index) {
                   return filter == null || filter == '' ? 
                   LanguageTitle(
-                    setLocale: () => setBibleLocale(languagesData.languages[index].locale),
-                    subtitle: languagesData.languages[index].vernacularName,
-                    title: languagesData.languages[index].name,
-                    isSelected: languagesData.languages[index].locale == languagesData.bibleLocale ? true : false,
-                    ) : languagesData.languages[index].name.toLowerCase().contains(filter.toLowerCase()) ? 
+                    setLocale: () => setBibleLocale(languages[index].locale),
+                    subtitle: languages[index].vernacularName,
+                    title: languages[index].name,
+                    isSelected: languages[index].locale == languagesData.bibleLocale ? true : false,
+                    ) : languages[index].name.toLowerCase().contains(filter.toLowerCase()) ? 
                   LanguageTitle(
-                    setLocale: () => setBibleLocale(languagesData.languages[index].locale),
-                    subtitle: languagesData.languages[index].vernacularName,
-                    title: languagesData.languages[index].name,
-                    isSelected: languagesData.languages[index].locale == languagesData.bibleLocale ? true : false
+                    setLocale: () => setBibleLocale(languages[index].locale),
+                    subtitle: languages[index].vernacularName,
+                    title: languages[index].name,
+                    isSelected: languages[index].locale == languagesData.bibleLocale ? true : false
                   ) : Container();  
                 });
                   } else {

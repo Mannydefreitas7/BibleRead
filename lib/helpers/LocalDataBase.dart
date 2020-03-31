@@ -164,7 +164,8 @@ Future<void> markChapterUnRead(int id) async {
 
 Future getLocaleBooks(String locale) async {
 Database db = await database;
-return db.query('$locale');
+return db.rawQuery("SELECT * FROM '$locale'");
+// return db.query('$locale');
 }
 
 Future<List<Plan>> unReadChapters() async {
