@@ -8,10 +8,10 @@ const DATETIME_PICKER_BACKGROUND_COLOR = Colors.white;
 const DATETIME_PICKER_SHOW_TITLE_DEFAULT = true;
 
 /// Default value of DatePicker's height.
-const double DATETIME_PICKER_HEIGHT = 250.0;
+const double DATETIME_PICKER_HEIGHT = 200.0;
 
 /// Default value of DatePicker's title height.
-const double DATETIME_PICKER_TITLE_HEIGHT = 100.0;
+const double DATETIME_PICKER_TITLE_HEIGHT = 60.0;
 
 /// Default value of DatePicker's column height.
 const double DATETIME_PICKER_ITEM_HEIGHT = 44.0;

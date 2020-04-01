@@ -23,7 +23,7 @@ class Language {
 
     factory Language.fromJson(Map<String, dynamic> json) => Language(
         id: json["index"],
-        api: json["apie"],
+        api: json["api"],
         audioCode: json["audioCode"],
         contentApi: json['contentApi'],
         locale: json['locale'],

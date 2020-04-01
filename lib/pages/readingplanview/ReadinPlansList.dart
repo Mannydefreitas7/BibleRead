@@ -38,7 +38,8 @@ class ReadingPlansList extends StatelessWidget {
                                 return ReadingPlanView(
                                     readingPlanTitle: readingPlans[index]
                                         ['name'],
-                                    planId: index);
+                                    planId: readingPlans[index]
+                                        ['index']);
                               })));
                 });
           }),

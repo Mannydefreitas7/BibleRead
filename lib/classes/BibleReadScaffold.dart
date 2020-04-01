@@ -2,6 +2,7 @@ import 'package:BibleRead/classes/bibleicons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import '../components/bottomNavigationBar.dart';
 
@@ -70,7 +71,7 @@ class BibleReadScaffold extends StatelessWidget {
         ),
         color: Theme.of(context).accentColor,
         onPressed: floatingActionOnPress, 
-        icon: Icon(Icons.check,
+        icon: Icon(SFSymbols.checkmark_alt,
         size: 24, 
         color: Colors.white,
         ), 

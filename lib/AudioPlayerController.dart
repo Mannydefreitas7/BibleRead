@@ -33,24 +33,26 @@ class AudioPlayerController {
     int bookNumber = _unReadChapters[0].bookNumber;
     String bookName = _unReadChapters[0].longName;
     List<ChapterAudio> audios = await JwOrgApiHelper().getAudioFile(bookNumber);
-    List chapters = getchapters(_unReadChapters[0].chapters);
-    List<AudioPlayerItem> _audioInfos = [];
+    List<String> chapters = getchapters(_unReadChapters[0].chapters);
+    List<AudioPlayerItem> audioInfos = [];
 
-    
-    audios.removeAt(0);
     audios.forEach((item) => {
       chapters.forEach((chapter) {
-        if (item.title.split(' ')[1] == chapter) {
-      _audioInfos.add(AudioPlayerItem(
+
+        if ('${item.bibleChapterNumber}' == chapter) {
+
+      audioInfos.add(AudioPlayerItem(
         url: item.audioUrl,
         title: '$bookName - ${item.title}', 
         description: 'Playing from Bible Read',
         cover: 'https://assetsnffrgf-a.akamaihd.net/assets/m/1001061103/univ/art/1001061103_univ_sqs_lg.jpg')
         );
+
         }
+
       })
     });
-    return _audioInfos;
+    return audioInfos;
   }
 
   List<String> getchapters(String chapters) {

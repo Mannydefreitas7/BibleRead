@@ -147,7 +147,7 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
                 onPressed: () {
                   bibleBookListData.selectReadingPlan(widget.planId);
                   SharedPrefs().setBookMarkFalse();
-                  Navigator.pop(context);
+                  Navigator.popAndPushNamed(context, '/readingplans');
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 30),

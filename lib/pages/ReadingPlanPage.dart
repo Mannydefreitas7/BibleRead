@@ -11,7 +11,7 @@ import '../classes/BibleReadScaffold.dart';
 class ReadingPlanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
+    BibleBookListData bibleBookListData = Provider.of<BibleBookListData>(context);
     return BibleReadScaffold(
         title: 'Reading Plans',
         hasBottombar: true,
@@ -44,6 +44,8 @@ class ReadingPlanPage extends StatelessWidget {
                   stream: SharedPrefs().getSelectedPlan().asStream(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     int selectedPlan = snapshot.hasData ? snapshot.data : 0;
+                  //int selectedPlan = bibleBookListData.selectedPlan;
+                  print(selectedPlan);
                     return FutureBuilder(
                         future: DefaultAssetBundle.of(context)
                             .loadString('assets/json/readingPlans.json'),

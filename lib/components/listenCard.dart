@@ -3,6 +3,7 @@ import 'package:BibleRead/classes/AudioController.dart';
 import 'package:BibleRead/classes/SliderAudio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 
@@ -113,29 +114,35 @@ bool checkReadyandSingle() {
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.only(top: 20, bottom:30, left:0),
+                  padding: EdgeInsets.only(top: 10, bottom:20, left:0),
                   child: Row(
+
                     mainAxisSize: MainAxisSize.max,
+                    
                     children: <Widget>[
                       IconButton(
+                        alignment: Alignment.center,
                           icon: Icon(
-                            SimpleLineIcons.arrow_left,
+                            SFSymbols.chevron_left,
                             color: isReady || !isSingle ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
-                            size: 35,
+                            size: 40,
                           ),
                           onPressed: previous),
                       IconButton(
+                        alignment: Alignment.center,
                           icon: Icon(
-                            isAudioPlaying ? SimpleLineIcons.control_pause : SimpleLineIcons.control_play,
+                            isAudioPlaying ? SFSymbols.pause : SFSymbols.play,
                             color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
-                            size: 35,
+                            size: 40,
                           ),
                           onPressed: playPause),
                       IconButton(
+                        alignment: Alignment.center,
+
                           icon: Icon(
-                            SimpleLineIcons.arrow_right,
+                            SFSymbols.chevron_right,
                             color: checkReadyandSingle() ? Theme.of(context).accentColor : Theme.of(context).accentColor,
-                            size: 35,
+                            size: 40,
                           ),
                           onPressed: next)
                     ],

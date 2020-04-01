@@ -46,10 +46,12 @@ class DatePickerTitleWidget extends StatelessWidget {
                 onPressed: () => this.onCancel()),
           ),
           Container(
-           // height: pickerTheme.titleHeight,
+            height: pickerTheme.titleHeight,
+            padding: EdgeInsets.all(15),
             child: Text(title,
+            
             style: TextStyle(
-              color: Colors.black,
+              color: Theme.of(context).textTheme.title.color,
               fontSize: 22.0,
               fontWeight: FontWeight.w600
             ),

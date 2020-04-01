@@ -73,8 +73,9 @@ markBookRead(int id) {
 
   selectReadingPlan(int id) async {
     selectedPlan = id; 
+    await SharedPrefs().setSelectedPlan(selectedPlan);
     list = await DatabaseHelper().getAllChapters(); 
-    await SharedPrefs().setSelectedPlan(id);
+
     notifyListeners();
   }
 

@@ -18,7 +18,6 @@ void main() => runApp(BibleReadApp());
 
 class BibleReadApp extends StatelessWidget {
   
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -116,7 +115,6 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
           body: Center(child: CircularProgressIndicator(),),
         );
       }
-
     });
-}
+  }
 }

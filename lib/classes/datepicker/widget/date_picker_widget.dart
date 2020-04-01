@@ -212,9 +212,9 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
       child: Container(
         padding: EdgeInsets.all(8.0),
         height: widget.pickerTheme.pickerHeight,
-        decoration: BoxDecoration(color: widget.pickerTheme.backgroundColor),
+        decoration: BoxDecoration(color: Theme.of(context).cardColor),
         child: CupertinoPicker.builder(
-          backgroundColor: widget.pickerTheme.backgroundColor,
+          backgroundColor: Theme.of(context).cardColor,
           scrollController: scrollCtrl,
           itemExtent: widget.pickerTheme.itemHeight,
           onSelectedItemChanged: valueChanged,
@@ -233,7 +233,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
       child: Text(
         DateTimeFormatter.formatDateTime(value, format, widget.locale),
         style:
-            widget.pickerTheme.itemTextStyle ?? DATETIME_PICKER_ITEM_TEXT_STYLE,
+            TextStyle(color: Theme.of(context).textTheme.title.color, fontSize: 20.0),
       ),
     );
   }

@@ -119,21 +119,30 @@ class JwOrgApiHelper {
   }
 
   Future<Map<dynamic, dynamic>> getLanguages() async {
-
     Map<dynamic, dynamic> list;
      String link =
           "https://www.jw.org/en/library/bible/json/";
     var response = await http.get(link, headers: {"Accept": "application/json"});
 
     if (response.statusCode == 200) {
-
         var data = json.decode(response.body);
         list = data['langs'];
-
       }
-
   return list;
+  }
 
+    Future<List> getLanguagesName(String link) async {
+    Map<dynamic, dynamic> langs;
+    List languages = [];
+    var response = await http.get(link, headers: {"Accept": "application/json"});
+
+    if (response.statusCode == 200) {
+        Map<dynamic, dynamic> data = json.decode(response.body);
+        langs = data['langs'];
+      //  print(data);
+        langs.forEach((key, value) { languages.add({key: value}); });
+      }
+  return languages;
   }
 
    Future<List<JwBibleBook>> getBibleHtmlList(List chapters) async {

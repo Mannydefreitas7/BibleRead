@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
@@ -237,7 +238,6 @@ Future<void> setBookNames(String locale) async {
 }
 
 Future<void> setLanguages(String locale) async {
-
   Map languages = await JwOrgApiHelper().getLanguages();
   String insertSql;
   String _locale = languages['$locale']['lang']['symbol'];
@@ -251,9 +251,27 @@ Future<void> setLanguages(String locale) async {
     insertSql = '''
     INSERT INTO 'languages' ('name', 'vernacularName', 'locale', 'audioCode', 'api', 'contentApi')  
     VALUES ('$name', '$vernacular', '$_locale', '$audioCode', '$currentLocaleApiUrl', '$bookNamesApiUrl')''';
-
     db.execute(insertSql);
+}
 
+Future<void> setLanguagesName() async {
+  Database db = await database;
+  String deviceLocale = await FirstLaunch().getDeviceLocale();
+  List<Language> dataLanguages = await getLanguages();
+  List<Language> currentLocaleInfo = dataLanguages.where((language) => language.locale == deviceLocale).toList();
+  String link = currentLocaleInfo[0].api;
+  List languages = await JwOrgApiHelper().getLanguagesName(link);
+
+    languages.forEach((language) {
+      Map _language = language;
+      dataLanguages.forEach((dataLanguage) {
+          if (_language.keys.first == dataLanguage.locale) {
+              String dataLocale = dataLanguage.locale;
+               String name = _language['${dataLanguage.locale}']['lang']['name'];
+              db.rawUpdate("UPDATE languages SET name = '$name' WHERE locale = '$dataLocale'");
+          }
+       });
+   });
 }
 
 

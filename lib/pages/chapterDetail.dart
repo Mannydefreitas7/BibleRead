@@ -4,6 +4,7 @@ import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:provider/provider.dart';
 
 class ChapterDetail extends StatelessWidget {
@@ -78,8 +79,8 @@ class ChapterDetail extends StatelessWidget {
                 return ListView.separated(
                 itemCount: chapters.toList().length,
                 separatorBuilder: (context, index) => Divider(
-                height: 3,
-                color: Theme.of(context).textTheme.caption.color,
+                height: 1,
+                color: Theme.of(context).textTheme.caption.color.withOpacity(0.2),
             ),
             itemBuilder: (context, index) {
               bool chapterIsRead = chapters[index].isRead;
@@ -90,7 +91,7 @@ class ChapterDetail extends StatelessWidget {
                 child: ListTile(
                   enabled: true,
                   onTap: chapterIsRead ? markChapterUnRead : markChapterRead,
-                  trailing: chapterIsRead ? Icon(Icons.check, size:25, color: Theme.of(context).accentColor) : null,
+                  trailing: chapterIsRead ? Icon(SFSymbols.checkmark_circle_fill, size:25, color: Theme.of(context).accentColor) : Icon(SFSymbols.circle, size:25, color: Theme.of(context).accentColor),
                   contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   title: Text(chapters[index].chapters, 
                   style: TextStyle(
@@ -128,7 +129,7 @@ class ChapterDetail extends StatelessWidget {
                       backgroundColor: isBookRead ? Colors.grey : Theme.of(context).accentColor,
                       onPressed: isBookRead ? markBookUnRead : markBookRead,
                       focusElevation: 5.0,
-                      child: Icon(isBookRead ? Icons.clear : Icons.check, color: Colors.white, size: 30.0),
+                      child: Icon(isBookRead ? SFSymbols.xmark : SFSymbols.checkmark_alt, color: Colors.white, size: 30.0),
                       elevation: 2.0,
                 );
                     } else {

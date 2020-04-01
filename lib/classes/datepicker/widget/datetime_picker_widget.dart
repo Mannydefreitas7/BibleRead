@@ -268,7 +268,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
     IndexedWidgetBuilder itemBuilder,
   }) {
     Widget columnWidget = Container(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(5.0),
       width: double.infinity,
       height: widget.pickerTheme.pickerHeight,
       decoration: BoxDecoration(color: widget.pickerTheme.backgroundColor),
@@ -315,7 +315,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
       child: Text(
         DateTimeFormatter.formatDate(dateTime, format, widget.locale),
         style:
-            widget.pickerTheme.itemTextStyle ?? DATETIME_PICKER_ITEM_TEXT_STYLE,
+            TextStyle(color: Theme.of(context).textTheme.title.color, fontSize: 20.0)
       ),
     );
   }
@@ -328,7 +328,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
       child: Text(
         DateTimeFormatter.formatDateTime(value, format, widget.locale),
         style:
-            widget.pickerTheme.itemTextStyle ?? DATETIME_PICKER_ITEM_TEXT_STYLE,
+            TextStyle(color: Theme.of(context).textTheme.title.color, fontSize: 20.0) ?? DATETIME_PICKER_ITEM_TEXT_STYLE,
       ),
     );
   }

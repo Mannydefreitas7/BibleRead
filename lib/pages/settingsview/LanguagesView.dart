@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 
 class LanguagesView extends StatefulWidget {
   @override
@@ -73,7 +74,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                     List<Language> languages = languagesData.languages;
                     languages.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
                     return  ListView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 17, vertical: 20),
+                      padding: EdgeInsets.only(top: 10, bottom: 30, left: 20, right: 20),
                 itemCount: languagesData.languages.length,
                 itemBuilder: (BuildContext context, int index) {
                   return filter == null || filter == '' ? 
@@ -193,7 +194,7 @@ class LanguageTitle extends StatelessWidget {
           color: Theme.of(context).textTheme.caption.color
         ),
         ),
-        trailing: isSelected ? Icon(Icons.check, color: Theme.of(context).accentColor) : null,
+        trailing: isSelected ? Icon(SFSymbols.checkmark_alt, color: Theme.of(context).accentColor) : null,
         contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                     
     ));

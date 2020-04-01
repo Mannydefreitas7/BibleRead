@@ -202,7 +202,7 @@ void next() async {
             await player.setUrl(url);
               setState(() {});
      }
-  //  await player.play();
+    await player.play();
 }
 
 void previous() async {

@@ -204,11 +204,11 @@ class _DatePickerState extends State<_DataPickerComponent> {
           padding: EdgeInsets.all(10.0),
           height: _kDatePickerHeight,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).cardColor,
            // borderRadius: BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30))
           ),
           child: CupertinoPicker(
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).cardColor,
             scrollController: dataScrollCtrl,
             itemExtent: _kDatePickerItemHeight,
             onSelectedItemChanged: (int index) {
@@ -251,14 +251,14 @@ class _DatePickerState extends State<_DataPickerComponent> {
       height: 70,
       padding: EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30))
         ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
-            height: 70,
+            height: 40,
             child: FlatButton(
               child: Text(
                 '$cancel',
@@ -272,11 +272,11 @@ class _DatePickerState extends State<_DataPickerComponent> {
           ),
           Container(
             alignment: Alignment.center,
-            height: 70,
+            height: 50,
             child: Text(
               widget.title,
               style: TextStyle(
-                color: Colors.black,
+                color: Theme.of(context).textTheme.title.color,
                 fontSize: 20.0,
                 fontWeight: FontWeight.w600
               ),

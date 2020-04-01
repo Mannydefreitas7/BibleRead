@@ -4,6 +4,7 @@ import 'package:BibleRead/helpers/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:BibleRead/classes/CustomToolbar.dart';
+import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:share/share.dart';
 
 import 'package:extended_text/extended_text.dart';
@@ -82,22 +83,23 @@ class _VersesState extends State<Verses> {
             Flexible(
                 flex: 2,
                 child: FadeIn(
-                
+
                     child: GestureDetector(
                       child: 
                       
                       Container(
                         decoration: BoxDecoration(
-                          color: showBookmarkIcon ? Theme.of(context).accentColor.withOpacity(0.05) : Colors.transparent,
+                         // color: showBookmarkIcon ? Theme.of(context).accentColor.withOpacity(0.05) : Colors.transparent,
                           borderRadius: BorderRadius.circular(20)
                         ),
                         padding: showBookmarkIcon ? EdgeInsets.all(15) : EdgeInsets.all(0),
                         child: Text(
                         widget.verseText,
                         style: TextStyle(
-                          fontSize: showBookmarkIcon ? 18 : 22,
+                          fontSize: showBookmarkIcon ? 24 : 22,
+                          fontStyle: showBookmarkIcon ? FontStyle.italic : FontStyle.normal,
                           color: Theme.of(context).textTheme.subhead.color,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: showBookmarkIcon ? FontWeight.bold : FontWeight.normal ,
                           fontFamily: 'PT Serif',
                         ),
                         textAlign: TextAlign.left,
@@ -116,8 +118,9 @@ class _VersesState extends State<Verses> {
                     Flexible(
                     flex: 0,
                     child: FadeInRight(
-                        0.2,
-                        Column(
+                      leaving: showBookmarkIcon,
+                       delay: 0.2,
+                        child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -127,7 +130,8 @@ class _VersesState extends State<Verses> {
                             child: IconButton(
                                 alignment: Alignment.center,
                                 icon: Icon(
-                                  Icons.clear,
+                                  SFSymbols.xmark,
+                                  size: 20,
                                   color: Theme.of(context).textTheme.title.color,
                                 ),
                                 onPressed: () => setState(() => showBookmarkIcon = !showBookmarkIcon))),
@@ -139,7 +143,8 @@ class _VersesState extends State<Verses> {
                             child: IconButton(
                                 alignment: Alignment.center,
                                 icon: Icon(
-                                  Icons.bookmark_border,
+                                  SFSymbols.bookmark,
+                                  size: 20,
                                   color: Theme.of(context).textTheme.title.color,
                                 ),
                                 onPressed: () => _showBottomSheet(context))),
@@ -149,7 +154,8 @@ class _VersesState extends State<Verses> {
                             child: IconButton(
                                 alignment: Alignment.center,
                                 icon: Icon(
-                                  LineAwesomeIcons.share,
+                                  SFSymbols.square_arrow_up,
+                                  size: 20,
                                   color: Theme.of(context).textTheme.title.color,
                                 ),
                                 onPressed: () => {
@@ -158,8 +164,8 @@ class _VersesState extends State<Verses> {
                                   }))
                           
                       ]
-                   )
-                  )) : Text('')
+                   ), 
+                  ), ) : Text('')
           ])
     ]);
   }

@@ -5,8 +5,9 @@ import '../classes/progressCircle.dart';
 class FadeInRight extends StatelessWidget {
   final double delay;
   final Widget child;
+  final bool leaving;
 
-  FadeInRight(this.delay, this.child);
+  FadeInRight({this.delay, this.child, this.leaving});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class FadeInRight extends StatelessWidget {
       delay: Duration(milliseconds: (300 * delay).round()),
       duration: tween.duration,
       tween: tween,
+      playback: leaving ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
       child: child,
       builderWithChild: (context, child, animation) => 
       Opacity(
@@ -49,11 +51,15 @@ class FadeIn extends StatelessWidget {
     return ControlledAnimation(
       delay: Duration(milliseconds: (300 * delay).round()),
       duration: tween.duration,
+      playback: Playback.START_OVER_FORWARD,
       tween: tween,
+     
       child: child,
+      
       builderWithChild: (context, child, animation) => Opacity(
             opacity: animation["opacity"],
             child: child,
+            
           ),
     );
   }

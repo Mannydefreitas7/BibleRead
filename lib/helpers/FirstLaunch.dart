@@ -74,5 +74,6 @@ class FirstLaunch {
       print('first use, setting default prefs');
        await DatabaseHelper().setupDatabase();
       await setDefaults();
+      await DatabaseHelper().setLanguagesName();
   }
 }
