@@ -110,9 +110,10 @@ Future<List<Plan>> getAllChapters() async {
   String selectedLocale = await SharedPrefs().getSelectedLocale();
   List localeBooks = await getLocaleBooks(selectedLocale);
   List _chapters = await db.query('plan_$planId');
+  int bookId;
   List<Plan> chapters = [];
   for (var _book in _chapters) {
-    int bookId = _book["BookNumber"];
+      bookId = _book["BookNumber"];
     chapters.add(Plan.fromJson(_book, localeBooks[bookId - 1]));
   }
   return chapters;

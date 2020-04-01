@@ -271,9 +271,9 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
       padding: EdgeInsets.all(5.0),
       width: double.infinity,
       height: widget.pickerTheme.pickerHeight,
-      decoration: BoxDecoration(color: widget.pickerTheme.backgroundColor),
+      decoration: BoxDecoration(color: Theme.of(context).cardColor),
       child: CupertinoPicker.builder(
-        backgroundColor: widget.pickerTheme.backgroundColor,
+        backgroundColor: Theme.of(context).cardColor,
         scrollController: scrollCtrl,
         itemExtent: widget.pickerTheme.itemHeight,
         onSelectedItemChanged: valueChanged,

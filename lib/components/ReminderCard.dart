@@ -1,3 +1,7 @@
+import 'package:BibleRead/classes/Notifications.dart';
+import 'package:BibleRead/classes/datepicker/date_picker.dart';
+import 'package:BibleRead/helpers/LocalDataBase.dart';
+import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
@@ -11,6 +15,43 @@ class ReminderCard extends StatefulWidget {
 class _ReminderCardState extends State<ReminderCard> {
 
   bool reminderOn = false;
+  Notifications notifications = Notifications();
+  @override
+  void initState() {
+    super.initState();
+   // notifications.initializeNotifications();
+  }
+
+   void showTimePicker(BuildContext context, String title) {
+    DatePicker.showDatePicker(
+      context,
+        title: title,
+
+        initialDateTime: DateTime.now(),
+        onConfirm: (date, _) => {
+          setState(() => {
+            _setReminderTime(date)
+            
+          }) 
+        },
+        pickerMode: DateTimePickerMode.time);
+  }
+
+  _setReminderTime(DateTime time) async {
+     
+    await notifications.cancelAllNotifications();
+    await SharedPrefs().setReminderTime(time);
+    await notifications.showDailyAtTime(time);
+  }
+
+  _setReminder(bool reminder) async {
+    if (reminder) {
+      notifications.requestIOSPermissions();
+    } else {
+      await notifications.cancelAllNotifications();
+    }
+    await SharedPrefs().setReminder(reminder);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,47 +85,65 @@ class _ReminderCardState extends State<ReminderCard> {
                 color: Theme.of(context).textTheme.title.color,
               ),
             ),
-            trailing: XlivSwitch(
-              onChanged: (reminder) => setState(() {
-                reminderOn = !reminderOn;
-              }),
-              value: reminderOn,
-              activeColor: Theme.of(context).accentColor,
-              unActiveColor: Theme.of(context).backgroundColor,
-              thumbColor: Theme.of(context).cardColor,
+            trailing: StreamBuilder<bool>(
+             // initialData: false,
+              stream: SharedPrefs().getReminder().asStream(),
+              builder: (context, snapshot) {
+                reminderOn = snapshot.hasData ? snapshot.data : false;
+                return XlivSwitch(
+                  onChanged: (reminder) => setState(() {
+                     reminderOn = !reminderOn;
+                    _setReminder(reminderOn);
+                  }),
+                  value: reminderOn,
+                  activeColor: Theme.of(context).accentColor,
+                  unActiveColor: Theme.of(context).backgroundColor,
+                  thumbColor: Theme.of(context).cardColor,
+                );
+              }
             )
             
           ),
-         reminderOn ? ListTile(
-            leading: new Text(
-              "Time",
-              style: TextStyle(
-                fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
-              ),
-            ),
-            trailing: 
-            new Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
-                borderRadius: BorderRadius.circular(20.00), 
-            ), 
-            child: InkWell(
-                  onTap: () {
-                    
-                  },  
-                  child: Text(
-                "7h00",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Theme.of(context).textTheme.title.color,
+         StreamBuilder<Object>(
+           stream: SharedPrefs().getReminder().asStream(),
+           builder: (context, snapshot) {
+            bool isReminderOn = snapshot.hasData ? snapshot.data : false;
+             if (isReminderOn) {
+               return ListTile(
+                leading: new Text(
+                  "Time",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Theme.of(context).textTheme.title.color,
+                  ),
                 ),
-              ),
-            ),
-    )
-          ) : Text(''),
-          
+                trailing: 
+                new Container(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    decoration: BoxDecoration(
+                    color: Theme.of(context).backgroundColor,
+                    borderRadius: BorderRadius.circular(20.00), 
+                ), 
+                child: InkWell(
+                      onTap: () => showTimePicker(context, 'Reminder'),  
+                      child: StreamBuilder<String>(
+                        initialData: '7h00',
+                        stream: SharedPrefs().getReminderTime().asStream(),
+                        builder: (context, snapshot) {
+                          
+                          return Text(snapshot.hasData ? snapshot.data : '7h00',
+                    style: TextStyle(
+                          fontSize: 18,
+                          color: Theme.of(context).textTheme.title.color,
+                    ),
+                  );
+                        }),
+                ),
+    )); 
+              } else {
+               return Container();
+              }
+           }),
         ],
       ),
     );

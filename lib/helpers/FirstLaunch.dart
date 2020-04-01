@@ -62,7 +62,11 @@ class FirstLaunch {
 
     prefs.setString('bookmark', '');
 
+     prefs.setInt('badgeNnumber', 0);
+
     prefs.setBool('isReminderOn', false);
+
+    prefs.setString('reminderTime', '${DateTime.now().hour.toString()}:${DateTime.now().minute.toString()}');
 
     prefs.setBool('isAuthenticated', false);
 

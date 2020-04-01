@@ -75,6 +75,7 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
             children: <Widget>[
               PageTitleText(
                 title: widget.readingPlanTitle,
+                maxLines: 2,
                 textColor: Colors.white,
               ),
             ],
@@ -136,30 +137,32 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
       ),
       Positioned(
           width: MediaQuery.of(context).size.width,
-          bottom: 20,
+          bottom: 50,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40),
-            child: FlatButton(
+            padding: const EdgeInsets.symmetric(horizontal: 100),
+            child: 
+            FlatButton(
 
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
-            //    color: Theme.of(context).backgroundColor,
+               color: Theme.of(context).accentColor,
                 onPressed: () {
                   bibleBookListData.selectReadingPlan(widget.planId);
                   SharedPrefs().setBookMarkFalse();
+                  SharedPrefs().setBookMarkData('');
                   Navigator.popAndPushNamed(context, '/readingplans');
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 30),
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 30),
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(
                     'Start Plan',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Theme.of(context).accentColor,
+                        color: Colors.white,
                         fontSize: 20,
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.bold),
                   ),
                 )),
           ))

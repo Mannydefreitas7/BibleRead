@@ -29,6 +29,43 @@ class SharedPrefs {
     return prefs.getString('bibleLocale');
   }
 
+   Future<void> setReadingStartDate(DateTime date) async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.setString('readingStartDate', date.toString());
+  }
+
+   Future<void> setReminderTime(DateTime date) async {
+    final prefs = await SharedPreferences.getInstance();
+    String minutes = date.minute.toString().length > 1 ? date.minute.toString() : '0${date.minute.toString()}';
+       
+     return  prefs.setString('reminderTime', '${date.hour.toString()}:$minutes');
+  }
+
+     Future<String> getReminderTime() async {
+    final prefs = await SharedPreferences.getInstance();
+     return prefs.getString('reminderTime');
+  }
+
+    Future<int> getBadgeNumber() async {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getInt('badgeNnumber');
+    }
+
+     Future<void> setBadgeNumber(int number) async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setInt('badgeNnumber', number);
+    }
+
+    Future<void> setReminder(bool reminder) async {
+    final prefs = await SharedPreferences.getInstance();
+     return prefs.setBool('isReminderOn', reminder);
+  }
+
+      Future<bool> getReminder() async {
+    final prefs = await SharedPreferences.getInstance();
+     return prefs.getBool('isReminderOn');
+  }
+
 
       Future<String> getBookMarkData() async {
     final prefs = await SharedPreferences.getInstance();

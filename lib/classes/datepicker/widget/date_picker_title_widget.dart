@@ -34,7 +34,7 @@ class DatePickerTitleWidget extends StatelessWidget {
       decoration: BoxDecoration(
 
         borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-        color:pickerTheme.backgroundColor),
+        color: Theme.of(context).cardColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -49,7 +49,8 @@ class DatePickerTitleWidget extends StatelessWidget {
             height: pickerTheme.titleHeight,
             padding: EdgeInsets.all(15),
             child: Text(title,
-            
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Theme.of(context).textTheme.title.color,
               fontSize: 22.0,

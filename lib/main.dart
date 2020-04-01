@@ -1,3 +1,4 @@
+import 'package:BibleRead/classes/Notifications.dart';
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
@@ -14,7 +15,13 @@ import 'classes/scrollBehavior.dart';
 
 import 'classes/CustomNavigation.dart';
 
-void main() => runApp(BibleReadApp());
+Notifications notifications = Notifications();
+
+Future<void> main() async { 
+WidgetsFlutterBinding.ensureInitialized();
+  notifications.initializeNotifications();
+  runApp(BibleReadApp());
+}
 
 class BibleReadApp extends StatelessWidget {
   

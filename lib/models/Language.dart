@@ -9,6 +9,7 @@ class Language {
   String api;
   String contentApi;
   bool isSelected;
+  String bibleTranslation;
 
   Language({
     this.id,
@@ -18,7 +19,8 @@ class Language {
     this.locale,
     this.name,
     this.isSelected,
-    this.vernacularName
+    this.vernacularName,
+    this.bibleTranslation
     });
 
     factory Language.fromJson(Map<String, dynamic> json) => Language(
@@ -28,6 +30,7 @@ class Language {
         contentApi: json['contentApi'],
         locale: json['locale'],
         name: json['name'],
+        bibleTranslation: json['bibleTranslation'],
         vernacularName: json['vernacularName']
     );
 

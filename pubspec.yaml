@@ -50,6 +50,7 @@ dependencies:
     flutter_spinkit: ^4.1.2
     launch_review: ^2.0.0
     flutter_sfsymbols: ^1.0.0
+    flutter_local_notifications: ^1.4.0
 
 
 dev_dependencies:

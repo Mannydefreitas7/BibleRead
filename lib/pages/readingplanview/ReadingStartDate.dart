@@ -32,7 +32,6 @@ class _ReadingStartDateState extends State<ReadingStartDate> {
           }) 
         },
         pickerMode: DateTimePickerMode.date);
-
   }
 
   @override

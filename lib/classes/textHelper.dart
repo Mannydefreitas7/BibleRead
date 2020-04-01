@@ -5,14 +5,15 @@ class PageTitleText extends StatelessWidget {
 
   final String title;
   final Color textColor;
+  final int maxLines;
 
-  const PageTitleText({Key key, this.title, this.textColor}) : super(key: key);
+  const PageTitleText({Key key, this.title, this.maxLines, this.textColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       title,
-      maxLines: 1,
+      maxLines: maxLines == null ? 1 : maxLines,
       overflow: TextOverflow.ellipsis,
       textAlign: TextAlign.left,
       style: TextStyle(

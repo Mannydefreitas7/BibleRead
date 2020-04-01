@@ -130,6 +130,7 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
       Widget titleWidget = DatePickerTitleWidget(
         pickerTheme: widget.pickerTheme,
         locale: widget.locale,
+        title: widget.title,
         onCancel: () => _onPressedCancel(),
         onConfirm: () => _onPressedConfirm(),
       );
@@ -230,9 +231,9 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
       child: Container(
         padding: EdgeInsets.all(8.0),
         height: widget.pickerTheme.pickerHeight,
-        decoration: BoxDecoration(color: widget.pickerTheme.backgroundColor),
+        decoration: BoxDecoration(color: Theme.of(context).cardColor),
         child: CupertinoPicker.builder(
-          backgroundColor: widget.pickerTheme.backgroundColor,
+          backgroundColor: Theme.of(context).cardColor,
           scrollController: scrollCtrl,
           itemExtent: widget.pickerTheme.itemHeight,
           onSelectedItemChanged: valueChanged,

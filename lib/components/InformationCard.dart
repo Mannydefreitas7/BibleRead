@@ -60,6 +60,22 @@ class InformationCard extends StatelessWidget {
             ),
           ),
           ListTile(
+            leading: new Text(
+              "Support",
+              style: TextStyle(
+                fontSize: 18,
+                color: Theme.of(context).textTheme.title.color,
+              ),
+            ),
+            trailing: new Text(
+              "wolinweb@gmail.com",
+              style: TextStyle(
+                fontSize: 15,
+                color: Color(0xffaeaeae),
+              ),
+            ),
+          ),
+          ListTile(
               title: new Center(
             child: FlatButton(
                 onPressed: () => LaunchReview.launch(writeReview: true),

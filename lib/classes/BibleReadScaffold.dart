@@ -37,13 +37,13 @@ class BibleReadScaffold extends StatelessWidget {
             title: PageTitleText(title: title),
             centerTitle: false,
           actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 15),
-              child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: Icon(EvilIcons.user, size: 40, color: Colors.black),
-              ),
-            )
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 15),
+            //   child: CircleAvatar(
+            //     backgroundColor: Colors.transparent,
+            //     child: Icon(EvilIcons.user, size: 40, color: Colors.black),
+            //   ),
+            // )
           ],
           ),    
         ]
