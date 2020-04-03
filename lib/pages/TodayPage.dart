@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:BibleRead/AudioPlayerController.dart';
 import 'package:BibleRead/classes/AudioController.dart';
 import 'package:BibleRead/classes/ChapterAudio.dart';
+import 'package:BibleRead/classes/Notifications.dart';
 import 'package:BibleRead/classes/connectivityCheck.dart';
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
@@ -22,6 +23,7 @@ import 'package:connectivity/connectivity.dart';
 import '../helpers/LocalDataBase.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 
 
 
@@ -39,6 +41,7 @@ class _TodayPageState extends State<TodayPage> {
   Future<List> _unReadChapters;
   List<Plan> unReadChapters;
   Future _progressValue;
+  Notifications notifications = Notifications();
 
   List<Plan> unReadPlan;
   int currentChapter;
@@ -81,9 +84,10 @@ class _TodayPageState extends State<TodayPage> {
 
   _markTodayRead() async {
   player.stop();
+  
   await DatabaseHelper().markTodayRead();
   await SharedPrefs().setBookMarkFalse();
-
+ 
   unReadChapters = await DatabaseHelper().unReadChapters();
   setState(() => { 
       _unReadChapters = DatabaseHelper().unReadChapters(),
@@ -91,7 +95,12 @@ class _TodayPageState extends State<TodayPage> {
       hasBookmark = false
     });
     await initialize();
-    
+    bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
+    int badgeNumber = await SharedPrefs().getBadgeNumber();
+     await SharedPrefs().setBadgeNumber(badgeNumber - 1);
+     if (isBadgesupported) {
+       FlutterAppBadger.updateBadgeCount(badgeNumber - 1);
+     }
 }
 
 bibleViewMarkRead() {
@@ -369,13 +378,26 @@ void previous() async {
 
             return Container(
             height: 110,
+            
+            // clipBehavior: Clip.hardEdge,
+            // decoration: BoxDecoration(
+
+            //   image:  DecorationImage(
+            //     alignment: Alignment(1, 0.9),
+
+            //     fit: BoxFit.cover,
+            //     image: AssetImage('assets/images/today_image.png')), 
+            //   borderRadius: BorderRadius.circular(20)
+            // ),
             child: ProgressCard(
                 subtitle: 'Welcome!',
+              //  textColor: Colors.white,
+              //  backgroundColor: Colors.white,
                 progressNumber: snapshot.hasData ? snapshot.data : 0,
                 textOne: DateTimeHelpers().todayWeekDay(),
                 textTwo: DateTimeHelpers().todayMonth(),
                 textThree: DateTimeHelpers().todayDate(),
-            )
+            ) 
           );
         },
       ),

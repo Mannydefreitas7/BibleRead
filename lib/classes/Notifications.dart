@@ -1,12 +1,14 @@
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
     NotificationAppLaunchDetails notificationAppLaunchDetails;
 
 class Notifications {
+
+  
 
     initializeNotifications() async {
         var initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
@@ -41,19 +43,23 @@ class Notifications {
 
     Future<void> cancelAllNotifications() async {
     await flutterLocalNotificationsPlugin.cancelAll();
+    await SharedPrefs().setBadgeNumber(0);
   }
 
     Future<void> showDailyAtTime(DateTime dateTime) async {
-   // String _time = await SharedPrefs().getReminderTime();
     int badgeNumber = await SharedPrefs().getBadgeNumber();
     await SharedPrefs().setBadgeNumber(badgeNumber + 1);
-    // int minutes = _time.split(':')[1].startsWith('0') ? int.parse(_time.split(':')[1].split('')[1]) : int.parse(_time.split(':')[1]);
-    // int hour = int.parse(_time.split(':')[0]);
+
     Time time = Time(dateTime.hour, dateTime.minute, 0);
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
         'repeatDailyAtTime channel id',
         'repeatDailyAtTime channel name',
-        'repeatDailyAtTime description');
+        'repeatDailyAtTime description',
+        importance: Importance.High,
+        enableVibration: true,
+        channelShowBadge: true,
+        visibility: NotificationVisibility.Public,
+        );
     var iOSPlatformChannelSpecifics = IOSNotificationDetails(
         badgeNumber: badgeNumber + 1,
         presentSound: true,
@@ -62,6 +68,8 @@ class Notifications {
 
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+  
+
     await flutterLocalNotificationsPlugin.showDailyAtTime(
         0,
         'show daily title',
@@ -69,6 +77,7 @@ class Notifications {
         time,
         platformChannelSpecifics);
   }
+  
 
 }
 

@@ -10,16 +10,20 @@ class ProgressCard extends StatelessWidget {
   final String textTwo;
   final String textThree;
   final double progressNumber;
+  final Color backgroundColor;
+  final Color textColor;
+  final bool isToday;
 
-  ProgressCard({this.subtitle, this.textOne, this.textTwo, this.textThree, this.progressNumber});
+  ProgressCard({this.subtitle, this.isToday, this.textColor, this.backgroundColor, this.textOne, this.textTwo, this.textThree, this.progressNumber});
 
   @override
   Widget build(BuildContext context) {
+   
     return Container(
       child: Card(
 
         elevation: 0,
-        color: Theme.of(context).cardColor,
+        color: backgroundColor == null ? Theme.of(context).cardColor : backgroundColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         child: Container(
           padding: EdgeInsets.all(18.0),
@@ -38,7 +42,7 @@ class ProgressCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         fontSize: 16.0,
                         fontFamily: 'Avenir Next',
-                        color: Theme.of(context).textTheme.subtitle.color),
+                        color: textColor == null ? Theme.of(context).textTheme.subtitle.color : textColor),
                   ),
                   Row(
                     children: <Widget>[
@@ -49,8 +53,7 @@ class ProgressCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Avenir Next',
                         fontSize: 20.0,
-                        color:
-                            Theme.of(context).textTheme.title.color),
+                        color: textColor == null ? Theme.of(context).textTheme.title.color : textColor ),
                   ),
                    SizedBox(width: textOne.length != 0 ? 5 : 0,),
                      Text(
@@ -61,7 +64,7 @@ class ProgressCard extends StatelessWidget {
                         fontFamily: 'Avenir Next',
                         fontSize: 20.0,
                         color:
-                            Theme.of(context).textTheme.title.color),
+                            textColor == null ? Theme.of(context).textTheme.title.color : textColor),
                   ),
                   SizedBox(width: 5),
                   Text(
@@ -71,8 +74,7 @@ class ProgressCard extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Avenir Next',
                         fontSize: 20.0,
-                        color:
-                            Theme.of(context).textTheme.title.color),
+                        color: textColor == null ? Theme.of(context).textTheme.title.color : textColor),
                   )
                     ],
                   )

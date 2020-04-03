@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+final primaryOrangeColor = Color(0xFFFAA535);
 
 final ThemeData brThemeData = new ThemeData(
         fontFamily: 'Avenir Next',
         backgroundColor: Colors.grey[100],
         cardColor: Colors.white,
         brightness: Brightness.light,
-        accentColor: Colors.orange[300],
-        textSelectionColor: Colors.orange[300].withOpacity(0.5),
+        accentColor: primaryOrangeColor,
+        textSelectionColor: primaryOrangeColor.withOpacity(0.5),
         textSelectionHandleColor: Colors.orangeAccent,
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
@@ -32,9 +33,9 @@ final ThemeData brThemeData = new ThemeData(
             ),
           ),
           bottomAppBarColor: Colors.white,
-          focusColor: Colors.orangeAccent,
+          focusColor: primaryOrangeColor,
           canvasColor: Colors.grey[300].withOpacity(0.5),
-          primaryColor: Colors.orangeAccent,
+          primaryColor: primaryOrangeColor,
           textTheme: TextTheme(
             // Card subtitle
             caption: TextStyle(
@@ -61,23 +62,23 @@ final ThemeData brThemeData = new ThemeData(
 final ThemeData brThemeDataDark = new ThemeData(
         fontFamily: 'Avenir Next',
         backgroundColor: Colors.black,
-        cardColor: Colors.grey[900],
+        cardColor: Color(0xFF191818),
         brightness: Brightness.dark,
-        textSelectionColor: Colors.orange[300].withOpacity(0.5),
-        textSelectionHandleColor: Colors.orange[300],
+        textSelectionColor: primaryOrangeColor.withOpacity(0.5),
+        textSelectionHandleColor:primaryOrangeColor,
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.white
 
         ),
-        accentColor: Colors.orange[300],
+        accentColor: primaryOrangeColor,
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
         splashColor: Colors.transparent,
         scaffoldBackgroundColor: Colors.grey[100],
-        bottomAppBarColor: Colors.grey[900],
+        bottomAppBarColor: Color(0xFF191818),
         bottomAppBarTheme: 
           BottomAppBarTheme(
-            color: Colors.grey[900],
+            color: Color(0xFF191818),
             elevation: 0.0,
           ),
 
@@ -93,9 +94,9 @@ final ThemeData brThemeDataDark = new ThemeData(
             ),
           ),
 
-          focusColor: Colors.orangeAccent,
+          focusColor: primaryOrangeColor,
           canvasColor: Colors.black.withOpacity(0.2),
-          primaryColor: Colors.orangeAccent,
+          primaryColor: primaryOrangeColor,
           textTheme: TextTheme(
             
             // Card subtitle

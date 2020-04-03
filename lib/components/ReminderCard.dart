@@ -22,11 +22,11 @@ class _ReminderCardState extends State<ReminderCard> {
    // notifications.initializeNotifications();
   }
 
-   void showTimePicker(BuildContext context, String title) {
+   void showTimePicker(BuildContext context, String title) async {
+
     DatePicker.showDatePicker(
       context,
         title: title,
-
         initialDateTime: DateTime.now(),
         onConfirm: (date, _) => {
           setState(() => {

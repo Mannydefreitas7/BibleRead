@@ -142,9 +142,9 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
             padding: const EdgeInsets.symmetric(horizontal: 100),
             child: 
             FlatButton(
-
+                padding: EdgeInsets.all(10),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(30)),
                color: Theme.of(context).accentColor,
                 onPressed: () {
                   bibleBookListData.selectReadingPlan(widget.planId);
@@ -152,19 +152,16 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
                   SharedPrefs().setBookMarkData('');
                   Navigator.popAndPushNamed(context, '/readingplans');
                 },
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 30),
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
+                child: Text(
                     'Start Plan',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                        fontFamily: 'Avenir Next',
                         color: Colors.white,
                         fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.w500),
                   ),
-                )),
+                ),
           ))
     ]));
   }

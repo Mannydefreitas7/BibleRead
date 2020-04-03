@@ -65,7 +65,7 @@ class _VersesState extends State<Verses> {
               widget.verseNumber,
               style: TextStyle(
                 fontSize: widget.isChapter ? 52 : 22,
-                fontFamily: 'Avenir Next',
+                fontFamily: 'Lao MN',
                 color: widget.isChapter
                     ? Colors.grey
                     : Theme.of(context).accentColor,
