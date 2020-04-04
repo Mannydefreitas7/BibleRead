@@ -194,6 +194,20 @@ Future<List<Plan>> unReadChapters() async {
   return unReadChapters;
 }
 
+Future<List<Plan>> allChapters() async {
+  int planId = await SharedPrefs().getSelectedPlan();
+  String selectedLocale = await SharedPrefs().getSelectedLocale();
+  List<Plan> allChapters = [];
+  List _allChapters = await queryChapters(planId);
+  List localeBooks = await getLocaleBooks(selectedLocale);
+
+   for (var chapters in _allChapters) {
+    int bookId = chapters["BookNumber"];
+    allChapters.add(Plan.fromJson(chapters, localeBooks[bookId - 1]));
+  } 
+  return allChapters;
+}
+
 
 Future<void> markBookUnRead(int id) async {
    Database db = await database;

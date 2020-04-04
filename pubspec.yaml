@@ -52,6 +52,11 @@ dependencies:
     flutter_sfsymbols: ^1.0.0
     flutter_local_notifications: ^1.4.0
     flutter_app_badger: ^1.1.2
+    toast: ^0.1.5
+    screenshot: ^0.1.1
+    flutter_share_file: ^1.1.4+1
+
+
 
 
 dev_dependencies:

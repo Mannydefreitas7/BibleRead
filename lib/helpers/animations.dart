@@ -98,7 +98,7 @@ class AnimatedProgressCircle extends StatelessWidget {
         ),
        showExpected ? ProgressCircle( // on top
               progressNumber: endValue, 
-              progressColor: Colors.red,
+              progressColor: endValue >= expectedValue ? Colors.green : Colors.red,
               progressText: '${(endValue * 100).round()}%', 
               radiusWidth: radiusWidth,
               lineWidth: lineWidth,

@@ -31,6 +31,11 @@ Future<List<Plan>> getChapters(int id) async {
   return bookChapters;
 }
 
+Future<List<Plan>> getAllChapters() async {
+  List<Plan> chapters = await DatabaseHelper().getAllChapters();
+  return chapters;
+}
+
 List<Plan> getBookChapters(int id) {
 List<Plan> chapters = list.where((chapter) => chapter.bookNumber == id).toList();
 return chapters;

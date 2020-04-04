@@ -29,10 +29,10 @@ class AudioPlayerController {
 
     Future<List<AudioPlayerItem>> setupAudioList() async {
     List<Plan> _unReadChapters = await DatabaseHelper().unReadChapters();
-    int bookNumber = _unReadChapters[0].bookNumber;
-    String bookName = _unReadChapters[0].longName;
+    int bookNumber = _unReadChapters.length > 0 ? _unReadChapters[0].bookNumber : 1;
+    String bookName = _unReadChapters.length > 0 ? _unReadChapters[0].longName : 'Genesis';
     List<ChapterAudio> audios = await JwOrgApiHelper().getAudioFile(bookNumber);
-    List<String> chapters = getchapters(_unReadChapters[0].chapters);
+    List<String> chapters = getchapters(_unReadChapters.length > 0 ? _unReadChapters[0].chapters : '1');
     List<AudioPlayerItem> audioInfos = [];
 
     audios.forEach((item) => {

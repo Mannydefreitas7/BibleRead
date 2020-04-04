@@ -1,14 +1,15 @@
-
 import 'dart:async';
 import 'package:BibleRead/AudioPlayerController.dart';
 import 'package:BibleRead/classes/ChapterAudio.dart';
 import 'package:BibleRead/classes/Notifications.dart';
 import 'package:BibleRead/classes/connectivityCheck.dart';
+import 'package:BibleRead/components/CompletedCard.dart';
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:rxdart/rxdart.dart';
 import '../components/listenCard.dart';
 import '../components/readTodayCard.dart';
 import 'package:flutter/material.dart';
@@ -20,21 +21,14 @@ import '../helpers/LocalDataBase.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 
-
-
-class TodayPage extends StatefulWidget  {
-
-
+class TodayPage extends StatefulWidget {
   @override
   _TodayPageState createState() => _TodayPageState();
 }
 
-
-
 class _TodayPageState extends State<TodayPage> {
-
   Future<List> _unReadChapters;
-  List<Plan> unReadChapters;
+  List<Plan> unReadChapters = [];
   Future _progressValue;
   Notifications notifications = Notifications();
 
@@ -42,8 +36,8 @@ class _TodayPageState extends State<TodayPage> {
   int currentChapter;
   Map _source = {ConnectivityResult.none: false};
   ConnectivityCheck _connectivity = ConnectivityCheck.instance;
-    List<ChapterAudio> chaptersAudio;
-   List<AudioPlayerItem> list = [];
+  List<ChapterAudio> chaptersAudio;
+  List<AudioPlayerItem> list = [];
 
   bool isPlaying = false;
   bool isReady = false;
@@ -51,18 +45,17 @@ class _TodayPageState extends State<TodayPage> {
   bool isSingle = true;
   double slider = 0.0;
   String bookmarkdata = '';
- bool hasBookmark = false;
+  bool hasBookmark = false;
 
- int currentAudio = 0;
+  int currentAudio = 0;
 
   AudioPlayer player;
 
   //AudioController audioController = AudioController();
 
-  AudioPlayerController  audioPayerController = AudioPlayerController();
+  AudioPlayerController audioPayerController = AudioPlayerController();
 
-
-   String _formatDuration(Duration d) {
+  String _formatDuration(Duration d) {
     if (d == null) return "--:--";
     int minute = d.inMinutes;
     int second = (d.inSeconds > 60) ? (d.inSeconds % 60) : d.inSeconds;
@@ -73,205 +66,195 @@ class _TodayPageState extends State<TodayPage> {
   }
 
   _markTodayRead() async {
-  player.stop();
-  
-  await DatabaseHelper().markTodayRead();
-  await SharedPrefs().setBookMarkFalse();
- 
-  unReadChapters = await DatabaseHelper().unReadChapters();
-  setState(() => { 
-      _unReadChapters = DatabaseHelper().unReadChapters(),
-      _progressValue = DatabaseHelper().countProgressValue(),
-      hasBookmark = false
-    });
+    player.stop();
+
+    await DatabaseHelper().markTodayRead();
+    await SharedPrefs().setBookMarkFalse();
+
+    unReadChapters = await DatabaseHelper().unReadChapters();
+    setState(() => {
+          _unReadChapters = DatabaseHelper().unReadChapters(),
+          _progressValue = DatabaseHelper().countProgressValue(),
+          hasBookmark = false
+        });
     await initialize();
     bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
     int badgeNumber = await SharedPrefs().getBadgeNumber();
-     await SharedPrefs().setBadgeNumber(badgeNumber - 1);
-     if (isBadgesupported) {
-       FlutterAppBadger.updateBadgeCount(badgeNumber - 1);
-     }
-}
+    await SharedPrefs().setBadgeNumber(badgeNumber - 1);
+    if (isBadgesupported) {
+      FlutterAppBadger.updateBadgeCount(badgeNumber - 1);
+    }
+  }
 
-bibleViewMarkRead() {
-  _markTodayRead();
-  Navigator.pop(context);
-}
+  bibleViewMarkRead() {
+    _markTodayRead();
+    Navigator.pop(context);
+  }
 
   _setBookMarkFalse() async {
-await SharedPrefs().setBookMarkFalse();
-setState(() => {  });
-}  
+    await SharedPrefs().setBookMarkFalse();
+    setState(() => {});
+  }
 
-void playAudio() async {
- await player.play();
-}
+  void initUnreadChapters() async {
+    unReadChapters = await DatabaseHelper().unReadChapters();
+  }
 
-void pauseAudio() async {
- await player.pause();
-}
+  void playAudio() async {
+    await player.play();
+  }
 
-void stopAudio() async {
-  await player.stop();
-}
+  void pauseAudio() async {
+    await player.pause();
+  }
 
-void releaseAudio() async {
-  await player.pause();
-  await player.stop();
-}
+  void stopAudio() async {
+    await player.stop();
+  }
+
+  void releaseAudio() async {
+    await player.pause();
+    await player.stop();
+  }
 
   void onChanged(double value) {
     setState(() {
-        slider = value;
+      slider = value;
     });
-}
+  }
 
-void onChangeEnd(Duration newPosition) async {
-      await player.seek(newPosition);
-      }
+  void onChangeEnd(Duration newPosition) async {
+    await player.seek(newPosition);
+  }
 
   @override
-void initState() { 
-     
-  super.initState();
+  void initState() {
+    super.initState();
 
-  _unReadChapters = DatabaseHelper().unReadChapters();
-  _progressValue = DatabaseHelper().countProgressValue();
- 
-  _connectivity.initialise();
+    _unReadChapters = DatabaseHelper().unReadChapters();
+    _progressValue = DatabaseHelper().countProgressValue();
+
+    _connectivity.initialise();
 
     _connectivity.myStream.listen((source) {
       if (mounted) {
-         setState(() => {
-        _source = source,
-      } );
+        setState(() => {
+              _source = source,
+            });
       }
     });
     player = AudioPlayer();
 
     initialize();
 
-       SharedPrefs().getHasBookMark().then((value) => {
-            hasBookmark = value
-          });
+    SharedPrefs().getHasBookMark().then((value) => {hasBookmark = value});
 
-       SharedPrefs().getBookMarkData().then((value) => {
-            if (value.length > 0) {
-              bookmarkdata = SharedPrefs().parseBookMarkedVerse(value)
-            } else {
-              bookmarkdata = ''
-            }
-          });
-
-
-
-}
-
+    SharedPrefs().getBookMarkData().then((value) => {
+          if (value.length > 0)
+            {bookmarkdata = SharedPrefs().parseBookMarkedVerse(value)}
+          else
+            {bookmarkdata = ''}
+        });
+  }
 
   initialize() async {
     list = await audioPayerController.setupAudioList();
     await player.setUrl(list[currentAudio].url);
-       if (list.length > 1) {
+    if (list.length > 1) {
       isSingle = false;
     } else {
       isSingle = true;
     }
   }
 
-@override
+  @override
   void dispose() {
-   // releaseAudio();
+    // releaseAudio();
     super.dispose();
-    
   }
 
-void next() async {
-   await player.stop();
-     currentAudio = currentAudio + 1;
-     String url;
-     if (currentAudio < list.length) {
-          url = list[currentAudio].url;
-            await player.setUrl(url);
-               setState(() {});
-          } else {
-            currentAudio = 0;
-            url = list[currentAudio].url;
-            await player.setUrl(url);
-              setState(() {});
-     }
+  void next() async {
+    await player.stop();
+    currentAudio = currentAudio + 1;
+    String url;
+    if (currentAudio < list.length) {
+      url = list[currentAudio].url;
+      await player.setUrl(url);
+      setState(() {});
+    } else {
+      currentAudio = 0;
+      url = list[currentAudio].url;
+      await player.setUrl(url);
+      setState(() {});
+    }
     await player.play();
-}
+  }
 
-void previous() async {
-   await player.stop();
-     String url;
-     if (currentAudio > 0) {
-          currentAudio = currentAudio - 1;
-          url = list[currentAudio].url;
-            await player.setUrl(url);
-               setState(() {});
-          } else {
-            currentAudio = 0;
-            url = list[currentAudio].url;
-            await player.setUrl(url);
-              setState(() {});
-     } 
-}
+  void previous() async {
+    await player.stop();
+    String url;
+    if (currentAudio > 0) {
+      currentAudio = currentAudio - 1;
+      url = list[currentAudio].url;
+      await player.setUrl(url);
+      setState(() {});
+    } else {
+      currentAudio = 0;
+      url = list[currentAudio].url;
+      await player.setUrl(url);
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-
-     bool isConnected;
-
+    bool isConnected;
+ 
     switch (_source.keys.toList()[0]) {
       case ConnectivityResult.none:
         isConnected = false;
         break;
       case ConnectivityResult.mobile:
         isConnected = true;
-        setState(() {
-        });
+        setState(() {});
         break;
       case ConnectivityResult.wifi:
-       isConnected = true;
-         setState(() { });
+        isConnected = true;
+        setState(() {});
     }
 
-     if (list.length > 1) {
+    if (list.length > 1) {
       isSingle = false;
     } else {
       isSingle = true;
     }
 
-
     return BibleReadScaffold(
-      title: 'Today', 
+      title: 'Today',
       hasLeadingIcon: false,
-      hasBottombar: true,     
+      hasBottombar: true,
       hasFloatingButton: true,
       floatingActionOnPress: _markTodayRead,
       selectedIndex: 0,
       bodyWidget: Container(
-        padding: EdgeInsets.only(left: 15, right: 15),
-        child: Stack(
-          overflow: Overflow.clip,
-          children: <Widget>[
-          FutureBuilder(
-                   future: _unReadChapters,
-                    builder: (BuildContext context, AsyncSnapshot snapshot) { 
-                  if (snapshot.hasData) {
-                         unReadPlan = snapshot.data;
-                          
-                          return ListView(
-                            addAutomaticKeepAlives: true,
-                            padding: const EdgeInsets.only(top: 70),
-                            
-                            scrollDirection: Axis.vertical,
-                            children: <Widget>[
+          padding: EdgeInsets.only(left: 15, right: 15),
+          child: Stack(overflow: Overflow.clip, children: <Widget>[
 
-                               Container(
-                                  margin: EdgeInsets.only(top:50),
-                                  child: ReadTodayCard(
+            FutureBuilder(
+                future: _unReadChapters,
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    unReadPlan = snapshot.data;
+
+                    return ListView(
+                        addAutomaticKeepAlives: true,
+                        padding: EdgeInsets.only(top: 70),
+                        scrollDirection: Axis.vertical,
+                        children: <Widget>[
+                          if (unReadPlan.length != 0)
+                            Container(
+                                margin: EdgeInsets.only(top: 50),
+                                child: ReadTodayCard(
                                   markRead: _markTodayRead,
                                   removeBookMark: _setBookMarkFalse,
                                   isDisabled: isConnected,
@@ -279,124 +262,121 @@ void previous() async {
                                   bookName: unReadPlan[0].longName,
                                   chapters: unReadPlan[0].chapters,
                                   chaptersData: unReadPlan[0].chaptersData,
-                           )),
+                                )),
+                          if (unReadPlan.length != 0) SizedBox(height: 20),
+                          if (unReadPlan.length != 0)
+                            StreamBuilder<PlayerDataStream>(
+                                stream: Rx.combineLatest3<FullAudioPlaybackState, Duration, Duration, PlayerDataStream>(player.fullPlaybackStateStream,  player.getPositionStream(), player.durationStream, (fullAudioPlaybackState, position, duration) => PlayerDataStream(durationStream: duration, positionStream: position, fullAudioPlaybackState: fullAudioPlaybackState)),
+                                builder: (BuildContext context, AsyncSnapshot snapshot) {
 
-                          SizedBox(height: 20),
-                          
-                               StreamBuilder<FullAudioPlaybackState>(
-                        stream: player.fullPlaybackStateStream,
-                        builder:(BuildContext context, AsyncSnapshot playStateSnapshot) {
-                          if (playStateSnapshot.hasData) {
-                              return StreamBuilder(
-                            stream: player.durationStream,
-                            builder: (BuildContext context, AsyncSnapshot durationSnapshot) {
+                                  if (snapshot.hasData) {
+                                      PlayerDataStream playerDataStream = snapshot.data;
+                
+                                                  final fullState =
+                                                      playerDataStream.fullAudioPlaybackState;
+                                                  final state =
+                                                      fullState?.state;
+                                                  final buffering =
+                                                      fullState?.buffering;
+                                                  Duration position =
+                                                      playerDataStream.positionStream;
+                                                  Duration duration =
+                                                      playerDataStream.durationStream;
+                                                  double slider = position
+                                                          .inMilliseconds /
+                                                      duration.inMilliseconds;
 
-                              return StreamBuilder(
-                                stream: player.getPositionStream(),
-                                builder: (BuildContext context, AsyncSnapshot positionSnapshot) {
+                                                  if (state ==
+                                                          AudioPlaybackState
+                                                              .connecting ||
+                                                      buffering == true) {
+                                                    isPlaying = false;
+                                                  } else if (state ==
+                                                      AudioPlaybackState
+                                                          .playing) {
+                                                    isPlaying = true;
+                                                  } else if (state ==
+                                                      AudioPlaybackState
+                                                          .completed) {
+                                                    isPlaying = false;
+                                                    next();
+                                                  } else {
+                                                    isPlaying = false;
+                                                  }
+                                                  return ListenCard(
+                                                    bookName: '',
+                                                    isAudioPlaying: isPlaying,
+                                                    slider: slider,
+                                                    isSingle: isSingle,
+                                                    next: () => isSingle
+                                                        ? null
+                                                        : next(),
+                                                    previous: () => isSingle
+                                                        ? null
+                                                        : previous(),
+                                                    playPause: () => isPlaying
+                                                        ? pauseAudio()
+                                                        : playAudio(),
+                                                    isReady: isConnected,
+                                                    sliderChange: (value) =>
+                                                        onChangeEnd(value),
+                                                    duration: duration,
+                                                    position: position,
+                                                    durationText:
+                                                        _formatDuration(
+                                                            duration),
+                                                    startTime: _formatDuration(
+                                                        position),
+                                                    chapter: list[currentAudio]
+                                                        .title,
+                                                  );
+                                                } else {
+                                                  return Container(
+                                                    height: 120,
+                                                    child: Center(
+                                                        child:
+                                                            SpinKitDoubleBounce(
+                                                      color: Theme.of(context)
+                                                          .accentColor,
+                                                    )),
+                                                  );
+                                                }
+                                          
+                                              }),
+                                
+                          if (unReadPlan.length == 0) CompletedCard(),
+                          SizedBox(height: 100),
+                        ])
+          ])
+                        
 
-                                  if (durationSnapshot.hasData && positionSnapshot.hasData) {
-                                      final fullState = playStateSnapshot.data;
-                                      final state = fullState?.state;
-                                      final buffering = fullState?.buffering;
-                                      Duration position = positionSnapshot.data;
-                                      Duration duration = durationSnapshot.data;
-                                      double slider = position.inMilliseconds / duration.inMilliseconds;
-
-                                      if (state == AudioPlaybackState.connecting ||
-                                          buffering == true) {
-                                            isPlaying = false;
-                                      } else if (state == AudioPlaybackState.playing) {
-                                            isPlaying = true;
-                                       } else if (state == AudioPlaybackState.completed) {
-                                           isPlaying = false;
-                                           next();
-                                      } else {
-                                          isPlaying = false;
-                                      }
-              
-                                   return ListenCard(
-                                        bookName: '',
-                                        isAudioPlaying: isPlaying,
-                                        slider: slider,
-                                        isSingle: isSingle,
-                                        next: () => isSingle ? null : next(),
-                                        previous: () => isSingle ? null : previous(),
-                                        playPause: () => isPlaying ? pauseAudio() : playAudio(),
-                                        isReady: isConnected,
-                                        sliderChange: (value) => onChangeEnd(value),
-                                        duration: duration,
-                                        position: position,
-                                        durationText: _formatDuration(duration),
-                                        startTime: _formatDuration(position),
-                                        chapter: list[currentAudio].title,
-                                      );
-                                  } else {
-                                      return Container(
-                                    height: 120,
-                                    child: Center(
-                                    child: SpinKitDoubleBounce(
-                                      color: Theme.of(context).accentColor,
-                                    )
-                                    ),
-                               );
-                                }
-                                });
-                              });
-                          } else {
-                            return Container();
-                          }
-                      
-                        }),
-                                  SizedBox(height: 100),
-                            ]);
-                  } else {
-                    return Container();
-                  }
-                }),
-
-                    
-
-          FutureBuilder(
-            future: _progressValue,
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-
-            return Container(
-            height: 110,
-            
-            // clipBehavior: Clip.hardEdge,
-            // decoration: BoxDecoration(
-
-            //   image:  DecorationImage(
-            //     alignment: Alignment(1, 0.9),
-
-            //     fit: BoxFit.cover,
-            //     image: AssetImage('assets/images/today_image.png')), 
-            //   borderRadius: BorderRadius.circular(20)
-            // ),
-            child: ProgressCard(
-                subtitle: 'Welcome!',
-                showExpected: false,
-              //  textColor: Colors.white,
-              //  backgroundColor: Colors.white,
-                progressNumber: snapshot.hasData ? snapshot.data : 0,
-                textOne: DateTimeHelpers().todayWeekDay(),
-                textTwo: DateTimeHelpers().todayMonth(),
-                textThree: DateTimeHelpers().todayDate(),
-            ) 
-          );
-        },
-      ),
-        ])
-      ),
+  
+            FutureBuilder(
+              future: _progressValue,
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                return Container(
+                    height: 110,
+                    child: ProgressCard(
+                      subtitle: 'Welcome!',
+                      showExpected: false,
+                      progressNumber:
+                          snapshot.hasData ? snapshot.data > 1.0 ? 1.0 : snapshot.data : 0,
+                      textOne: DateTimeHelpers().todayWeekDay(),
+                      textTwo: DateTimeHelpers().todayMonth(),
+                      textThree: DateTimeHelpers().todayDate(),
+                    ));
+              },
+            ),
+          ])),
     );
   }
 }
 
 
+class PlayerDataStream {
+  PlayerDataStream({this.durationStream, this.fullAudioPlaybackState, this.positionStream});
+  FullAudioPlaybackState fullAudioPlaybackState;
+  Duration positionStream;
+  Duration durationStream;
 
-
-
-
-
-
+}

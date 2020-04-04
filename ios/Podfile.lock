@@ -5,9 +5,13 @@ PODS:
   - connectivity_macos (0.0.1):
     - Flutter
   - Flutter (1.0.0)
+  - flutter_app_badger (0.0.1):
+    - Flutter
   - flutter_device_locale (0.0.1):
     - Flutter
   - flutter_local_notifications (0.0.1):
+    - Flutter
+  - flutter_share_file (0.0.1):
     - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
@@ -51,8 +55,10 @@ DEPENDENCIES:
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - connectivity_macos (from `.symlinks/plugins/connectivity_macos/ios`)
   - Flutter (from `Flutter`)
+  - flutter_app_badger (from `.symlinks/plugins/flutter_app_badger/ios`)
   - flutter_device_locale (from `.symlinks/plugins/flutter_device_locale/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
+  - flutter_share_file (from `.symlinks/plugins/flutter_share_file/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - launch_review (from `.symlinks/plugins/launch_review/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
@@ -82,10 +88,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/connectivity_macos/ios"
   Flutter:
     :path: Flutter
+  flutter_app_badger:
+    :path: ".symlinks/plugins/flutter_app_badger/ios"
   flutter_device_locale:
     :path: ".symlinks/plugins/flutter_device_locale/ios"
   flutter_local_notifications:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
+  flutter_share_file:
+    :path: ".symlinks/plugins/flutter_share_file/ios"
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
   launch_review:
@@ -123,8 +133,10 @@ SPEC CHECKSUMS:
   connectivity: 6e94255659cc86dcbef1d452ad3e0491bb1b3e75
   connectivity_macos: e2e9731b6b22dda39eb1b128f6969d574460e191
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_app_badger: 65de4d6f0c34a891df49e6cfb8a1c0496426fa68
   flutter_device_locale: bd88cfdfdcae58b2a9d5ec05389fd99631c9dca7
   flutter_local_notifications: 9e4738ce2471c5af910d961a6b7eadcf57c50186
+  flutter_share_file: 52924ead227a84da296c7667cae94eea86962eb5
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   just_audio: c695d6e7e37f9e96672dd84039d7530e7fd5c205
   launch_review: 75d5a956ba8eaa493e9c9d4bf4c05e505e8d5ed0
@@ -141,7 +153,7 @@ SPEC CHECKSUMS:
   url_launcher_web: e5527357f037c87560776e36436bf2b0288b965c
   video_player: 69c5f029fac4ffe4fc8a85ea7f7b793709661549
   video_player_web: da8cadb8274ed4f8dbee8d7171b420dedd437ce7
-  wakelock: bd3dcc6a8bcf53a1c0309780ff192dcee67c6ccb
+  wakelock: 0d4a70faf8950410735e3f61fb15d517c8a6efc4
   webview_flutter: bec7599de6bfbe8008a739aa3ebd7b364ea9d0cd
 
 PODFILE CHECKSUM: 083258d7f5e80b42ea9bfee905fe93049bc04c64

@@ -3,7 +3,7 @@ import 'package:BibleRead/classes/datepicker/date_picker.dart';
 import 'ReadingPlanView.dart';
 import 'package:flutter/material.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
-
+import 'package:toast/toast.dart';
 class ReadingStartDate extends StatefulWidget {
 
   ReadingStartDate({this.planId});
@@ -27,10 +27,29 @@ class _ReadingStartDateState extends State<ReadingStartDate> {
 
         title: 'Start Date',
         initialDateTime: DateTime.now(),
+        onChange: (date, _) => {
+           if (date.isAfter(DateTime.now())) {
+            Toast.show(
+            "Cannot select a date in the future", 
+            context, 
+            backgroundColor: Colors.red[900],
+            duration: Toast.LENGTH_LONG, 
+            gravity:  Toast.CENTER),
+
+          } 
+        },
         onConfirm: (date, _) => {
-          setState(() => {
+          if (date.isAfter(DateTime.now())) {
+            Toast.show(
+            "Cannot select a date in the future", 
+            context, 
+            duration: Toast.LENGTH_LONG, 
+            gravity:  Toast.CENTER),
+          } else {
+            setState(() => {
             _setStartDate(date)
           }) 
+          }
         },
         pickerMode: DateTimePickerMode.date);
   }

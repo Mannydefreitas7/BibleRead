@@ -1,4 +1,6 @@
 
+import 'package:BibleRead/components/ChaptersList.dart';
+import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/pages/progressview/ProgressCard.dart';
 import '../components/bibleBooksList.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,20 @@ class ProgressPage extends StatelessWidget {
         children: <Widget>[  
             Container(
               margin: EdgeInsets.only(top:50),
-              child: BibleBookList()
+              child: StreamBuilder<int>(
+                stream: SharedPrefs().getSelectedPlan().asStream(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    int selectedPlan = snapshot.data;
+                    if (selectedPlan != 2) {
+                      return BibleBookList();
+                    } else {
+                      return ChaptersList();
+                    }
+                  }
+                  return BibleBookList();
+                }
+              )
             ),
             Container(
               padding: EdgeInsets.only(left:15, right:15),
