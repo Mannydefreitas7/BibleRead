@@ -1,4 +1,4 @@
-import 'package:BibleRead/helpers/LocalDataBase.dart';
+
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:BibleRead/pages/progressview/BibleBookCard.dart';
@@ -21,7 +21,6 @@ class BibleBookList extends StatelessWidget {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               List<Plan> list = snapshot.data;
-              List<Plan> chaptersList = bibleBookListData.list;
               return ListView.builder(
                   padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
                   scrollDirection: Axis.vertical,

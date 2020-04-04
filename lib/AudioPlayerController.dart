@@ -21,7 +21,6 @@ class AudioPlayerController {
   initialize() async {
     list = await setupAudioList();
     player = AudioPlayer();
-    print(list[0].url);
     await player.setUrl(list[currentAudio].url);
   }
 

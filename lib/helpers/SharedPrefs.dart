@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefs {
@@ -32,6 +32,16 @@ class SharedPrefs {
    Future<void> setReadingStartDate(DateTime date) async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.setString('readingStartDate', date.toString());
+  }
+
+  Future<void> setExpectedProgress(bool showExpected) async {
+    final prefs = await SharedPreferences.getInstance();
+     prefs.setBool('showExpectedProgress', showExpected);
+  }
+
+  Future<bool> getExpectedProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('showExpectedProgress');
   }
 
    Future<void> setReminderTime(DateTime date) async {

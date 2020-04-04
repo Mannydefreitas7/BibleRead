@@ -8,27 +8,37 @@ class ProgressCircle extends StatelessWidget {
   final double radiusWidth;
   final double lineWidth;
   final double fontSize;
+  final Color backgroundColor;
+  final Color progressColor;
 
-  ProgressCircle({this.progressNumber, this.progressText, this.radiusWidth, this.lineWidth, this.fontSize});
+  ProgressCircle({
+    this.progressNumber, 
+    this.progressText, 
+    this.radiusWidth, 
+    this.lineWidth, 
+    this.fontSize,
+    this.backgroundColor,
+    this.progressColor
+  });
 
   @override
   Widget build(BuildContext context) {
     return CircularPercentIndicator(
               animation: true,
-              backgroundColor: Theme.of(context).canvasColor.withOpacity(0.3),
-              animateFromLastPercent: true,      
+              backgroundColor: backgroundColor == null ? Theme.of(context).canvasColor.withOpacity(0.3) : backgroundColor,
+              animateFromLastPercent: true,
+
               radius: radiusWidth == null ? 60.0 : radiusWidth,
               circularStrokeCap: CircularStrokeCap.round,
               lineWidth: lineWidth == null ? 6.0 : lineWidth,
               percent: progressNumber,
-
-              center: Text(progressText, style: TextStyle(
+              center: progressText != null ? Text(progressText, style: TextStyle(
                 fontSize: fontSize == null ? 14.0 : fontSize,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
                 fontFamily: 'Avenir Next',
                 fontWeight: FontWeight.bold
-              ),),
-              progressColor: Theme.of(context).accentColor,
+              ),) : Container(),
+              progressColor: progressColor == null ?  Theme.of(context).accentColor : progressColor,
               reverse: true,
     );
   }

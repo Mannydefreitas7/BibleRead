@@ -1,7 +1,6 @@
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_badger/flutter_app_badger.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
     NotificationAppLaunchDetails notificationAppLaunchDetails;

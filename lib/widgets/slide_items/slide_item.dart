@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../constants/constants.dart';
 import '../../models/slider.dart' as SliderModel;
 
 
@@ -33,7 +32,7 @@ class SlideItem extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             
-             color: Theme.of(context).textTheme.title.color,
+             color: Theme.of(context).textTheme.headline6.color,
             fontFamily: 'Avenir Next',
             fontWeight: FontWeight.w700,
             fontSize: 34,

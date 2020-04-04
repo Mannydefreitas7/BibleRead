@@ -2,7 +2,6 @@ import 'package:BibleRead/components/BibleReadingCard.dart';
 import 'package:BibleRead/components/ReminderCard.dart';
 import 'package:flutter/material.dart';
 import '../components/InformationCard.dart';
-import '../components/SupportCard.dart';
 import '../classes/BibleReadScaffold.dart';
 
 class SettingsPage extends StatelessWidget {

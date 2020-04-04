@@ -8,7 +8,7 @@ class BRBottomNavBar extends StatelessWidget {
 
   BRBottomNavBar({this.selectedIndex});
 
-    List tabs = [
+   final List tabs = [
     PageItem(route: '/today'),
     PageItem(route: '/progress'),
     PageItem(route: '/readingplans'),

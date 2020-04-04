@@ -270,7 +270,7 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
       child: Text(
         DateTimeFormatter.formatDateTime(value, format, widget.locale),
         style:
-            TextStyle(color: Theme.of(context).textTheme.title.color, fontSize: 20.0) ?? DATETIME_PICKER_ITEM_TEXT_STYLE,
+            TextStyle(color: Theme.of(context).textTheme.headline6.color, fontSize: 20.0) ?? DATETIME_PICKER_ITEM_TEXT_STYLE,
       ),
     );
   }
@@ -287,7 +287,7 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
 
   /// change the selection of minute picker
   void _changeMinuteSelection(int index) {
-    // TODO: this looks like it would break date ranges but not taking into account _minuteRange.first
+
     int value = index * _minuteDivider;
     if (_currMinute != value) {
       _currMinute = value;

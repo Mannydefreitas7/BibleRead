@@ -1,18 +1,14 @@
 
 import 'dart:async';
 import 'package:BibleRead/AudioPlayerController.dart';
-import 'package:BibleRead/classes/AudioController.dart';
 import 'package:BibleRead/classes/ChapterAudio.dart';
 import 'package:BibleRead/classes/Notifications.dart';
 import 'package:BibleRead/classes/connectivityCheck.dart';
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
-import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/Plan.dart';
-import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
 import '../components/listenCard.dart';
 import '../components/readTodayCard.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +18,6 @@ import '../classes/BibleReadScaffold.dart';
 import 'package:connectivity/connectivity.dart';
 import '../helpers/LocalDataBase.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 
 
@@ -55,15 +50,10 @@ class _TodayPageState extends State<TodayPage> {
   String verses = '';
   bool isSingle = true;
   double slider = 0.0;
-  String _platformVersion = 'Unknown';
-  double _sliderVolume;
-  String _error;
   String bookmarkdata = '';
  bool hasBookmark = false;
 
  int currentAudio = 0;
-
-  Future<List<ChapterAudio>> _chaptersAudio;
 
   AudioPlayer player;
 
@@ -161,12 +151,6 @@ void initState() {
 
     initialize();
 
-    if (list.length == 1) {
-      isSingle = true;
-    } else {
-      isSingle = false;
-    }
-
        SharedPrefs().getHasBookMark().then((value) => {
             hasBookmark = value
           });
@@ -179,7 +163,7 @@ void initState() {
             }
           });
 
-         DatabaseHelper().getLanguages().then((value) => print(value[0].name));
+
 
 }
 
@@ -187,7 +171,11 @@ void initState() {
   initialize() async {
     list = await audioPayerController.setupAudioList();
     await player.setUrl(list[currentAudio].url);
-   
+       if (list.length > 1) {
+      isSingle = false;
+    } else {
+      isSingle = true;
+    }
   }
 
 @override
@@ -227,9 +215,7 @@ void previous() async {
             url = list[currentAudio].url;
             await player.setUrl(url);
               setState(() {});
-     }
-  //  await player.play();
- 
+     } 
 }
 
   @override
@@ -251,6 +237,13 @@ void previous() async {
          setState(() { });
     }
 
+     if (list.length > 1) {
+      isSingle = false;
+    } else {
+      isSingle = true;
+    }
+
+
     return BibleReadScaffold(
       title: 'Today', 
       hasLeadingIcon: false,
@@ -269,14 +262,6 @@ void previous() async {
                   if (snapshot.hasData) {
                          unReadPlan = snapshot.data;
                           
-                            String lastChapter() {
-                              if (unReadPlan[0].chapters.contains('-') == true) {
-                                return ' - ${unReadPlan[0].chapters.split('-')[1]}';
-                              } else {
-                              return '';
-                              }
-                            }
-             
                           return ListView(
                             addAutomaticKeepAlives: true,
                             padding: const EdgeInsets.only(top: 70),
@@ -292,7 +277,7 @@ void previous() async {
                                   isDisabled: isConnected,
                                   bibleViewMarkRead: bibleViewMarkRead,
                                   bookName: unReadPlan[0].longName,
-                                  chapters: hasBookmark ? '$bookmarkdata${lastChapter()}' : unReadPlan[0].chapters,
+                                  chapters: unReadPlan[0].chapters,
                                   chaptersData: unReadPlan[0].chaptersData,
                            )),
 
@@ -391,6 +376,7 @@ void previous() async {
             // ),
             child: ProgressCard(
                 subtitle: 'Welcome!',
+                showExpected: false,
               //  textColor: Colors.white,
               //  backgroundColor: Colors.white,
                 progressNumber: snapshot.hasData ? snapshot.data : 0,

@@ -39,7 +39,7 @@ class SecondaryTitleText extends StatelessWidget {
     return Text(
       secondaryTitle,
       style: TextStyle(
-        color: Theme.of(context).textTheme.title.color,
+        color: Theme.of(context).textTheme.headline6.color,
         fontFamily: 'Avenir Next',
         fontWeight: FontWeight.w500,
         fontSize: 22.00
@@ -59,7 +59,7 @@ class SubTitleText extends StatelessWidget {
     return Text(
       subTitle,
       style: TextStyle(
-        color: Theme.of(context).textTheme.subtitle.color,
+        color: Theme.of(context).textTheme.subtitle2.color,
         fontFamily: 'Avenir Next',
         fontWeight: FontWeight.w700,
         fontSize: 20.00

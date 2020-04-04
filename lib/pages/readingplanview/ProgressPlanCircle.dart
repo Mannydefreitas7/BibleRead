@@ -11,7 +11,6 @@ class ProgressPlanCircle extends StatelessWidget {
     
         List _allDays = progressData.data;   
           List _isReadDays = _allDays.where((i) => i['IsRead'] == 1).toList();
-          print(_isReadDays.length);
           final expo = 100 / _allDays.toList().length;
           final double endValue = (_isReadDays.length * expo) / 100;
           return endValue;
@@ -26,12 +25,15 @@ class ProgressPlanCircle extends StatelessWidget {
           builder: (context, progress) {
 
             if (progress.hasData) {
-               return AnimatedProgressCircle(
-                fontSize: 20,
-                lineWidth: 10.0,
-                endValue: _countProgressValue(progress),
-                radiusWidth: 120.0,
-          );
+               return Center(
+                 child: AnimatedProgressCircle(
+                  fontSize: 20,
+                  showExpected: false,
+                  lineWidth: 10.0,
+                  endValue: _countProgressValue(progress),
+                  radiusWidth: 120.0,
+          ),
+               );
         } else {
             return CircularProgressIndicator();
         }

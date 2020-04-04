@@ -67,7 +67,7 @@ class BibleBookCard extends StatelessWidget {
                 leading: CircleAvatar(
                   backgroundColor: Theme.of(context).backgroundColor,
                   child: Text(bookShortName, style: 
-                   TextStyle(color: isRead ? Colors.grey : Theme.of(context).textTheme.title.color, fontSize: 16)
+                   TextStyle(color: isRead ? Colors.grey : Theme.of(context).textTheme.headline6.color, fontSize: 16)
                   ,),
                 ),
                 contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -80,7 +80,7 @@ class BibleBookCard extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style:  TextStyle(
-                        color: isRead ? Colors.grey : Theme.of(context).textTheme.title.color, 
+                        color: isRead ? Colors.grey : Theme.of(context).textTheme.headline6.color, 
                         fontSize: 20, 
                         fontFamily: 'Avenir Next',
                         fontWeight: FontWeight.w600

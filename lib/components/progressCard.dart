@@ -1,7 +1,5 @@
 import 'package:BibleRead/helpers/animations.dart';
 import 'package:flutter/material.dart';
-import '../classes/progressCircle.dart';
-
 
 class ProgressCard extends StatelessWidget {
 
@@ -13,8 +11,10 @@ class ProgressCard extends StatelessWidget {
   final Color backgroundColor;
   final Color textColor;
   final bool isToday;
+  final double expectedValue;
+  final bool showExpected;
 
-  ProgressCard({this.subtitle, this.isToday, this.textColor, this.backgroundColor, this.textOne, this.textTwo, this.textThree, this.progressNumber});
+  ProgressCard({this.subtitle, this.showExpected, this.isToday, this.textColor, this.backgroundColor, this.expectedValue, this.textOne, this.textTwo, this.textThree, this.progressNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class ProgressCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         fontSize: 16.0,
                         fontFamily: 'Avenir Next',
-                        color: textColor == null ? Theme.of(context).textTheme.subtitle.color : textColor),
+                        color: textColor == null ? Theme.of(context).textTheme.subtitle2.color : textColor),
                   ),
                   Row(
                     children: <Widget>[
@@ -53,7 +53,7 @@ class ProgressCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Avenir Next',
                         fontSize: 20.0,
-                        color: textColor == null ? Theme.of(context).textTheme.title.color : textColor ),
+                        color: textColor == null ? Theme.of(context).textTheme.headline6.color : textColor ),
                   ),
                    SizedBox(width: textOne.length != 0 ? 5 : 0,),
                      Text(
@@ -64,7 +64,7 @@ class ProgressCard extends StatelessWidget {
                         fontFamily: 'Avenir Next',
                         fontSize: 20.0,
                         color:
-                            textColor == null ? Theme.of(context).textTheme.title.color : textColor),
+                            textColor == null ? Theme.of(context).textTheme.headline6.color : textColor),
                   ),
                   SizedBox(width: 5),
                   Text(
@@ -74,7 +74,7 @@ class ProgressCard extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Avenir Next',
                         fontSize: 20.0,
-                        color: textColor == null ? Theme.of(context).textTheme.title.color : textColor),
+                        color: textColor == null ? Theme.of(context).textTheme.headline6.color : textColor),
                   )
                     ],
                   )
@@ -84,8 +84,9 @@ class ProgressCard extends StatelessWidget {
           
               AnimatedProgressCircle(
                 endValue: progressNumber,
+                expectedValue: showExpected == null ? 0 : expectedValue,
+                showExpected: showExpected == null ? false : showExpected,
               )
-
             ],
           ),
         ),

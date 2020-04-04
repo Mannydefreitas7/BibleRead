@@ -1,6 +1,5 @@
 import 'package:BibleRead/classes/Notifications.dart';
 import 'package:BibleRead/classes/datepicker/date_picker.dart';
-import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -66,14 +65,14 @@ class _ReminderCardState extends State<ReminderCard> {
         children: <Widget>[
           ListTile(
             leading: Icon(LineAwesomeIcons.bell, 
-            color: Theme.of(context).textTheme.title.color, 
+            color: Theme.of(context).textTheme.headline6.color, 
             size: 35,),
             title: new Text(
               "Reminder",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
           ),
@@ -82,7 +81,7 @@ class _ReminderCardState extends State<ReminderCard> {
               "Daily Reminder",
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             trailing: StreamBuilder<bool>(
@@ -114,7 +113,7 @@ class _ReminderCardState extends State<ReminderCard> {
                   "Time",
                   style: TextStyle(
                     fontSize: 18,
-                    color: Theme.of(context).textTheme.title.color,
+                    color: Theme.of(context).textTheme.headline6.color,
                   ),
                 ),
                 trailing: 
@@ -134,7 +133,7 @@ class _ReminderCardState extends State<ReminderCard> {
                           return Text(snapshot.hasData ? snapshot.data : '7h00',
                     style: TextStyle(
                           fontSize: 18,
-                          color: Theme.of(context).textTheme.title.color,
+                          color: Theme.of(context).textTheme.headline6.color,
                     ),
                   );
                         }),

@@ -23,7 +23,7 @@ class HtmlView extends StatelessWidget {
        // renderNewlines: true,
         defaultTextStyle: TextStyle(
           fontSize: 22,
-          color: Theme.of(context).textTheme.subhead.color,
+          color: Theme.of(context).textTheme.subtitle1.color,
           fontWeight: FontWeight.normal,
           fontFamily: 'PT Serif',
         ),
@@ -85,19 +85,19 @@ class BookMarkDialog extends StatelessWidget {
                 leading: Icon(
                   Icons.bookmark_border,
                   size: 30,
-                  color: Theme.of(context).textTheme.title.color,
+                  color: Theme.of(context).textTheme.headline6.color,
                 ),
                 title: Text( 
                   'Save Bookmark',
                   style: TextStyle(
                       fontSize: 22,
-                      color: Theme.of(context).textTheme.title.color,
+                      color: Theme.of(context).textTheme.headline6.color,
                       fontWeight: FontWeight.w600),
                 ),
                 trailing: Text(SharedPrefs().parseBookMarkedVerse(data),
                     style: TextStyle(
                         fontSize: 22,
-                        color: Theme.of(context).textTheme.title.color,
+                        color: Theme.of(context).textTheme.headline6.color,
                         fontWeight: FontWeight.w600)),
                 onTap: () => {
                       SharedPrefs().setBookMarkData(data),

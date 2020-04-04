@@ -1,7 +1,6 @@
 import 'package:BibleRead/classes/BibleReadScaffold.dart';
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
-import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/Language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -111,7 +110,7 @@ class _LanguagesViewState extends State<LanguagesView> {
              
                  keyboardAppearance: Theme.of(context).brightness,
                   style: TextStyle(
-                    color: Theme.of(context).textTheme.title.color,
+                    color: Theme.of(context).textTheme.headline6.color,
                       fontFamily: 'Avenir Next',
                       fontSize: 18.0,
                       decoration: TextDecoration.none,
@@ -120,11 +119,11 @@ class _LanguagesViewState extends State<LanguagesView> {
                   ),
                   cursorColor: Theme.of(context).accentColor,
                   decoration: InputDecoration(
-                    suffixIcon: Icon(LineAwesomeIcons.search, color: Theme.of(context).textTheme.title.color,),
+                    suffixIcon: Icon(LineAwesomeIcons.search, color: Theme.of(context).textTheme.headline6.color,),
                     filled: true,
                     
-                    focusColor: Theme.of(context).textTheme.title.color,
-                    hoverColor: Theme.of(context).textTheme.title.color,
+                    focusColor: Theme.of(context).textTheme.headline6.color,
+                    hoverColor: Theme.of(context).textTheme.headline6.color,
                     floatingLabelBehavior: FloatingLabelBehavior.never,
                     contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
                     alignLabelWithHint: false,
@@ -171,7 +170,7 @@ class LanguageTitle extends StatelessWidget {
            child: ListTile(
              onTap: setLocale,
         leading: CircleAvatar(
-          child: Icon(LineAwesomeIcons.language, color: Theme.of(context).textTheme.title.color),
+          child: Icon(LineAwesomeIcons.language, color: Theme.of(context).textTheme.headline6.color),
           backgroundColor: Theme.of(context).cardColor,
         ),
         title: Text(title,
@@ -181,7 +180,7 @@ class LanguageTitle extends StatelessWidget {
           fontFamily: 'Avenir Next',
           fontSize: 18,
           fontWeight: FontWeight.w500,
-          color: Theme.of(context).textTheme.title.color
+          color: Theme.of(context).textTheme.headline6.color
         ),
         ),
         subtitle: Text(subtitle,

@@ -1,5 +1,4 @@
 import 'package:BibleRead/classes/textHelper.dart';
-import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:flutter/cupertino.dart';
@@ -37,7 +36,7 @@ class ChapterDetail extends StatelessWidget {
 
               primary: true,
               leading: IconButton(
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
                 icon: BackButtonIcon(), 
                 onPressed: () {
                   Navigator.pop(context);
@@ -53,7 +52,7 @@ class ChapterDetail extends StatelessWidget {
                     type: MaterialType.transparency, // likely needed
                     child: PageTitleText(
                       title: bookName,
-                      textColor: Theme.of(context).textTheme.title.color,
+                      textColor: Theme.of(context).textTheme.headline6.color,
                       )
               )),
               centerTitle: false,
@@ -96,7 +95,7 @@ class ChapterDetail extends StatelessWidget {
                   title: Text(chapters[index].chapters, 
                   style: TextStyle(
                     fontSize: 20,
-                    color: chapterIsRead ? Colors.grey : Theme.of(context).textTheme.title.color,
+                    color: chapterIsRead ? Colors.grey : Theme.of(context).textTheme.headline6.color,
                     fontWeight: FontWeight.w600
                   ),)
                 ),

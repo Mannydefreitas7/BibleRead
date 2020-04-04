@@ -1,22 +1,14 @@
-import 'dart:convert';
+
 import 'dart:ui';
-import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
-import 'package:BibleRead/helpers/LocalDataBase.dart';
-import 'package:BibleRead/helpers/LocalJsonHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
-import 'package:BibleRead/models/JwBibleBook.dart';
-import 'package:BibleRead/models/Plan.dart';
 import 'package:BibleRead/pages/readingplanview/NumberOfDays.dart';
 import 'package:BibleRead/pages/readingplanview/PlanBibleBooks.dart';
 import 'package:BibleRead/pages/readingplanview/ProgressPlanCircle.dart';
 import 'package:BibleRead/pages/readingplanview/ReadingStartDate.dart';
 import 'package:provider/provider.dart';
 
-import '../../classes/datepicker/date_picker.dart';
-
 import 'package:BibleRead/classes/textHelper.dart';
-import 'package:BibleRead/helpers/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -25,7 +17,7 @@ class ReadingPlanView extends StatefulWidget {
   final int planId;
 
   static String dateFormat(DateTime date) {
-    String formattedDate = '${date.month}/${date.day}/${date.year}';
+    String formattedDate = date.toString();
     return formattedDate;
   }
 

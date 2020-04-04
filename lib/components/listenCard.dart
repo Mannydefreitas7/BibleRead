@@ -1,8 +1,5 @@
-
-import 'package:BibleRead/classes/AudioController.dart';
 import 'package:BibleRead/classes/SliderAudio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -26,7 +23,7 @@ class ListenCard extends StatelessWidget  {
     this.sliderChange
     });
 
-    bool isAudioPlaying;
+    final bool isAudioPlaying;
     final bool isReady;
     final bool isSingle;
     final String startTime;
@@ -44,12 +41,14 @@ class ListenCard extends StatelessWidget  {
 
 bool checkReadyandSingle() {
   
-  if (isSingle == true && isReady == true) {
-       return false;
-  } else if (isReady == false) {
+  if (isReady == true) {
+    if (isSingle == true) {
+      return true;
+    } else {
       return false;
+    }
   } else {
-    return true;
+    return false;
   }
 }
 
@@ -66,9 +65,9 @@ bool checkReadyandSingle() {
           child: Text('Listen',
               textAlign: TextAlign.left,
               style: TextStyle(
-                  fontWeight: Theme.of(context).textTheme.title.fontWeight,
+                  fontWeight: Theme.of(context).textTheme.headline6.fontWeight,
                   fontSize: 22.0,
-                  color: Theme.of(context).textTheme.title.color)),
+                  color: Theme.of(context).textTheme.headline6.color)),
         ),
         Card(
           elevation: 0.0,
@@ -88,7 +87,7 @@ bool checkReadyandSingle() {
                   children: <Widget>[
                     Icon(
                       LineAwesomeIcons.headphones,
-                      color: Theme.of(context).textTheme.title.color,
+                      color: Theme.of(context).textTheme.headline6.color,
                       ),
                     SizedBox(
                       width: 5,
@@ -99,7 +98,7 @@ bool checkReadyandSingle() {
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20.0,
-                          color: Theme.of(context).textTheme.title.color),
+                          color: Theme.of(context).textTheme.headline6.color),
                     ),
                     SizedBox(width: 5.0),
                     Text(
@@ -108,7 +107,7 @@ bool checkReadyandSingle() {
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20.0,
-                          color: Theme.of(context).textTheme.title.color),
+                          color: Theme.of(context).textTheme.headline6.color),
                     ),
                   ],
                 ),
@@ -124,7 +123,7 @@ bool checkReadyandSingle() {
                         alignment: Alignment.center,
                           icon: Icon(
                             SFSymbols.chevron_left,
-                            color: isReady || !isSingle ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
+                            color: checkReadyandSingle() ? Theme.of(context).disabledColor : Theme.of(context).accentColor,
                             size: 40,
                           ),
                           onPressed: previous),
@@ -141,7 +140,7 @@ bool checkReadyandSingle() {
 
                           icon: Icon(
                             SFSymbols.chevron_right,
-                            color: checkReadyandSingle() ? Theme.of(context).accentColor : Theme.of(context).accentColor,
+                            color: checkReadyandSingle() ? Theme.of(context).disabledColor : Theme.of(context).accentColor,
                             size: 40,
                           ),
                           onPressed: next)
@@ -171,7 +170,7 @@ bool checkReadyandSingle() {
                     Text(isReady ? startTime : '00:00', style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 18.0,
-                      color: Theme.of(context).textTheme.title.color
+                      color: Theme.of(context).textTheme.headline6.color
                       ),
                     ),
 
@@ -180,7 +179,7 @@ bool checkReadyandSingle() {
                     Text(isReady ? durationText : '00:00', style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 18.0,
-                       color: Theme.of(context).textTheme.title.color
+                       color: Theme.of(context).textTheme.headline6.color
                       ),
                     ),
 

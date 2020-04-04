@@ -1,13 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:BibleRead/classes/ChapterAudio.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/models/JwBibleBook.dart';
-import 'package:BibleRead/models/Plan.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
-import 'dart:typed_data';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -104,7 +98,6 @@ class JwOrgApiHelper {
 
   Future<Map<dynamic, dynamic>> bibleBooks(String url) async {
   Map<dynamic, dynamic> list;
-    String link = url;
     
     var res = await http
         .get(url, headers: {"Accept": "application/json"});
@@ -139,7 +132,7 @@ class JwOrgApiHelper {
     if (response.statusCode == 200) {
         Map<dynamic, dynamic> data = json.decode(response.body);
         langs = data['langs'];
-      //  print(data);
+    
         langs.forEach((key, value) { languages.add({key: value}); });
       }
   return languages;
@@ -170,9 +163,8 @@ class JwOrgApiHelper {
     String jworgLocale = currentBibleLocaleData[0]['contentApi'];
 
         String link =
-          "${jworgLocale}html/${chaptersData}";
+          "${jworgLocale}html/$chaptersData";
       var res = await http.get(link, headers: {"Accept": "application/json"});
-      print(link);
 
       if (res.statusCode == 200) {
         dynamic data = json.decode(res.body);

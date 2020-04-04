@@ -1,13 +1,10 @@
-import 'package:BibleRead/classes/bibleicons.dart';
+
 import 'package:BibleRead/components/HtmlView.dart';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import '../helpers/LocalDataBase.dart';
 import '../helpers/SharedPrefs.dart';
 
 class BibleReadingView extends StatelessWidget {
@@ -42,14 +39,14 @@ class BibleReadingView extends StatelessWidget {
                 bookName,
                 style: TextStyle(
                     fontSize: 26,
-                    color: Theme.of(context).textTheme.title.color,
+                    color: Theme.of(context).textTheme.headline6.color,
                     fontWeight: FontWeight.w700),
               ),
               SizedBox(width: 5),
               Text(chapters,
                   style: TextStyle(
                       fontSize: 26,
-                       color: Theme.of(context).textTheme.title.color,
+                       color: Theme.of(context).textTheme.headline6.color,
                       fontWeight:
                           FontWeight.w700)),
               Spacer(),

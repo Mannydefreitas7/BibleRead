@@ -1,15 +1,13 @@
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
+import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/Language.dart';
 import 'package:BibleRead/pages/settingsview/LanguagesView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:xlive_switch/xlive_switch.dart';
-import '../classes/DataPicker.dart';
 
 
 
@@ -19,46 +17,19 @@ class BibleReadingCard extends StatefulWidget {
 }
 
 class _BibleReadingCardState extends State<BibleReadingCard> {
+  bool showExpected = false;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void  _showExpectedProgress(bool showExpected) async {
+    await SharedPrefs().setExpectedProgress(showExpected);
+  }
 
   @override
   Widget build(BuildContext context) {
-    var listTile = ListTile(
-            leading: new Text(
-              "Bible",
-              style: TextStyle(
-                fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
-              ),
-            ),
-            trailing: StreamBuilder(
-                stream: Rx.combineLatest2<String, List<Language>, LanguagesData>(FirstLaunch().getBibleLocale().asStream(), DatabaseHelper().getLanguages().asStream(), (bibleLocale, languages) => LanguagesData(bibleLocale: bibleLocale, languages: languages)),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  String currentBible;
-                  if (snapshot.hasData) {
-                    LanguagesData languagesData = snapshot.data;
-                    List<Language> languages = languagesData.languages;
-                    languages = languages.where((element) => element.locale == languagesData.bibleLocale).toList();
-                    currentBible = languages[0].bibleTranslation;
-                  } else {
-                    currentBible = 'New World Translation of the Holy Scriptures (2013 Revision)';
-                  }
-                 return Container(
-                   width: MediaQuery.of(context).size.width / 2,
-                   child: Text(
-                currentBible,
-                maxLines: 3,
-                overflow: TextOverflow.visible,
-                textAlign: TextAlign.right,
-                textWidthBasis: TextWidthBasis.parent,
-                style: TextStyle(
-                
-                fontSize: 15,
-                color: Color(0xffaeaeae),
-              ),
-              ),
-                 );
-                })
-  );
+  
     return new Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
@@ -69,13 +40,13 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
       child: Column(
         children: <Widget>[
           ListTile(
-            leading: Icon(LineAwesomeIcons.book, color: Theme.of(context).textTheme.title.color, size: 35,),
+            leading: Icon(LineAwesomeIcons.book, color: Theme.of(context).textTheme.headline6.color, size: 35,),
             title: new Text(
               "Bible Reading",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
           ),
@@ -84,23 +55,33 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
               "Expected Progress",
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             trailing: 
-            XlivSwitch(
-              value: false, 
-              unActiveColor: Theme.of(context).backgroundColor,
-              thumbColor: Theme.of(context).cardColor,
-              activeColor: Theme.of(context).accentColor,
-              onChanged: (reminder) => print('$reminder changed'))
+            StreamBuilder<bool>(
+              initialData: showExpected,
+              stream: SharedPrefs().getExpectedProgress().asStream(),
+              builder: (context, snapshot) {
+                showExpected = snapshot.hasData ? snapshot.data : false;
+                return XlivSwitch(
+                  value: showExpected, 
+                  unActiveColor: Theme.of(context).backgroundColor,
+                  thumbColor: Theme.of(context).cardColor,
+                  activeColor: Theme.of(context).accentColor,
+
+                  onChanged: (expectedProgress) => setState(() {
+                      showExpected = !showExpected;
+                      _showExpectedProgress(showExpected);
+                  }));
+        })
             ),
           ListTile(
             leading: new Text(
               "Language",
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             trailing: 
@@ -137,7 +118,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
                 textWidthBasis: TextWidthBasis.parent,
                 style: TextStyle(
                   fontSize: 18,
-                  color: Theme.of(context).textTheme.title.color,
+                  color: Theme.of(context).textTheme.headline6.color,
                 )
               );
                 })
@@ -152,7 +133,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
               style: TextStyle(
                 fontSize: 18,
               //  fontWeight: FontWeight.bold,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
           ),
           StreamBuilder(

@@ -276,7 +276,7 @@ class _DatePickerState extends State<_DataPickerComponent> {
             child: Text(
               widget.title,
               style: TextStyle(
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
                 fontSize: 20.0,
                 fontWeight: FontWeight.w600
               ),

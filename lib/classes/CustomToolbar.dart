@@ -120,7 +120,7 @@ class _TextSelectionToolbar extends StatelessWidget {
     final MaterialLocalizations localizations =
         MaterialLocalizations.of(context);
   final TextStyle style = TextStyle(
-    color: Theme.of(context).textTheme.title.color
+    color: Theme.of(context).textTheme.headline6.color
   );
     if (handleCut != null)
       items.add(FlatButton(
@@ -145,7 +145,7 @@ class _TextSelectionToolbar extends StatelessWidget {
           onPressed: handleSelectAll));
 
     if (handleLike != null)
-      items.add(FlatButton(child: Icon(Icons.favorite, color: Theme.of(context).textTheme.title.color,), onPressed: handleLike));
+      items.add(FlatButton(child: Icon(Icons.favorite, color: Theme.of(context).textTheme.headline6.color,), onPressed: handleLike));
 
     // If there is no option available, build an empty widget.
     if (items.isEmpty) {

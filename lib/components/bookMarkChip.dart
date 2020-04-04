@@ -23,7 +23,7 @@ class BookMarkChip extends StatelessWidget {
                       backgroundColor: Theme.of(context).backgroundColor,
                       avatar: Icon(
                         Icons.bookmark_border,
-                        color: Theme.of(context).textTheme.title.color,
+                        color: Theme.of(context).textTheme.headline6.color,
                         size: 25,
                       ),
                       onPressed: onChipPress,
@@ -32,11 +32,11 @@ class BookMarkChip extends StatelessWidget {
                           SharedPrefs().parseBookMarkedVerse(bookmark.data),
                           style: TextStyle(
                               fontSize: 22,
-                              color: Theme.of(context).textTheme.title.color,
+                              color: Theme.of(context).textTheme.headline6.color,
                               fontWeight: FontWeight.w600),
                         ),
                         SizedBox(width: 5),
-                        Icon(Icons.clear, color: Theme.of(context).textTheme.title.color,),
+                        Icon(Icons.clear, color: Theme.of(context).textTheme.headline6.color,),
                       ]));
                 } else {
                   return Container(height: 0,);

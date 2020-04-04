@@ -1,6 +1,5 @@
-import 'package:BibleRead/models/BibleBookListData.dart';
+
 import 'package:BibleRead/pages/progressview/ProgressCard.dart';
-import 'package:provider/provider.dart';
 import '../components/bibleBooksList.dart';
 import 'package:flutter/material.dart';
 import '../classes/BibleReadScaffold.dart';
@@ -24,7 +23,9 @@ class ProgressPage extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.only(left:15, right:15),
-              child: ProgressViewCard(),
+              child: ProgressViewCard(
+                subtitle: 'Current',
+              ),
             )
         ],
       ),

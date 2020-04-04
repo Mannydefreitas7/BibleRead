@@ -68,19 +68,43 @@ class FadeIn extends StatelessWidget {
 class AnimatedProgressCircle extends StatelessWidget {
 
   final double endValue;
+  final double expectedValue;
   final double radiusWidth;
   final double lineWidth;
   final double fontSize;
+  final bool showExpected;
 
-  AnimatedProgressCircle({this.endValue, this.radiusWidth, this.fontSize, this.lineWidth});
+  AnimatedProgressCircle({
+    this.endValue, 
+    this.showExpected, 
+    this.radiusWidth, 
+    this.fontSize, 
+    this.lineWidth,
+    this.expectedValue
+    });
 
   @override
   Widget build(BuildContext context) {
-    return ProgressCircle(
-          progressNumber: endValue, 
-          progressText: '${(endValue * 100).round()}%', radiusWidth: radiusWidth,
-          lineWidth: lineWidth,
-          fontSize: fontSize,
+    return Stack(
+      children: <Widget>[
+        ProgressCircle( // bottom
+              progressNumber: showExpected ? expectedValue : endValue, 
+              backgroundColor: showExpected ? Colors.transparent : null,
+              progressText: showExpected ? null : '${(endValue * 100).round()}%', 
+              radiusWidth: radiusWidth,
+              lineWidth: lineWidth,
+              progressColor: showExpected ? Colors.grey : null,
+              fontSize: fontSize,
+        ),
+       showExpected ? ProgressCircle( // on top
+              progressNumber: endValue, 
+              progressColor: Colors.red,
+              progressText: '${(endValue * 100).round()}%', 
+              radiusWidth: radiusWidth,
+              lineWidth: lineWidth,
+              fontSize: fontSize,
+        ) : SizedBox(),
+      ],
     );
   }
 }

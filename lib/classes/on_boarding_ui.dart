@@ -1,7 +1,5 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../models/slider.dart' as SliderModel;
 import '../screens/landing_page.dart';
 

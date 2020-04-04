@@ -8,8 +8,8 @@ class BookmarkData extends ChangeNotifier {
   bool hasBookMark;
   String formattedData;
 
-  Future<String> get _bookMarkData => SharedPrefs().getBookMarkData();
-  Future<bool> get _hasBookmarkData =>  SharedPrefs().getHasBookMark();
+  // Future<String> get _bookMarkData => SharedPrefs().getBookMarkData();
+  // Future<bool> get _hasBookmarkData =>  SharedPrefs().getHasBookMark();
 
   BookmarkData() {
       SharedPrefs().getBookMarkData().then((value) => bookMarkData = value);

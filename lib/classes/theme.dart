@@ -26,7 +26,7 @@ final ThemeData brThemeData = new ThemeData(
 
             color: Colors.transparent,
             textTheme: TextTheme(
-              title: TextStyle(
+              headline6: TextStyle(
                   color: Colors.black,
                   fontSize: 30.0,
                   fontWeight: FontWeight.w700),
@@ -44,15 +44,15 @@ final ThemeData brThemeData = new ThemeData(
                   fontWeight: FontWeight.normal),
 
             // Book & chapter to Read text
-            subtitle: TextStyle(
+            subtitle2: TextStyle(
                   color: Colors.grey[400],
                   fontSize: 18.0,
                   fontWeight: FontWeight.w400),
-            subhead: TextStyle(
+            subtitle1: TextStyle(
               color: Colors.black
             ),
             // Card titles
-            title: TextStyle(
+            headline6: TextStyle(
                   color: Colors.black,
                   fontSize: 22.0,
                   fontWeight: FontWeight.w700)
@@ -87,7 +87,7 @@ final ThemeData brThemeDataDark = new ThemeData(
 
             color: Colors.transparent,
             textTheme: TextTheme(
-              title: TextStyle(
+              headline6: TextStyle(
                   color: Colors.white,
                   fontSize: 30.0,
                   fontWeight: FontWeight.w700),
@@ -104,17 +104,17 @@ final ThemeData brThemeDataDark = new ThemeData(
                   color: Colors.grey,
                   fontSize: 14.0,
                   fontWeight: FontWeight.normal),
-            subhead: TextStyle(
+            subtitle1: TextStyle(
               color: Colors.grey
             ),
             // Book & chapter to Read text
-            subtitle: TextStyle(
+            subtitle2: TextStyle(
                   color: Colors.grey[400],
                   fontSize: 18.0,
                   fontWeight: FontWeight.w400),
 
             // Card titles
-            title: TextStyle(
+            headline6: TextStyle(
                   color: Colors.white,
                   fontSize: 22.0,
                   fontWeight: FontWeight.w700)

@@ -1,9 +1,8 @@
-import 'dart:convert';
+
 import 'dart:io';
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
-import 'package:BibleRead/models/JwBibleBook.dart';
 import 'package:BibleRead/models/Language.dart';
 import 'package:BibleRead/models/LocalBooks.dart';
 import 'package:BibleRead/models/Plan.dart';
@@ -19,7 +18,7 @@ import 'SharedPrefs.dart';
 class DatabaseHelper {
   DatabaseHelper();
 
-  Future _copyDatabase() async {
+  Future copyDatabase() async {
   String databasesPath = await getDatabasesPath();
   final _databaseName = "BibleRead.db";
   final _databaseVersion = 1;
@@ -35,7 +34,7 @@ class DatabaseHelper {
 Future setupDatabase() async {
   String databasesPath = await getDatabasesPath();
   final _databaseName = "BibleRead.db";
-  final _databaseVersion = 1;
+ // final _databaseVersion = 1;
   String dbPath = join(databasesPath, _databaseName);
   ByteData data = await rootBundle.load("assets/BibleRead.db");
   List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
@@ -49,7 +48,7 @@ Future setupDatabase() async {
     final _databaseVersion = 1;
     String databasesPath = await getDatabasesPath();
     String dbPath = join(databasesPath, _databaseName);
-  //  print(dbPath);
+    print(dbPath);
 
   // if (dbPath != null) { 
      _database = await openDatabase(dbPath, version: _databaseVersion); 
@@ -72,10 +71,19 @@ Future setupDatabase() async {
 
 Future<ReadingPlans> queryReadingPlan(int id) async {
   Database db = await database;
-  List<Map<String, dynamic>> readingPlans = await db.query('readingplans', where: "index = ?", whereArgs: [id]);
+  List<Map<String, dynamic>> readingPlans = await db.rawQuery('SELECT * FROM readingplans WHERE id = $id');
   ReadingPlans readingPlan = ReadingPlans.fromJson(readingPlans[0]);
    return readingPlan;
+}
+
+Future<ReadingPlans> queryCurrentPlan() async {
+  Database db = await database;
+  int id = await SharedPrefs().getSelectedPlan();
+  List<Map<String, dynamic>> readingPlans = await db.rawQuery('SELECT * FROM readingplans WHERE id = $id');
  
+  ReadingPlans readingPlan = ReadingPlans.fromJson(readingPlans[0]);
+   print(readingPlan);
+   return readingPlan;
 }
 
 Future<List<Map<String, dynamic>>> getCurrentBibleLocale() async {
@@ -166,6 +174,7 @@ Future<void> markChapterUnRead(int id) async {
 
 Future getLocaleBooks(String locale) async {
 Database db = await database;
+//print(db.rawQuery("SELECT * FROM '$locale'"));
 return db.rawQuery("SELECT * FROM '$locale'");
 // return db.query('$locale');
 }
@@ -204,12 +213,12 @@ Future<List<Language>> getLanguages() async {
   return languages;
 }
 
-Future<void> setBookNames(String locale) async {
+Future<void> setBookNames(String locale, int edition) async {
 
   Map languages = await JwOrgApiHelper().getLanguages();
   String insertSql;
   String tableName = languages['$locale']['lang']['symbol'];
-  String bookNamesApiUrl = languages['$locale']['editions'][0]['contentAPI'];
+  String bookNamesApiUrl = languages['$locale']['editions'][edition]['contentAPI'];
   List<LocalBook> books = [];
    Database db = await database;
   Map bookNames = await JwOrgApiHelper().bibleBooks(bookNamesApiUrl);
@@ -222,11 +231,9 @@ Future<void> setBookNames(String locale) async {
     hasAudio INTEGER
 )''';
   db.execute(sql);
-
   for (var book in bookNames.values) {
     books.add(LocalBook.fromJson(book));
   }
-
   for (var i = 0; i < books.length; i++) {
     insertSql = '''
     INSERT INTO "$tableName" ('shortName', 'longName', 'chapterCount', 'bookID', 'hasAudio')  
@@ -234,24 +241,59 @@ Future<void> setBookNames(String locale) async {
 
     db.execute(insertSql);
   }
-
-
 }
 
-Future<void> setLanguages(String locale) async {
+Future<List<ReadingPlans>> getReadingPlans() async {
+  Database db = await database;
+  List<ReadingPlans> readingPlans = [];
+  List<Map<String, dynamic>> data = await db.rawQuery("SELECT * FROM readingplans");
+  data.forEach((element) {
+    readingPlans.add(ReadingPlans.fromJson(element));
+  });
+  return readingPlans;
+}
+
+void setReadingPlanStartDate(DateTime dateTime, int selectedPlan) async {
+  Database db = await database;
+  String date = dateTime.toString();
+  db.rawUpdate("UPDATE readingplans SET StartDate = '$date' WHERE id = $selectedPlan");
+}
+
+Future<String> getReadingPlanStartDate(int selectedPlan) async {
+  Database db = await database;
+  String dateTime;
+  List readingPlans = await db.rawQuery("SELECT StartDate FROM readingplans WHERE id = $selectedPlan");
+  ReadingPlans readingPlan = ReadingPlans.fromJson(readingPlans[0]);
+  dateTime = readingPlan.startDate;
+  return dateTime;
+}
+
+Future<String> getCurrentReadingPlanDate() async {
+  Database db = await database;
+  String dateTime;
+  int selectedPlan = await SharedPrefs().getSelectedPlan();
+  List readingPlans = await db.rawQuery("SELECT StartDate FROM readingplans WHERE id = $selectedPlan");
+  ReadingPlans readingPlan = ReadingPlans.fromJson(readingPlans[0]);
+  dateTime = readingPlan.startDate;
+  return dateTime;
+}
+
+
+Future<void> setLanguages(String locale, int edition) async {
   Map languages = await JwOrgApiHelper().getLanguages();
   String insertSql;
   String _locale = languages['$locale']['lang']['symbol'];
   String name = languages['$locale']['lang']['name'];
   String audioCode = languages['$locale']['lang']['langcode'];
   String vernacular = languages['$locale']['lang']['vernacularName'];
-  String bookNamesApiUrl = languages['$locale']['editions'][0]['contentAPI'];
+  String bookNamesApiUrl = languages['$locale']['editions'][edition]['contentAPI'];
+  String bibleTranslation = languages['$locale']['editions'][edition]['title'];
   List url = bookNamesApiUrl.split('/');
   String currentLocaleApiUrl = 'https://www.jw.org/' + url[3] + '/' + url[4] + '/' + url[5] + '/json/';
    Database db = await database;  
     insertSql = '''
-    INSERT INTO 'languages' ('name', 'vernacularName', 'locale', 'audioCode', 'api', 'contentApi')  
-    VALUES ('$name', '$vernacular', '$_locale', '$audioCode', '$currentLocaleApiUrl', '$bookNamesApiUrl')''';
+    INSERT INTO 'languages' ('name', 'vernacularName', 'locale', 'audioCode', 'api', 'contentApi', 'bibleTranslation')  
+    VALUES ('$name', '$vernacular', '$_locale', '$audioCode', '$currentLocaleApiUrl', '$bookNamesApiUrl', '$bibleTranslation')''';
     db.execute(insertSql);
 }
 
@@ -273,6 +315,11 @@ Future<void> setLanguagesName() async {
           }
        });
    });
+}
+
+void addNewLanguage(String locale, int edition) async {
+  await DatabaseHelper().setLanguages(locale, edition);
+  await DatabaseHelper().setBookNames(locale, edition);
 }
 
 
@@ -300,12 +347,11 @@ Future<void> setLanguagesName() async {
 
 // }
 
-    List _getUnReadDays(progressData) {
-      List _allDays = progressData;   
-      List _isReadDays = _allDays.where((i) => i['IsRead'] == 0).toList();
-
-      return _isReadDays;
-  }
+  //   List getUnReadDays(progressData) {
+  //     List _allDays = progressData;   
+  //     List _isReadDays = _allDays.where((i) => i['IsRead'] == 0).toList();
+  //     return _isReadDays;
+  // }
 
 
     // void  _markChapterRead() {
@@ -318,15 +364,6 @@ Future<void> setLanguagesName() async {
       
     // }
 
-Future<int> updateReadingPlanDate(int id, date) async {
-  Database db = await database;
-      // row to update
-    final startDate = 'StartDate';
-    Map<String, dynamic> row = {
-      startDate : '$date',
-    };
-  return await db.update('readingplans', row, where: "ROWID = ?", whereArgs: [id + 1]);
-}
 
   Future<List<Map<String, dynamic>>> queryPlan(int id) async {
   Database db = await database;

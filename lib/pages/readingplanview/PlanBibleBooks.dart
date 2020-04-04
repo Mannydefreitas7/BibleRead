@@ -19,7 +19,7 @@ class PlanBibleBooks extends StatelessWidget {
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
-              color: Theme.of(context).textTheme.title.color)),
+              color: Theme.of(context).textTheme.headline6.color)),
       SizedBox(height: 20),
       Container(
          height: 100,

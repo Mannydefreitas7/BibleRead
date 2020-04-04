@@ -52,7 +52,7 @@ class DatePickerTitleWidget extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: Theme.of(context).textTheme.title.color,
+              color: Theme.of(context).textTheme.headline6.color,
               fontSize: 22.0,
               fontWeight: FontWeight.w600
             ),

@@ -1,5 +1,5 @@
 import 'package:BibleRead/classes/datepicker/date_picker.dart';
-import 'package:BibleRead/helpers/DateTimeHelpers.dart';
+
 import 'ReadingPlanView.dart';
 import 'package:flutter/material.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
@@ -17,13 +17,14 @@ class ReadingStartDate extends StatefulWidget {
 class _ReadingStartDateState extends State<ReadingStartDate> {
   final String startDate = ReadingPlanView.dateFormat(DateTime.now());
 
-  void _setStartDate(value) {
-    DatabaseHelper().updateReadingPlanDate(widget.planId, value);
+  void _setStartDate(DateTime dateTime) {
+    DatabaseHelper().setReadingPlanStartDate(dateTime, widget.planId);
   }
 
   void _showDatePicker(BuildContext context, String title) {
     DatePicker.showDatePicker(
       context,
+
         title: 'Start Date',
         initialDateTime: DateTime.now(),
         onConfirm: (date, _) => {
@@ -51,30 +52,30 @@ class _ReadingStartDateState extends State<ReadingStartDate> {
             borderRadius: BorderRadius.circular(20)),
         child: InkWell(
           onTap: () {
-            _showDatePicker(context, 'Reading Start Date');
+            _showDatePicker(context, 'Start Date');
           },
-          child: FutureBuilder(
-            future: DatabaseHelper().queryReadingPlan(widget.planId),
-            builder: (context, data) {
-             if (data.hasData) {
-               return Text(data.data[0]['StartDate'] != null ? DateTimeHelpers().dateFormatted(data.data[0]['StartDate']) : startDate,
+          child: StreamBuilder(
+            stream: DatabaseHelper().getReadingPlanStartDate(widget.planId).asStream(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              String date;
+           
+              if(snapshot.hasData) {
+                String data = snapshot.data;
+                DateTime parseDate = DateTime.parse(data);
+                 date = '${parseDate.year}/${parseDate.month}/${parseDate.day}';
+              } else {
+                DateTime parseDate = DateTime.parse(startDate);
+                date = '${parseDate.year}/${parseDate.month}/${parseDate.day}';
+              }
+               return Text(date,
                 style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
-                color:Theme.of(context).textTheme.title.color)
+                color:Theme.of(context).textTheme.headline6.color)
             ); 
-             }  else {
-               return Text(startDate,
-                style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: Theme.of(context).textTheme.title.color)
-            );
-             }
               
             })
           )
-          
           ),
       ]
     );

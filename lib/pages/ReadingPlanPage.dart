@@ -1,17 +1,15 @@
 import 'dart:convert';
 import 'package:BibleRead/classes/card.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
-import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:provider/provider.dart';
 import './readingplanview/ReadinPlansList.dart';
 import '../classes/BibleReadScaffold.dart';
 
 class ReadingPlanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    BibleBookListData bibleBookListData = Provider.of<BibleBookListData>(context);
+  // BibleBookListData bibleBookListData = Provider.of<BibleBookListData>(context);
     return BibleReadScaffold(
         title: 'Reading Plans',
         hasBottombar: true,
@@ -44,8 +42,6 @@ class ReadingPlanPage extends StatelessWidget {
                   stream: SharedPrefs().getSelectedPlan().asStream(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     int selectedPlan = snapshot.hasData ? snapshot.data : 0;
-                  //int selectedPlan = bibleBookListData.selectedPlan;
-                  print(selectedPlan);
                     return FutureBuilder(
                         future: DefaultAssetBundle.of(context)
                             .loadString('assets/json/readingPlans.json'),

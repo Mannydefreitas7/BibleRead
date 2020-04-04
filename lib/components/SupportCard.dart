@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:line_icons/line_icons.dart';
 
 class SupportCard extends StatelessWidget {
   @override
@@ -16,13 +15,13 @@ class SupportCard extends StatelessWidget {
       child: Column(
         children: <Widget>[
           ListTile(
-            leading: Icon(LineAwesomeIcons.headset, color: Theme.of(context).textTheme.title.color, size: 35,),
+            leading: Icon(LineAwesomeIcons.headset, color: Theme.of(context).textTheme.headline6.color, size: 35,),
             title: new Text(
               "Support",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
           ),
@@ -31,7 +30,7 @@ class SupportCard extends StatelessWidget {
               "Author",
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             trailing: new Text(
@@ -47,7 +46,7 @@ class SupportCard extends StatelessWidget {
               "Email",
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             trailing: new Text(
@@ -63,7 +62,7 @@ class SupportCard extends StatelessWidget {
               "Donate",
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             trailing: new Text(

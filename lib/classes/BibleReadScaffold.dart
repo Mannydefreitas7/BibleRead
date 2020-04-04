@@ -1,9 +1,7 @@
-import 'package:BibleRead/classes/bibleicons.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
-import 'package:line_awesome_icons/line_awesome_icons.dart';
 import '../components/bottomNavigationBar.dart';
 
 import 'textHelper.dart';
@@ -31,7 +29,7 @@ class BibleReadScaffold extends StatelessWidget {
           SizedBox(height: 40),
           AppBar(
             automaticallyImplyLeading: false,
-            leading: hasLeadingIcon ? BackButton(color: Theme.of(context).textTheme.title.color, onPressed: () => Navigator.pop(context),) : null
+            leading: hasLeadingIcon ? BackButton(color: Theme.of(context).textTheme.headline6.color, onPressed: () => Navigator.pop(context),) : null
             ,
             bottomOpacity: 0.0,
             title: PageTitleText(title: title),

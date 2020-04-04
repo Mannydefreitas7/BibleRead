@@ -1,14 +1,7 @@
 
+// List<ReadingPlans> ReadingPlansFromJson(String str) => List<ReadingPlans>.from(json.decode(str).map((x) => ReadingPlans.fromJson(x)));
 
-// To parse this JSON data, do
-//
-//     final ReadingPlans = ReadingPlansFromJson(jsonString);
-
-import 'dart:convert';
-
-List<ReadingPlans> ReadingPlansFromJson(String str) => List<ReadingPlans>.from(json.decode(str).map((x) => ReadingPlans.fromJson(x)));
-
-String ReadingPlansToJson(List<ReadingPlans> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+// String ReadingPlansToJson(List<ReadingPlans> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ReadingPlans {
     int index;
@@ -26,15 +19,15 @@ class ReadingPlans {
     });
 
     factory ReadingPlans.fromJson(Map<String, dynamic> json) => ReadingPlans(
-        index: json["index"],
-        isRead: json["isRead"],
-        name: json["name"],
-        startDate: json['StartDate'],
-        numberDaysTotal: json["numberDaysTotal"],
+        index: json["id"],
+        isRead: json["isRead"] == 'false' ? false : true,
+        name: json["Name"],
+        startDate: json['StartDate'] == null ? DateTime.now().toString() : json['StartDate'],
+        numberDaysTotal: json["NumberDaysTotal"],
     );
 
     Map<String, dynamic> toJson() => {
-        "index": index,
+        "id": index,
         "isRead": isRead,
         "name": name,
         "startDate": startDate,

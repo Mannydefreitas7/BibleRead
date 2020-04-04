@@ -7,10 +7,6 @@ import 'package:BibleRead/classes/CustomToolbar.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:share/share.dart';
 
-import 'package:extended_text/extended_text.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:line_awesome_icons/line_awesome_icons.dart';
-
 class Verses extends StatefulWidget {
   Verses({
     this.isChapter,
@@ -98,7 +94,7 @@ class _VersesState extends State<Verses> {
                         style: TextStyle(
                           fontSize: showBookmarkIcon ? 24 : 22,
                           fontStyle: showBookmarkIcon ? FontStyle.italic : FontStyle.normal,
-                          color: Theme.of(context).textTheme.subhead.color,
+                          color: Theme.of(context).textTheme.subtitle1.color,
                           fontWeight: showBookmarkIcon ? FontWeight.bold : FontWeight.normal ,
                           fontFamily: 'PT Serif',
                         ),
@@ -132,7 +128,7 @@ class _VersesState extends State<Verses> {
                                 icon: Icon(
                                   SFSymbols.xmark,
                                   size: 20,
-                                  color: Theme.of(context).textTheme.title.color,
+                                  color: Theme.of(context).textTheme.headline6.color,
                                 ),
                                 onPressed: () => setState(() => showBookmarkIcon = !showBookmarkIcon))),
                         
@@ -145,7 +141,7 @@ class _VersesState extends State<Verses> {
                                 icon: Icon(
                                   SFSymbols.bookmark,
                                   size: 20,
-                                  color: Theme.of(context).textTheme.title.color,
+                                  color: Theme.of(context).textTheme.headline6.color,
                                 ),
                                 onPressed: () => _showBottomSheet(context))),
                           SizedBox(height: 10, width: 10,),
@@ -156,7 +152,7 @@ class _VersesState extends State<Verses> {
                                 icon: Icon(
                                   SFSymbols.square_arrow_up,
                                   size: 20,
-                                  color: Theme.of(context).textTheme.title.color,
+                                  color: Theme.of(context).textTheme.headline6.color,
                                 ),
                                 onPressed: () => {
                                   

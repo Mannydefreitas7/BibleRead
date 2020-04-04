@@ -30,7 +30,7 @@ class PlanBibleBookCard extends StatelessWidget {
                 
               fontSize: 22,
               fontWeight:FontWeight.w600,
-              color: Theme.of(context).textTheme.title.color),
+              color: Theme.of(context).textTheme.headline6.color),
             ),
               
             SizedBox(height: 2),
@@ -40,7 +40,7 @@ class PlanBibleBookCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
-                color: Theme.of(context).textTheme.title.color))
+                color: Theme.of(context).textTheme.headline6.color))
           ])
         );
   }

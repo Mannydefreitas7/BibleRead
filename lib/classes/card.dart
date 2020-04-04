@@ -1,9 +1,7 @@
 import 'package:BibleRead/helpers/animations.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
 import '../classes/textHelper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
+
 
 class BRCard extends StatelessWidget {
 
@@ -103,7 +101,7 @@ class PlanCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         fontSize: 16.0,
                         fontFamily: 'Avenir Next',
-                        color: Theme.of(context).textTheme.subtitle.color),
+                        color: Theme.of(context).textTheme.subtitle2.color),
                   ),
                   Row(
                     children: <Widget>[
@@ -120,7 +118,7 @@ class PlanCard extends StatelessWidget {
                           fontFamily: 'Avenir Next',
                           fontSize: 20.0,
                           color:
-                              Theme.of(context).textTheme.title.color),
+                              Theme.of(context).textTheme.headline6.color),
                   ),
                     ),
                    
@@ -214,7 +212,7 @@ class ReadingPlanTile extends StatelessWidget {
                       overflow: TextOverflow.fade,
                       textAlign: TextAlign.start,
                         style: TextStyle(
-                      color: selectedIndex == index ? Colors.white : Theme.of(context).textTheme.title.color,
+                      color: selectedIndex == index ? Colors.white : Theme.of(context).textTheme.headline6.color,
                       fontWeight: FontWeight.w600,
                       fontSize: 20
                       ),

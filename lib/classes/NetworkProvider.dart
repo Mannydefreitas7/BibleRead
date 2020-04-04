@@ -27,6 +27,7 @@ class NetworkProvider {
       case ConnectivityResult.wifi:
        isConnected = true;
     }
+    return isConnected;
      }
 
    

@@ -17,13 +17,13 @@ class InformationCard extends StatelessWidget {
       child: Column(
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.info_outline, color: Theme.of(context).textTheme.title.color, size: 35,),
+            leading: Icon(Icons.info_outline, color: Theme.of(context).textTheme.headline6.color, size: 35,),
             title: new Text(
               "Information",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
           ),
@@ -32,7 +32,7 @@ class InformationCard extends StatelessWidget {
               "App Name",
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             trailing: new Text(
@@ -48,7 +48,7 @@ class InformationCard extends StatelessWidget {
               "Version",
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             trailing: new Text(
@@ -64,7 +64,7 @@ class InformationCard extends StatelessWidget {
               "Support",
               style: TextStyle(
                 fontSize: 18,
-                color: Theme.of(context).textTheme.title.color,
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             trailing: new Text(

@@ -36,9 +36,9 @@ class ReadTodayCard extends StatelessWidget {
           child: Text('Read',
               textAlign: TextAlign.left,
               style: TextStyle(
-                  fontWeight: Theme.of(context).textTheme.title.fontWeight,
-                  fontSize: Theme.of(context).textTheme.title.fontSize,
-                  color: Theme.of(context).textTheme.title.color)),
+                  fontWeight: Theme.of(context).textTheme.headline6.fontWeight,
+                  fontSize: Theme.of(context).textTheme.headline6.fontSize,
+                  color: Theme.of(context).textTheme.headline6.color)),
         ),
 
         Card(
@@ -62,7 +62,7 @@ class ReadTodayCard extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         fontSize: 24.0,
                         fontFamily: 'Avenir Next',
-                        color: Theme.of(context).textTheme.title.color),
+                        color: Theme.of(context).textTheme.headline6.color),
                   ),
                   FlatButton(
   
