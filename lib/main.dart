@@ -30,7 +30,7 @@ class BibleReadApp extends StatelessWidget {
     return MultiProvider(
       providers: [
             ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
-     
+            StreamProvider<bool>(create: (_) => BibleBookListData().isCompletedPlan(),)
       ],
       child: MaterialApp(
       initialRoute: '/',

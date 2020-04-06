@@ -14,7 +14,7 @@ class CompletedCard extends StatelessWidget {
   CompletedCard({Key key}) : super(key: key); 
 
   //Create an instance of ScreenshotController
-  ScreenshotController screenshotController = ScreenshotController(); 
+  final ScreenshotController screenshotController = ScreenshotController(); 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ReadingPlans>(
@@ -90,12 +90,20 @@ class CompletedCard extends StatelessWidget {
                         onPressed: () async {
                           await screenshotController.capture()
                         .then((image) async {
-             
-                          await FlutterShareFile.shareImage(
-                            image.path, 
-                            'pan.png',
-                             
-                          );
+                           // image.path
+                           Directory dir = await getApplicationDocumentsDirectory();
+                          // image.rename(newPath)
+                          //  print(image.readAsBytesSync());
+                            print(image.path);
+                            String newPath = '${dir.path}/plan.png';
+                            image.rename(newPath).then((value) => {
+                               print(value.parent.path),
+                                FlutterShareFile.shareImage(
+                                  dir.path, 
+                                  'plan.png',
+                              )
+                            });
+                         
                         });
                         },
                         child: Text('Share',

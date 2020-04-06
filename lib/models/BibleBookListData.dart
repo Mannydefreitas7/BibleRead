@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/models/Plan.dart';
@@ -19,8 +21,16 @@ BibleBookListData() {
   DatabaseHelper().filterBooks().then((value) => {
       bibleBooks = value,
   });
-  DatabaseHelper().getAllChapters().then((value) => list = value);  
+  DatabaseHelper().getAllChapters().then((value) => list = value); 
+  DatabaseHelper().unReadChapters().then((value) => chapters = value);
   SharedPrefs().getSelectedPlan().then((value) => selectedPlan = value);
+}
+
+void bibleDataInit() async {
+ bibleBooks = await DatabaseHelper().filterBooks();
+ list = await DatabaseHelper().getAllChapters(); 
+ chapters = await DatabaseHelper().unReadChapters();
+ selectedPlan = await SharedPrefs().getSelectedPlan();
 }
 
 // To read only
@@ -52,6 +62,24 @@ Future<Plan> getUnReadBooks() async {
   return unReadFirst;
 }
 
+Future<List<Plan>> getUnReadChapters() async {
+  List<Plan> unReadChapters = await DatabaseHelper().unReadChapters();
+  return unReadChapters;
+}
+
+StreamController<bool> isPlanCompletedController = StreamController();
+
+Stream<bool> isCompletedPlan() {
+  print(chapters.length);
+  Stream<bool> isCompleted = isPlanCompletedController.stream;
+
+  if (chapters.length > 0) {
+    isPlanCompletedController.sink.add(false);
+  } else {
+    isPlanCompletedController.sink.add(true);
+  }
+  return isCompleted;
+}
 
 
 

@@ -7,8 +7,10 @@ import 'package:BibleRead/components/CompletedCard.dart';
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import '../components/listenCard.dart';
 import '../components/readTodayCard.dart';
@@ -44,6 +46,7 @@ class _TodayPageState extends State<TodayPage> {
   String verses = '';
   bool isSingle = true;
   double slider = 0.0;
+  bool isCompleted = false;
   String bookmarkdata = '';
   bool hasBookmark = false;
 
@@ -113,8 +116,12 @@ class _TodayPageState extends State<TodayPage> {
   }
 
   void releaseAudio() async {
-    await player.pause();
-    await player.stop();
+    if (player.playbackState == AudioPlaybackState.playing) {
+        await player.pause();
+        await player.stop();
+        await player.dispose();
+    }
+   
   }
 
   void onChanged(double value) {
@@ -135,6 +142,17 @@ class _TodayPageState extends State<TodayPage> {
     _progressValue = DatabaseHelper().countProgressValue();
 
     _connectivity.initialise();
+
+    _unReadChapters.asStream().listen((event) {
+       if (mounted) { 
+         if (event.length > 0) 
+          isCompleted = false;
+          else 
+          setState(() {
+            isCompleted = true;
+          });
+       }
+    });
 
     _connectivity.myStream.listen((source) {
       if (mounted) {
@@ -159,6 +177,7 @@ class _TodayPageState extends State<TodayPage> {
 
   initialize() async {
     list = await audioPayerController.setupAudioList();
+    BibleBookListData().bibleDataInit();
     await player.setUrl(list[currentAudio].url);
     if (list.length > 1) {
       isSingle = false;
@@ -169,7 +188,7 @@ class _TodayPageState extends State<TodayPage> {
 
   @override
   void dispose() {
-    // releaseAudio();
+    releaseAudio();
     super.dispose();
   }
 
@@ -233,12 +252,14 @@ class _TodayPageState extends State<TodayPage> {
       title: 'Today',
       hasLeadingIcon: false,
       hasBottombar: true,
-      hasFloatingButton: true,
+      hasFloatingButton:isCompleted ? false : true,
       floatingActionOnPress: _markTodayRead,
       selectedIndex: 0,
       bodyWidget: Container(
           padding: EdgeInsets.only(left: 15, right: 15),
-          child: Stack(overflow: Overflow.clip, children: <Widget>[
+          child: Stack(
+          //  overflow: Overflow.clip, 
+            children: <Widget>[
 
             FutureBuilder(
                 future: _unReadChapters,
@@ -247,13 +268,14 @@ class _TodayPageState extends State<TodayPage> {
                     unReadPlan = snapshot.data;
 
                     return ListView(
-                        addAutomaticKeepAlives: true,
-                        padding: EdgeInsets.only(top: 70),
+                      //  addAutomaticKeepAlives: true,
+                        addRepaintBoundaries: true,
+                        padding: EdgeInsets.only(top: 110),
                         scrollDirection: Axis.vertical,
                         children: <Widget>[
                           if (unReadPlan.length != 0)
                             Container(
-                                margin: EdgeInsets.only(top: 50),
+                               // margin: EdgeInsets.only(top: 50),
                                 child: ReadTodayCard(
                                   markRead: _markTodayRead,
                                   removeBookMark: _setBookMarkFalse,
@@ -341,16 +363,24 @@ class _TodayPageState extends State<TodayPage> {
                                                     )),
                                                   );
                                                 }
-                                          
                                               }),
                                 
                           if (unReadPlan.length == 0) CompletedCard(),
                           SizedBox(height: 100),
-                        ])
-          ])
-                        
-
-  
+                        ]);
+                      } else {
+                        return Container(
+                          height: 120,
+                          child: Center(
+                              child:
+                                  SpinKitDoubleBounce(
+                            color: Theme.of(context)
+                                .accentColor,
+                          )),
+                        );
+                      }
+                  }),
+          
             FutureBuilder(
               future: _progressValue,
               builder: (BuildContext context, AsyncSnapshot snapshot) {
