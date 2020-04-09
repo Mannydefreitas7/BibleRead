@@ -57,21 +57,11 @@ class _VersesState extends State<Verses> {
           child: Center(
               child: GestureDetector(
             onTap: () => _showBottomSheet(context),
-            child: Text(
-              widget.verseNumber,
-              style: TextStyle(
-                fontSize: widget.isChapter ? 52 : 22,
-                fontFamily: 'Lao MN',
-                color: widget.isChapter
-                    ? Colors.grey
-                    : Theme.of(context).accentColor,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+            child: SimpleChapterText(widget: widget),
           )),
         ),
       ),
-      Row(
+    Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
@@ -89,17 +79,8 @@ class _VersesState extends State<Verses> {
                           borderRadius: BorderRadius.circular(20)
                         ),
                         padding: showBookmarkIcon ? EdgeInsets.all(15) : EdgeInsets.all(0),
-                        child: Text(
-                        widget.verseText,
-                        style: TextStyle(
-                          fontSize: showBookmarkIcon ? 24 : 22,
-                          fontStyle: showBookmarkIcon ? FontStyle.italic : FontStyle.normal,
-                          color: Theme.of(context).textTheme.subtitle1.color,
-                          fontWeight: showBookmarkIcon ? FontWeight.bold : FontWeight.normal ,
-                          fontFamily: 'PT Serif',
-                        ),
-                        textAlign: TextAlign.left,
-                        ),
+                        child: 
+                        SimpleVerseText(widget: widget, showBookmarkIcon: showBookmarkIcon),
                       ),
                       onTap: () => setState(() {
                         showBookmarkIcon = !showBookmarkIcon;
@@ -166,3 +147,97 @@ class _VersesState extends State<Verses> {
     ]);
   }
 }
+
+class SimpleVerseText extends StatelessWidget {
+  const SimpleVerseText({
+    Key key,
+    @required this.widget,
+    @required this.showBookmarkIcon,
+  }) : super(key: key);
+
+  final Verses widget;
+  final bool showBookmarkIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+    widget.verseText,
+    style: TextStyle(
+      fontSize: showBookmarkIcon ? 24 : 22,
+      fontStyle: showBookmarkIcon ? FontStyle.italic : FontStyle.normal,
+      color: Theme.of(context).textTheme.subtitle1.color,
+      fontWeight: showBookmarkIcon ? FontWeight.bold : FontWeight.normal ,
+      fontFamily: 'PT Serif',
+    ),
+    textAlign: TextAlign.left,
+    );
+  }
+}
+
+class RichVerseText extends StatelessWidget {
+  const RichVerseText({
+    Key key,
+    @required this.widget,
+    @required this.showBookmarkIcon,
+  }) : super(key: key);
+
+  final Verses widget;
+  final bool showBookmarkIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.left,
+      text: TextSpan(
+          children: <TextSpan>[
+            TextSpan(
+              text: widget.verseNumber,
+              style: TextStyle(
+                fontSize: widget.isChapter ? 52 : 22,
+                fontFamily: 'Lao MN',
+                color: widget.isChapter
+                    ? Colors.grey
+                    : Theme.of(context).accentColor,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: widget.verseText,
+              style: TextStyle(
+                fontSize: showBookmarkIcon ? 24 : 22,
+                fontStyle: showBookmarkIcon ? FontStyle.italic : FontStyle.normal,
+                color: Theme.of(context).textTheme.subtitle1.color,
+                fontWeight: showBookmarkIcon ? FontWeight.bold : FontWeight.normal ,
+                fontFamily: 'PT Serif',
+              ),
+            )
+          ]
+        )
+      );
+  }
+}
+
+class SimpleChapterText extends StatelessWidget {
+  const SimpleChapterText({
+    Key key,
+    @required this.widget,
+  }) : super(key: key);
+
+  final Verses widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      widget.verseNumber,
+      style: TextStyle(
+        fontSize: widget.isChapter ? 52 : 22,
+        fontFamily: 'Lao MN',
+        color: widget.isChapter
+            ? Colors.grey
+            : Theme.of(context).accentColor,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+}
+

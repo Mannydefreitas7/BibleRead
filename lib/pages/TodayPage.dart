@@ -7,10 +7,10 @@ import 'package:BibleRead/components/CompletedCard.dart';
 import 'package:BibleRead/helpers/DateTimeHelpers.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import '../components/listenCard.dart';
 import '../components/readTodayCard.dart';
@@ -69,12 +69,12 @@ class _TodayPageState extends State<TodayPage> {
   }
 
   _markTodayRead() async {
-    player.stop();
+    if (player.playbackState == AudioPlaybackState.playing) {
+        await player.stop();
+    }
 
     await DatabaseHelper().markTodayRead();
     await SharedPrefs().setBookMarkFalse();
-
-    unReadChapters = await DatabaseHelper().unReadChapters();
     setState(() => {
           _unReadChapters = DatabaseHelper().unReadChapters(),
           _progressValue = DatabaseHelper().countProgressValue(),
@@ -82,9 +82,10 @@ class _TodayPageState extends State<TodayPage> {
         });
     await initialize();
     bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
-    int badgeNumber = await SharedPrefs().getBadgeNumber();
-    await SharedPrefs().setBadgeNumber(badgeNumber - 1);
+
     if (isBadgesupported) {
+      int badgeNumber = await SharedPrefs().getBadgeNumber();
+     await SharedPrefs().setBadgeNumber(badgeNumber - 1);
       FlutterAppBadger.updateBadgeCount(badgeNumber - 1);
     }
   }
@@ -97,10 +98,6 @@ class _TodayPageState extends State<TodayPage> {
   _setBookMarkFalse() async {
     await SharedPrefs().setBookMarkFalse();
     setState(() => {});
-  }
-
-  void initUnreadChapters() async {
-    unReadChapters = await DatabaseHelper().unReadChapters();
   }
 
   void playAudio() async {
@@ -146,7 +143,9 @@ class _TodayPageState extends State<TodayPage> {
     _unReadChapters.asStream().listen((event) {
        if (mounted) { 
          if (event.length > 0) 
-          isCompleted = false;
+          setState(() {
+            isCompleted = false;
+          });
           else 
           setState(() {
             isCompleted = true;
@@ -177,7 +176,6 @@ class _TodayPageState extends State<TodayPage> {
 
   initialize() async {
     list = await audioPayerController.setupAudioList();
-    BibleBookListData().bibleDataInit();
     await player.setUrl(list[currentAudio].url);
     if (list.length > 1) {
       isSingle = false;
@@ -206,7 +204,12 @@ class _TodayPageState extends State<TodayPage> {
       await player.setUrl(url);
       setState(() {});
     }
-    await player.play();
+    if (player.playbackState != AudioPlaybackState.connecting) {
+      await player.play();
+    } else {
+      await player.pause();
+    }
+    
   }
 
   void previous() async {
@@ -249,7 +252,7 @@ class _TodayPageState extends State<TodayPage> {
     }
 
     return BibleReadScaffold(
-      title: 'Today',
+      title: AppLocalizations.of(context).translate('today'),
       hasLeadingIcon: false,
       hasBottombar: true,
       hasFloatingButton:isCompleted ? false : true,
@@ -387,7 +390,7 @@ class _TodayPageState extends State<TodayPage> {
                 return Container(
                     height: 110,
                     child: ProgressCard(
-                      subtitle: 'Welcome!',
+                      subtitle:  AppLocalizations.of(context).translate('welcome'),
                       showExpected: false,
                       progressNumber:
                           snapshot.hasData ? snapshot.data > 1.0 ? 1.0 : snapshot.data : 0,

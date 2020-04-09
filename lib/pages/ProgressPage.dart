@@ -1,6 +1,7 @@
 
 import 'package:BibleRead/components/ChaptersList.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/pages/progressview/ProgressCard.dart';
 import '../components/bibleBooksList.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class ProgressPage extends StatelessWidget {
     return BibleReadScaffold(
       hasBottombar: true,
       hasLeadingIcon: false,
-      title: 'Progress',
+      title: AppLocalizations.of(context).translate('progress'),
       hasFloatingButton: false,
       selectedIndex: 1,
       bodyWidget: Container(
@@ -39,7 +40,7 @@ class ProgressPage extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(left:15, right:15),
               child: ProgressViewCard(
-                subtitle: 'Current',
+                subtitle: AppLocalizations.of(context).translate('current'),
               ),
             )
         ],

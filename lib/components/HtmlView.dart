@@ -1,9 +1,11 @@
 import 'package:BibleRead/classes/CustomToolbar.dart';
 import 'package:BibleRead/classes/Verses.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import "package:html/dom.dart" as dom;
 
 class HtmlView extends StatelessWidget {
@@ -88,7 +90,7 @@ class BookMarkDialog extends StatelessWidget {
                   color: Theme.of(context).textTheme.headline6.color,
                 ),
                 title: Text( 
-                  'Save Bookmark',
+                  AppLocalizations.of(context).translate('save_bookmark'),
                   style: TextStyle(
                       fontSize: 22,
                       color: Theme.of(context).textTheme.headline6.color,
@@ -107,7 +109,7 @@ class BookMarkDialog extends StatelessWidget {
                     
             ListTile(
                 title: Text(
-                  'Cancel',
+                  AppLocalizations.of(context).translate('cancel'),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 22,

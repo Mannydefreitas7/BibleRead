@@ -10,14 +10,12 @@ class ChapterDetail extends StatelessWidget {
   ChapterDetail({Key key, this.bookName, this.id, this.planId}) : super(key: key);
 
   final String bookName;
-  ///static Future<bool> isBookRead;
   final int id;
   final int planId;
 
   @override
   Widget build(BuildContext context) {
-   // final bibleBookListData = Provider.of<BibleBookListData>(context);
-   
+
     return Consumer<BibleBookListData>(
 
     builder: (context, bibleBookListData, child) {
@@ -111,14 +109,6 @@ class ChapterDetail extends StatelessWidget {
                margin: EdgeInsets.only(bottom: 20),
         
                child: 
-               // FloatingActionButton(
-        //               backgroundColor: bibleBookListData.checkBookIsRead(id) ? Colors.grey : Theme.of(context).accentColor,
-        //               onPressed: bibleBookListData.checkBookIsRead(id) ? markBookUnRead : markBookRead,
-        //               focusElevation: 5.0,
-        //               child: Icon(bibleBookListData.checkBookIsRead(id) ? Icons.clear : Icons.check, color: Colors.white, size: 30.0),
-        //               elevation: 2.0,
-        //         )
-                
                 FutureBuilder(
                   future: bibleBookListData.checkBookIsRead(id),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {

@@ -1,7 +1,6 @@
 
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
-import 'package:BibleRead/pages/progressview/BibleBookCard.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';

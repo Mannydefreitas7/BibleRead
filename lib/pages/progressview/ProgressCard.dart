@@ -7,7 +7,6 @@ import 'package:BibleRead/models/ReadingPlan.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ProgressViewCard extends StatelessWidget {
 

@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/pages/chapterDetail.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class BibleBookCard extends StatelessWidget {
           secondaryActions: <Widget>[
 
             IconSlideAction(           
-              caption: isRead ? 'Unread' : 'Read',
+              caption: isRead ? AppLocalizations.of(context).translate('unread') : AppLocalizations.of(context).translate('read'),
               color: Colors.transparent,
               icon: isRead ? Icons.close : Icons.check,
               foregroundColor: isRead ? Theme.of(context).textTheme.caption.color : Theme.of(context).accentColor,

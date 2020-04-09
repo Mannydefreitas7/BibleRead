@@ -43,8 +43,8 @@ class _SliderAudioState extends State<SliderAudio> {
                 ),
                 child: Slider(
       min: 0.0,
-      max: widget.duration.inMilliseconds.toDouble() ?? 1.0,
-      value: _dragValue ?? widget.position.inMilliseconds.toDouble(),
+      max: widget.duration != null ? widget.duration.inMilliseconds.toDouble() : 1.0,
+      value: widget.position != null ?  widget.position.inMilliseconds.toDouble() : _dragValue,
       onChanged: (value) {
         setState(() {
           _dragValue = value;

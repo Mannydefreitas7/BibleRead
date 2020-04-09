@@ -26,12 +26,7 @@ BibleBookListData() {
   SharedPrefs().getSelectedPlan().then((value) => selectedPlan = value);
 }
 
-void bibleDataInit() async {
- bibleBooks = await DatabaseHelper().filterBooks();
- list = await DatabaseHelper().getAllChapters(); 
- chapters = await DatabaseHelper().unReadChapters();
- selectedPlan = await SharedPrefs().getSelectedPlan();
-}
+
 
 // To read only
 Future<List<Plan>> get books => DatabaseHelper().filterBooks();
@@ -67,19 +62,6 @@ Future<List<Plan>> getUnReadChapters() async {
   return unReadChapters;
 }
 
-StreamController<bool> isPlanCompletedController = StreamController();
-
-Stream<bool> isCompletedPlan() {
-  print(chapters.length);
-  Stream<bool> isCompleted = isPlanCompletedController.stream;
-
-  if (chapters.length > 0) {
-    isPlanCompletedController.sink.add(false);
-  } else {
-    isPlanCompletedController.sink.add(true);
-  }
-  return isCompleted;
-}
 
 
 

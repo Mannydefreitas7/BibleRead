@@ -3,7 +3,7 @@
 import 'dart:io';
 
 import 'package:BibleRead/helpers/LocalDataBase.dart';
-import 'package:BibleRead/helpers/animations.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/ReadingPlan.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -59,7 +59,7 @@ class CompletedCard extends StatelessWidget {
                           padding: EdgeInsets.all(40),
                           child: Column(
                             children: <Widget>[
-                              Text('Congratulations!',
+                              Text(AppLocalizations.of(context).translate('congratulations'),
                               style: TextStyle(
                                 fontSize: 24,
                                 color: Theme.of(context).textTheme.headline6.color,
@@ -67,7 +67,7 @@ class CompletedCard extends StatelessWidget {
                               ),
                       ),
                       SizedBox(height: 10),
-                          Text('You have completed reading plan',
+                          Text(AppLocalizations.of(context).translate('completed_reading_plan_text'),
                           style: TextStyle(
                             fontSize: 16,
                             color: Theme.of(context).textTheme.caption.color,
@@ -90,23 +90,17 @@ class CompletedCard extends StatelessWidget {
                         onPressed: () async {
                           await screenshotController.capture()
                         .then((image) async {
-                           // image.path
                            Directory dir = await getApplicationDocumentsDirectory();
-                          // image.rename(newPath)
-                          //  print(image.readAsBytesSync());
-                            print(image.path);
                             String newPath = '${dir.path}/plan.png';
                             image.rename(newPath).then((value) => {
-                               print(value.parent.path),
                                 FlutterShareFile.shareImage(
                                   dir.path, 
                                   'plan.png',
                               )
                             });
-                         
                         });
                         },
-                        child: Text('Share',
+                        child: Text(AppLocalizations.of(context).translate('share'),
                           style: TextStyle(fontSize: 22, color: Theme.of(context).accentColor),
                         )
                         )

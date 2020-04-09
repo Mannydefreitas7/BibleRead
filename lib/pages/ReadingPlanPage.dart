@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:BibleRead/classes/card.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import './readingplanview/ReadinPlansList.dart';
@@ -9,9 +10,8 @@ import '../classes/BibleReadScaffold.dart';
 class ReadingPlanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-  // BibleBookListData bibleBookListData = Provider.of<BibleBookListData>(context);
     return BibleReadScaffold(
-        title: 'Reading Plans',
+        title: AppLocalizations.of(context).translate('reading_plan'),
         hasBottombar: true,
         hasLeadingIcon: false,
         hasFloatingButton: false,
@@ -52,10 +52,9 @@ class ReadingPlanPage extends StatelessWidget {
                               color: Theme.of(context).accentColor,
                             ));
                           } else {
-                            final planData = json.decode(plans.data);
                             return PlanCard(
-                              subtitle: 'Reading Now',
-                              textPlan: planData[selectedPlan]['name'],
+                              subtitle: AppLocalizations.of(context).translate('reading_now'),
+                              textPlan: AppLocalizations.of(context).translate('plan_$selectedPlan'),
                               planImage:
                                   'assets/images/plan_${selectedPlan}_sqr.jpg',
                             );
