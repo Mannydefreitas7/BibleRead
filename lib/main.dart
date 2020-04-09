@@ -2,7 +2,9 @@ import 'package:BibleRead/classes/Notifications.dart';
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/app_localizations.dart';
+import 'package:BibleRead/models/AllChapterListBloc.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
+import 'package:BibleRead/models/Plan.dart';
 import 'package:BibleRead/pages/OnBoardingPage.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +33,9 @@ class BibleReadApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-            ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData())
+            ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
+            Provider<AllChapterListBloc>(create: (_) => AllChapterListBloc()),
+            StreamProvider<List<Plan>>(create: (_) => AllChapterListBloc().allChapters)
       ],
       
       child: MaterialApp(

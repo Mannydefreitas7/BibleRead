@@ -11,6 +11,7 @@ import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import '../components/listenCard.dart';
 import '../components/readTodayCard.dart';
@@ -231,6 +232,8 @@ class _TodayPageState extends State<TodayPage> {
   @override
   Widget build(BuildContext context) {
     bool isConnected;
+
+    List<Plan> allChapters = Provider.of<List<Plan>>(context);
  
     switch (_source.keys.toList()[0]) {
       case ConnectivityResult.none:
@@ -250,6 +253,8 @@ class _TodayPageState extends State<TodayPage> {
     } else {
       isSingle = true;
     }
+
+    print(allChapters[0].longName);
 
     return BibleReadScaffold(
       title: AppLocalizations.of(context).translate('today'),
