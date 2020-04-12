@@ -83,9 +83,9 @@ class _TodayPageState extends State<TodayPage> {
         });
     await initialize();
     bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
-    bool showExpectedProgress = await SharedPrefs().getExpectedProgress();
+    bool hasReminderOn = await SharedPrefs().getReminder();
 
-    if (isBadgesupported && showExpectedProgress) {
+    if (isBadgesupported && hasReminderOn) {
       int badgeNumber = await SharedPrefs().getBadgeNumber();
      await SharedPrefs().setBadgeNumber(badgeNumber - 1);
       FlutterAppBadger.updateBadgeCount(badgeNumber - 1);

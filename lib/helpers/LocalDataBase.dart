@@ -347,6 +347,13 @@ void addNewLanguage(String locale, int edition) async {
 }
 
 
+void resetEverything() async {
+Database db = await database;
+for (var i = 0; i <= 12; i++) {
+  await db.rawQuery("UPDATE plan_$i SET IsRead = 0");
+}
+}
+
 
 // Future<bool> bookIsRead(int planId, int id) async {
 //   final List read = [];

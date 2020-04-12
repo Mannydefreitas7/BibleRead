@@ -30,18 +30,18 @@ class _ReminderCardState extends State<ReminderCard> {
         initialDateTime: DateTime.now(),
         onConfirm: (date, _) => {
           setState(() => {
-            _setReminderTime(date)
+            _setReminderTime(date, context)
             
           }) 
         },
         pickerMode: DateTimePickerMode.time);
   }
 
-  _setReminderTime(DateTime time) async {
+  _setReminderTime(DateTime time, BuildContext context) async {
      
     await notifications.cancelAllNotifications();
     await SharedPrefs().setReminderTime(time);
-    await notifications.showDailyAtTime(time);
+    await notifications.showDailyAtTime(time, context);
   }
 
   _setReminder(bool reminder) async {

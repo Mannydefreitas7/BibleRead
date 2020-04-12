@@ -3,7 +3,7 @@ import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
+import 'package:intl/intl.dart' as intl;
 
 class ListenCard extends StatelessWidget  {
 
@@ -62,7 +62,7 @@ bool checkReadyandSingle() {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(left: 15.0),
+          padding: const EdgeInsets.only(left: 15.0, right: 15),
           child: Text(AppLocalizations.of(context).translate('listen'),
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -80,7 +80,7 @@ bool checkReadyandSingle() {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 15, top: 15, bottom: 10),
+                padding: const EdgeInsets.only(left: 15, top: 15, right: 15, bottom: 10),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -116,13 +116,13 @@ bool checkReadyandSingle() {
               Padding(
                   padding: EdgeInsets.only(top: 10, bottom:20, left:0),
                   child: Row(
-
+                    
                     mainAxisSize: MainAxisSize.max,
                     
                     children: <Widget>[
                       IconButton(
                         alignment: Alignment.center,
-                          icon: Icon(
+                          icon: Icon( intl.Bidi.isRtlLanguage() ? SFSymbols.chevron_right :
                             SFSymbols.chevron_left,
                             color: checkReadyandSingle() ? Theme.of(context).disabledColor : Theme.of(context).accentColor,
                             size: 40,
@@ -132,6 +132,7 @@ bool checkReadyandSingle() {
                         alignment: Alignment.center,
                           icon: Icon(
                             isAudioPlaying ? SFSymbols.pause : SFSymbols.play,
+                            
                             color: isReady ? Theme.of(context).accentColor : Theme.of(context).disabledColor,
                             size: 40,
                           ),
@@ -140,7 +141,9 @@ bool checkReadyandSingle() {
                         alignment: Alignment.center,
 
                           icon: Icon(
+                            intl.Bidi.isRtlLanguage() ? SFSymbols.chevron_left :
                             SFSymbols.chevron_right,
+                            //textDirection: TextDirection.rtl,
                             color: checkReadyandSingle() ? Theme.of(context).disabledColor : Theme.of(context).accentColor,
                             size: 40,
                           ),

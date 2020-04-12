@@ -38,8 +38,7 @@ class ReadingPlansList extends StatelessWidget {
                               builder: (context) {
                                 return ReadingPlanView(
                                     readingPlanTitle: AppLocalizations.of(context).translate('plan_$index'),
-                                    planId: readingPlans[index]
-                                        ['index']);
+                                    planId: readingPlans[index]['index']);
                               })));
                 });
           }),

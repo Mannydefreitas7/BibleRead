@@ -86,24 +86,24 @@ class CompletedCard extends StatelessWidget {
                           ),
                       ),
                       SizedBox(height: 20),
-                      FlatButton(
-                        onPressed: () async {
-                          await screenshotController.capture()
-                        .then((image) async {
-                           Directory dir = await getApplicationDocumentsDirectory();
-                            String newPath = '${dir.path}/plan.png';
-                            image.rename(newPath).then((value) => {
-                                FlutterShareFile.shareImage(
-                                  dir.path, 
-                                  'plan.png',
-                              )
-                            });
-                        });
-                        },
-                        child: Text(AppLocalizations.of(context).translate('share'),
-                          style: TextStyle(fontSize: 22, color: Theme.of(context).accentColor),
-                        )
-                        )
+                      // FlatButton(
+                      //   onPressed: () async {
+                      //     await screenshotController.capture()
+                      //   .then((image) async {
+                      //      Directory dir = await getApplicationDocumentsDirectory();
+                      //       String newPath = '${dir.path}/plan.png';
+                      //       image.rename(newPath).then((value) => {
+                      //           FlutterShareFile.shareImage(
+                      //             dir.path, 
+                      //             'plan.png',
+                      //         )
+                      //       });
+                      //   });
+                      //   },
+                      //   child: Text(AppLocalizations.of(context).translate('share'),
+                      //     style: TextStyle(fontSize: 22, color: Theme.of(context).accentColor),
+                      //   )
+                      //   )
                             ],
                           ),
                         ),

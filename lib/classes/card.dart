@@ -1,7 +1,7 @@
 import 'package:BibleRead/helpers/animations.dart';
 import '../classes/textHelper.dart';
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart' as intl;
 
 class BRCard extends StatelessWidget {
 
@@ -168,7 +168,7 @@ class ReadingPlanTile extends StatelessWidget {
    // this.image
     });
 
-    
+   
 
   @override
   Widget build(BuildContext context) {
@@ -186,26 +186,29 @@ class ReadingPlanTile extends StatelessWidget {
           height: 100,
           child: Stack(
             children: <Widget>[
-              Image(width: 100,
-              height: 100,
+              Image(
+                width: 100,
+                height: 100,
                 //  image: widget.image,
               image: AssetImage('assets/images/plan_${index}_sqr.jpg')
               ),
               Positioned(
-                left: 80,
+                right: intl.Bidi.isRtlLanguage() ? 80 : null,
+                left: intl.Bidi.isRtlLanguage() ? null : 80,
                   child: Container(
+                  //  width: MediaQuery.of(context).size.width * 0.5,
                 decoration: BoxDecoration(
                   color: selectedIndex == index ? Theme.of(context).accentColor : Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(20)
                 ),
                 height: 100,
-               
                 padding: EdgeInsets.only(left: 20),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
+                     padding: EdgeInsets.symmetric(horizontal: 10),
                        width: MediaQuery.of(context).size.width * 0.6,
                       child: Text(planTitle,
                       maxLines: 3,

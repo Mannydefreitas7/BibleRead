@@ -46,7 +46,7 @@ class Notifications {
     await SharedPrefs().setBadgeNumber(0);
   }
 
-    Future<void> showDailyAtTime(DateTime dateTime) async {
+    Future<void> showDailyAtTime(DateTime dateTime, BuildContext context) async {
     int badgeNumber = await SharedPrefs().getBadgeNumber();
     await SharedPrefs().setBadgeNumber(badgeNumber + 1);
 
@@ -68,7 +68,6 @@ class Notifications {
 
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
-  BuildContext context;
 
   List<Plan> unreadChapters = await DatabaseHelper().unReadChapters();
 

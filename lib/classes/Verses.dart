@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:BibleRead/classes/CustomToolbar.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:share/share.dart';
-
+import 'package:auto_direction/auto_direction.dart';
 class Verses extends StatefulWidget {
   Verses({
     this.isChapter,
@@ -160,16 +160,19 @@ class SimpleVerseText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-    widget.verseText,
-    style: TextStyle(
-      fontSize: showBookmarkIcon ? 24 : 22,
-      fontStyle: showBookmarkIcon ? FontStyle.italic : FontStyle.normal,
-      color: Theme.of(context).textTheme.subtitle1.color,
-      fontWeight: showBookmarkIcon ? FontWeight.bold : FontWeight.normal ,
-      fontFamily: 'PT Serif',
-    ),
-    textAlign: TextAlign.left,
+    return AutoDirection(
+      text: widget.verseText,
+          child: Text(
+      widget.verseText,
+      style: TextStyle(
+        fontSize: showBookmarkIcon ? 24 : 22,
+        fontStyle: showBookmarkIcon ? FontStyle.italic : FontStyle.normal,
+        color: Theme.of(context).textTheme.subtitle1.color,
+        fontWeight: showBookmarkIcon ? FontWeight.bold : FontWeight.normal ,
+        fontFamily: 'PT Serif',
+      ),
+      textAlign: TextAlign.left,
+      ),
     );
   }
 }

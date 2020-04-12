@@ -43,20 +43,36 @@ class BibleReadApp extends StatelessWidget {
       // List all of the app's supported locales here
       supportedLocales: [
         Locale('en'),
+        Locale('ar'),
+        Locale('de'),
+        Locale('es'),
         Locale('fr'),
+        Locale('hi'),
+        Locale('it'),
+        Locale('ja'),
+        Locale('ru'),
+        Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       ],
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode &&
-              supportedLocale.countryCode == locale.countryCode) {
+      localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
+          if (locale == null) {
+                debugPrint("*language locale is null!!!");
+            return supportedLocales.first;
+          }
+
+        for (Locale supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode ||
+        supportedLocale.countryCode == locale.countryCode) {
+            debugPrint("*language ok $supportedLocale");
             return supportedLocale;
           }
         }
+        debugPrint("*language to fallback ${supportedLocales.first}");
         return supportedLocales.first;
       },
       builder: (context, child) {

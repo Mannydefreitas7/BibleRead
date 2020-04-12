@@ -9,7 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:xlive_switch/xlive_switch.dart';
-
+import 'dart:io' show Platform;
 
 
 class BibleReadingCard extends StatefulWidget {
@@ -28,8 +28,78 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
     await SharedPrefs().setExpectedProgress(showExpected);
   }
 
+ 
+ 
   @override
   Widget build(BuildContext context) {
+
+   void resetReading() {
+     showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        TextStyle titleStyle = TextStyle(
+          color: Theme.of(context).textTheme.headline6.color,
+          fontSize: 20.0,
+          );
+
+          TextStyle contentStyle = TextStyle(
+          color: Theme.of(context).textTheme.headline6.color,
+          fontSize: 16.0,
+          );
+
+          TextStyle resetButton = TextStyle(
+          color: Colors.red,
+          fontSize: 16.0,
+          );
+
+          TextStyle cancelButton = TextStyle(
+          color: Theme.of(context).accentColor,
+          fontSize: 16.0,
+          );
+
+
+        
+        Text title = Text('Are you sure?', style: titleStyle,);
+        Text content = Text('This will reset all your reading plans.', style: contentStyle,);
+        Text reset = Text('Reset', style: resetButton,);
+        Text cancel = Text('Cancel', style: cancelButton,);
+
+        List<FlatButton> actions = [
+          FlatButton(
+              child: reset,
+              onPressed: () {
+                DatabaseHelper().resetEverything();
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: cancel,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+        ];
+
+        if (Platform.isIOS) {
+          return CupertinoAlertDialog(
+          title:  title,
+          content: content,
+          actions: actions
+            );
+        } else {
+            return AlertDialog(
+              title:  title,
+              content: content,
+              actions: actions
+            );
+        }
+
+          }
+      ); 
+
+   // DatabaseHelper().resetEverything();
+  }
   
     return new Container(
       width: double.infinity,
@@ -171,7 +241,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
           ListTile(
               title: new Center(
             child: FlatButton(
-                onPressed: () => print('review us'),
+                onPressed: () => resetReading(),
                 child: new Text(
                   AppLocalizations.of(context).translate('start_reading_over'),
                   style: TextStyle(

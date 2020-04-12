@@ -83,12 +83,32 @@ class AnimatedProgressCircle extends StatelessWidget {
     this.expectedValue
     });
 
+    double checkProgressValue() {
+      if (showExpected) {
+          if (expectedValue > 1.0) {
+            return 1.0;
+          } else if (expectedValue < 0.0) {
+            return 0.0;
+          } else {
+            return expectedValue;
+          }
+      } else {
+        if (endValue > 1.0) {
+            return 1.0;
+          } else if (endValue < 0.0) {
+            return 0.0;
+          } else {
+            return endValue;
+          }
+      }
+    }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         ProgressCircle( // bottom
-              progressNumber: showExpected ? expectedValue : endValue, 
+              progressNumber: checkProgressValue(), 
               backgroundColor: showExpected ? Colors.transparent : null,
               progressText: showExpected ? null : '${(endValue * 100).round()}%', 
               radiusWidth: radiusWidth,

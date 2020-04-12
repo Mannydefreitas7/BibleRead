@@ -20,7 +20,7 @@ class ReadingPlans {
 
     factory ReadingPlans.fromJson(Map<String, dynamic> json) => ReadingPlans(
         index: json["id"],
-        isRead: json["isRead"] == 'false' ? false : true,
+        isRead: json["isRead"] == 0 ? false : true,
         name: json["Name"],
         startDate: json['StartDate'] == null ? DateTime.now().toString() : json['StartDate'],
         numberDaysTotal: json["NumberDaysTotal"],
