@@ -1,6 +1,7 @@
 
 import 'dart:ui';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/pages/readingplanview/NumberOfDays.dart';
 import 'package:BibleRead/pages/readingplanview/PlanBibleBooks.dart';
@@ -145,7 +146,7 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
                   Navigator.popAndPushNamed(context, '/readingplans');
                 },
                 child: Text(
-                    'Start Plan',
+                    AppLocalizations.of(context).translate('start_plan'),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontFamily: 'Avenir Next',

@@ -1,4 +1,5 @@
 import 'package:BibleRead/classes/SliderAudio.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -62,7 +63,7 @@ bool checkReadyandSingle() {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(left: 15.0),
-          child: Text('Listen',
+          child: Text(AppLocalizations.of(context).translate('listen'),
               textAlign: TextAlign.left,
               style: TextStyle(
                   fontWeight: Theme.of(context).textTheme.headline6.fontWeight,

@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import '../date_picker_theme.dart';
@@ -77,7 +78,7 @@ class DatePickerTitleWidget extends StatelessWidget {
           TextStyle(
               color: Theme.of(context).errorColor, fontSize: 20.0);
       cancelWidget =
-          Text(DatePickerI18n.getLocaleCancel(locale), style: textStyle);
+          Text(AppLocalizations.of(context).translate('cancel'), style: textStyle);
     }
     return cancelWidget;
   }
@@ -89,7 +90,7 @@ class DatePickerTitleWidget extends StatelessWidget {
       TextStyle textStyle = pickerTheme.confirmTextStyle ??
           TextStyle(color: Theme.of(context).primaryColor, fontSize: 20.0);
       confirmWidget =
-          Text(DatePickerI18n.getLocaleDone(locale), style: textStyle);
+          Text(AppLocalizations.of(context).translate('done'), style: textStyle);
     }
     return confirmWidget;
   }

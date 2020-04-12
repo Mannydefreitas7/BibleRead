@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class ReadingPlansList extends StatelessWidget {
                   return ReadingPlanTile(
                       selectedIndex: selectedPlan,
                       index: index,
-                      planTitle: readingPlans[index]['name'],
+                      planTitle: AppLocalizations.of(context).translate('plan_$index'),
                       onTap: () => Navigator.push(
                           context,
                           CupertinoPageRoute(
@@ -36,8 +37,7 @@ class ReadingPlansList extends StatelessWidget {
                               fullscreenDialog: true,
                               builder: (context) {
                                 return ReadingPlanView(
-                                    readingPlanTitle: readingPlans[index]
-                                        ['name'],
+                                    readingPlanTitle: AppLocalizations.of(context).translate('plan_$index'),
                                     planId: readingPlans[index]
                                         ['index']);
                               })));

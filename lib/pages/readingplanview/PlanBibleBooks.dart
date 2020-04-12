@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:BibleRead/helpers/JwOrgApiHelper.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/pages/readingplanview/PlanBibleBookCard.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
@@ -15,7 +16,7 @@ class PlanBibleBooks extends StatelessWidget {
   Widget build(BuildContext context) {
     int selectedPan = planId != 2 ? planId : 0;
     return Column(children: [
-      Text('Bible Books',
+      Text(AppLocalizations.of(context).translate('bible_books'),
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,

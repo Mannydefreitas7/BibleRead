@@ -1,4 +1,5 @@
 
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
@@ -56,8 +57,9 @@ class BibleReadScaffold extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.2),
-              blurRadius: 10.0,
-              spreadRadius: 2.0
+              offset: Offset(0, 2),
+              blurRadius: 5.0,
+             // spreadRadius: 2.0
           ),
           ],
           borderRadius: BorderRadius.all(Radius.circular(25))
@@ -73,7 +75,7 @@ class BibleReadScaffold extends StatelessWidget {
         size: 24, 
         color: Colors.white,
         ), 
-        label: Text('Mark Read', style: TextStyle(
+        label: Text(AppLocalizations.of(context).translate('mark_read'), style: TextStyle(
           fontSize: 20.0,
           color: Colors.white
         ),)

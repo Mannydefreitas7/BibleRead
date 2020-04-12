@@ -1,4 +1,5 @@
 import 'package:BibleRead/classes/datepicker/date_picker.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 
 import 'ReadingPlanView.dart';
 import 'package:flutter/material.dart';
@@ -25,12 +26,12 @@ class _ReadingStartDateState extends State<ReadingStartDate> {
     DatePicker.showDatePicker(
       context,
 
-        title: 'Start Date',
+        title: AppLocalizations.of(context).translate('start_date'),
         initialDateTime: DateTime.now(),
         onChange: (date, _) => {
            if (date.isAfter(DateTime.now())) {
             Toast.show(
-            "Cannot select a date in the future", 
+            AppLocalizations.of(context).translate('cannot_select_a_date_in_the_future'), 
             context, 
             backgroundColor: Colors.red[900],
             duration: Toast.LENGTH_LONG, 
@@ -41,7 +42,7 @@ class _ReadingStartDateState extends State<ReadingStartDate> {
         onConfirm: (date, _) => {
           if (date.isAfter(DateTime.now())) {
             Toast.show(
-            "Cannot select a date in the future", 
+            AppLocalizations.of(context).translate('cannot_select_a_date_in_the_future'), 
             context, 
             duration: Toast.LENGTH_LONG, 
             gravity:  Toast.CENTER),
@@ -58,7 +59,7 @@ class _ReadingStartDateState extends State<ReadingStartDate> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Reading Start Date',
+        Text(AppLocalizations.of(context).translate('reading_start_date'),
         style: TextStyle(
         fontSize: 16,
         color: Theme.of(context).textTheme.caption.color)),
@@ -71,7 +72,7 @@ class _ReadingStartDateState extends State<ReadingStartDate> {
             borderRadius: BorderRadius.circular(20)),
         child: InkWell(
           onTap: () {
-            _showDatePicker(context, 'Start Date');
+            _showDatePicker(context, AppLocalizations.of(context).translate('start_date'));
           },
           child: StreamBuilder(
             stream: DatabaseHelper().getReadingPlanStartDate(widget.planId).asStream(),

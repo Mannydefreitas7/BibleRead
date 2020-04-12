@@ -1,6 +1,7 @@
 import 'package:BibleRead/classes/BibleReadScaffold.dart';
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/Language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -57,7 +58,7 @@ class _LanguagesViewState extends State<LanguagesView> {
       hasBottombar: false,
       hasLeadingIcon: true,
       selectedIndex: 3,
-      title: 'Languages',
+      title: AppLocalizations.of(context).translate('languages'),
       bodyWidget: Container(
         child: Stack(
           children: <Widget>[
@@ -132,7 +133,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                       borderSide: BorderSide.none
                     ),
                     fillColor: Theme.of(context).cardColor,
-                    labelText: 'Search',
+                    labelText: AppLocalizations.of(context).translate('search'),
                     labelStyle: TextStyle(
                       color: Theme.of(context).textTheme.caption.color,
                       fontFamily: 'Avenir Next',

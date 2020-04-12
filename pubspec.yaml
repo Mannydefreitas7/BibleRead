@@ -36,7 +36,7 @@ dependencies:
     shared_preferences: ^0.5.6+1
     flutter_device_locale: ^0.3.4+1
     better_uuid: ^0.1.2
-    intl: ^0.16.0
+    intl: ^0.16.1
     sqflite: ^1.2.0
     shimmer: ^1.0.1
     connectivity: ^0.4.8+1
@@ -54,8 +54,6 @@ dependencies:
     toast: ^0.1.5
     screenshot: ^0.1.1
     flutter_share_file: ^1.1.4+1
-
-
 
 
 dev_dependencies:

@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 
@@ -19,7 +20,7 @@ class NumberOfDays extends StatelessWidget {
         builder: (context, data) {
             return Column(
               children: [
-            Text('Number of Days',
+            Text(AppLocalizations.of(context).translate('number_of_days'),
             style: TextStyle(
             fontSize: 16,
             color: Theme.of(context).textTheme.caption.color)),

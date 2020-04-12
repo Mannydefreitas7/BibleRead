@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../classes/bibleicons.dart';
@@ -54,7 +55,7 @@ class BRBottomNavBar extends StatelessWidget {
                     size: 35.0,
                   ),
                   title: Text(
-                    'Today',
+                    AppLocalizations.of(context).translate('today'),
                     textAlign: TextAlign.center,
                     style: TextStyle(fontWeight: FontWeight.w700),
                   ),
@@ -65,7 +66,7 @@ class BRBottomNavBar extends StatelessWidget {
                       size: 35.0,
                     ),
                     title: Text(
-                      'Progress',
+                      AppLocalizations.of(context).translate('progress'),
                       textAlign: TextAlign.center,
                       style: TextStyle(fontWeight: FontWeight.w700),
                     )),
@@ -75,7 +76,7 @@ class BRBottomNavBar extends StatelessWidget {
                       size: 35.0,
                     ),
                     title: Text(
-                      'Plans',
+                      AppLocalizations.of(context).translate('plans'),
                       textAlign: TextAlign.center,
                       style: TextStyle(fontWeight: FontWeight.w700),
                     )),
@@ -85,7 +86,7 @@ class BRBottomNavBar extends StatelessWidget {
                       size: 35.0,
                     ),
                     title: Text(
-                      'Settings',
+                      AppLocalizations.of(context).translate('settings'),
                       textAlign: TextAlign.center,
                       style: TextStyle(fontWeight: FontWeight.w700),
                     )),

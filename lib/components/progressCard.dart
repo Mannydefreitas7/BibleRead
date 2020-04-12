@@ -96,10 +96,10 @@ class ProgressCard extends StatelessWidget {
 
         boxShadow: <BoxShadow>[
           BoxShadow(
-            
+            offset: Offset(0, 5),
             color: Colors.black.withOpacity(0.03),
             spreadRadius: 2.0,
-            blurRadius: 7.0
+            blurRadius: 10.0
         )
       ],
     )

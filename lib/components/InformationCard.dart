@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:launch_review/launch_review.dart';
@@ -19,7 +20,7 @@ class InformationCard extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.info_outline, color: Theme.of(context).textTheme.headline6.color, size: 35,),
             title: new Text(
-              "Information",
+              AppLocalizations.of(context).translate('information'),
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
@@ -29,7 +30,7 @@ class InformationCard extends StatelessWidget {
           ),
           ListTile(
             leading: new Text(
-              "App Name",
+              AppLocalizations.of(context).translate('app_name'),
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context).textTheme.headline6.color,
@@ -45,7 +46,7 @@ class InformationCard extends StatelessWidget {
           ),
           ListTile(
             leading: new Text(
-              "Version",
+              AppLocalizations.of(context).translate('version'),
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context).textTheme.headline6.color,
@@ -61,7 +62,7 @@ class InformationCard extends StatelessWidget {
           ),
           ListTile(
             leading: new Text(
-              "Support",
+              AppLocalizations.of(context).translate('support'),
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context).textTheme.headline6.color,
@@ -80,7 +81,7 @@ class InformationCard extends StatelessWidget {
             child: FlatButton(
                 onPressed: () => LaunchReview.launch(writeReview: true),
                 child: new Text(
-                  "Review us on App Store",
+                   AppLocalizations.of(context).translate('review_us_on_app_store'),
                   style: TextStyle(
                     fontSize: 20,
                     color: Theme.of(context).accentColor,

@@ -257,6 +257,16 @@ Future<void> setBookNames(String locale, int edition) async {
   }
 }
 
+void removeLanguage(String locale) async {
+    Database db = await database;
+  await db.rawQuery("DROP TABLE $locale");
+}
+
+void removeLocaleFromLanguage(String locale) async {
+  Database db = await database;
+  await db.rawQuery("DELETE FROM languages WHERE locale = '$locale'");
+}
+
 Future<List<ReadingPlans>> getReadingPlans() async {
   Database db = await database;
   List<ReadingPlans> readingPlans = [];

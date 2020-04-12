@@ -1,6 +1,7 @@
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/Language.dart';
 import 'package:BibleRead/pages/settingsview/LanguagesView.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
           ListTile(
             leading: Icon(LineAwesomeIcons.book, color: Theme.of(context).textTheme.headline6.color, size: 35,),
             title: new Text(
-              "Bible Reading",
+              AppLocalizations.of(context).translate('bible_reading'),
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
@@ -52,7 +53,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
           ),
           ListTile(
             leading: new Text(
-              "Expected Progress",
+              AppLocalizations.of(context).translate('expected_progress'),
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context).textTheme.headline6.color,
@@ -78,7 +79,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
             ),
           ListTile(
             leading: new Text(
-              "Language",
+              AppLocalizations.of(context).translate('language'),
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context).textTheme.headline6.color,
@@ -129,7 +130,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
   Column(
     children:[
         Text(
-              "Bible Translation",
+              AppLocalizations.of(context).translate('bible_translation'),
               style: TextStyle(
                 fontSize: 18,
               //  fontWeight: FontWeight.bold,
@@ -172,7 +173,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
             child: FlatButton(
                 onPressed: () => print('review us'),
                 child: new Text(
-                  "Start Reading Over",
+                  AppLocalizations.of(context).translate('start_reading_over'),
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.redAccent

@@ -83,8 +83,9 @@ class _TodayPageState extends State<TodayPage> {
         });
     await initialize();
     bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
+    bool showExpectedProgress = await SharedPrefs().getExpectedProgress();
 
-    if (isBadgesupported) {
+    if (isBadgesupported && showExpectedProgress) {
       int badgeNumber = await SharedPrefs().getBadgeNumber();
      await SharedPrefs().setBadgeNumber(badgeNumber - 1);
       FlutterAppBadger.updateBadgeCount(badgeNumber - 1);
@@ -153,6 +154,10 @@ class _TodayPageState extends State<TodayPage> {
           });
        }
     });
+
+       // DatabaseHelper().removeLanguage('he');
+      //  DatabaseHelper().removeLocaleFromLanguage('fa');
+   // DatabaseHelper().addNewLanguage('ro', 0);
 
     _connectivity.myStream.listen((source) {
       if (mounted) {
@@ -233,7 +238,6 @@ class _TodayPageState extends State<TodayPage> {
   Widget build(BuildContext context) {
     bool isConnected;
 
-    List<Plan> allChapters = Provider.of<List<Plan>>(context);
  
     switch (_source.keys.toList()[0]) {
       case ConnectivityResult.none:
@@ -254,7 +258,7 @@ class _TodayPageState extends State<TodayPage> {
       isSingle = true;
     }
 
-    print(allChapters[0].longName);
+
 
     return BibleReadScaffold(
       title: AppLocalizations.of(context).translate('today'),
@@ -278,7 +282,7 @@ class _TodayPageState extends State<TodayPage> {
                     return ListView(
                       //  addAutomaticKeepAlives: true,
                         addRepaintBoundaries: true,
-                        padding: EdgeInsets.only(top: 110),
+                        padding: EdgeInsets.only(top: 130),
                         scrollDirection: Axis.vertical,
                         children: <Widget>[
                           if (unReadPlan.length != 0)
@@ -362,14 +366,7 @@ class _TodayPageState extends State<TodayPage> {
                                                   );
                                                 } else {
                                                   return Container(
-                                                    height: 120,
-                                                    child: Center(
-                                                        child:
-                                                            SpinKitDoubleBounce(
-                                                      color: Theme.of(context)
-                                                          .accentColor,
-                                                    )),
-                                                  );
+                                                    );
                                                 }
                                               }),
                                 
@@ -389,22 +386,36 @@ class _TodayPageState extends State<TodayPage> {
                       }
                   }),
           
-            FutureBuilder(
-              future: _progressValue,
+          StreamBuilder(
+              stream: Rx.combineLatest3<String, String, double, TodayProgressCard>(
+                DateTimeHelpers().todayMonthFuture().asStream(), 
+                DateTimeHelpers().todayWeekDayFuture().asStream(), 
+                DatabaseHelper().countProgressValue().asStream(), (month, weekDay, progressValue) => TodayProgressCard(
+                  month: month, 
+                  weekDay: weekDay, 
+                  progressValue: progressValue
+                )),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
+
+                TodayProgressCard todayProgressCard = snapshot.hasData ? snapshot.data : TodayProgressCard(
+                  month: DateTimeHelpers().todayMonth(),
+                  weekDay:  DateTimeHelpers().todayWeekDay(),
+                  progressValue: 0
+                  );
                 return Container(
                     height: 110,
                     child: ProgressCard(
                       subtitle:  AppLocalizations.of(context).translate('welcome'),
                       showExpected: false,
                       progressNumber:
-                          snapshot.hasData ? snapshot.data > 1.0 ? 1.0 : snapshot.data : 0,
-                      textOne: DateTimeHelpers().todayWeekDay(),
-                      textTwo: DateTimeHelpers().todayMonth(),
+                          todayProgressCard.progressValue > 1.0 ? 1.0 : todayProgressCard.progressValue,
+                      textOne:todayProgressCard.weekDay,
+                      textTwo: todayProgressCard.month,
                       textThree: DateTimeHelpers().todayDate(),
                     ));
               },
             ),
+
           ])),
     );
   }
@@ -416,5 +427,18 @@ class PlayerDataStream {
   FullAudioPlaybackState fullAudioPlaybackState;
   Duration positionStream;
   Duration durationStream;
+}
+
+class TodayProgressCard {
+
+  TodayProgressCard({
+    this.month,
+    this.progressValue,
+    this.weekDay
+  });
+
+  final String month;
+  final String weekDay;
+  final double progressValue;
 
 }

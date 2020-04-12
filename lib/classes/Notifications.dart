@@ -1,4 +1,7 @@
+import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
+import 'package:BibleRead/models/Plan.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -6,8 +9,6 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     NotificationAppLaunchDetails notificationAppLaunchDetails;
 
 class Notifications {
-
-  
 
     initializeNotifications() async {
         var initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
@@ -67,17 +68,18 @@ class Notifications {
 
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
-  
+  BuildContext context;
+
+  List<Plan> unreadChapters = await DatabaseHelper().unReadChapters();
 
     await flutterLocalNotificationsPlugin.showDailyAtTime(
         0,
-        'show daily title',
-        'Daily notification shown: $time',
+        AppLocalizations.of(context).translate('read_today'),
+        '${unreadChapters[0].longName} ${unreadChapters[0].chapters}',
         time,
         platformChannelSpecifics);
   }
   
-
 }
 
 

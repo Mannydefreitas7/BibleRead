@@ -1,4 +1,5 @@
 
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,7 +57,7 @@ class ChaptersList extends StatelessWidget {
                             )
                           ),
                           subtitle: Text(
-                            'Day ${index + 1}',
+                            '${AppLocalizations.of(context).translate('day')} ${index + 1}',
                             style: TextStyle(color: Theme.of(context).textTheme.caption.color, 
                             fontWeight: FontWeight.w400,
                             fontSize: 14

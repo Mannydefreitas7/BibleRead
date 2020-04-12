@@ -1,6 +1,7 @@
 import 'package:BibleRead/components/progressCard.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:BibleRead/models/ReadingPlan.dart';
@@ -104,7 +105,7 @@ class ProgressViewCard extends StatelessWidget {
                   child: ProgressCard(
                     showExpected: progressdata.showExpected,
                     subtitle: progressdata.showExpected ?
-                    'Expected' : subtitle,
+                    AppLocalizations.of(context).translate('expected') : subtitle,
                     expectedValue: getExpectedProgressValue(progressdata.readingPlan.startDate, progressdata.readingPlan.numberDaysTotal),
                     progressNumber:
                     progressdata.progressvalue != null ? progressdata.progressvalue : 1.0,

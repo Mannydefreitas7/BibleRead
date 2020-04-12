@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -261,7 +262,7 @@ class _DatePickerState extends State<_DataPickerComponent> {
             height: 40,
             child: FlatButton(
               child: Text(
-                '$cancel',
+                AppLocalizations.of(context).translate('cancel'),
                 style: TextStyle(
                   color: Colors.redAccent,
                   fontSize: 18.0,
@@ -286,7 +287,7 @@ class _DatePickerState extends State<_DataPickerComponent> {
             height: _kDatePickerTitleHeight,
             child: FlatButton(
               child: Text(
-                '$done',
+                AppLocalizations.of(context).translate('done'),
                 style: TextStyle(
                   color: Theme.of(context).accentColor,
                   fontSize: 18.0,

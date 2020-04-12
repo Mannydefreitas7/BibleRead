@@ -1,6 +1,7 @@
 import 'package:BibleRead/classes/Notifications.dart';
 import 'package:BibleRead/classes/datepicker/date_picker.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
@@ -68,7 +69,7 @@ class _ReminderCardState extends State<ReminderCard> {
             color: Theme.of(context).textTheme.headline6.color, 
             size: 35,),
             title: new Text(
-              "Reminder",
+              AppLocalizations.of(context).translate('reminder'),
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
@@ -78,7 +79,7 @@ class _ReminderCardState extends State<ReminderCard> {
           ),
           ListTile(
             leading: new Text(
-              "Daily Reminder",
+              AppLocalizations.of(context).translate('daily_reminder'),
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context).textTheme.headline6.color,
@@ -110,7 +111,7 @@ class _ReminderCardState extends State<ReminderCard> {
              if (isReminderOn) {
                return ListTile(
                 leading: new Text(
-                  "Time",
+                  AppLocalizations.of(context).translate('time'),
                   style: TextStyle(
                     fontSize: 18,
                     color: Theme.of(context).textTheme.headline6.color,
@@ -124,7 +125,7 @@ class _ReminderCardState extends State<ReminderCard> {
                     borderRadius: BorderRadius.circular(20.00), 
                 ), 
                 child: InkWell(
-                      onTap: () => showTimePicker(context, 'Reminder'),  
+                      onTap: () => showTimePicker(context, AppLocalizations.of(context).translate('reminder')),  
                       child: StreamBuilder<String>(
                         initialData: '7h00',
                         stream: SharedPrefs().getReminderTime().asStream(),

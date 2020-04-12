@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -17,7 +18,7 @@ class SupportCard extends StatelessWidget {
           ListTile(
             leading: Icon(LineAwesomeIcons.headset, color: Theme.of(context).textTheme.headline6.color, size: 35,),
             title: new Text(
-              "Support",
+             AppLocalizations.of(context).translate('support'),
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
@@ -27,7 +28,7 @@ class SupportCard extends StatelessWidget {
           ),
           ListTile(
             leading: new Text(
-              "Author",
+              AppLocalizations.of(context).translate('author'),
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context).textTheme.headline6.color,
@@ -43,7 +44,7 @@ class SupportCard extends StatelessWidget {
           ),
           ListTile(
             leading: new Text(
-              "Email",
+              AppLocalizations.of(context).translate('email'),
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context).textTheme.headline6.color,

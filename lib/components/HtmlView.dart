@@ -39,12 +39,12 @@ class HtmlView extends StatelessWidget {
                 String text = n.text 
                    .substring(3)
                    .trimLeft()
-                   .replaceAll('+', ' ')
-                   .replaceAll('*', ' ')
+                   .replaceAll('+', '')
+                   .replaceAll('*', '')
                    .replaceAll('\"', '. ')
                    .replaceAll(';', '; ')
                    .replaceAll('\ʹ', '\'')
-                   .replaceAll(',', ', ');
+                   .replaceAll(',', ',');
                 bool isChapter =
                     n.children[0].children[0].attributes['class'] ==
                         'chapterNum';

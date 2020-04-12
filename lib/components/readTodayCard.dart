@@ -1,4 +1,5 @@
 import 'package:BibleRead/helpers/animations.dart';
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../components/bookMarkChip.dart';
@@ -33,7 +34,7 @@ class ReadTodayCard extends StatelessWidget {
 
         Padding(
           padding: const EdgeInsets.only(left: 10.0),
-          child: Text('Read',
+          child: Text(AppLocalizations.of(context).translate('read'),
               textAlign: TextAlign.left,
               style: TextStyle(
                   fontWeight: Theme.of(context).textTheme.headline6.fontWeight,
