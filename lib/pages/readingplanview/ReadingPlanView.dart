@@ -143,7 +143,7 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
                   bibleBookListData.selectReadingPlan(widget.planId);
                   SharedPrefs().setBookMarkFalse();
                   SharedPrefs().setBookMarkData('');
-                  Navigator.popAndPushNamed(context, '/readingplans');
+                  Navigator.pop(context);
                 },
                 child: Text(
                     AppLocalizations.of(context).translate('start_plan'),

@@ -64,15 +64,6 @@ class BookChapterListBloc {
 
   Stream<List<Plan>> getbookChapters(int id) => _bookChaptersController.stream;
 
-  BookChapterListBloc() {
-    
-  }
-
-  _getBookChapters(int id) async {
-    _bookChaptersController.sink
-        .add(await DatabaseHelper().queryBookChapters(id));
-  }
-
   dispose() {
     _bookChaptersController.close();
   }

@@ -1,14 +1,10 @@
 
 
-import 'dart:io';
-
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:BibleRead/models/ReadingPlan.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:flutter_share_file/flutter_share_file.dart';
 
 class CompletedCard extends StatelessWidget {
   CompletedCard({Key key}) : super(key: key); 

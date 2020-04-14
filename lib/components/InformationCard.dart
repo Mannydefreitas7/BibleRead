@@ -79,7 +79,7 @@ class InformationCard extends StatelessWidget {
           ListTile(
               title: new Center(
             child: FlatButton(
-                onPressed: () => LaunchReview.launch(writeReview: true),
+                onPressed: () => LaunchReview.launch(iOSAppId: '1472187500', androidAppId: 'com.wolinweb.BibleRead', writeReview: true),
                 child: new Text(
                    AppLocalizations.of(context).translate('review_us_on_app_store'),
                   style: TextStyle(

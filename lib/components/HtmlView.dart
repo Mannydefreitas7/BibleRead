@@ -5,7 +5,6 @@ import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import "package:html/dom.dart" as dom;
 
 class HtmlView extends StatelessWidget {

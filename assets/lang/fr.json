@@ -9,7 +9,7 @@
     "mark_read": "Marquer comme lu",
     "read": "Lire",
     "play": "Ecouter",
-    "reading_plan": "Programme de lecture",
+    "reading_plan": "Lectures",
     "plan_0": "Normal",
     "plan_3": "Les écrits de Moïse",
     "plan_4": "Israël entre dans la Terre promise",
@@ -25,7 +25,7 @@
     "review_us_on_app_store": "Laisser une review",
     "start_reading_over": "Recommencer la lecture",
     "welcome": "Bienvenue!",
-    "listen": "Ecoutez",
+    "listen": "Ecouter",
     "save_bookmark": "Marquer la page",
     "current": "En ce moment",
     "day": "Jour",
@@ -66,5 +66,5 @@
     "intro_page_four": "Vous voulez quelque chose de différent? Choisissez l'un des 12 plans de lecture de la Bible!",
     "intro_page_five_title": "Suivez vos progrès",
     "intro_page_five": "Régler la progression de l'application à la vôtre. Vérifiez ou vous en êtes ou définissez une date de début de lecture.",
-    "cannot_select_a_date_in_the_future": "无法选择将来的日期"
+    "cannot_select_a_date_in_the_future": "Veuillez selectioner une date anterieure"
 }

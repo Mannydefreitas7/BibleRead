@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.BibleRead">
+    package="com.wolinweb.BibleRead">
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
          In most cases you can leave this as-is, but you if you want to provide
@@ -9,10 +9,11 @@
          <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
          <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
          <application
             android:name="io.flutter.app.FlutterApplication"
-            android:label="BibleRead"
+            android:label="Bible Read"
             android:usesCleartextTraffic="true"
             android:icon="@mipmap/ic_launcher">
                <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />

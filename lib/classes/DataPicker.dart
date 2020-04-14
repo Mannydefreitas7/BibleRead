@@ -245,8 +245,6 @@ class _DatePickerState extends State<_DataPickerComponent> {
 
   // Title View
   Widget _renderTitleActionsView() {
-    String done = _localeDone();
-    String cancel = _localeCancel();
 
     return Container(
       height: 70,
@@ -306,49 +304,6 @@ class _DatePickerState extends State<_DataPickerComponent> {
     );
   }
 
-  String _localeDone() {
-    if (widget.locale == null) {
-      return 'Done';
-    }
-
-    String lang = widget.locale.split('_').first;
-
-    switch (lang) {
-      case 'en':
-        return 'Done';
-        break;
-
-      case 'zh':
-        return '确定';
-        break;
-
-      default:
-        return '';
-        break;
-    }
-  }
-
-  String _localeCancel() {
-    if (widget.locale == null) {
-      return 'Cancel';
-    }
-
-    String lang = widget.locale.split('_').first;
-
-    switch (lang) {
-      case 'en':
-        return 'Cancel';
-        break;
-
-      case 'zh':
-        return '取消';
-        break;
-
-      default:
-        return '';
-        break;
-    }
-  }
 }
 
 class _BottomPickerLayout extends SingleChildLayoutDelegate {

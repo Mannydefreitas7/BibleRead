@@ -1,13 +1,16 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import '../classes/progressCircle.dart';
-
 class FadeInRight extends StatelessWidget {
   final double delay;
   final Widget child;
   final bool leaving;
 
   FadeInRight({this.delay, this.child, this.leaving});
+  
+  
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +21,7 @@ class FadeInRight extends StatelessWidget {
           Duration(milliseconds: 500), Tween(begin: 130.0, end: 0.0),
           curve: Curves.easeOut)
     ]);
+
 
     return ControlledAnimation(
       delay: Duration(milliseconds: (300 * delay).round()),
@@ -103,8 +107,11 @@ class AnimatedProgressCircle extends StatelessWidget {
       }
     }
 
+    
+
   @override
   Widget build(BuildContext context) {
+    
     return Stack(
       children: <Widget>[
         ProgressCircle( // bottom

@@ -8,10 +8,8 @@ import 'package:BibleRead/helpers/DateTimeHelpers.dart';
 import 'package:BibleRead/helpers/LocalDataBase.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
 import 'package:BibleRead/helpers/app_localizations.dart';
-import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import '../components/listenCard.dart';
 import '../components/readTodayCard.dart';
@@ -340,7 +338,7 @@ class _TodayPageState extends State<TodayPage> {
                                                   return ListenCard(
                                                     bookName: '',
                                                     isAudioPlaying: isPlaying,
-                                                    slider: slider,
+                                                    slider: slider != null ? slider : 0.0,
                                                     isSingle: isSingle,
                                                     next: () => isSingle
                                                         ? null

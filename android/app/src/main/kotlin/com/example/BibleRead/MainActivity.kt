@@ -1,4 +1,4 @@
-package com.example.BibleRead
+package com.wolinweb.BibleRead
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

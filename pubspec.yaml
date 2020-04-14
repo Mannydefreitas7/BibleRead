@@ -55,11 +55,21 @@ dependencies:
     screenshot: ^0.1.1
     flutter_share_file: ^1.1.4+1
     auto_direction: ^0.0.4+1
+    
 
 
 dev_dependencies:
+    flutter_launcher_icons: "^0.7.3"
     flutter_test:
         sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/icon.png"
+  adaptive_icon_background: "#FAA535"
+  adaptive_icon_foreground: "assets/icons/android_icon.png" 
+
 flutter:
     uses-material-design: true
     assets:

@@ -1,3 +1,4 @@
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../classes/on_boarding_ui.dart';
@@ -13,31 +14,31 @@ class OnBoardingPage extends StatelessWidget {
 
         slides:[
         SliderModel.Slider(
-          sliderHeading: "Welcome",
-          sliderSubHeading: "Bible Read is a bible reading progress tracking application to help you keep up with your daily reading",
+          sliderHeading: AppLocalizations.of(context).translate('welcome'),
+          sliderSubHeading: AppLocalizations.of(context).translate('intro_page_one'),
           sliderImageUrl: 'assets/images/onboarding_welcome.png',
         ),
         SliderModel.Slider(
-          sliderHeading: "Read in-app",
-          sliderSubHeading: "You can read the respective bible chapters online right in the app!",
+          sliderHeading: AppLocalizations.of(context).translate('intro_page_two_title'),
+          sliderSubHeading: AppLocalizations.of(context).translate('intro_page_two'),
           sliderImageUrl: 'assets/images/onboarding_reading.png',
         ),
         SliderModel.Slider(
           
-          sliderHeading: "Listen the audio",
-          sliderSubHeading: "Not in the mood for reading? You can also listen audio for the day.",
+          sliderHeading: AppLocalizations.of(context).translate('intro_page_three_title'),
+          sliderSubHeading: AppLocalizations.of(context).translate('intro_page_three'),
           sliderImageUrl: 'assets/images/onboarding_audio.png',
         ),
          SliderModel.Slider(
           
-          sliderHeading: "Track your progress",
-          sliderSubHeading: "Adjust the app progress to yours. Check how far you’ve gone or set a reading start date.",
+          sliderHeading: AppLocalizations.of(context).translate('intro_page_five_title'),
+          sliderSubHeading: AppLocalizations.of(context).translate('intro_five_three'),
           sliderImageUrl: 'assets/images/onboarding_progress.png',
         ),
         SliderModel.Slider(
           
-          sliderHeading: "Choose a plan",
-          sliderSubHeading: "Adjust the app progress to yours. Check how far you’ve gone or set a reading start date.",
+          sliderHeading: AppLocalizations.of(context).translate('intro_page_four_title'),
+          sliderSubHeading: AppLocalizations.of(context).translate('intro_four_three'),
           sliderImageUrl: 'assets/images/onboarding_plan.png',
         )
       ], onFinish: (){

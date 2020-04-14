@@ -1,6 +1,4 @@
 
-import 'dart:ui';
-
 import 'package:BibleRead/helpers/FirstLaunch.dart';
 import 'package:intl/intl.dart';
 
