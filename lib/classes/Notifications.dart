@@ -52,15 +52,22 @@ class Notifications {
 
     Time time = Time(dateTime.hour, dateTime.minute, 0);
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+
         'repeatDailyAtTime channel id',
         'repeatDailyAtTime channel name',
         'repeatDailyAtTime description',
         importance: Importance.High,
+        category: 'CATEGORY_ALARM',
+        color: Theme.of(context).accentColor,
+        indeterminate: true,
+        enableLights: true,
+
         enableVibration: true,
         channelShowBadge: true,
         visibility: NotificationVisibility.Public,
         );
     var iOSPlatformChannelSpecifics = IOSNotificationDetails(
+        presentAlert: true,
         badgeNumber: badgeNumber + 1,
         presentSound: true,
     );

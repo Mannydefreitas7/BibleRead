@@ -19,13 +19,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
-                                <rect key="frame" x="63.5" y="267.5" width="287" height="361"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
+                                <rect key="frame" x="41.5" y="217" width="331" height="462"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="361" id="ecd-pK-7qV"/>
-                                    <constraint firstAttribute="width" constant="287" id="g6e-2Z-n88"/>
-                                    <constraint firstAttribute="width" secondItem="YRO-k0-Ey4" secondAttribute="height" multiplier="287:361" id="jZ3-nC-BNj"/>
+                                    <constraint firstAttribute="height" constant="462" id="FqV-G2-kg9"/>
+                                    <constraint firstAttribute="width" constant="331" id="gFb-xR-BI8"/>
+                                    <constraint firstAttribute="width" secondItem="YRO-k0-Ey4" secondAttribute="height" multiplier="287:361" constant="-36.29639889196676" id="jZ3-nC-BNj"/>
+                                    <constraint firstAttribute="width" secondItem="YRO-k0-Ey4" secondAttribute="height" multiplier="331:462" id="yil-br-yQU"/>
                                 </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

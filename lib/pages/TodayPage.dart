@@ -69,7 +69,7 @@ class _TodayPageState extends State<TodayPage> {
 
   _markTodayRead() async {
     if (player.playbackState == AudioPlaybackState.playing) {
-        await player.stop();
+      await player.stop();
     }
 
     await DatabaseHelper().markTodayRead();
@@ -80,13 +80,16 @@ class _TodayPageState extends State<TodayPage> {
           hasBookmark = false
         });
     await initialize();
-    bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
+
     bool hasReminderOn = await SharedPrefs().getReminder();
 
-    if (isBadgesupported && hasReminderOn) {
-      int badgeNumber = await SharedPrefs().getBadgeNumber();
-     await SharedPrefs().setBadgeNumber(badgeNumber - 1);
-      FlutterAppBadger.updateBadgeCount(badgeNumber - 1);
+    if (hasReminderOn) {
+      bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
+      if (isBadgesupported) {
+        int badgeNumber = await SharedPrefs().getBadgeNumber();
+        await SharedPrefs().setBadgeNumber(badgeNumber - 1);
+        FlutterAppBadger.updateBadgeCount(badgeNumber - 1);
+      }
     }
   }
 
@@ -114,11 +117,10 @@ class _TodayPageState extends State<TodayPage> {
 
   void releaseAudio() async {
     if (player.playbackState == AudioPlaybackState.playing) {
-        await player.pause();
-        await player.stop();
-        await player.dispose();
+      await player.pause();
+      await player.stop();
+      await player.dispose();
     }
-   
   }
 
   void onChanged(double value) {
@@ -141,21 +143,21 @@ class _TodayPageState extends State<TodayPage> {
     _connectivity.initialise();
 
     _unReadChapters.asStream().listen((event) {
-       if (mounted) { 
-         if (event.length > 0) 
+      if (mounted) {
+        if (event.length > 0)
           setState(() {
             isCompleted = false;
           });
-          else 
+        else
           setState(() {
             isCompleted = true;
           });
-       }
+      }
     });
 
-       // DatabaseHelper().removeLanguage('he');
-      //  DatabaseHelper().removeLocaleFromLanguage('fa');
-   // DatabaseHelper().addNewLanguage('ro', 0);
+    // DatabaseHelper().removeLanguage('he');
+    //  DatabaseHelper().removeLocaleFromLanguage('fa');
+    // DatabaseHelper().addNewLanguage('ro', 0);
 
     _connectivity.myStream.listen((source) {
       if (mounted) {
@@ -213,7 +215,6 @@ class _TodayPageState extends State<TodayPage> {
     } else {
       await player.pause();
     }
-    
   }
 
   void previous() async {
@@ -236,7 +237,6 @@ class _TodayPageState extends State<TodayPage> {
   Widget build(BuildContext context) {
     bool isConnected;
 
- 
     switch (_source.keys.toList()[0]) {
       case ConnectivityResult.none:
         isConnected = false;
@@ -256,37 +256,34 @@ class _TodayPageState extends State<TodayPage> {
       isSingle = true;
     }
 
-
-
     return BibleReadScaffold(
       title: AppLocalizations.of(context).translate('today'),
       hasLeadingIcon: false,
       hasBottombar: true,
-      hasFloatingButton:isCompleted ? false : true,
+      hasFloatingButton: isCompleted ? false : true,
       floatingActionOnPress: _markTodayRead,
       selectedIndex: 0,
       bodyWidget: Container(
           padding: EdgeInsets.only(left: 15, right: 15),
           child: Stack(
-          //  overflow: Overflow.clip, 
-            children: <Widget>[
+              //  overflow: Overflow.clip,
+              children: <Widget>[
+                FutureBuilder(
+                    future: _unReadChapters,
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.hasData) {
+                        unReadPlan = snapshot.data;
 
-            FutureBuilder(
-                future: _unReadChapters,
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.hasData) {
-                    unReadPlan = snapshot.data;
-
-                    return ListView(
-                      //  addAutomaticKeepAlives: true,
-                        addRepaintBoundaries: true,
-                        padding: EdgeInsets.only(top: 130),
-                        scrollDirection: Axis.vertical,
-                        children: <Widget>[
-                          if (unReadPlan.length != 0)
-                            Container(
-                               // margin: EdgeInsets.only(top: 50),
-                                child: ReadTodayCard(
+                        return ListView(
+                            //  addAutomaticKeepAlives: true,
+                            addRepaintBoundaries: true,
+                            padding: EdgeInsets.only(top: 130),
+                            scrollDirection: Axis.vertical,
+                            children: <Widget>[
+                              if (unReadPlan.length != 0)
+                                Container(
+                                    // margin: EdgeInsets.only(top: 50),
+                                    child: ReadTodayCard(
                                   markRead: _markTodayRead,
                                   removeBookMark: _setBookMarkFalse,
                                   isDisabled: isConnected,
@@ -295,148 +292,143 @@ class _TodayPageState extends State<TodayPage> {
                                   chapters: unReadPlan[0].chapters,
                                   chaptersData: unReadPlan[0].chaptersData,
                                 )),
-                          if (unReadPlan.length != 0) SizedBox(height: 20),
-                          if (unReadPlan.length != 0)
-                            StreamBuilder<PlayerDataStream>(
-                                stream: Rx.combineLatest3<FullAudioPlaybackState, Duration, Duration, PlayerDataStream>(player.fullPlaybackStateStream,  player.getPositionStream(), player.durationStream, (fullAudioPlaybackState, position, duration) => PlayerDataStream(durationStream: duration, positionStream: position, fullAudioPlaybackState: fullAudioPlaybackState)),
-                                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                              if (unReadPlan.length != 0) SizedBox(height: 20),
+                              if (unReadPlan.length != 0)
+                                StreamBuilder<PlayerDataStream>(
+                                    stream: Rx.combineLatest3<
+                                            FullAudioPlaybackState,
+                                            Duration,
+                                            Duration,
+                                            PlayerDataStream>(
+                                        player.fullPlaybackStateStream,
+                                        player.getPositionStream(),
+                                        player.durationStream,
+                                        (fullAudioPlaybackState, position,
+                                                duration) =>
+                                            PlayerDataStream(
+                                                durationStream: duration,
+                                                positionStream: position,
+                                                fullAudioPlaybackState:
+                                                    fullAudioPlaybackState)),
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot snapshot) {
+                                      if (snapshot.hasData) {
+                                        PlayerDataStream playerDataStream =
+                                            snapshot.data;
 
-                                  if (snapshot.hasData) {
-                                      PlayerDataStream playerDataStream = snapshot.data;
-                
-                                                  final fullState =
-                                                      playerDataStream.fullAudioPlaybackState;
-                                                  final state =
-                                                      fullState?.state;
-                                                  final buffering =
-                                                      fullState?.buffering;
-                                                  Duration position =
-                                                      playerDataStream.positionStream;
-                                                  Duration duration =
-                                                      playerDataStream.durationStream;
-                                                  double slider = position
-                                                          .inMilliseconds /
-                                                      duration.inMilliseconds;
+                                        final fullState = playerDataStream
+                                            .fullAudioPlaybackState;
+                                        final state = fullState?.state;
+                                        final buffering = fullState?.buffering;
+                                        Duration position =
+                                            playerDataStream.positionStream;
+                                        Duration duration =
+                                            playerDataStream.durationStream;
+                                        double slider =
+                                            position.inMilliseconds /
+                                                duration.inMilliseconds;
 
-                                                  if (state ==
-                                                          AudioPlaybackState
-                                                              .connecting ||
-                                                      buffering == true) {
-                                                    isPlaying = false;
-                                                  } else if (state ==
-                                                      AudioPlaybackState
-                                                          .playing) {
-                                                    isPlaying = true;
-                                                  } else if (state ==
-                                                      AudioPlaybackState
-                                                          .completed) {
-                                                    isPlaying = false;
-                                                    next();
-                                                  } else {
-                                                    isPlaying = false;
-                                                  }
-                                                  return ListenCard(
-                                                    bookName: '',
-                                                    isAudioPlaying: isPlaying,
-                                                    slider: slider != null ? slider : 0.0,
-                                                    isSingle: isSingle,
-                                                    next: () => isSingle
-                                                        ? null
-                                                        : next(),
-                                                    previous: () => isSingle
-                                                        ? null
-                                                        : previous(),
-                                                    playPause: () => isPlaying
-                                                        ? pauseAudio()
-                                                        : playAudio(),
-                                                    isReady: isConnected,
-                                                    sliderChange: (value) =>
-                                                        onChangeEnd(value),
-                                                    duration: duration,
-                                                    position: position,
-                                                    durationText:
-                                                        _formatDuration(
-                                                            duration),
-                                                    startTime: _formatDuration(
-                                                        position),
-                                                    chapter: list[currentAudio]
-                                                        .title,
-                                                  );
-                                                } else {
-                                                  return Container(
-                                                    );
-                                                }
-                                              }),
-                                
-                          if (unReadPlan.length == 0) CompletedCard(),
-                          SizedBox(height: 100),
-                        ]);
+                                        if (state ==
+                                                AudioPlaybackState.connecting ||
+                                            buffering == true) {
+                                          isPlaying = false;
+                                        } else if (state ==
+                                            AudioPlaybackState.playing) {
+                                          isPlaying = true;
+                                        } else if (state ==
+                                            AudioPlaybackState.completed) {
+                                          isPlaying = false;
+                                          next();
+                                        } else {
+                                          isPlaying = false;
+                                        }
+                                        return ListenCard(
+                                          bookName: '',
+                                          isAudioPlaying: isPlaying,
+                                          slider: slider != null ? slider : 0.0,
+                                          isSingle: isSingle,
+                                          next: () => isSingle ? null : next(),
+                                          previous: () =>
+                                              isSingle ? null : previous(),
+                                          playPause: () => isPlaying
+                                              ? pauseAudio()
+                                              : playAudio(),
+                                          isReady: isConnected,
+                                          sliderChange: (value) =>
+                                              onChangeEnd(value),
+                                          duration: duration,
+                                          position: position,
+                                          durationText:
+                                              _formatDuration(duration),
+                                          startTime: _formatDuration(position),
+                                          chapter: list[currentAudio].title,
+                                        );
+                                      } else {
+                                        return Container();
+                                      }
+                                    }),
+                              if (unReadPlan.length == 0) CompletedCard(),
+                              SizedBox(height: 100),
+                            ]);
                       } else {
                         return Container(
                           height: 120,
                           child: Center(
-                              child:
-                                  SpinKitDoubleBounce(
-                            color: Theme.of(context)
-                                .accentColor,
+                              child: SpinKitDoubleBounce(
+                            color: Theme.of(context).accentColor,
                           )),
                         );
                       }
-                  }),
-          
-          StreamBuilder(
-              stream: Rx.combineLatest3<String, String, double, TodayProgressCard>(
-                DateTimeHelpers().todayMonthFuture().asStream(), 
-                DateTimeHelpers().todayWeekDayFuture().asStream(), 
-                DatabaseHelper().countProgressValue().asStream(), (month, weekDay, progressValue) => TodayProgressCard(
-                  month: month, 
-                  weekDay: weekDay, 
-                  progressValue: progressValue
-                )),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-
-                TodayProgressCard todayProgressCard = snapshot.hasData ? snapshot.data : TodayProgressCard(
-                  month: DateTimeHelpers().todayMonth(),
-                  weekDay:  DateTimeHelpers().todayWeekDay(),
-                  progressValue: 0
-                  );
-                return Container(
-                    height: 110,
-                    child: ProgressCard(
-                      subtitle:  AppLocalizations.of(context).translate('welcome'),
-                      showExpected: false,
-                      progressNumber:
-                          todayProgressCard.progressValue > 1.0 ? 1.0 : todayProgressCard.progressValue,
-                      textOne:todayProgressCard.weekDay,
-                      textTwo: todayProgressCard.month,
-                      textThree: DateTimeHelpers().todayDate(),
-                    ));
-              },
-            ),
-
-          ])),
+                    }),
+                StreamBuilder(
+                  stream: Rx.combineLatest3<String, String, double,
+                          TodayProgressCard>(
+                      DateTimeHelpers().todayMonthFuture().asStream(),
+                      DateTimeHelpers().todayWeekDayFuture().asStream(),
+                      DatabaseHelper().countProgressValue().asStream(),
+                      (month, weekDay, progressValue) => TodayProgressCard(
+                          month: month,
+                          weekDay: weekDay,
+                          progressValue: progressValue)),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    TodayProgressCard todayProgressCard = snapshot.hasData
+                        ? snapshot.data
+                        : TodayProgressCard(
+                            month: DateTimeHelpers().todayMonth(),
+                            weekDay: DateTimeHelpers().todayWeekDay(),
+                            progressValue: 0);
+                    return Container(
+                        height: 110,
+                        child: ProgressCard(
+                          subtitle:
+                              AppLocalizations.of(context).translate('welcome'),
+                          showExpected: false,
+                          progressNumber: todayProgressCard.progressValue > 1.0
+                              ? 1.0
+                              : todayProgressCard.progressValue,
+                          textOne: todayProgressCard.weekDay,
+                          textTwo: todayProgressCard.month,
+                          textThree: DateTimeHelpers().todayDate(),
+                        ));
+                  },
+                ),
+              ])),
     );
   }
 }
 
-
 class PlayerDataStream {
-  PlayerDataStream({this.durationStream, this.fullAudioPlaybackState, this.positionStream});
+  PlayerDataStream(
+      {this.durationStream, this.fullAudioPlaybackState, this.positionStream});
   FullAudioPlaybackState fullAudioPlaybackState;
   Duration positionStream;
   Duration durationStream;
 }
 
 class TodayProgressCard {
-
-  TodayProgressCard({
-    this.month,
-    this.progressValue,
-    this.weekDay
-  });
+  TodayProgressCard({this.month, this.progressValue, this.weekDay});
 
   final String month;
   final String weekDay;
   final double progressValue;
-
 }

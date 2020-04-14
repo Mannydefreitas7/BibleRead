@@ -32,13 +32,13 @@ class OnBoardingPage extends StatelessWidget {
          SliderModel.Slider(
           
           sliderHeading: AppLocalizations.of(context).translate('intro_page_five_title'),
-          sliderSubHeading: AppLocalizations.of(context).translate('intro_five_three'),
+          sliderSubHeading: AppLocalizations.of(context).translate('intro_page_five'),
           sliderImageUrl: 'assets/images/onboarding_progress.png',
         ),
         SliderModel.Slider(
           
           sliderHeading: AppLocalizations.of(context).translate('intro_page_four_title'),
-          sliderSubHeading: AppLocalizations.of(context).translate('intro_four_three'),
+          sliderSubHeading: AppLocalizations.of(context).translate('intro_page_four'),
           sliderImageUrl: 'assets/images/onboarding_plan.png',
         )
       ], onFinish: (){

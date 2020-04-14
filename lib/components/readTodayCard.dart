@@ -68,7 +68,7 @@ class ReadTodayCard extends StatelessWidget {
                   FlatButton(
   
                       padding: EdgeInsets.only(
-                          top: 5, left: 15, bottom: 5, right: 15),
+                          top: 0, left: 15, bottom: 5, right: 15),
                       child: FadeIn(
                             delay: 0.5,
                           child: Text(
