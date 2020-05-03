@@ -1,5 +1,5 @@
 
-import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:flutter/material.dart';
 
 class BookmarkData extends ChangeNotifier {

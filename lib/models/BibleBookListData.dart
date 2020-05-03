@@ -1,7 +1,6 @@
 import 'dart:async';
-
-import 'package:BibleRead/helpers/LocalDataBase.dart';
-import 'package:BibleRead/helpers/SharedPrefs.dart';
+import 'package:BibleRead/classes/database/LocalDataBase.dart';
+import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:BibleRead/models/ReadingPlan.dart';
 import 'package:flutter/material.dart';
