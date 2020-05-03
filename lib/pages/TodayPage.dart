@@ -85,6 +85,7 @@ class _TodayPageState extends State<TodayPage> {
 
     if (hasReminderOn) {
       bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
+      print(isBadgesupported);
       if (isBadgesupported) {
         int badgeNumber = await SharedPrefs().getBadgeNumber();
         await SharedPrefs().setBadgeNumber(badgeNumber - 1);
@@ -119,7 +120,7 @@ class _TodayPageState extends State<TodayPage> {
     if (player.playbackState == AudioPlaybackState.playing) {
       await player.pause();
       await player.stop();
-      await player.dispose();
+   //   await player.dispose();
     }
   }
 
@@ -167,17 +168,7 @@ class _TodayPageState extends State<TodayPage> {
       }
     });
     player = AudioPlayer();
-
     initialize();
-
-    SharedPrefs().getHasBookMark().then((value) => {hasBookmark = value});
-
-    SharedPrefs().getBookMarkData().then((value) => {
-          if (value.length > 0)
-            {bookmarkdata = SharedPrefs().parseBookMarkedVerse(value)}
-          else
-            {bookmarkdata = ''}
-        });
   }
 
   initialize() async {
@@ -188,7 +179,12 @@ class _TodayPageState extends State<TodayPage> {
     } else {
       isSingle = true;
     }
-  }
+    hasBookmark = await SharedPrefs().getHasBookMark();
+    if (hasBookmark) {
+      bookmarkdata = await SharedPrefs().getBookMarkData();
+      bookmarkdata = bookmarkdata.length > 0 ? SharedPrefs().parseBookMarkedVerse(bookmarkdata) : '';
+      }
+    }
 
   @override
   void dispose() {
@@ -313,21 +309,27 @@ class _TodayPageState extends State<TodayPage> {
                                     builder: (BuildContext context,
                                         AsyncSnapshot snapshot) {
                                       if (snapshot.hasData) {
-                                        PlayerDataStream playerDataStream =
-                                            snapshot.data;
+                                        PlayerDataStream playerDataStream;
+                                           try { 
+                                        playerDataStream = snapshot.data;
+                                             } catch (error) {
+                                            print(error);
+                                        }
+                                  
 
+                                      
                                         final fullState = playerDataStream
                                             .fullAudioPlaybackState;
                                         final state = fullState?.state;
                                         final buffering = fullState?.buffering;
-                                        Duration position =
-                                            playerDataStream.positionStream;
+                                        Duration position;
+                                        position = playerDataStream.positionStream;
                                         Duration duration =
                                             playerDataStream.durationStream;
                                         double slider =
                                             position.inMilliseconds /
                                                 duration.inMilliseconds;
-
+                                       
                                         if (state ==
                                                 AudioPlaybackState.connecting ||
                                             buffering == true) {
@@ -342,6 +344,7 @@ class _TodayPageState extends State<TodayPage> {
                                         } else {
                                           isPlaying = false;
                                         }
+                                        
                                         return ListenCard(
                                           bookName: '',
                                           isAudioPlaying: isPlaying,

@@ -25,7 +25,7 @@ class SlideItem extends StatelessWidget {
                   image: AssetImage(slides[index].sliderImageUrl))),
         ),
         SizedBox(
-          height: 60.0,
+          height: 20.0,
         ),
         Text(
           slides[index].sliderHeading,
@@ -35,11 +35,11 @@ class SlideItem extends StatelessWidget {
              color: Theme.of(context).textTheme.headline6.color,
             fontFamily: 'Avenir Next',
             fontWeight: FontWeight.w700,
-            fontSize: 34,
+            fontSize: 28,
           ),
         ),
         SizedBox(
-          height: 15.0,
+          height: 10.0,
         ),
         Center(
           child: Padding(
@@ -49,7 +49,7 @@ class SlideItem extends StatelessWidget {
               style: TextStyle(
                 color: Theme.of(context).textTheme.caption.color,
                 fontFamily: 'Avenir Next',
-                fontSize: 20,
+                fontSize: 14,
               ),
               textAlign: TextAlign.center,
             ),

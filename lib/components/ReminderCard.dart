@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:BibleRead/classes/Notifications.dart';
 import 'package:BibleRead/classes/datepicker/date_picker.dart';
 import 'package:BibleRead/helpers/SharedPrefs.dart';
@@ -19,7 +21,7 @@ class _ReminderCardState extends State<ReminderCard> {
   @override
   void initState() {
     super.initState();
-   // notifications.initializeNotifications();
+    notifications.initializeNotifications();
   }
 
    void showTimePicker(BuildContext context, String title) async {
@@ -45,12 +47,16 @@ class _ReminderCardState extends State<ReminderCard> {
   }
 
   _setReminder(bool reminder) async {
-    if (reminder) {
-      notifications.requestIOSPermissions();
+    if (reminder == true) {
+      if (Platform.isIOS) {
+          notifications.requestIOSPermissions();
+          await SharedPrefs().setReminder(reminder);
+      } else {
+           await SharedPrefs().setReminder(reminder);
+      }
     } else {
       await notifications.cancelAllNotifications();
     }
-    await SharedPrefs().setReminder(reminder);
   }
 
   @override

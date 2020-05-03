@@ -139,6 +139,7 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
     if (isFirstLaunch == null) {
           await DatabaseHelper().setupDatabase();
           await FirstLaunch().setDefaults();
+          await DatabaseHelper().setLanguagesName();
     }
   }
 
@@ -152,7 +153,7 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
 
       if (snapshot.hasData) {
         return TodayPage();
-
+        
       } else if (!snapshot.hasData) {
 
         return OnBoardingPage();

@@ -9,7 +9,6 @@ import 'package:screenshot/screenshot.dart';
 class CompletedCard extends StatelessWidget {
   CompletedCard({Key key}) : super(key: key); 
 
-  //Create an instance of ScreenshotController
   final ScreenshotController screenshotController = ScreenshotController(); 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +55,7 @@ class CompletedCard extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Text(AppLocalizations.of(context).translate('congratulations'),
+                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 24,
                                 color: Theme.of(context).textTheme.headline6.color,
@@ -64,6 +64,7 @@ class CompletedCard extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                           Text(AppLocalizations.of(context).translate('completed_reading_plan_text'),
+                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 16,
                             color: Theme.of(context).textTheme.caption.color,

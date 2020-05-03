@@ -21,7 +21,9 @@ class InformationCard extends StatelessWidget {
             leading: Icon(Icons.info_outline, color: Theme.of(context).textTheme.headline6.color, size: 35,),
             title: new Text(
               AppLocalizations.of(context).translate('information'),
-              style: TextStyle(
+             overflow: TextOverflow.ellipsis,
+              style: TextStyle( 
+                
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
                 color: Theme.of(context).textTheme.headline6.color,
@@ -82,6 +84,7 @@ class InformationCard extends StatelessWidget {
                 onPressed: () => LaunchReview.launch(iOSAppId: '1472187500', androidAppId: 'com.wolinweb.BibleRead', writeReview: true),
                 child: new Text(
                    AppLocalizations.of(context).translate('review_us_on_app_store'),
+                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
                     color: Theme.of(context).accentColor,

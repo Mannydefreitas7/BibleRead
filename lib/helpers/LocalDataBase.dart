@@ -334,7 +334,7 @@ Future<void> setLanguagesName() async {
       dataLanguages.forEach((dataLanguage) {
           if (_language.keys.first == dataLanguage.locale) {
               String dataLocale = dataLanguage.locale;
-               String name = _language['${dataLanguage.locale}']['lang']['name'];
+               String name = _language['$dataLocale']['lang']['name'];
               db.rawUpdate("UPDATE languages SET name = '$name' WHERE locale = '$dataLocale'");
           }
        });

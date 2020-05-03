@@ -1,5 +1,6 @@
 
 
+import 'package:BibleRead/helpers/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../classes/on_boarding_ui.dart';
@@ -74,11 +75,12 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
                           }
                         },
                         child: Padding(
-                          padding: EdgeInsets.only(right: 15.0, bottom: 15.0),
+                          padding: EdgeInsets.only(right: 15.0, bottom: 30.0),
                           child: Text(
                             _currentPage + 1 == slides.length
-                                ? Constants.FINISH
-                                : Constants.NEXT,
+                                ? AppLocalizations.of(context).translate("done")
+                                : AppLocalizations.of(context).translate("next"),
+                                overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontFamily: 'Avenir Next',
@@ -95,9 +97,10 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
                           Configs.getInstance().onFinish();
                         },
                         child: Padding(
-                          padding: EdgeInsets.only(left: 15.0, bottom: 15.0),
+                          padding: EdgeInsets.only(left: 15.0, bottom: 30.0),
                           child: _currentPage != 0 ? Text(
-                            Constants.SKIP,
+                            AppLocalizations.of(context).translate("skip"),
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: Theme.of(context).textTheme.caption.color,
                               fontFamily: 'Avenir Next',
@@ -109,7 +112,7 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
                       )),
                   Container(
                     alignment: AlignmentDirectional.bottomCenter,
-                    margin: EdgeInsets.only(bottom: 20.0),
+                    margin: EdgeInsets.only(bottom: 35.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

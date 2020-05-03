@@ -54,7 +54,7 @@ class DatePickerTitleWidget extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Theme.of(context).textTheme.headline6.color,
-              fontSize: 22.0,
+              fontSize: 18.0,
               fontWeight: FontWeight.w600
             ),
                 ),
@@ -76,9 +76,12 @@ class DatePickerTitleWidget extends StatelessWidget {
     if (cancelWidget == null) {
       TextStyle textStyle = pickerTheme.cancelTextStyle ??
           TextStyle(
-              color: Theme.of(context).errorColor, fontSize: 20.0);
+              color: Theme.of(context).errorColor, fontSize: 16.0);
       cancelWidget =
-          Text(AppLocalizations.of(context).translate('cancel'), style: textStyle);
+          Text(AppLocalizations.of(context).translate('cancel'),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: textStyle);
     }
     return cancelWidget;
   }
@@ -88,9 +91,12 @@ class DatePickerTitleWidget extends StatelessWidget {
     Widget confirmWidget = pickerTheme.confirm;
     if (confirmWidget == null) {
       TextStyle textStyle = pickerTheme.confirmTextStyle ??
-          TextStyle(color: Theme.of(context).primaryColor, fontSize: 20.0);
+          TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0);
       confirmWidget =
-          Text(AppLocalizations.of(context).translate('done'), style: textStyle);
+          Text(AppLocalizations.of(context).translate('done'), 
+          overflow: TextOverflow.ellipsis,
+          maxLines: 2,
+          style: textStyle);
     }
     return confirmWidget;
   }
