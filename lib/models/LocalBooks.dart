@@ -1,5 +1,3 @@
-
-
 class LocalBook {
 
   String shortName;

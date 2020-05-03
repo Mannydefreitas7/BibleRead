@@ -1,23 +1,21 @@
-import 'package:BibleRead/classes/Notifications.dart';
-import 'package:BibleRead/helpers/FirstLaunch.dart';
-import 'package:BibleRead/helpers/LocalDataBase.dart';
-import 'package:BibleRead/helpers/app_localizations.dart';
-import 'package:BibleRead/models/AllChapterListBloc.dart';
+import 'package:BibleRead/classes/custom/CustomNavigation.dart';
+import 'package:BibleRead/classes/custom/app_localizations.dart';
+import 'package:BibleRead/classes/custom/scrollBehavior.dart';
+import 'package:BibleRead/classes/database/LocalDataBase.dart';
+import 'package:BibleRead/classes/notifications/Notifications.dart';
+import 'package:BibleRead/classes/service/FirstLaunch.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
-import 'package:BibleRead/models/Plan.dart';
-import 'package:BibleRead/pages/OnBoardingPage.dart';
+import 'package:BibleRead/views/onboarding/OnBoarding.dart';
+import 'package:BibleRead/views/plans/Plans.dart';
+import 'package:BibleRead/views/progress/Progress.dart';
+import 'package:BibleRead/views/settings/Settings.dart';
+import 'package:BibleRead/views/today/Today.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'pages/ProgressPage.dart';
-import 'pages/ReadingPlanPage.dart';
-import 'pages/SettingsPage.dart';
-import 'pages/TodayPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'classes/theme.dart' as Theme;
-import 'classes/scrollBehavior.dart';
+import 'package:BibleRead/classes/custom/theme.dart' as Theme;
 
-import 'classes/CustomNavigation.dart';
 
 Notifications notifications = Notifications();
 
@@ -34,10 +32,7 @@ class BibleReadApp extends StatelessWidget {
     return MultiProvider(
       providers: [
             ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
-            Provider<AllChapterListBloc>(create: (_) => AllChapterListBloc()),
-            StreamProvider<List<Plan>>(create: (_) => AllChapterListBloc().allChapters)
       ],
-      
       child: MaterialApp(
       initialRoute: '/',
       // List all of the app's supported locales here
@@ -90,14 +85,14 @@ class BibleReadApp extends StatelessWidget {
             return CustomNavigation(builder: (context)=> MainApp());
             break;
           case '/today':
-            return CustomNavigation(builder: (context)=> TodayPage());
+            return CustomNavigation(builder: (context)=> Today());
             break;
           case '/progress':
-            return CustomNavigation(builder: (context)=> ProgressPage());
+            return CustomNavigation(builder: (context)=> Progress());
           case '/readingplans':
-            return CustomNavigation(builder: (context)=> ReadingPlanPage());
+            return CustomNavigation(builder: (context)=> Plans());
           case '/settings':
-            return CustomNavigation(builder: (context)=> SettingsPage());
+            return CustomNavigation(builder: (context)=> Settings());
           default:
             return CustomNavigation(builder: (_) => Scaffold(
                   body: Center(
@@ -108,7 +103,6 @@ class BibleReadApp extends StatelessWidget {
       }
     ),
     );
-    
   }
 }
 
@@ -152,11 +146,11 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
     builder: (BuildContext context, AsyncSnapshot snapshot) {
 
       if (snapshot.hasData) {
-        return TodayPage();
+        return Today();
         
       } else if (!snapshot.hasData) {
 
-        return OnBoardingPage();
+        return OnBoarding();
         
       } else {
 
