@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:BibleRead/classes/audio/AudioPlayer.dart';
 import 'package:BibleRead/classes/audio/AudioPlayerController.dart';
 import 'package:BibleRead/classes/card/CompletedCard.dart';
-import 'package:BibleRead/classes/card/listenCard.dart';
 import 'package:BibleRead/classes/card/progressCard.dart';
 import 'package:BibleRead/classes/card/readTodayCard.dart';
 import 'package:BibleRead/classes/custom/BibleReadScaffold.dart';
@@ -10,17 +10,20 @@ import 'package:BibleRead/classes/database/LocalDataBase.dart';
 import 'package:BibleRead/classes/date/DateTimeHelpers.dart';
 import 'package:BibleRead/classes/network/connectivityCheck.dart';
 import 'package:BibleRead/classes/notifications/Notifications.dart';
+import 'package:BibleRead/classes/service/ReadingProgressData.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
-import 'package:BibleRead/models/AudioPlayerItem.dart';
 import 'package:BibleRead/models/ChapterAudio.dart';
 import 'package:BibleRead/models/Plan.dart';
+import 'package:audio_manager/audio_manager.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Today extends StatefulWidget {
   @override
@@ -30,7 +33,6 @@ class Today extends StatefulWidget {
 class _TodayState extends State<Today> {
   Future<List> _unReadChapters;
   List<Plan> unReadChapters = [];
-  Future _progressValue;
   Notifications notifications = Notifications();
 
   List<Plan> unReadPlan;
@@ -38,45 +40,26 @@ class _TodayState extends State<Today> {
   Map _source = {ConnectivityResult.none: false};
   ConnectivityCheck _connectivity = ConnectivityCheck.instance;
   List<ChapterAudio> chaptersAudio;
-  List<AudioPlayerItem> list = [];
 
-  bool isPlaying = false;
   bool isReady = false;
   String verses = '';
   bool isSingle = true;
-  double slider = 0.0;
   bool isCompleted = false;
   String bookmarkdata = '';
   bool hasBookmark = false;
 
-  int currentAudio = 0;
 
-  AudioPlayer player;
-
-  //AudioController audioController = AudioController();
-
+  ReadingProgressData readingProgressData = ReadingProgressData();
   AudioPlayerController audioPayerController = AudioPlayerController();
 
-  String _formatDuration(Duration d) {
-    if (d == null) return "--:--";
-    int minute = d.inMinutes;
-    int second = (d.inSeconds > 60) ? (d.inSeconds % 60) : d.inSeconds;
-    String format = ((minute < 10) ? "0$minute" : "$minute") +
-        ":" +
-        ((second < 10) ? "0$second" : "$second");
-    return format;
-  }
 
   _markTodayRead() async {
-    if (player.playbackState == AudioPlaybackState.playing) {
-      await player.stop();
-    }
 
     await DatabaseHelper().markTodayRead();
     await SharedPrefs().setBookMarkFalse();
     setState(() => {
           _unReadChapters = DatabaseHelper().unReadChapters(),
-          _progressValue = DatabaseHelper().countProgressValue(),
+      //    _progressValue = DatabaseHelper().countProgressValue(),
           hasBookmark = false
         });
     await initialize();
@@ -104,47 +87,17 @@ class _TodayState extends State<Today> {
     setState(() => {});
   }
 
-  void playAudio() async {
-    await player.play();
-  }
-
-  void pauseAudio() async {
-    await player.pause();
-  }
-
-  void stopAudio() async {
-    await player.stop();
-  }
-
-  void releaseAudio() async {
-    if (player.playbackState == AudioPlaybackState.playing) {
-      await player.pause();
-      await player.stop();
-   //   await player.dispose();
-    }
-  }
-
-  void onChanged(double value) {
-    setState(() {
-      slider = value;
-    });
-  }
-
-  void onChangeEnd(Duration newPosition) async {
-    await player.seek(newPosition);
-  }
-
   @override
   void initState() {
     super.initState();
 
     _unReadChapters = DatabaseHelper().unReadChapters();
-    _progressValue = DatabaseHelper().countProgressValue();
 
     _connectivity.initialise();
-
+    
     _unReadChapters.asStream().listen((event) {
       if (mounted) {
+        readingProgressData.initialize();
         if (event.length > 0)
           setState(() {
             isCompleted = false;
@@ -167,18 +120,11 @@ class _TodayState extends State<Today> {
             });
       }
     });
-    player = AudioPlayer();
     initialize();
   }
 
   initialize() async {
-    list = await audioPayerController.setupAudioList();
-    await player.setUrl(list[currentAudio].url);
-    if (list.length > 1) {
-      isSingle = false;
-    } else {
-      isSingle = true;
-    }
+
     hasBookmark = await SharedPrefs().getHasBookMark();
     if (hasBookmark) {
       bookmarkdata = await SharedPrefs().getBookMarkData();
@@ -188,46 +134,9 @@ class _TodayState extends State<Today> {
 
   @override
   void dispose() {
-    releaseAudio();
     super.dispose();
   }
 
-  void next() async {
-    await player.stop();
-    currentAudio = currentAudio + 1;
-    String url;
-    if (currentAudio < list.length) {
-      url = list[currentAudio].url;
-      await player.setUrl(url);
-      setState(() {});
-    } else {
-      currentAudio = 0;
-      url = list[currentAudio].url;
-      await player.setUrl(url);
-      setState(() {});
-    }
-    if (player.playbackState != AudioPlaybackState.connecting) {
-      await player.play();
-    } else {
-      await player.pause();
-    }
-  }
-
-  void previous() async {
-    await player.stop();
-    String url;
-    if (currentAudio > 0) {
-      currentAudio = currentAudio - 1;
-      url = list[currentAudio].url;
-      await player.setUrl(url);
-      setState(() {});
-    } else {
-      currentAudio = 0;
-      url = list[currentAudio].url;
-      await player.setUrl(url);
-      setState(() {});
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -246,12 +155,6 @@ class _TodayState extends State<Today> {
         setState(() {});
     }
 
-    if (list.length > 1) {
-      isSingle = false;
-    } else {
-      isSingle = true;
-    }
-
     return BibleReadScaffold(
       title: AppLocalizations.of(context).translate('today'),
       hasLeadingIcon: false,
@@ -262,7 +165,6 @@ class _TodayState extends State<Today> {
       bodyWidget: Container(
           padding: EdgeInsets.only(left: 15, right: 15),
           child: Stack(
-              //  overflow: Overflow.clip,
               children: <Widget>[
                 FutureBuilder(
                     future: _unReadChapters,
@@ -271,14 +173,12 @@ class _TodayState extends State<Today> {
                         unReadPlan = snapshot.data;
 
                         return ListView(
-                            //  addAutomaticKeepAlives: true,
                             addRepaintBoundaries: true,
                             padding: EdgeInsets.only(top: 130),
                             scrollDirection: Axis.vertical,
                             children: <Widget>[
                               if (unReadPlan.length != 0)
                                 Container(
-                                    // margin: EdgeInsets.only(top: 50),
                                     child: ReadTodayCard(
                                   markRead: _markTodayRead,
                                   removeBookMark: _setBookMarkFalse,
@@ -290,86 +190,7 @@ class _TodayState extends State<Today> {
                                 )),
                               if (unReadPlan.length != 0) SizedBox(height: 20),
                               if (unReadPlan.length != 0)
-                                StreamBuilder<PlayerDataStream>(
-                                    stream: Rx.combineLatest3<
-                                            FullAudioPlaybackState,
-                                            Duration,
-                                            Duration,
-                                            PlayerDataStream>(
-                                        player.fullPlaybackStateStream,
-                                        player.getPositionStream(),
-                                        player.durationStream,
-                                        (fullAudioPlaybackState, position,
-                                                duration) =>
-                                            PlayerDataStream(
-                                                durationStream: duration,
-                                                positionStream: position,
-                                                fullAudioPlaybackState:
-                                                    fullAudioPlaybackState)),
-                                    builder: (BuildContext context,
-                                        AsyncSnapshot snapshot) {
-                                      if (snapshot.hasData) {
-                                        PlayerDataStream playerDataStream;
-                                           try { 
-                                        playerDataStream = snapshot.data;
-                                             } catch (error) {
-                                            print(error);
-                                        }
-                                  
-
-                                      
-                                        final fullState = playerDataStream
-                                            .fullAudioPlaybackState;
-                                        final state = fullState?.state;
-                                        final buffering = fullState?.buffering;
-                                        Duration position;
-                                        position = playerDataStream.positionStream;
-                                        Duration duration =
-                                            playerDataStream.durationStream;
-                                        double slider =
-                                            position.inMilliseconds /
-                                                duration.inMilliseconds;
-                                       
-                                        if (state ==
-                                                AudioPlaybackState.connecting ||
-                                            buffering == true) {
-                                          isPlaying = false;
-                                        } else if (state ==
-                                            AudioPlaybackState.playing) {
-                                          isPlaying = true;
-                                        } else if (state ==
-                                            AudioPlaybackState.completed) {
-                                          isPlaying = false;
-                                          next();
-                                        } else {
-                                          isPlaying = false;
-                                        }
-                                        
-                                        return ListenCard(
-                                          bookName: '',
-                                          isAudioPlaying: isPlaying,
-                                          slider: slider != null ? slider : 0.0,
-                                          isSingle: isSingle,
-                                          next: () => isSingle ? null : next(),
-                                          previous: () =>
-                                              isSingle ? null : previous(),
-                                          playPause: () => isPlaying
-                                              ? pauseAudio()
-                                              : playAudio(),
-                                          isReady: isConnected,
-                                          sliderChange: (value) =>
-                                              onChangeEnd(value),
-                                          duration: duration,
-                                          position: position,
-                                          durationText:
-                                              _formatDuration(duration),
-                                          startTime: _formatDuration(position),
-                                          chapter: list[currentAudio].title,
-                                        );
-                                      } else {
-                                        return Container();
-                                      }
-                                    }),
+                              BRAudioPlayer(isReady: isConnected),
                               if (unReadPlan.length == 0) CompletedCard(),
                               SizedBox(height: 100),
                             ]);
@@ -417,15 +238,8 @@ class _TodayState extends State<Today> {
                 ),
               ])),
     );
-  }
-}
 
-class PlayerDataStream {
-  PlayerDataStream(
-      {this.durationStream, this.fullAudioPlaybackState, this.positionStream});
-  FullAudioPlaybackState fullAudioPlaybackState;
-  Duration positionStream;
-  Duration durationStream;
+  }
 }
 
 class TodayProgressCard {
@@ -435,3 +249,6 @@ class TodayProgressCard {
   final String weekDay;
   final double progressValue;
 }
+
+
+  

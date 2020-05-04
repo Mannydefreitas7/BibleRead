@@ -1,3 +1,4 @@
+import 'package:BibleRead/classes/audio/AudioPlayerController.dart';
 import 'package:BibleRead/classes/custom/CustomNavigation.dart';
 import 'package:BibleRead/classes/custom/app_localizations.dart';
 import 'package:BibleRead/classes/custom/scrollBehavior.dart';
@@ -32,6 +33,7 @@ class BibleReadApp extends StatelessWidget {
     return MultiProvider(
       providers: [
             ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
+            ChangeNotifierProvider<AudioPlayerController>(create: (_) => AudioPlayerController(),)
       ],
       child: MaterialApp(
       initialRoute: '/',

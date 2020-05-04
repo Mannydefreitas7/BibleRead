@@ -1,4 +1,6 @@
 PODS:
+  - audio_manager (0.0.1):
+    - Flutter
   - connectivity (0.0.1):
     - Flutter
     - Reachability
@@ -52,6 +54,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - audio_manager (from `.symlinks/plugins/audio_manager/ios`)
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - connectivity_macos (from `.symlinks/plugins/connectivity_macos/ios`)
   - Flutter (from `Flutter`)
@@ -82,6 +85,8 @@ SPEC REPOS:
     - Reachability
 
 EXTERNAL SOURCES:
+  audio_manager:
+    :path: ".symlinks/plugins/audio_manager/ios"
   connectivity:
     :path: ".symlinks/plugins/connectivity/ios"
   connectivity_macos:
@@ -130,6 +135,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
+  audio_manager: 59466b2ea5552ebdcba8106796f09b9357ef12e0
   connectivity: 6e94255659cc86dcbef1d452ad3e0491bb1b3e75
   connectivity_macos: e2e9731b6b22dda39eb1b128f6969d574460e191
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
@@ -148,13 +154,13 @@ SPEC CHECKSUMS:
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
   shared_preferences_web: 141cce0c3ed1a1c5bf2a0e44f52d31eeb66e5ea9
   sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
-  url_launcher: a1c0cc845906122c4784c542523d8cacbded5626
+  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   url_launcher_macos: fd7894421cd39320dce5f292fc99ea9270b2a313
   url_launcher_web: e5527357f037c87560776e36436bf2b0288b965c
-  video_player: 69c5f029fac4ffe4fc8a85ea7f7b793709661549
+  video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
   video_player_web: da8cadb8274ed4f8dbee8d7171b420dedd437ce7
   wakelock: 0d4a70faf8950410735e3f61fb15d517c8a6efc4
-  webview_flutter: bec7599de6bfbe8008a739aa3ebd7b364ea9d0cd
+  webview_flutter: d2b4d6c66968ad042ad94cbb791f5b72b4678a96
 
 PODFILE CHECKSUM: 083258d7f5e80b42ea9bfee905fe93049bc04c64
 
