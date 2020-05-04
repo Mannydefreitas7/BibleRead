@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:BibleRead/classes/database/LocalDataBase.dart';
 import 'package:BibleRead/classes/service/JwOrgApiHelper.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
@@ -5,12 +7,14 @@ import 'package:BibleRead/models/ChapterAudio.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:audio_manager/audio_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
 
 class ReadingProgressData extends ChangeNotifier {
 
   List<Plan> unReadChapters;
   List<Plan> allChapters;
   int bookNumber;
+  int selectedPlan;
   String bookName;
   List<ChapterAudio> audios;
   List<String> chapters;
@@ -49,31 +53,49 @@ Future<List<AudioInfo>> setupAudioList() async {
   return _audioInfos;
 }
 
-  void getAllChapters() async {
+
+Stream<ReadCardData> readTodayCardData = Rx.combineLatest2<List<Plan>, int, ReadCardData>(DatabaseHelper().unReadChapters().asStream(), SharedPrefs().getSelectedPlan().asStream(), (plans, currenPlan) => ReadCardData(currentPlan: currenPlan, plans: plans));
+
+  Future<List<Plan>> getAllChapters() async {
       this.allChapters = await DatabaseHelper().allChapters();
+      return this.allChapters;
   } 
 
 
-  void getUnReadChapters() async {
+  Future<List<Plan>> getUnReadChapters() async {
     this.unReadChapters = await DatabaseHelper().unReadChapters();
+    return this.unReadChapters;
   } 
 
-markChapterRead() {
+markTodayRead() async {
 
+   await DatabaseHelper().markTodayRead();
+    this.unReadChapters = await DatabaseHelper().unReadChapters();
+    this.audioInfos = await this.setupAudioList();
+    AudioManager.instance.stop();
+    AudioManager.instance.audioList = this.audioInfos;
+    AudioManager.instance.play(index:0, auto: false);
+    notifyListeners();
 }
+
+
 
 void initialize() async {
     this.unReadChapters = await DatabaseHelper().unReadChapters();
     this.allChapters = await DatabaseHelper().allChapters();
     this.audioInfos = await this.setupAudioList();
-    print(AudioManager.instance.isPlaying);
+    this.selectedPlan = await SharedPrefs().getSelectedPlan();
+    print(this.selectedPlan);
     if (AudioManager.instance.isPlaying == false || AudioManager.instance.audioList.length != 0) {
           AudioManager.instance.audioList = this.audioInfos;
           AudioManager.instance.intercepter = true;
           AudioManager.instance.play(auto: false);
     }
-
+}
 }
 
-
+class ReadCardData {
+  ReadCardData({this.currentPlan, this.plans});
+  final List<Plan> plans;
+  final int currentPlan;
 }

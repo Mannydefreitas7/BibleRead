@@ -5,6 +5,7 @@ import 'package:BibleRead/classes/custom/scrollBehavior.dart';
 import 'package:BibleRead/classes/database/LocalDataBase.dart';
 import 'package:BibleRead/classes/notifications/Notifications.dart';
 import 'package:BibleRead/classes/service/FirstLaunch.dart';
+import 'package:BibleRead/classes/service/ReadingProgressData.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:BibleRead/views/onboarding/OnBoarding.dart';
 import 'package:BibleRead/views/plans/Plans.dart';
@@ -33,7 +34,8 @@ class BibleReadApp extends StatelessWidget {
     return MultiProvider(
       providers: [
             ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
-            ChangeNotifierProvider<AudioPlayerController>(create: (_) => AudioPlayerController(),)
+            ChangeNotifierProvider<AudioPlayerController>(create: (_) => AudioPlayerController(),),
+            ChangeNotifierProvider<ReadingProgressData>(create: (_) => ReadingProgressData(),)
       ],
       child: MaterialApp(
       initialRoute: '/',

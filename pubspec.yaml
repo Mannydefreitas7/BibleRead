@@ -2,7 +2,7 @@ name: BibleRead
 description: Bible Reading Tracking App
 version: 5.0.1+2
 environment:
-    sdk: '>=2.3.0 <3.0.0'
+    sdk: '>=2.6.0 <3.0.0'
 dependencies:
     flutter:
         sdk: flutter
@@ -56,7 +56,7 @@ dependencies:
     flutter_share_file: ^1.1.4+1
     auto_direction: ^0.0.4+1
     audio_manager: ^0.5.4+1
-    
+    strings: ^0.1.2
 
 
 dev_dependencies:

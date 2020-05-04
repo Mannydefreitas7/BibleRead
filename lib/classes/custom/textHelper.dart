@@ -28,6 +28,8 @@ class PageTitleText extends StatelessWidget {
 }
 
 
+
+
 // Text class used for secondary white title
 class SecondaryTitleText extends StatelessWidget {
 
