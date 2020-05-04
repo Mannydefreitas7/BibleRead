@@ -3,12 +3,14 @@ import 'dart:io';
 import 'package:BibleRead/classes/service/FirstLaunch.dart';
 import 'package:BibleRead/classes/service/JwOrgApiHelper.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
+import 'package:BibleRead/models/CoreData.dart';
 import 'package:BibleRead/models/Language.dart';
 import 'package:BibleRead/models/LocalBooks.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:BibleRead/models/ReadingPlan.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
@@ -46,13 +48,47 @@ Future setupDatabase() async {
     final _databaseVersion = 1;
     String databasesPath = await getDatabasesPath();
     String dbPath = join(databasesPath, _databaseName);
-    print(dbPath);
-
   // if (dbPath != null) { 
      _database = await openDatabase(dbPath, version: _databaseVersion); 
  // } else {  
 // _database = await _copyDatabase(); 
  //}
+    return _database;
+  }
+
+  updateProgress() async {
+  final _databaseName = "bibleModel.sqlite";
+  String databasesPath = await getDatabasesPath();
+  String dbPath = join(databasesPath, _databaseName);
+  bool dbExist = await databaseExists(dbPath);
+  List<CoreDataObject> coreDataObjects = [];
+  if (dbExist) {
+    print('updating progress...');
+    Database coredb = await coreData;
+    Database db = await database;
+    List chapters = await coredb.query('ZCHAPTER');
+    chapters.forEach((element) {
+      coreDataObjects.add(CoreDataObject.fromJson(element));
+    });
+    coreDataObjects.forEach((item) {
+      var isRead = item.zread;
+      var id = item.zPk;
+      if (isRead == true) {
+         db.rawUpdate('UPDATE plan_1 SET IsRead = 1 WHERE Id = $id');
+      }
+    });
+  }
+  SharedPrefs().setSelectedPlan(1);
+}
+
+ Future<Database> get coreData async {
+    Database _database;
+    final _databaseName = "bibleModel.sqlite";
+    final _databaseVersion = 1;
+    String databasesPath = await getDatabasesPath();
+    String dbPath = join(databasesPath, _databaseName);
+    print(dbPath);
+     _database = await openDatabase(dbPath, version: _databaseVersion); 
     return _database;
   }
 

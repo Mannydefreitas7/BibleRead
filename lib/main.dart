@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:BibleRead/classes/audio/AudioPlayerController.dart';
 import 'package:BibleRead/classes/custom/CustomNavigation.dart';
 import 'package:BibleRead/classes/custom/app_localizations.dart';
@@ -5,18 +7,25 @@ import 'package:BibleRead/classes/custom/scrollBehavior.dart';
 import 'package:BibleRead/classes/database/LocalDataBase.dart';
 import 'package:BibleRead/classes/notifications/Notifications.dart';
 import 'package:BibleRead/classes/service/FirstLaunch.dart';
+import 'package:BibleRead/classes/service/ReadingProgressData.dart';
+import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
+import 'package:BibleRead/models/CoreData.dart';
 import 'package:BibleRead/views/onboarding/OnBoarding.dart';
 import 'package:BibleRead/views/plans/Plans.dart';
 import 'package:BibleRead/views/progress/Progress.dart';
 import 'package:BibleRead/views/settings/Settings.dart';
 import 'package:BibleRead/views/today/Today.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:BibleRead/classes/custom/theme.dart' as Theme;
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite/sqlite_api.dart';
+import 'package:path/path.dart';
 
 Notifications notifications = Notifications();
 
@@ -33,7 +42,8 @@ class BibleReadApp extends StatelessWidget {
     return MultiProvider(
       providers: [
             ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
-            ChangeNotifierProvider<AudioPlayerController>(create: (_) => AudioPlayerController(),)
+            ChangeNotifierProvider<AudioPlayerController>(create: (_) => AudioPlayerController(),),
+            ChangeNotifierProvider<ReadingProgressData>(create: (_) => ReadingProgressData(),)
       ],
       child: MaterialApp(
       initialRoute: '/',
@@ -132,10 +142,17 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
 
  Future<void> _initialSetup() async {
    bool isFirstLaunch = await FirstLaunch().isNotFirstLaunch();
+   bool isVersion510 = await FirstLaunch().isVersion510();
     if (isFirstLaunch == null) {
           await DatabaseHelper().setupDatabase();
+          await DatabaseHelper().updateProgress();
           await FirstLaunch().setDefaults();
           await DatabaseHelper().setLanguagesName();
+    } else {
+        if (isVersion510 == null) {
+          await DatabaseHelper().updateProgress();
+          FirstLaunch().setVersion510();
+        }
     }
   }
 
