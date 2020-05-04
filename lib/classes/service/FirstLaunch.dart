@@ -25,6 +25,17 @@ class FirstLaunch {
   return _isFirstUse;
   }
 
+  Future<bool> isVersion510() async {
+  final prefs = await SharedPreferences.getInstance();
+  final bool _isFirstUse = prefs.getBool('510');
+  return _isFirstUse;
+  }
+
+  void setVersion510() async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setBool('510', true);
+  }
+
   Future<String> userCurrentID() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString('UUID');
