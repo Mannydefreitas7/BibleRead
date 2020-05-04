@@ -1,113 +1,123 @@
-import 'package:BibleRead/classes/database/LocalDataBase.dart';
-import 'package:BibleRead/classes/service/JwOrgApiHelper.dart';
-import 'package:BibleRead/models/AudioPlayerItem.dart';
-import 'package:BibleRead/models/ChapterAudio.dart';
-import 'package:BibleRead/models/Plan.dart';
-import 'package:just_audio/just_audio.dart';
 
-class AudioPlayerController {
+import 'package:audio_manager/audio_manager.dart';
+import 'package:flutter/material.dart';
 
-  AudioPlayerController();
-  AudioPlayer player;
-  double slider = 0.0;
-  Duration position;
+class AudioPlayerController extends ChangeNotifier {
+
+  bool isPlaying = false;
   Duration duration;
-  List<AudioPlayerItem> list;
-  int currentAudio = 0;
-
-
-
-  initialize() async {
-    list = await setupAudioList();
-    player = AudioPlayer();
-    await player.setUrl(list[currentAudio].url);
-  }
-
-
-  get playerDispose => player.dispose();
-
-    Future<List<AudioPlayerItem>> setupAudioList() async {
-    List<Plan> _unReadChapters = await DatabaseHelper().unReadChapters();
-    int bookNumber = _unReadChapters.length > 0 ? _unReadChapters[0].bookNumber : 1;
-    String bookName = _unReadChapters.length > 0 ? _unReadChapters[0].longName : 'Genesis';
-    List<ChapterAudio> audios = await JwOrgApiHelper().getAudioFile(bookNumber);
-    List<String> chapters = getchapters(_unReadChapters.length > 0 ? _unReadChapters[0].chapters : '1');
-    List<AudioPlayerItem> audioInfos = [];
-
-    audios.forEach((item) => {
-      chapters.forEach((chapter) {
-
-        if ('${item.bibleChapterNumber}' == chapter) {
-
-      audioInfos.add(AudioPlayerItem(
-        url: item.audioUrl,
-        title: '$bookName - ${item.title}', 
-        description: 'Playing from Bible Read',
-        cover: 'https://assetsnffrgf-a.akamaihd.net/assets/m/1001061103/univ/art/1001061103_univ_sqs_lg.jpg')
-        );
-
-        }
-
-      })
-    });
-    return audioInfos;
-  }
-
-  List<String> getchapters(String chapters) {
-  List<String> _chapters = [];
-  List<String> tempChapters = chapters.split(' ');
-  for (var i = int.parse(tempChapters.first); i <= int.parse(tempChapters.last) ; i++) {
-    _chapters.add(i.toString());
-  }
-  return _chapters;
-}
-
-void playAudio() async {
- await player.play();
-}
-
-void pauseAudio() async {
- await player.pause();
-}
-
-void stopAudio() async {
-  await player.stop();
-}
-
-void releaseAudio() async {
-  await player.pause();
-  await player.dispose();
-}
-
-
-
-   String formatDuration(Duration d) {
-    if (d == null) return "--:--";
-    int minute = d.inMinutes;
-    int second = (d.inSeconds > 60) ? (d.inSeconds % 60) : d.inSeconds;
-    String format = ((minute < 10) ? "0$minute" : "$minute") +
-        ":" +
-        ((second < 10) ? "0$second" : "$second");
-    return format;
-  }
-}
-
-class AudioPositionStreamModel {
-
   Duration position;
+  double slider = 0.0;
+  double sliderVolume;
+  num curIndex = 0;
+
+
+  final list = [
+  
+    {
+      "title": "network",
+      "desc": "network resouce playback",
+      "url": "https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.m4a",
+      "coverUrl": "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
+    },
+    {
+      "title": "Genesis",
+      "desc": "",
+      "url": "https://download-a.akamaihd.net/files/media_publication/f8/nwt_01_Ge_E_01.mp3",
+      "coverUrl": "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
+    }
+  ];
+
+
+  PlayMode playMode = AudioManager.instance.playMode;
+  
+
+   Widget getPlayModeIcon(PlayMode playMode) {
+    switch (playMode) {
+      case PlayMode.sequence:
+
+        return Icon(
+          Icons.repeat,
+          color: Colors.black,
+        );
+        
+      case PlayMode.shuffle:
+   
+        return Icon(
+          Icons.shuffle,
+          color: Colors.black,
+        );
+      case PlayMode.single:
+
+        return Icon(
+          Icons.repeat_one,
+          color: Colors.black,
+        );
+    } 
+    notifyListeners();
+    return Container();
+  }
+
+  void audioPlayerState() {
+     AudioManager.instance.onEvents((events, args) {
+
+      switch (events) {
+        case AudioManagerEvents.start:
+  
+          position = AudioManager.instance.position;
+          duration = AudioManager.instance.duration;
+          slider = 0;
+          print('Duration is: $duration');
+          notifyListeners();
+          break;
+        case AudioManagerEvents.ready:
+
+          sliderVolume = AudioManager.instance.volume;
+          position = AudioManager.instance.position;
+          duration = AudioManager.instance.duration;
+          
+          notifyListeners();
+          // if you need to seek times, must after AudioManagerEvents.ready event invoked
+          // AudioManager.instance.seekTo(Duration(seconds: 10));
+          break;
+        case AudioManagerEvents.seekComplete:
+          position = AudioManager.instance.position;
+          slider = position.inMilliseconds / duration.inMilliseconds;
+          notifyListeners();
+          break;
+        case AudioManagerEvents.buffering:
+          notifyListeners();
+          break;
+        case AudioManagerEvents.playstatus:
+          isPlaying = AudioManager.instance.isPlaying;
+          notifyListeners();
+          break;
+        case AudioManagerEvents.timeupdate:
+          position = AudioManager.instance.position;
+          slider = position.inMilliseconds / duration.inMilliseconds;
+            notifyListeners();
+          break;
+        case AudioManagerEvents.error:
+          notifyListeners();
+          break;
+        case AudioManagerEvents.ended:
+          AudioManager.instance.next();
+          notifyListeners();
+          break;
+        case AudioManagerEvents.volumeChange:
+          sliderVolume = AudioManager.instance.volume;
+          notifyListeners();
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
+  onChanged(value) {
+    this.slider = value;
+    notifyListeners();
+  }
 
 }
-
-class AudioStateStreamModel {
-
-  AudioPlayer player = AudioPlayerController().player;
-
-}
-
-class AudioDurationStreamModel {
-
-  AudioPlayer player = AudioPlayerController().player;
-
-}
-
 
