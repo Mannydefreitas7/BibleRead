@@ -43,7 +43,8 @@ class ReadTodayCard extends StatelessWidget {
              // width: MediaQuery.of(context).size.width,
                 fit: BoxFit.cover,
                 image:
-                    AssetImage('assets/images/plan_${selectedPlan}_pnr.jpg')),
+                selectedPlan != null ? AssetImage('assets/images/plan_${selectedPlan}_pnr.jpg')
+                   : AssetImage('assets/images/today_image.png')),
               ),
             Positioned.fill(
               child: Container(

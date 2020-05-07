@@ -88,7 +88,7 @@ class BibleReadApp extends StatelessWidget {
   },
       debugShowCheckedModeBanner: false,
       theme: Theme.brThemeData,
-      darkTheme: Theme.brThemeDataDark,
+    //  darkTheme: Theme.brThemeDataDark,
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/': 

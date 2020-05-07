@@ -165,7 +165,7 @@ class _TodayState extends State<Today> {
                                   markRead: () => readingProgressData.markTodayRead(),
                                   removeBookMark: _setBookMarkFalse,
                                   isDisabled: isConnected,
-                                  selectedPlan: readingProgressData.selectedPlan != null ?readingProgressData.selectedPlan : 0,
+                                  selectedPlan: readingProgressData.selectedPlan != null ? readingProgressData.selectedPlan : 0,
                                   bibleViewMarkRead: bibleViewMarkRead,
                                   bookName: unReadPlan[0].longName,
                                   chapters: unReadPlan[0].chapters,
