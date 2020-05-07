@@ -66,5 +66,12 @@
     "intro_page_four": "別のものが欲しいですか？ 12の聖書読書計画の1つを選んでください！",
     "intro_page_five_title": "進捗状況を追跡する",
     "intro_page_five": "あなたのアプリの進行状況を調整します。どこまで行ったかを確認するか、読書の開始日を設定します。",
-    "cannot_select_a_date_in_the_future": "将来の日付は選択できません"
+    "cannot_select_a_date_in_the_future": "将来の日付は選択できません",
+    "are_you_sure": "本気ですか？",
+    "reset_reading_message": "これにより、すべての読書プランがリセットされます。",
+    "reset": "リセット",
+    "retrieving_progress_title": "進捗状況を取得しました...",
+    "retrieving_progress_message": "以前のバージョンからの進行状況データの読み取りが見つかりました：",
+    "update_now": "今すぐアップデート",
+    "later": "後"
 }

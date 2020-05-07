@@ -66,5 +66,12 @@
     "intro_page_four": "Willst du etwas anderes? Wählen Sie einen der 12 Bibellesepläne!",
     "intro_page_five_title": "Verfolge deinen Fortschritt",
     "intro_page_five": "Passen Sie den App-Fortschritt an Ihren an. Überprüfen Sie, wie weit Sie gegangen sind, oder legen Sie ein Startdatum für das Lesen fest.",
-    "cannot_select_a_date_in_the_future": "Ein zukünftiges Datum kann nicht ausgewählt werden"
+    "cannot_select_a_date_in_the_future": "Ein zukünftiges Datum kann nicht ausgewählt werden",
+    "are_you_sure": "Bist du sicher?",
+    "reset_reading_message": "Dadurch werden alle Ihre Lesepläne zurückgesetzt.",
+    "reset": "Zurücksetzen",
+    "retrieving_progress_title": "Wir haben Ihren Fortschritt abgerufen ...",
+    "retrieving_progress_message": "Wir haben festgestellt, dass Fortschrittsdaten aus einer früheren Version gelesen wurden:",
+    "update_now": "Jetzt aktualisieren",
+    "later": "Später"
 }

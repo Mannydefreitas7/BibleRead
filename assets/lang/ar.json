@@ -66,5 +66,12 @@
     "intro_page_four": "هل تريد شيئًا مختلفًا؟ اختر واحدة من خطط قراءة الكتاب المقدس الـ 12!",
     "intro_page_five_title": "تتبع التقدم المحرز الخاص بك",
     "intro_page_five": "اضبط تقدم التطبيق إلى تقدمك. تحقق من المسافة التي قطعتها أو حدد تاريخ بدء القراءة.",
-    "cannot_select_a_date_in_the_future": "لا يمكن تحديد تاريخ في المستقبل"
+    "cannot_select_a_date_in_the_future": "لا يمكن تحديد تاريخ في المستقبل",
+    "are_you_sure": "هل أنت واثق؟",
+    "reset_reading_message": "سيؤدي هذا إلى إعادة تعيين جميع خطط القراءة الخاصة بك.",
+    "reset": "إعادة تعيين",
+    "retrieving_progress_title": "لقد استعدنا تقدمك ...",
+    "retrieving_progress_message": "وجدنا قراءة بيانات التقدم من إصدار سابق:",
+    "update_now": "تحديث الان",
+    "later": "في وقت لاحق"
 }

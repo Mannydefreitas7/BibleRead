@@ -2,7 +2,9 @@ import 'package:BibleRead/classes/custom/app_localizations.dart';
 import 'package:BibleRead/classes/database/LocalDataBase.dart';
 import 'package:BibleRead/classes/service/FirstLaunch.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
+import 'package:BibleRead/models/CoreDataProgressData.dart';
 import 'package:BibleRead/models/Language.dart';
+import 'package:BibleRead/views/progress/lostdata/LostData.dart';
 import 'package:BibleRead/views/settings/languages/Languages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,6 +24,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
   @override
   void initState() {
     super.initState();
+    DatabaseHelper().hasPreviousData().then((value) => print(value));
   }
 
   void  _showExpectedProgress(bool showExpected) async {
@@ -56,10 +59,10 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
           fontSize: 16.0,
           );
 
-        Text title = Text('Are you sure?', style: titleStyle,);
-        Text content = Text('This will reset all your reading plans.', style: contentStyle,);
-        Text reset = Text('Reset', style: resetButton,);
-        Text cancel = Text('Cancel', style: cancelButton,);
+        Text title = Text(AppLocalizations.of(context).translate('are_you_sure'), style: titleStyle,);
+        Text content = Text(AppLocalizations.of(context).translate('reset_reading_message'), style: contentStyle,);
+        Text reset = Text(AppLocalizations.of(context).translate('reset'), style: resetButton,);
+        Text cancel = Text(AppLocalizations.of(context).translate('cancel'), style: cancelButton,);
 
         List<FlatButton> actions = [
           FlatButton(
@@ -231,7 +234,42 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
           })
     ]
   ),
-  SizedBox(height: 20),
+    SizedBox(height: 20),
+  StreamBuilder(
+    stream: Rx.combineLatest2(FirstLaunch().isVersion510().asStream(), DatabaseHelper().hasPreviousData().asStream(), (is510, hasPreviousData) => CoreDataProgressData(is510: is510,hasPreviousData: hasPreviousData)),
+    builder: (BuildContext context, AsyncSnapshot snapshot) {
+
+      if (snapshot.hasData) {
+        
+        CoreDataProgressData coreDataProgressData = snapshot.data;
+         if (coreDataProgressData.is510 == null && coreDataProgressData.hasPreviousData) {
+          return ListTile(
+              title: new Center(
+            child: FlatButton(
+                onPressed: () => {
+                  Navigator.push(context, 
+                  CupertinoPageRoute(
+                    fullscreenDialog: true,
+                    builder: (BuildContext context) => 
+                      LostData()
+                    ))
+                },
+                child: new Text(
+                  'Check Previous Progress',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Theme.of(context).accentColor
+                  ),
+              )),
+          )
+        );
+         } 
+         return SizedBox(height: 5);
+      } else {
+        return Container();
+      }
+  }
+  ),
           ListTile(
               title: new Center(
             child: FlatButton(

@@ -8,14 +8,16 @@ import 'package:BibleRead/models/Language.dart';
 import 'package:BibleRead/models/LocalBooks.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:BibleRead/models/ReadingPlan.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
+import 'package:toast/toast.dart';
 
-class DatabaseHelper {
+class DatabaseHelper extends ChangeNotifier {
   DatabaseHelper();
 
   Future copyDatabase() async {
@@ -56,13 +58,34 @@ Future setupDatabase() async {
     return _database;
   }
 
-  updateProgress() async {
-  final _databaseName = "bibleModel.sqlite";
-  String databasesPath = await getDatabasesPath();
-  String dbPath = join(databasesPath, _databaseName);
-  bool dbExist = await databaseExists(dbPath);
-  List<CoreDataObject> coreDataObjects = [];
-  if (dbExist) {
+  Future<bool> hasPreviousData() async {
+    final _databaseName = "bibleModel.sqlite";
+    String databasesPath = await getDatabasesPath();
+    String dbPath = join(databasesPath, _databaseName);
+    bool hasPreviousData = await databaseExists(dbPath);
+    return hasPreviousData;
+  }
+
+  Future<List<CoreDataObject>> getCoreDataProgress() async {
+    
+    List<CoreDataObject> unreadCoreDataObjects = [];
+    Database coredb = await coreData;
+    List chapters = await coredb.rawQuery('SELECT * FROM ZCHAPTER WHERE ZREAD = 0');
+     chapters.forEach((element) {
+       print(element);
+      unreadCoreDataObjects.add(CoreDataObject.fromJson(element));
+    });
+    return unreadCoreDataObjects;
+  }
+
+Future<void> updateProgress() async {
+ final _databaseName = "bibleModel.sqlite";
+ String databasesPath = await getDatabasesPath();
+ String dbPath = join(databasesPath, _databaseName);
+ bool dbExist = await databaseExists(dbPath);
+  print('checking if has coredata...');
+    List<CoreDataObject> coreDataObjects = [];
+    if (dbExist) {
     print('updating progress...');
     Database coredb = await coreData;
     Database db = await database;
@@ -77,8 +100,10 @@ Future setupDatabase() async {
          db.rawUpdate('UPDATE plan_1 SET IsRead = 1 WHERE Id = $id');
       }
     });
+      await SharedPrefs().setSelectedPlan(1);
   }
-  SharedPrefs().setSelectedPlan(1);
+   FirstLaunch().setVersion510();
+   notifyListeners();
 }
 
  Future<Database> get coreData async {
@@ -102,6 +127,67 @@ Future setupDatabase() async {
   return readingPlans;
 }
 
+void updateProgressDialog(BuildContext context) {
+     showCupertinoDialog(
+      context: context,
+      builder: (context) {
+
+        TextStyle titleStyle = TextStyle(
+          color: Theme.of(context).textTheme.headline6.color,
+          fontSize: 20.0,
+          );
+
+          TextStyle contentStyle = TextStyle(
+          color: Theme.of(context).textTheme.headline6.color,
+          fontSize: 16.0,
+          );
+
+          TextStyle resetButton = TextStyle(
+          color: Theme.of(context).accentColor,
+          fontSize: 16.0,
+          );
+
+          TextStyle cancelButton = TextStyle(
+          color: Colors.red,
+          fontSize: 16.0,
+          );
+
+        Text title = Text('Retrieve Reading Progress', style: titleStyle,);
+        Text content = Text('We were able to retrieve your lost reading progress. You can decide to update it now', style: contentStyle,);
+        Text reset = Text('Update Data', style: resetButton,);
+        Text cancel = Text('No, it\' ok', style: cancelButton,);
+
+        List<FlatButton> actions = [
+          FlatButton(
+              child: reset,
+              onPressed: () {
+                DatabaseHelper().updateProgress();
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: cancel,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+        ];
+
+        if (Platform.isIOS) {
+          return CupertinoAlertDialog(
+          title:  title,
+          content: content,
+          actions: actions
+            );
+        } else {
+            return AlertDialog(
+              title:  title,
+              content: content,
+              actions: actions
+            );
+        }
+      }); 
+  }
 
 Future<ReadingPlans> queryReadingPlan(int id) async {
   Database db = await database;

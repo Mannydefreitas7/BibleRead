@@ -66,5 +66,12 @@
     "intro_page_four": "कुछ अलग करना चाहते हैं? 12 बाइबल पढ़ने की योजनाओं में से एक चुनें!",
     "intro_page_five_title": "Verfolge deinen Fortschritt",
     "intro_page_five": "अपने लिए एप्लिकेशन प्रगति समायोजित करें। जांचें कि आप कितनी दूर गए हैं या पढ़ने की आरंभ तिथि निर्धारित करें।",
-    "cannot_select_a_date_in_the_future": "भविष्य में किसी तिथि का चयन नहीं किया जा सकता"
+    "cannot_select_a_date_in_the_future": "भविष्य में किसी तिथि का चयन नहीं किया जा सकता",
+    "are_you_sure": "क्या आपको यकीन है?",
+    "reset_reading_message": "यह आपकी सभी पठन योजनाओं को रीसेट कर देगा।",
+    "reset": "रीसेट",
+    "retrieving_progress_title": "हमने आपकी प्रगति पुनः प्राप्त कर ली है ...",
+    "retrieving_progress_message": "हमने पिछले संस्करण से रीडिंग प्रोग्रेस डेटा पाया:",
+    "update_now": "अभी Update करें",
+    "later": "बाद में"
 }
