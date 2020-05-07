@@ -4,6 +4,7 @@ import 'package:BibleRead/classes/reading/bookMarkChip.dart';
 import 'package:BibleRead/views/read/Read.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class ReadTodayCard extends StatelessWidget {
 
@@ -81,10 +82,10 @@ class ReadTodayCard extends StatelessWidget {
                               ),
                         ),
                       ),
-                      onPressed: !isDisabled ? null : () => Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                              title: bookName,
+                      onPressed: !isDisabled ? null : () => {
+                      Navigator.of(context).push(
+                            
+                              MaterialWithModalsPageRoute(
                                 fullscreenDialog: true,
                                 builder: (context) => BibleReadingView(
                                     chapters: chapters,
@@ -92,7 +93,8 @@ class ReadTodayCard extends StatelessWidget {
                                     chaptersData: chaptersData,
                                     actionOnPress: bibleViewMarkRead,
                                   )),
-                          )),
+                          )
+             }),
                   BookMarkChip(onChipPress: removeBookMark,)
                 ],
               )),

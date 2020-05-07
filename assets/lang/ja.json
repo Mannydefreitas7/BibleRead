@@ -73,5 +73,6 @@
     "retrieving_progress_title": "進捗状況を取得しました...",
     "retrieving_progress_message": "以前のバージョンからの進行状況データの読み取りが見つかりました：",
     "update_now": "今すぐアップデート",
-    "later": "後"
+    "later": "後",
+    "check_previous_progress": "以前の進捗状況を確認する"
 }

@@ -42,7 +42,7 @@ android {
 
     defaultConfig {
         applicationId "com.wolinweb.BibleRead"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

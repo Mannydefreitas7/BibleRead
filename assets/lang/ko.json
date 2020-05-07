@@ -73,5 +73,6 @@
     "retrieving_progress_title": "진행 상황을 검색했습니다 ...",
     "retrieving_progress_message": "이전 버전에서 진행률 데이터를 읽는 것을 발견했습니다.",
     "update_now": "최신 정보",
-    "later": "업데이트하지 마십시오"
+    "later": "업데이트하지 마십시오",
+    "check_previous_progress": "이전 진행 상황 확인"
 }

@@ -23,7 +23,6 @@ class InformationCard extends StatelessWidget {
               AppLocalizations.of(context).translate('information'),
              overflow: TextOverflow.ellipsis,
               style: TextStyle( 
-                
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
                 color: Theme.of(context).textTheme.headline6.color,
@@ -55,7 +54,7 @@ class InformationCard extends StatelessWidget {
               ),
             ),
             trailing: new Text(
-              "5.0",
+              "5.1.1",
               style: TextStyle(
                 fontSize: 15,
                 color: Color(0xffaeaeae),

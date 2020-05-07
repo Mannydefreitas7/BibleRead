@@ -73,5 +73,6 @@
     "retrieving_progress_title": "Wir haben Ihren Fortschritt abgerufen ...",
     "retrieving_progress_message": "Wir haben festgestellt, dass Fortschrittsdaten aus einer früheren Version gelesen wurden:",
     "update_now": "Jetzt aktualisieren",
-    "later": "Später"
+    "later": "Später",
+    "check_previous_progress": "Überprüfen Sie den vorherigen Fortschritt"
 }

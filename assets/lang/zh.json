@@ -73,5 +73,6 @@
     "retrieving_progress_title": "我们已检索到您的进度...",
     "retrieving_progress_message": "我们发现读取以前版本的进度数据：",
     "update_now": "现在更新",
-    "later": "后来"
+    "later": "后来",
+    "check_previous_progress": "检查以前的进度"
 }

@@ -49,6 +49,13 @@ class BibleReadApp extends StatelessWidget {
       ],
       child: MaterialApp(
       initialRoute: '/',
+  //     routes: {
+  //   // When navigating to the "/" route, build the FirstScreen widget.
+  //   '/': (context) => MainApp(),
+  //   // When navigating to the "/second" route, build the SecondScreen widget.
+  //   '/today': (context) => Today(),
+  //   '/progress': (context) => Progress()
+  // },
       // List all of the app's supported locales here
       supportedLocales: [
         Locale('en'),

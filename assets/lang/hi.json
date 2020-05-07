@@ -73,5 +73,6 @@
     "retrieving_progress_title": "हमने आपकी प्रगति पुनः प्राप्त कर ली है ...",
     "retrieving_progress_message": "हमने पिछले संस्करण से रीडिंग प्रोग्रेस डेटा पाया:",
     "update_now": "अभी Update करें",
-    "later": "बाद में"
+    "later": "बाद में",
+    "check_previous_progress": "पिछली प्रगति की जाँच करें"
 }

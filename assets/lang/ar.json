@@ -73,5 +73,6 @@
     "retrieving_progress_title": "لقد استعدنا تقدمك ...",
     "retrieving_progress_message": "وجدنا قراءة بيانات التقدم من إصدار سابق:",
     "update_now": "تحديث الان",
-    "later": "في وقت لاحق"
+    "later": "في وقت لاحق",
+    "check_previous_progress": "تحقق من التقدم السابق"
 }
