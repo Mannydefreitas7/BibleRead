@@ -57,6 +57,7 @@ dependencies:
     auto_direction: ^0.0.4+1
     audio_manager: ^0.5.4+1
     modal_bottom_sheet: ^0.1.5
+    strings: ^0.1.2
 
 dev_dependencies:
     flutter_launcher_icons: "^0.7.3"
