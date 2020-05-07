@@ -160,7 +160,7 @@ class _TodayState extends State<Today> {
       hasLeadingIcon: false,
       hasBottombar: true,
       hasFloatingButton: isCompleted ? false : true,
-      floatingActionOnPress: _markTodayRead,
+      floatingActionOnPress: () => readingProgressData.markTodayRead(),
       selectedIndex: 0,
       bodyWidget: Container(
           padding: EdgeInsets.only(left: 15, right: 15),
