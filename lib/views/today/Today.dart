@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:BibleRead/classes/audio/AudioPlayer.dart';
 import 'package:BibleRead/classes/audio/AudioPlayerController.dart';
 import 'package:BibleRead/classes/card/CompletedCard.dart';
@@ -24,7 +23,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:strings/strings.dart';
 
 class Today extends StatefulWidget {
   @override
@@ -32,8 +31,6 @@ class Today extends StatefulWidget {
 }
 
 class _TodayState extends State<Today> {
-  Future<List> _unReadChapters;
-  List<Plan> unReadChapters = [];
   Notifications notifications = Notifications();
 
   List<Plan> unReadPlan;
@@ -50,36 +47,34 @@ class _TodayState extends State<Today> {
   bool hasBookmark = false;
 
 
-  ReadingProgressData readingProgressData = ReadingProgressData();
+  ReadingProgressData _readingProgressData = ReadingProgressData();
   AudioPlayerController audioPayerController = AudioPlayerController();
 
 
-  _markTodayRead() async {
+ // _markTodayRead() async {
 
-    await DatabaseHelper().markTodayRead();
-    await SharedPrefs().setBookMarkFalse();
-    setState(() => {
-          _unReadChapters = DatabaseHelper().unReadChapters(),
-      //    _progressValue = DatabaseHelper().countProgressValue(),
-          hasBookmark = false
-        });
-    await initialize();
+  //  await DatabaseHelper().markTodayRead();
+   // await SharedPrefs().setBookMarkFalse();
+    // setState(() => {
+    //       hasBookmark = false
+    //     });
+    // await initialize();
 
-    bool hasReminderOn = await SharedPrefs().getReminder();
+    // bool hasReminderOn = await SharedPrefs().getReminder();
 
-    if (hasReminderOn) {
-      bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
-      print(isBadgesupported);
-      if (isBadgesupported) {
-        int badgeNumber = await SharedPrefs().getBadgeNumber();
-        await SharedPrefs().setBadgeNumber(badgeNumber - 1);
-        FlutterAppBadger.updateBadgeCount(badgeNumber - 1);
-      }
-    }
-  }
+    // if (hasReminderOn) {
+    //   bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
+    //   print(isBadgesupported);
+    //   if (isBadgesupported) {
+    //     int badgeNumber = await SharedPrefs().getBadgeNumber();
+    //     await SharedPrefs().setBadgeNumber(badgeNumber - 1);
+    //     FlutterAppBadger.updateBadgeCount(badgeNumber - 1);
+    //   }
+    // }
+ // }
 
   bibleViewMarkRead() {
-    _markTodayRead();
+   // _markTodayRead();
     Navigator.pop(context);
   }
 
@@ -92,23 +87,8 @@ class _TodayState extends State<Today> {
   void initState() {
     super.initState();
 
-    _unReadChapters = DatabaseHelper().unReadChapters();
-
     _connectivity.initialise();
-    
-    _unReadChapters.asStream().listen((event) {
-      if (mounted) {
-        readingProgressData.initialize();
-        if (event.length > 0)
-          setState(() {
-            isCompleted = false;
-          });
-        else
-          setState(() {
-            isCompleted = true;
-          });
-      }
-    });
+    _readingProgressData.initialize();
 
     // DatabaseHelper().removeLanguage('he');
     //  DatabaseHelper().removeLocaleFromLanguage('fa');
@@ -138,9 +118,11 @@ class _TodayState extends State<Today> {
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
     bool isConnected;
+    ReadingProgressData readingProgressData = Provider.of<ReadingProgressData>(context);
 
     switch (_source.keys.toList()[0]) {
       case ConnectivityResult.none:
@@ -163,11 +145,11 @@ class _TodayState extends State<Today> {
       floatingActionOnPress: () => readingProgressData.markTodayRead(),
       selectedIndex: 0,
       bodyWidget: Container(
-          padding: EdgeInsets.only(left: 15, right: 15),
+          padding: EdgeInsets.only(left: 20, right: 20),
           child: Stack(
               children: <Widget>[
                 FutureBuilder(
-                    future: _unReadChapters,
+                    future: readingProgressData.getUnReadChapters(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.hasData) {
                         unReadPlan = snapshot.data;
@@ -180,9 +162,10 @@ class _TodayState extends State<Today> {
                               if (unReadPlan.length != 0)
                                 Container(
                                     child: ReadTodayCard(
-                                  markRead: _markTodayRead,
+                                  markRead: () => readingProgressData.markTodayRead(),
                                   removeBookMark: _setBookMarkFalse,
                                   isDisabled: isConnected,
+                                  selectedPlan: readingProgressData.selectedPlan != null ? readingProgressData.selectedPlan : 0,
                                   bibleViewMarkRead: bibleViewMarkRead,
                                   bookName: unReadPlan[0].longName,
                                   chapters: unReadPlan[0].chapters,
@@ -230,14 +213,15 @@ class _TodayState extends State<Today> {
                           progressNumber: todayProgressCard.progressValue > 1.0
                               ? 1.0
                               : todayProgressCard.progressValue,
-                          textOne: todayProgressCard.weekDay,
-                          textTwo: todayProgressCard.month,
+                          textOne: capitalize(todayProgressCard.weekDay),
+                          textTwo: capitalize(todayProgressCard.month),
                           textThree: DateTimeHelpers().todayDate(),
                         ));
                   },
                 ),
               ])),
     );
+
   }
 }
 
