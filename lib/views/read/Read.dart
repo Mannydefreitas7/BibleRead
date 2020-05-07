@@ -1,27 +1,28 @@
 import 'package:BibleRead/classes/reading/HtmlView.dart';
 import 'package:BibleRead/classes/service/JwOrgApiHelper.dart';
+import 'package:BibleRead/classes/service/ReadingProgressData.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 
 class BibleReadingView extends StatelessWidget {
   final String bookName;
   final String chapters;
   final String chaptersData;
   final bool isChapterRead;
-  final Function actionOnPress;
 
   BibleReadingView(
       {this.bookName,
       this.chaptersData,
       this.chapters,
       this.isChapterRead,
-      this.actionOnPress});
+  });
 
   @override
   Widget build(BuildContext context) {
-
+    ReadingProgressData readingProgressData = Provider.of<ReadingProgressData>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Column(children: [
@@ -118,7 +119,10 @@ class BibleReadingView extends StatelessWidget {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: FloatingActionButton(
-          onPressed: actionOnPress,
+          onPressed: () => {
+            readingProgressData.markTodayRead(),
+            Navigator.of(context).pop()
+            },
           focusElevation: 5.0,
           child: Icon(Icons.check, color: Colors.white, size: 30.0),
           elevation: 2.0,

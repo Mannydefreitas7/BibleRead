@@ -73,11 +73,6 @@ class _TodayState extends State<Today> {
     // }
  // }
 
-  bibleViewMarkRead() {
-   // _markTodayRead();
-    Navigator.pop(context);
-  }
-
   _setBookMarkFalse() async {
     await SharedPrefs().setBookMarkFalse();
     setState(() => {});
@@ -163,10 +158,8 @@ class _TodayState extends State<Today> {
                                 Container(
                                     child: ReadTodayCard(
                                   markRead: () => readingProgressData.markTodayRead(),
-                                  removeBookMark: _setBookMarkFalse,
                                   isDisabled: isConnected,
-                                  selectedPlan: readingProgressData.selectedPlan != null ? readingProgressData.selectedPlan : 0,
-                                  bibleViewMarkRead: bibleViewMarkRead,
+                                  selectedPlan: readingProgressData.selectedPlan != null ? readingProgressData.selectedPlan : 0,  
                                   bookName: unReadPlan[0].longName,
                                   chapters: unReadPlan[0].chapters,
                                   chaptersData: unReadPlan[0].chaptersData,

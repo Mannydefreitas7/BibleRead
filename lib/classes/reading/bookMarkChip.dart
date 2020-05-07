@@ -1,5 +1,7 @@
+import 'package:BibleRead/classes/service/ReadingProgressData.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BookMarkChip extends StatelessWidget {
   final Function onChipPress;
@@ -8,6 +10,7 @@ class BookMarkChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ReadingProgressData readingProgressData = Provider.of<ReadingProgressData>(context);
     return FutureBuilder(
         initialData: false,
         future: SharedPrefs().getHasBookMark(),
@@ -26,7 +29,7 @@ class BookMarkChip extends StatelessWidget {
                         color: Theme.of(context).textTheme.headline6.color,
                         size: 25,
                       ),
-                      onPressed: onChipPress,
+                      onPressed: () => readingProgressData.removeBookMark(),
                       label: Row(mainAxisSize: MainAxisSize.min, children: [
                         Text(
                           SharedPrefs().parseBookMarkedVerse(bookmark.data),

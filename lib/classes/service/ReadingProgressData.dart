@@ -72,9 +72,15 @@ markTodayRead() async {
    await DatabaseHelper().markTodayRead();
     this.unReadChapters = await DatabaseHelper().unReadChapters();
     this.audioInfos = await this.setupAudioList();
+    removeBookMark();
     AudioManager.instance.stop();
     AudioManager.instance.audioList = this.audioInfos;
     AudioManager.instance.play(index:0, auto: false);
+    notifyListeners();
+}
+
+removeBookMark() async {
+    await SharedPrefs().setBookMarkFalse();
     notifyListeners();
 }
 
