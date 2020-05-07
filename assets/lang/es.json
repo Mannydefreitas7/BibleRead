@@ -66,5 +66,12 @@
     "intro_page_four": "¿Quieres algo diferente? ¡Elija uno de los 12 planes de lectura de la Biblia!",
     "intro_page_five_title": "Progreso",
     "intro_page_five": "Ajusta el progreso de la aplicación a la tuya. Comprueba hasta dónde has llegado o establece una fecha de inicio de lectura.",
-    "cannot_select_a_date_in_the_future": "No se puede seleccionar una fecha en el futuro"
+    "cannot_select_a_date_in_the_future": "No se puede seleccionar una fecha en el futuro",
+    "are_you_sure": "Estas seguro",
+    "reset_reading_message": "Esto restablecerá todos tus planes de lectura.",
+    "reset": "Reiniciar",
+    "retrieving_progress_title": "Hemos recuperado su progreso ...",
+    "retrieving_progress_message": "Encontramos datos de progreso de lectura de una versión anterior:",
+    "update_now": "Actualizar ahora",
+    "later": "Más tarde"
 }

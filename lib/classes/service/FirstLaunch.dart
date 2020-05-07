@@ -27,8 +27,7 @@ class FirstLaunch {
 
   Future<bool> isVersion510() async {
   final prefs = await SharedPreferences.getInstance();
-  final bool _isFirstUse = prefs.getBool('510');
-  return _isFirstUse;
+  return prefs.getBool('510');
   }
 
   void setVersion510() async {

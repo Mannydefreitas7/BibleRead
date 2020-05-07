@@ -14,6 +14,7 @@ import 'package:BibleRead/models/CoreData.dart';
 import 'package:BibleRead/views/onboarding/OnBoarding.dart';
 import 'package:BibleRead/views/plans/Plans.dart';
 import 'package:BibleRead/views/progress/Progress.dart';
+import 'package:BibleRead/views/progress/lostdata/LostData.dart';
 import 'package:BibleRead/views/settings/Settings.dart';
 import 'package:BibleRead/views/today/Today.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -43,7 +44,8 @@ class BibleReadApp extends StatelessWidget {
       providers: [
             ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
             ChangeNotifierProvider<AudioPlayerController>(create: (_) => AudioPlayerController(),),
-            ChangeNotifierProvider<ReadingProgressData>(create: (_) => ReadingProgressData(),)
+            ChangeNotifierProvider<ReadingProgressData>(create: (_) => ReadingProgressData(),),
+            ChangeNotifierProvider<DatabaseHelper>(create: (_) => DatabaseHelper(),)
       ],
       child: MaterialApp(
       initialRoute: '/',
@@ -58,6 +60,7 @@ class BibleReadApp extends StatelessWidget {
         Locale('it'),
         Locale('ja'),
         Locale('ru'),
+        Locale('ko'),
         Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       ],
       localizationsDelegates: [
@@ -129,47 +132,44 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   Future<bool> _firstLaunch;
   bool isfirstLaunch;
+  bool isVersion510;
+  bool hasPreviousData;
   @override
   void initState() {
     super.initState();
       _initialSetup();
    _firstLaunch = firstLaunch;
    FirstLaunch().isNotFirstLaunch().then((value) => isfirstLaunch =  value);
-
+    FirstLaunch().isVersion510().then((value) => isVersion510 = value);
 }
 
 Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
 
  Future<void> _initialSetup() async {
    bool isFirstLaunch = await FirstLaunch().isNotFirstLaunch();
-   bool isVersion510 = await FirstLaunch().isVersion510();
     if (isFirstLaunch == null) {
           await DatabaseHelper().setupDatabase();
-          await DatabaseHelper().updateProgress();
           await FirstLaunch().setDefaults();
-          await DatabaseHelper().setLanguagesName();
-    } else {
-        if (isVersion510 == null) {
+        //  await DatabaseHelper().setLanguagesName();
           await DatabaseHelper().updateProgress();
-          FirstLaunch().setVersion510();
-        }
     }
-  }
+     await DatabaseHelper().setLanguagesName();
+ }
 
   @override
   Widget build(BuildContext context) {
-   
+
   return FutureBuilder(
-    initialData: isfirstLaunch,
     future: _firstLaunch, 
     builder: (BuildContext context, AsyncSnapshot snapshot) {
 
       if (snapshot.hasData) {
-        return Today();
-        
+
+           return  Today();
+
       } else if (!snapshot.hasData) {
 
-        return OnBoarding();
+          return OnBoarding();
         
       } else {
 

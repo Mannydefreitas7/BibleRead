@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:BibleRead/classes/audio/AudioPlayer.dart';
 import 'package:BibleRead/classes/audio/AudioPlayerController.dart';
 import 'package:BibleRead/classes/card/CompletedCard.dart';
@@ -137,7 +138,6 @@ class _TodayState extends State<Today> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     bool isConnected;
@@ -238,7 +238,6 @@ class _TodayState extends State<Today> {
                 ),
               ])),
     );
-
   }
 }
 
