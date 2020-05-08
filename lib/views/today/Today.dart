@@ -45,6 +45,7 @@ class _TodayState extends State<Today> {
   bool isCompleted = false;
   String bookmarkdata = '';
   bool hasBookmark = false;
+  bool loading = false;
 
 
   ReadingProgressData _readingProgressData = ReadingProgressData();
@@ -132,12 +133,28 @@ class _TodayState extends State<Today> {
         setState(() {});
     }
 
+    readingProgressData.getUnReadChapters().asStream().listen((event) {
+        if (event.length == 0) {
+          setState(() {
+            isCompleted = true;
+          });
+        }
+    });
+    bool loading = false;
+   // List<Plan> unReadList = [...readingProgressData.unReadList];
+
     return BibleReadScaffold(
       title: AppLocalizations.of(context).translate('today'),
       hasLeadingIcon: false,
       hasBottombar: true,
-      hasFloatingButton: isCompleted ? false : true,
-      floatingActionOnPress: () => readingProgressData.markTodayRead(),
+      isLoading: loading,
+      hasFloatingButton: !isCompleted,
+      floatingActionOnPress: () => {
+
+       // unReadList[0].isRead = true;
+        readingProgressData.markTodayRead()
+
+      },
       selectedIndex: 0,
       bodyWidget: Container(
           padding: EdgeInsets.only(left: 20, right: 20),
@@ -148,7 +165,7 @@ class _TodayState extends State<Today> {
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.hasData) {
                         unReadPlan = snapshot.data;
-
+                 
                         return ListView(
                             addRepaintBoundaries: true,
                             padding: EdgeInsets.only(top: 130),
@@ -157,9 +174,8 @@ class _TodayState extends State<Today> {
                               if (unReadPlan.length != 0)
                                 Container(
                                     child: ReadTodayCard(
-                                  markRead: () => readingProgressData.markTodayRead(),
                                   isDisabled: isConnected,
-                                  selectedPlan: readingProgressData.selectedPlan != null ? readingProgressData.selectedPlan : 0,  
+                                //  selectedPlan: readingProgressData.selectedPlan,  
                                   bookName: unReadPlan[0].longName,
                                   chapters: unReadPlan[0].chapters,
                                   chaptersData: unReadPlan[0].chaptersData,

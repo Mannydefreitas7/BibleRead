@@ -6,6 +6,7 @@ import 'package:BibleRead/classes/custom/textHelper.dart';
 import 'package:BibleRead/classes/date/ReadingStartDate.dart';
 import 'package:BibleRead/classes/progress/NumberOfDays.dart';
 import 'package:BibleRead/classes/progress/ProgressPlanCircle.dart';
+import 'package:BibleRead/classes/service/ReadingProgressData.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
   @override
   Widget build(BuildContext context) {
     final bibleBookListData = Provider.of<BibleBookListData>(context);
+    ReadingProgressData readingProgressData = Provider.of<ReadingProgressData>(context);
     return Scaffold(
         body: Stack(fit: StackFit.loose, overflow: Overflow.visible, children: <
             Widget>[
@@ -139,9 +141,8 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
                     borderRadius: BorderRadius.circular(30)),
                color: Theme.of(context).accentColor,
                 onPressed: () {
-                  bibleBookListData.selectReadingPlan(widget.planId);
+                  readingProgressData.setReadingPlan(widget.planId);
                   SharedPrefs().setBookMarkFalse();
-                  SharedPrefs().setBookMarkData('');
                   Navigator.pop(context);
                 },
                 child: Text(

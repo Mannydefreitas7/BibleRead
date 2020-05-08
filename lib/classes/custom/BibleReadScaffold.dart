@@ -7,7 +7,7 @@ import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'textHelper.dart';
 
 class BibleReadScaffold extends StatelessWidget {
-  BibleReadScaffold({Key key, this.selectedIndex, this.bodyWidget, this.title, this.hasFloatingButton, this.floatingActionOnPress, this.hasBottombar, this.hasLeadingIcon}) : super(key: key);
+  BibleReadScaffold({Key key, this.selectedIndex, this.bodyWidget, this.title, this.hasFloatingButton, this.floatingActionOnPress, this.hasBottombar, this.isLoading, this.hasLeadingIcon}) : super(key: key);
 
   final int selectedIndex;
   final bool hasFloatingButton;
@@ -16,9 +16,11 @@ class BibleReadScaffold extends StatelessWidget {
   final Widget bodyWidget;
   final bool hasBottombar;
   final bool hasLeadingIcon;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
+    bool _isLoading = this.isLoading != null ? this.isLoading : false;
     return Scaffold(  
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: PreferredSize(
@@ -69,9 +71,12 @@ class BibleReadScaffold extends StatelessWidget {
         ),
         color: Theme.of(context).accentColor,
         onPressed: floatingActionOnPress, 
-        icon: Icon(SFSymbols.checkmark_alt,
+        icon: _isLoading == false ? Icon(SFSymbols.checkmark_alt,
         size: 24, 
         color: Colors.white,
+        ) : CircularProgressIndicator(
+          backgroundColor: Colors.white,
+          strokeWidth: 3,
         ), 
         label: Text(AppLocalizations.of(context).translate('mark_read'), style: TextStyle(
           fontSize: 20.0,

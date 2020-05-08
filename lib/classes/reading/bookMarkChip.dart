@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BookMarkChip extends StatelessWidget {
-  final Function onChipPress;
-
-  BookMarkChip({this.onChipPress});
+  BookMarkChip();
 
   @override
   Widget build(BuildContext context) {
@@ -20,29 +18,36 @@ class BookMarkChip extends StatelessWidget {
               future: SharedPrefs().getBookMarkData(),
               builder: (context, bookmark) {
                 if (bookmark.hasData && hasBookmark.data == true) {
-                  return ActionChip(
-                      padding: EdgeInsets.all(10),
-                      shadowColor: Colors.black.withOpacity(0.5),
-                      backgroundColor: Theme.of(context).backgroundColor,
-                      avatar: Icon(
+                  return Row(
+                    children: [
+                      Icon(
                         Icons.bookmark_border,
-                        color: Theme.of(context).textTheme.headline6.color,
+                        color: Colors.white,
                         size: 25,
                       ),
-                      onPressed: () => readingProgressData.removeBookMark(),
-                      label: Row(mainAxisSize: MainAxisSize.min, children: [
-                        Text(
+                      SizedBox(width: 5),
+                      Text(
                           SharedPrefs().parseBookMarkedVerse(bookmark.data),
                           style: TextStyle(
                               fontSize: 22,
-                              color: Theme.of(context).textTheme.headline6.color,
+                              color: Colors.white,
                               fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(width: 5),
-                        Icon(Icons.clear, color: Theme.of(context).textTheme.headline6.color,),
-                      ]));
+                         SizedBox(width: 5),
+                        GestureDetector(
+                            onTap: () => readingProgressData.removeBookMark(),
+                            child: CircleAvatar(
+                            backgroundColor: Colors.black,
+                            radius: 15,
+                            child: Icon(Icons.clear,
+                            size: 18,
+                            color: Colors.white)
+                          ),
+                        )
+                    ]
+                  );
                 } else {
-                  return Container(height: 0,);
+                  return Container(height: 0);
                 }
               });
         });

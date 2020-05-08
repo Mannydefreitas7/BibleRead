@@ -5,6 +5,7 @@ import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 
 class BibleReadingView extends StatelessWidget {
@@ -26,6 +27,8 @@ class BibleReadingView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Column(children: [
+      
+
         SizedBox(height: MediaQuery.of(context).size.height * 0.05, width: double.infinity),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
@@ -45,13 +48,11 @@ class BibleReadingView extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 26,
                        color: Theme.of(context).textTheme.headline6.color,
-                      fontWeight:
-                          FontWeight.w700)),
+                      fontWeight: FontWeight.w700)),
               Spacer(),
               IconButton(
                   icon: Icon(
                     Icons.close,
-                    
                     color: Theme.of(context).accentColor,
                     size: 30,
                   ),

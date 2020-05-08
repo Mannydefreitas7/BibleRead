@@ -1,47 +1,55 @@
 import 'package:BibleRead/classes/custom/animations.dart';
 import 'package:BibleRead/classes/custom/app_localizations.dart';
 import 'package:BibleRead/classes/reading/bookMarkChip.dart';
+import 'package:BibleRead/classes/service/ReadingProgressData.dart';
+import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:BibleRead/views/read/Read.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class ReadTodayCard extends StatelessWidget {
 
   ReadTodayCard({
     this.bookName, 
     this.chapters,
-    this.selectedPlan,
-    this.markRead,
     this.chaptersData, 
     this.isDisabled,
     });
 
   final String bookName;
   final String chapters;
-  final int selectedPlan;
   final String chaptersData;
   final bool isDisabled;
-  final Function markRead;
+
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
+    
+    return Card( 
             elevation: 0.0,
             clipBehavior: Clip.antiAlias,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
             child: Stack(
           children: <Widget>[ 
-              Positioned.fill(
-                              child: Image(
-                  alignment: Alignment.center,
-             // width: MediaQuery.of(context).size.width,
-                fit: BoxFit.cover,
-                image:
-                selectedPlan != null ? AssetImage('assets/images/plan_${selectedPlan}_pnr.jpg')
-                   : AssetImage('assets/images/today_image.png')),
-              ),
+
+           StreamBuilder(
+                stream: SharedPrefs().getSelectedPlan().asStream(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  int selectedPlan = snapshot.data;
+
+                  return Positioned.fill(
+                    child: Image(
+                    alignment: Alignment.center,
+                    fit: BoxFit.cover,
+                    image: snapshot.hasData ? AssetImage('assets/images/plan_${selectedPlan}_pnr.jpg')
+                      : AssetImage('assets/images/today_image.png')),
+                    );
+            
+            }),
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
@@ -103,7 +111,7 @@ class ReadTodayCard extends StatelessWidget {
                                      ),
                                      SizedBox(width: 5),
                                      Text(
-                            'Read Online',
+                            AppLocalizations.of(context).translate('read'),
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontFamily: 'Avenir Next',
@@ -123,12 +131,11 @@ class ReadTodayCard extends StatelessWidget {
                                       bookName: bookName,
                                       chaptersData: chaptersData,
                                     )),
-                            )
+                                  )
                                ),
                                  BookMarkChip()
                             ],
                             )
-                  
                   ],
                 )),
           ])
