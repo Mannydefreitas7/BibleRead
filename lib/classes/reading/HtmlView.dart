@@ -13,7 +13,7 @@ class HtmlView extends StatelessWidget {
 
   final String html;
   final String book;
-  final CustomToolbar customToolbar = CustomToolbar();
+ // final CustomToolbar customToolbar = CustomToolbar();
   @override
   Widget build(BuildContext context) {
     return Html(

@@ -45,7 +45,8 @@ class BibleReadApp extends StatelessWidget {
             ChangeNotifierProvider<BibleBookListData>(create: (_) => BibleBookListData()),
             ChangeNotifierProvider<AudioPlayerController>(create: (_) => AudioPlayerController(),),
             ChangeNotifierProvider<ReadingProgressData>(create: (_) => ReadingProgressData(),),
-            ChangeNotifierProvider<DatabaseHelper>(create: (_) => DatabaseHelper(),)
+            ChangeNotifierProvider<DatabaseHelper>(create: (_) => DatabaseHelper(),),
+            ChangeNotifierProvider<Notifications>(create: (_) => Notifications(),)
       ],
       child: MaterialApp(
       initialRoute: '/',

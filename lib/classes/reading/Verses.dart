@@ -28,7 +28,7 @@ class Verses extends StatefulWidget {
 }
 
 class _VersesState extends State<Verses> {
-  final CustomToolbar customToolbar = CustomToolbar();
+  //final CustomToolbar customToolbar = CustomToolbar();
   bool showBookmarkIcon = false;
   void _showBottomSheet(BuildContext context) => showModalBottomSheet(
       context: context,

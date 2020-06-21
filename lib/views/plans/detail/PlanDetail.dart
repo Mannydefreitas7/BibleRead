@@ -10,6 +10,7 @@ import 'package:BibleRead/classes/service/ReadingProgressData.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:BibleRead/models/BibleBookListData.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -34,6 +35,10 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
   @override
   Widget build(BuildContext context) {
     final bibleBookListData = Provider.of<BibleBookListData>(context);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+   statusBarColor: Colors.white, // Color for Android
+   statusBarBrightness: Brightness.dark // Dark == white status bar -- for IOS.
+));
     ReadingProgressData readingProgressData = Provider.of<ReadingProgressData>(context);
     return Scaffold(
         body: Stack(fit: StackFit.loose, overflow: Overflow.visible, children: <
@@ -52,11 +57,21 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
         ),
       ),
       Positioned(
-          right: 15,
-          top: 30,
-          child: IconButton(
-              icon: Icon(Icons.clear, color: Colors.white, size: 25),
-              onPressed: () => Navigator.of(context).pop())),
+          right: 30,
+          top: 50,
+          child: 
+          CircleAvatar(
+              radius: 16,
+                backgroundColor: Colors.black87,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.clear,
+                    size: 16,
+                    color: Colors.white,
+                    ), 
+                  onPressed: () => Navigator.of(context).pop())
+            )
+              ),
       Positioned(
           height: 180,
           width: MediaQuery.of(context).size.width - 30,

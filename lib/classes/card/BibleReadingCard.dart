@@ -256,6 +256,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
                 },
                 child: new Text(
                   AppLocalizations.of(context).translate('check_previous_progress'),
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
                     color: Theme.of(context).accentColor

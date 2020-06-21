@@ -119,7 +119,7 @@ class _TodayState extends State<Today> {
   Widget build(BuildContext context) {
     bool isConnected;
     ReadingProgressData readingProgressData = Provider.of<ReadingProgressData>(context);
-
+    Notifications notifications = Provider.of<Notifications>(context);
     switch (_source.keys.toList()[0]) {
       case ConnectivityResult.none:
         isConnected = false;
@@ -152,8 +152,9 @@ class _TodayState extends State<Today> {
       floatingActionOnPress: () => {
 
        // unReadList[0].isRead = true;
-        readingProgressData.markTodayRead()
 
+        readingProgressData.markTodayRead(),
+        notifications.setDailyAtTime(context)
       },
       selectedIndex: 0,
       bodyWidget: Container(
@@ -243,4 +244,4 @@ class TodayProgressCard {
 }
 
 
-  
+   

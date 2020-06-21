@@ -52,17 +52,19 @@ class BibleReadScaffold extends StatelessWidget {
       floatingActionButton: hasFloatingButton ? 
       Container(
         margin: EdgeInsets.only(bottom: 20.0),
-    //   clipBehavior: Clip.hardEdge,
+      clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              offset: Offset(0, 2),
-              blurRadius: 5.0,
-             // spreadRadius: 2.0
-          ),
+              color: Theme.of(context).accentColor.withOpacity(0.4),
+              offset: Offset(1, 4),
+              blurRadius: 10.0,
+
+          //   spreadRadius: 1.5
+          )
           ],
           borderRadius: BorderRadius.all(Radius.circular(25))
+
         ),
         child:  FlatButton.icon(
         padding: EdgeInsets.symmetric(horizontal: 22.0, vertical: 10.0),
