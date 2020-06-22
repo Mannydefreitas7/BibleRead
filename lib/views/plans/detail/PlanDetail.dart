@@ -35,10 +35,6 @@ class _ReadingPlanViewState extends State<ReadingPlanView> {
   @override
   Widget build(BuildContext context) {
     final bibleBookListData = Provider.of<BibleBookListData>(context);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-   statusBarColor: Colors.white, // Color for Android
-   statusBarBrightness: Brightness.dark // Dark == white status bar -- for IOS.
-));
     ReadingProgressData readingProgressData = Provider.of<ReadingProgressData>(context);
     return Scaffold(
         body: Stack(fit: StackFit.loose, overflow: Overflow.visible, children: <

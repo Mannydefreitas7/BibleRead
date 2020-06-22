@@ -10,6 +10,7 @@ import 'package:BibleRead/classes/database/LocalDataBase.dart';
 import 'package:BibleRead/classes/date/DateTimeHelpers.dart';
 import 'package:BibleRead/classes/network/connectivityCheck.dart';
 import 'package:BibleRead/classes/notifications/Notifications.dart';
+import 'package:BibleRead/classes/service/FirstLaunch.dart';
 import 'package:BibleRead/classes/service/ReadingProgressData.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:BibleRead/models/ChapterAudio.dart';
@@ -154,7 +155,9 @@ class _TodayState extends State<Today> {
        // unReadList[0].isRead = true;
 
         readingProgressData.markTodayRead(),
-        notifications.setDailyAtTime(context)
+        notifications.setDailyAtTime(context),
+         FirstLaunch().addLaunch(1),
+        readingProgressData.showRatingDialog()
       },
       selectedIndex: 0,
       bodyWidget: Container(

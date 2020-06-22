@@ -236,7 +236,7 @@ class _BibleReadingCardState extends State<BibleReadingCard> {
   ),
     SizedBox(height: 20),
   StreamBuilder(
-    stream: Rx.combineLatest2(FirstLaunch().isVersion510().asStream(), DatabaseHelper().hasPreviousData().asStream(), (is510, hasPreviousData) => CoreDataProgressData(is510: is510,hasPreviousData: hasPreviousData)),
+    stream: Rx.combineLatest2(FirstLaunch().isVersion520().asStream(), DatabaseHelper().hasPreviousData().asStream(), (is510, hasPreviousData) => CoreDataProgressData(is510: is510,hasPreviousData: hasPreviousData)),
     builder: (BuildContext context, AsyncSnapshot snapshot) {
 
       if (snapshot.hasData) {

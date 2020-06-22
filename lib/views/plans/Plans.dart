@@ -38,7 +38,7 @@ class Plans extends StatelessWidget {
                     builder: (context, plansSnapshot) {
                     List plans = json.decode(plansSnapshot.data.toString());
                      return ListView.builder(
-                        padding: EdgeInsets.only(top: 70, left: 10, right: 10, bottom: 10),
+                        padding: EdgeInsets.only(top: 120, left: 10, right: 10, bottom: 10),
                         itemCount: plansSnapshot.hasData ? plans.toList().length : 10,
                         itemBuilder: (context, index) {
 

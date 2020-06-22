@@ -140,7 +140,7 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   Future<bool> _firstLaunch;
   bool isfirstLaunch;
-  bool isVersion510;
+  bool isVersion520;
   bool hasPreviousData;
   @override
   void initState() {
@@ -148,7 +148,7 @@ class _MainAppState extends State<MainApp> {
       _initialSetup();
    _firstLaunch = firstLaunch;
    FirstLaunch().isNotFirstLaunch().then((value) => isfirstLaunch =  value);
-    FirstLaunch().isVersion510().then((value) => isVersion510 = value);
+    FirstLaunch().isVersion520().then((value) => isVersion520 = value);
 }
 
 Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
@@ -164,6 +164,7 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
      await DatabaseHelper().setLanguagesName();
  }
 
+  
   @override
   Widget build(BuildContext context) {
 
@@ -172,11 +173,11 @@ Future<bool> get firstLaunch => FirstLaunch().isNotFirstLaunch();
     builder: (BuildContext context, AsyncSnapshot snapshot) {
 
       if (snapshot.hasData) {
-
-           return  Today();
+     
+           return Today();
 
       } else if (!snapshot.hasData) {
-
+       
           return OnBoarding();
         
       } else {

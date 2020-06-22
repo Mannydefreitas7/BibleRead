@@ -1,4 +1,5 @@
 import 'package:BibleRead/classes/custom/app_localizations.dart';
+import 'package:BibleRead/classes/service/FirstLaunch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:launch_review/launch_review.dart';
@@ -54,7 +55,7 @@ class InformationCard extends StatelessWidget {
               ),
             ),
             trailing: new Text(
-              "5.1.1",
+              "5.2.0",
               style: TextStyle(
                 fontSize: 15,
                 color: Color(0xffaeaeae),
@@ -80,7 +81,10 @@ class InformationCard extends StatelessWidget {
           ListTile(
               title: new Center(
             child: FlatButton(
-                onPressed: () => LaunchReview.launch(iOSAppId: '1472187500', androidAppId: 'com.wolinweb.BibleRead', writeReview: true),
+                onPressed: () => {
+                  LaunchReview.launch(iOSAppId: '1472187500', androidAppId: 'com.wolinweb.BibleRead', writeReview: true),
+                  FirstLaunch().setRated()
+                  },
                 child: new Text(
                    AppLocalizations.of(context).translate('review_us_on_app_store'),
                    textAlign: TextAlign.center,

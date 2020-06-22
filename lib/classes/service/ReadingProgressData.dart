@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:BibleRead/classes/database/LocalDataBase.dart';
+import 'package:BibleRead/classes/service/FirstLaunch.dart';
 import 'package:BibleRead/classes/service/JwOrgApiHelper.dart';
 import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:BibleRead/models/ChapterAudio.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:audio_manager/audio_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ReadingProgressData extends ChangeNotifier {
@@ -71,6 +73,7 @@ Stream<ReadCardData> readTodayCardData = Rx.combineLatest2<List<Plan>, int, Read
 
 Future<void> markTodayRead() async {
     await DatabaseHelper().markTodayRead();
+  
    //  this.unReadChapters = await DatabaseHelper().unReadChapters();
     notifyListeners();
     this.audioInfos = await this.setupAudioList();
@@ -79,6 +82,26 @@ Future<void> markTodayRead() async {
     AudioManager.instance.audioList = this.audioInfos;
     await AudioManager.instance.play(index:0, auto: false);
     notifyListeners();
+}
+
+showRatingDialog() async {
+  int launches = await FirstLaunch().launches();
+  print(launches);
+  bool hasRated = await FirstLaunch().hasRated();
+  print(hasRated);
+  if (!hasRated || hasRated == null) {
+     switch (launches) {
+    case 7:
+    case 14:
+    case 28:
+    case 56:
+    case 64:
+    LaunchReview.launch(iOSAppId: '1472187500', androidAppId: 'com.wolinweb.BibleRead', writeReview: false);
+    print('rating dialog');
+      break;
+    default:
+  }
+  }
 }
 
 removeBookMark() {

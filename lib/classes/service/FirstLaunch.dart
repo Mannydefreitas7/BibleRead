@@ -1,6 +1,7 @@
 
 import 'package:BibleRead/classes/database/LocalDataBase.dart';
 import 'package:BibleRead/classes/date/DateTimeHelpers.dart';
+import 'package:BibleRead/classes/service/SharedPrefs.dart';
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_device_locale/flutter_device_locale.dart';
@@ -25,15 +26,40 @@ class FirstLaunch {
   return _isFirstUse;
   }
 
-  Future<bool> isVersion510() async {
+  Future<bool> isVersion520() async {
   final prefs = await SharedPreferences.getInstance();
-  return prefs.getBool('510');
+  return prefs.getBool('520');
   }
 
-  void setVersion510() async {
+  void setVersion520() async {
   final prefs = await SharedPreferences.getInstance();
-  prefs.setBool('510', true);
+  prefs.setBool('520', true);
   }
+
+  Future<bool> hasRated() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('hasRated');
+      }
+
+    void setRated() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('hasRated', true);
+    }  
+
+    Future<int> launches() async {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getInt('launches');
+    }
+
+    void addLaunch(int number) async {
+      final prefs = await SharedPreferences.getInstance();
+      int current = await launches();
+      if (current != null) {
+        prefs.setInt('launches', current + number);
+      } else {
+         prefs.setInt('launches', 0 + number);
+      }
+    }
 
   Future<String> userCurrentID() async {
     final prefs = await SharedPreferences.getInstance();

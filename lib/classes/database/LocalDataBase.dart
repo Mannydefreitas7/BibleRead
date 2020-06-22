@@ -102,7 +102,7 @@ Future<void> updateProgress() async {
     });
       await SharedPrefs().setSelectedPlan(1);
   }
-   FirstLaunch().setVersion510();
+   FirstLaunch().setVersion520();
    notifyListeners();
 }
 
