@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:BibleRead/classes/database/LocalDataBase.dart';
 import 'package:BibleRead/classes/service/FirstLaunch.dart';
@@ -8,8 +9,9 @@ import 'package:BibleRead/models/ChapterAudio.dart';
 import 'package:BibleRead/models/Plan.dart';
 import 'package:audio_manager/audio_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:launch_review/launch_review.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:app_review/app_review.dart';
 
 class ReadingProgressData extends ChangeNotifier {
 
@@ -73,15 +75,25 @@ Stream<ReadCardData> readTodayCardData = Rx.combineLatest2<List<Plan>, int, Read
 
 Future<void> markTodayRead() async {
     await DatabaseHelper().markTodayRead();
-  
-   //  this.unReadChapters = await DatabaseHelper().unReadChapters();
+      bool hasReminderOn = await SharedPrefs().getReminder();
+    this.loading = true;
+    if (hasReminderOn) {
+      bool isBadgesupported = await FlutterAppBadger.isAppBadgeSupported();
+      if (isBadgesupported) {
+        int badgeNumber = await SharedPrefs().getBadgeNumber();
+        await SharedPrefs().setBadgeNumber(badgeNumber - 1);
+        FlutterAppBadger.updateBadgeCount(0);
+      }
+    }
     notifyListeners();
     this.audioInfos = await this.setupAudioList();
-    await SharedPrefs().setBookMarkFalse();
+    this.setupAudioList().then((value) {
+      SharedPrefs().setBookMarkFalse();
     AudioManager.instance.stop();
-    AudioManager.instance.audioList = this.audioInfos;
-    await AudioManager.instance.play(index:0, auto: false);
-    notifyListeners();
+    AudioManager.instance.audioList = value;
+     AudioManager.instance.play(index:0, auto: false);
+    }).whenComplete(() => { this.loading = false, notifyListeners()});
+
 }
 
 showRatingDialog() async {
@@ -89,15 +101,21 @@ showRatingDialog() async {
   print(launches);
   bool hasRated = await FirstLaunch().hasRated();
   print(hasRated);
-  if (!hasRated || hasRated == null) {
+  if (hasRated == null) {
      switch (launches) {
     case 7:
     case 14:
     case 28:
     case 56:
-    case 64:
-    LaunchReview.launch(iOSAppId: '1472187500', androidAppId: 'com.wolinweb.BibleRead', writeReview: false);
-    print('rating dialog');
+    case 104:
+    case 208:
+    if (Platform.isIOS) {
+      print('dialog open');
+      AppReview.requestReview.then((onValue) {
+        print(onValue);
+        FirstLaunch().setRated();
+      });
+    }
       break;
     default:
   }

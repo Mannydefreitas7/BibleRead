@@ -6,11 +6,13 @@ import 'package:provider/provider.dart';
 class BRAudioPlayer extends StatelessWidget {
   BRAudioPlayer({
     Key key,
-      this.isReady, 
+      this.isReady,
+      this.isLoading
    // this.chapter, 
    // this.isSingle
     }) : super(key: key);
   final bool isReady;
+  final bool isLoading;
   
   bool checkReadyandSingle() {
     var isSingle = AudioManager.instance.audioList.length <= 1;
@@ -114,6 +116,7 @@ class BRAudioPlayer extends StatelessWidget {
             onPressed: () => {
               checkReadyandSingle() ? null : AudioManager.instance.previous()
             })),
+            isLoading ? CircularProgressIndicator() :
             Text(
             chapter,
             textAlign: TextAlign.right,

@@ -186,7 +186,7 @@ class _TodayState extends State<Today> {
                                 )),
                               if (unReadPlan.length != 0) SizedBox(height: 20),
                               if (unReadPlan.length != 0)
-                              BRAudioPlayer(isReady: isConnected),
+                              BRAudioPlayer(isReady: isConnected, isLoading: readingProgressData.loading,),
                               if (unReadPlan.length == 0) CompletedCard(),
                               SizedBox(height: 100),
                             ]);

@@ -61,7 +61,7 @@ class ReadingPlanTile extends StatelessWidget {
                         style: TextStyle(
                       color: selectedIndex == index ? Colors.white : Theme.of(context).textTheme.headline6.color,
                       fontWeight: FontWeight.w600,
-                      fontSize: 20
+                      fontSize: 18
                       ),
                         ),
                     ),

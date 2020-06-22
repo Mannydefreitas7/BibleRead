@@ -107,7 +107,7 @@ class ReadTodayCard extends StatelessWidget {
                                      Icon(
                                        SFSymbols.doc_plaintext,
                                        size: 24,
-                                       color: Theme.of(context).accentColor,
+                                       color: !isDisabled ? Colors.grey : Theme.of(context).accentColor,
                                      ),
                                      SizedBox(width: 5),
                                      Text(
@@ -116,7 +116,7 @@ class ReadTodayCard extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                                 fontFamily: 'Avenir Next',
                                 fontSize: 18.0,
-                                color: Theme.of(context).accentColor
+                                color: !isDisabled ? Colors.grey : Theme.of(context).accentColor
                                 ),
                           ),
                                    ],

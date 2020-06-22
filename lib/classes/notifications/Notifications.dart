@@ -88,8 +88,8 @@ class Notifications extends ChangeNotifier {
     final String reminderTime = await SharedPrefs().getReminderTime();
     final int hour = int.parse(reminderTime.split(":")[0]);
     final int minute = int.parse(reminderTime.split(":")[1]);
-    print(hour);
-    
+
+      
     Time time = Time(hour, minute, 0);
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
 
@@ -108,11 +108,8 @@ class Notifications extends ChangeNotifier {
         );
     var iOSPlatformChannelSpecifics = IOSNotificationDetails(
         presentAlert: true,
-        badgeNumber: 0,
         presentSound: true,
     );
-
-
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
 
