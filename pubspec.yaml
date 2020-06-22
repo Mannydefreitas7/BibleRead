@@ -1,6 +1,6 @@
 name: BibleRead
 description: Bible Reading Tracking App
-version: 5.1.0+3
+version: 5.2.0+4
 environment:
     sdk: '>=2.3.0 <3.0.0'
 dependencies:

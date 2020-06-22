@@ -102,7 +102,7 @@ class _TodayState extends State<Today> {
   }
 
   initialize() async {
-
+    notifications.initializeNotifications();
     hasBookmark = await SharedPrefs().getHasBookMark();
     if (hasBookmark) {
       bookmarkdata = await SharedPrefs().getBookMarkData();

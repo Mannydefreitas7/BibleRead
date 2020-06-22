@@ -85,11 +85,12 @@ class Notifications extends ChangeNotifier {
   }
 
    Future<void> setDailyAtTime(BuildContext context) async {
+     initializeNotifications();
     final String reminderTime = await SharedPrefs().getReminderTime();
     final int hour = int.parse(reminderTime.split(":")[0]);
     final int minute = int.parse(reminderTime.split(":")[1]);
-
-      
+    final bool hasReminder = await SharedPrefs().getReminder();
+    List<Plan> unreadChapters = [];
     Time time = Time(hour, minute, 0);
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
 
@@ -113,18 +114,24 @@ class Notifications extends ChangeNotifier {
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
 
-  List<Plan> unreadChapters = await DatabaseHelper().unReadChapters();
-
-    await flutterLocalNotificationsPlugin.showDailyAtTime(
+ // List<Plan> unreadChapters = await DatabaseHelper().unReadChapters();
+  if (hasReminder) {
+      print(hasReminder);
+      print('has reminder');
+      cancelAllNotifications();
+      DatabaseHelper().unReadChapters().then((value) {
+        unreadChapters = value;
+        print(unreadChapters[1].chapters);
+         flutterLocalNotificationsPlugin.showDailyAtTime(
         0,
         AppLocalizations.of(context).translate('read_today'),
-        '${unreadChapters[0].longName} ${unreadChapters[0].chapters}',
+        '${unreadChapters[1].longName} ${unreadChapters[1].chapters}',
         time,
         platformChannelSpecifics);
-        notifyListeners();
+      });
+    }
+      notifyListeners();
   }
- 
-  
-  
+
 }
 
